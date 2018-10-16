@@ -1,0 +1,251 @@
+<!-- Inner Section -->
+<div class="inner_banner">
+  <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
+  <div class="innerbanner_text">HR RELATED QUESTIONNAIRES<span><a href="#" class="read_more">Back To Website</a></span></div>
+</div>
+<div class="clearfix"></div>
+<!-- End Inner Section --> 
+<!-- Inner Section -->
+<div class="inner_content">
+        <div class="container ">
+          <div class="row">
+            <div class="col-md-12 col-sm-12">
+             
+                  <!-- <div class="btn-group pull-right add-right export-data" id="buttons">
+                              </div><div class="clearfix"></div> -->
+              <div class="clearfix"></div>
+              <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+
+                   
+                    <div class="clearfix"></div>
+                        <form class="form-validate" role="form" #candidateForm="ngForm" (ngSubmit)="addUser(candidateForm)">
+    
+                                <div  *ngIf="first1" >
+                                    <h1 class="text-center">Candidate Detail</h1>
+                                    <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
+                                    <div class="clearfix"></div>
+                                    <div class="ans_block">  
+                                        <div class="col-md-3 col-sm-3">
+                                          <p>Candidate Name</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9">
+                                          <div class="form-group">
+                                            
+                                              <input type="text" class="form-control" #CandidateName="ngModel" [(ngModel)]="candidateEntity.CandidateName" class="form-control" name="CandidateName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)}" required/>
+                                              <span class="error_span" *ngIf="(CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)"> 
+                                              <span *ngIf="CandidateName.errors.required || (CandidateName.pristine && submitted)">Please enter your name </span>
+                                              <span *ngIf="CandidateName.errors && CandidateName.errors.pattern">Please enter valid name</span>	
+                                              </span>
+                                          </div>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <p>Candidate Email</p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group">
+                                                <input type="email" class="form-control" #CandidateEmail="ngModel" name="CandidateEmail" 
+                                                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"	[(ngModel)]="candidateEntity.CandidateEmail" [ngClass]="{red_border: (CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)}"  required/>
+                                                <span class="error_span"  *ngIf="(CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)"> 
+                                                    <span *ngIf="CandidateEmail.errors.required || (CandidateEmail.pristine && submitted)">Please enter your email address </span>
+                                                </span>
+                                                <span class="error_span" *ngIf="CandidateEmail.errors && CandidateEmail.errors.pattern">
+                                                    Please enter valid email address
+                                              </span>
+                                            </div>
+                                          </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <p>Phone number:</p>
+                                        </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
+                                                [(ngModel)]="candidateEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
+                                                <span class="error_span" *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
+                                                  <span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter your phone number</span>
+                                                  <span *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">Please enter valid phone number</span>
+                                                </span>
+                                            </div>
+                                          </div>
+                                        <div class="col-md-3 col-sm-3">
+                                            <p>Position Applied For:</p>
+                                        </div>
+                                        <div class="col-md-9 col-sm-9">
+                                              <div class="form-group">
+                                                <!-- <label><span>*</span>Name </label> -->
+                                                <select class='select-option' required class="form-control" #JobPositionId="ngModel" [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId" [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
+                                                    <option value="">Select</option>
+                                                     <option class='option' *ngFor='let jobpo of jobpositionList' [value]="jobpo.JobPositionId">{{jobpo.JobPositionName}}</option></select>
+                                                     <span class="error_span"  *ngIf="(JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)"> 
+                                                         <span *ngIf="JobPositionId.errors.required || (JobPositionId.pristine && submitted)">Please select job position </span>
+                                                     </span>
+                                              </div>
+                                        </div>
+                                    </div>                
+                                </div>      
+                                      
+                                <div  *ngIf="primary">
+                                    <h1 class="text-center">QUESTIONS</h1>
+                                    <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
+                                    <div class="clearfix"></div>
+                                        <div *ngFor="let que of questionList;">
+                                        
+                                          <div class="inner_block">
+                                            <div class="que_img"><span>{{que.QuestionId}}</span></div>
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                              <div class="que_block">
+                                                <h3>{{que.QuestionName}}</h3>
+                                                <ul>
+                                                 
+                                                </ul>
+                                              </div>
+
+                                              <div *ngIf="que.AnswerTypeId==3">
+
+                                                  <div class="clearfix"></div>
+                                                  <div class="ans_block">
+                                                    <div class="answer_header">
+                                                        <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
+                                                        
+                                                    </div>         
+                                                    <div class="answer_block">						
+                                                      <div *ngFor="let ans of que.child;" class="form-group">
+                                                          <label>{{ans.QLabel}}</label>
+                                                            <textarea class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer"  [ngClass]="{red_border: (CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)}" maxlength="250" required></textarea>
+                                                              <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
+                                                                <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter question answer</span>
+                                                              
+                                                              </span>
+                                                      </div>
+                                                  </div>
+                                                 </div>
+                                                  <div class="clearfix"></div>
+
+                                              </div>
+
+                                              <div *ngIf="que.AnswerTypeId==1">
+
+                                                  <div class="clearfix"></div>
+                                                  <div class="ans_block">
+                                                      <div class="answer_header">
+                                                          <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
+                                                          
+                                                      </div>  
+                                                          <div class="answer_block">
+                                                              
+                                                              <div class="form-group">
+                                                                  <div class="radio_box" *ngFor="let ans of que.child; let i=index;">
+                                                                    <input type="radio"  name="CAnswer" id="role{{i}}" value="{{ans.QValue}}" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" required/>
+                                                                    <label for="role{{i}}" title="Role1">{{ans.QLabel}}</label>
+                                                                  </div>
+                                                                  
+                                                                
+                                                                </div>
+                                                          </div>
+                                                     </div>
+                                                     <div class="clearfix"></div>
+
+
+                                              </div>
+
+
+                                              <div *ngIf="que.AnswerTypeId==2">
+      
+                                                  <div class="clearfix"></div>
+                                                  <div class="ans_block">                        
+                                                      <div class="answer_header">
+                                                          <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
+                                                          
+                                                      </div>     
+                                                      <div class="answer_block" *ngFor="let ans of que.child;">	             
+                                                          <div class="col-md-2 col-sm-2">
+                                                            <p>{{ans.QLabel}}</p>
+                                                          </div>
+                                                          <div class="col-md-10 col-sm-10">
+                                                              
+                                                              <div class="form-group"  >
+                                                                
+                                                                  <input type="text" class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" class="form-control" name="CAnswer" [ngClass]="{red_border: (CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)}" required/>
+                                                                  <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
+                                                                  <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter answer</span>
+                                                                  <span *ngIf="CAnswer.errors && CAnswer.errors.pattern">Please enter valid question answer</span>	
+                                                                  </span>
+                                                            </div>
+                                                          </div>
+                                                     
+                                                 
+                                                    
+                                                   
+                                                      </div>
+                                                  </div>
+                                                  <div class="clearfix"></div>
+
+                                              </div>
+
+                                             
+                                            </div>
+                                          </div>
+
+
+                                            </div>
+
+                                             
+                                             
+        
+                                </div>     
+        
+                                      <div class="clearfix"></div>
+        
+                                <div   *ngIf="second1">  
+                                    
+
+                                    <h1 class="text-center">Consent</h1>
+                                    <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
+                                        <div class="clearfix"></div>
+                                          <div class="consent_block">
+                                            <p>I hereby certify that the above statements are true and correct to the best of my knowledge. I understand that a false statement may disqualify me for the position at any time.</p>
+                                          </div>
+                                            <div class="clearfix"></div>
+                                     
+                                              
+                                </div>  
+        
+        
+                                    <div class="clearfix"></div>
+        
+                                <div class="col-md-12">
+                                    <div class="form-btn">
+                                
+                                        <div  *ngIf="primary">
+                                            <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Prev</span></button>
+                                            <button type="button" class="btn sub-btn btn-small margin_right" (click)="Third(candidateForm)"><span>Next</span></button> 
+                                        </div>
+                                        <div  *ngIf="second1">
+                                                <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Prev</span></button>
+                                        </div>
+                
+                                        <div  *ngIf="first1">
+                                                <button type="button" class="btn sub-btn btn-small margin_right" (click)="first(candidateForm)"><span>Next1</span></button>       
+                                        </div>
+                
+                                    </div>
+                                    <br>
+                                    <div class="form-btn" *ngIf="second1">
+                                      <button type="submit" class="btn sub-btn"><span>Submit</span></button>
+                                    
+                                    </div>
+        
+                                </div>
+                            </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+      <!-- End Inner Section -->  
+
+
+    
