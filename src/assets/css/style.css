@@ -17,6 +17,7 @@ h1{font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: 
 /* ========== Do Not Touch In Css End ========== */
 
 /*--------------Header and Navigation--------------------*/
+.modal-dialog{width: 1260px;}
 /* .container{ width:100%; max-width:100%; padding:0 30px;} */
 header{ position: relative; z-index: 999; width: 100%; padding:0px 0;transition: all 0.3s ease-in 0s;}
 .social_links{display: inline-block;}

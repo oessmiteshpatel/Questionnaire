@@ -1,7 +1,7 @@
 <!-- Inner Section -->
 <div class="inner_banner">
   <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
-  <div class="innerbanner_text">HR RELATED QUESTIONNAIRES<span><a href="#" class="read_more">Back To Website</a></span></div>
+  <div class="innerbanner_text">HR RELATED QUESTIONNAIRES</div>
 </div>
 <div class="clearfix"></div>
 <!-- End Inner Section --> 
@@ -196,7 +196,7 @@
         
                                       <div class="clearfix"></div>
         
-                                <div   *ngIf="second1">  
+                                <!-- <div   *ngIf="second1">  
                                     
 
                                     <h1 class="text-center">Consent</h1>
@@ -208,7 +208,7 @@
                                             <div class="clearfix"></div>
                                      
                                               
-                                </div>  
+                                </div>   -->
         
         
                                     <div class="clearfix"></div>
@@ -217,23 +217,24 @@
                                     <div class="form-btn">
                                 
                                         <div  *ngIf="primary">
-                                            <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Prev</span></button>
-                                            <button type="button" class="btn sub-btn btn-small margin_right" (click)="Third(candidateForm)"><span>Next</span></button> 
+                                            <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Previous</span></button>
+                                            <!-- <button type="button" class="btn sub-btn btn-small margin_right" (click)="Third(candidateForm)"><span>Next</span></button>  -->
+                                            <button type="submit" class="btn sub-btn"><span>Submit</span></button>
                                         </div>
                                         <div  *ngIf="second1">
-                                                <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Prev</span></button>
+                                                <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre1()"><span>Previous</span></button>
                                         </div>
                 
                                         <div  *ngIf="first1">
-                                                <button type="button" class="btn sub-btn btn-small margin_right" (click)="first(candidateForm)"><span>Next1</span></button>       
+                                                <button type="button" class="btn sub-btn btn-small margin_right" (click)="first(candidateForm)"><span>Next</span></button>       
                                         </div>
                 
                                     </div>
                                     <br>
-                                    <div class="form-btn" *ngIf="second1">
+                                    <!-- <div class="form-btn" *ngIf="second1">
                                       <button type="submit" class="btn sub-btn"><span>Submit</span></button>
                                     
-                                    </div>
+                                    </div> -->
         
                                 </div>
                             </form>

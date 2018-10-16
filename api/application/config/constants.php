@@ -96,7 +96,7 @@ define('BASE_URL', 'http://localhost:4200'); // local Base URL
 //   Development
 
 // define('ACTIVE_GROUP', 'Development'); // database mode
-// define('BASE_URL', 'http://lms-test.devbyopeneyes.com'); // Development Base URL
+// define('BASE_URL', 'http://questionnaire.devbyopeneyes.com'); // Development Base URL
 // define('PROTOCOL', 'mail'); // smtp details
 // define('SMTP_HOST', 'vps40446.inmotionhosting.com'); 
 //define('SMTP_PORT', '587'); 

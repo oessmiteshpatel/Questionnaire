@@ -1,14 +1,14 @@
-import {  Component, OnInit, Inject  } from '@angular/core';
+import {  Component, OnInit, Inject,ViewChild,ElementRef } from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CandidateuserService } from '../services/candidateuser.service';
-//import { setTimeout } from 'timers';
 declare var $,unescape,newWin,html2pdf: any;
 declare var angular: any;
 import { SampleModule } from 'angular-pdf-generator';
 import * as jsPDF from 'jspdf';
+import * as html2canvas from 'html2canvas';
 
 
 @Component({
@@ -25,8 +25,10 @@ export class CandidatelistComponent implements OnInit {
 	msgflag;
 	message;
   type;
-
   questionList;
+
+  @ViewChild('content')content:ElementRef;
+
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
@@ -106,6 +108,34 @@ export class CandidatelistComponent implements OnInit {
     }
 
 
+  	deleteCompany(CandidateId)
+	{ 
+    this.CandidateuserService.getAllDefaultData()
+    .then((data) => {
+    
+      this.questionList = data['question'];
+    
+    
+    },
+    (error) => {
+      //alert('error');
+      
+    });
+    this.CandidateuserService.getById(CandidateId)
+    .then((data) => {
+      this.questionList = data;
+     
+      $('#Delete_Modal').modal('show');
+      	
+    },
+    (error) => {
+      alert('error');
+        
+    });
+  
+
+						
+	} 
 
   viewCandidate(CandidateId)
 	{ 
@@ -133,25 +163,55 @@ export class CandidatelistComponent implements OnInit {
 			
   }
   
+  download(){
+    let doc = new jsPDF();
+    let specialElementHandlers ={
+        '#editor':function(element,renderer){
+          return true;
+        }
+    };
+    let content=this.content.nativeElement;
+  
+    doc.fromHTML(content.innerHTML,15,15,{
+      'width':190,
+      'elementHandlers':specialElementHandlers
+    });
+    doc.save('Candidate.pdf');   
+  }
 
-
- 
-
-
-  download() {
+ public downloadPDF(CandidateId) 
+  {
 debugger
-    
-    var element = document.getElementById('PdfDiv').innerHTML;
-    var doc = new jsPDF();
-   // html2pdf(element);
-    doc.text(20, 30,element);
-   // doc.text(20, 30, 'This is client-side Javascript, pumping out a PDF.');
-   // doc.addPage();
-    //doc.text(20, 20, 'Do you like that?');
+let doc = new jsPDF();
+let specialElementHandlers ={
+    '#editor':function(element,renderer){
+      return true;
+    }
+};
+let content=this.content.nativeElement;
 
-    // Save the PDF
-    doc.save('Test.pdf');
+doc.fromHTML(content.innerHTML,15,15,{
+  'width':190,
+  'elementHandlers':specialElementHandlers
+});
+doc.save('Candidate.pdf');  
+
 }
+  
+
+
+//   download() 
+//   {
+// debugger
+    
+//     var element = document.getElementById('PdfDiv').innerHTML;
+//     var doc = new jsPDF();
+//    // html2pdf(element);
+//     doc.text(20, 30,element);
+//    // doc.addPage();
+//     // Save the PDF
+//     doc.save('Test.pdf');
+// }
   
  
 

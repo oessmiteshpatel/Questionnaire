@@ -28,13 +28,15 @@
         "assets/js/bootstrap.min.js",
         "assets/js/bootstrap-datetimepicker.js",
         "assets/js/jquery.dataTables.min.js",
+        "assets/js/custom.js",
         "assets/js/angular.js",
 		    "assets/js/dataTables.buttons.min.js",
 		    "assets/js/buttons.print.min.js",
 		    "assets/js/jszip.min.js" ,
         "assets/js/buttons.html5.min.js" ,
-        "assets/js/custom.js",
-        "assets/js/jspdf.min.js"
+      
+        "assets/js/jspdf.min.js",
+        "assets/js/html2canvas.min.js"
   
       ],
       "environmentSource": "environments/environment.ts",
