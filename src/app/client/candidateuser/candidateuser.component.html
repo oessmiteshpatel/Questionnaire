@@ -26,10 +26,10 @@
                                     <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
                                     <div class="clearfix"></div>
                                     <div class="ans_block">  
-                                        <div class="col-md-3 col-sm-3">
-                                          <p>Candidate Name</p>
+                                        <div class="col-md-2 col-sm-2">
+                                          <label>Candidate Name</label>
                                         </div>
-                                        <div class="col-md-9 col-sm-9">
+                                        <div class="col-md-10 col-sm-10">
                                           <div class="form-group">
                                             
                                               <input type="text" class="form-control" #CandidateName="ngModel" [(ngModel)]="candidateEntity.CandidateName" class="form-control" name="CandidateName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)}" required/>
@@ -39,10 +39,11 @@
                                               </span>
                                           </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Candidate Email</p>
+                                        <div class="clearfix"></div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Candidate Email</label>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <input type="email" class="form-control" #CandidateEmail="ngModel" name="CandidateEmail" 
                                                 pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"	[(ngModel)]="candidateEntity.CandidateEmail" [ngClass]="{red_border: (CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)}"  required/>
@@ -54,10 +55,10 @@
                                               </span>
                                             </div>
                                           </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Phone number:</p>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Phone number:</label>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
                                                 [(ngModel)]="candidateEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
@@ -67,10 +68,11 @@
                                                 </span>
                                             </div>
                                           </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Position Applied For:</p>
+                                          <div class="clearfix"></div>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Position Applied For:</label>
                                         </div>
-                                        <div class="col-md-9 col-sm-9">
+                                        <div class="col-md-10 col-sm-10">
                                               <div class="form-group">
                                                 <!-- <label><span>*</span>Name </label> -->
                                                 <select class='select-option' required class="form-control" #JobPositionId="ngModel" [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId" [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
@@ -81,6 +83,7 @@
                                                      </span>
                                               </div>
                                         </div>
+                                        <div class="clearfix"></div>
                                     </div>                
                                 </div>      
                                       
@@ -104,10 +107,13 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
+                                                        <div class="col-md-1 col-sm-1 col-xs-1">
                                                     <div class="answer_header">
                                                         <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                         
-                                                    </div>         
+                                                    </div>   
+                                                        </div>
+                                                        <div class="col-md-11 col-sm-11 col-xs-11">      
                                                     <div class="answer_block">						
                                                       <div *ngFor="let ans of que.child;" class="form-group">
                                                           <label>{{ans.QLabel}}</label>
@@ -118,6 +124,7 @@
                                                               </span>
                                                       </div>
                                                   </div>
+                                                </div>
                                                  </div>
                                                   <div class="clearfix"></div>
 
@@ -127,10 +134,13 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
+                                                        <div class="col-md-1 col-sm-1 col-xs-1">
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
                                                       </div>  
+                                                        </div>
+                                                        <div class="col-md-11 col-sm-11 col-xs-11">
                                                           <div class="answer_block">
                                                               
                                                               <div class="form-group">
@@ -142,6 +152,7 @@
                                                                 
                                                                 </div>
                                                           </div>
+                                                          </div>
                                                      </div>
                                                      <div class="clearfix"></div>
 
@@ -152,14 +163,19 @@
                                               <div *ngIf="que.AnswerTypeId==2">
       
                                                   <div class="clearfix"></div>
-                                                  <div class="ans_block">                        
+                                                  <div class="ans_block">   
+                                                        <div class="col-md-1 col-sm-1 col-xs-1">                     
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
-                                                      </div>     
+                                                      </div>   
+                                                        </div>
+                                                        <div class="col-md-11 col-sm-11 col-xs-11">  
                                                       <div class="answer_block" *ngFor="let ans of que.child;">	             
                                                           <div class="col-md-2 col-sm-2">
-                                                            <p>{{ans.QLabel}}</p>
+                                                                <div class="form-group">
+                                                            <label>{{ans.QLabel}}</label>
+                                                            </div>
                                                           </div>
                                                           <div class="col-md-10 col-sm-10">
                                                               
@@ -173,9 +189,11 @@
                                                             </div>
                                                           </div>
                                                      
+                                                          <div class="clearfix"></div>
                                                  
                                                     
                                                    
+                                                      </div>
                                                       </div>
                                                   </div>
                                                   <div class="clearfix"></div>
