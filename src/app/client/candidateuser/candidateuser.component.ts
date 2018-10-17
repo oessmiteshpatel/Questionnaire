@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CandidateuserService } from '../services/candidateuser.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-candidateuser',
@@ -122,7 +123,7 @@ export class CandidateuserComponent implements OnInit {
   
 
     first(candidateForm)
-		{
+		{ console.log(this.questionList);
 			this.submitted = true;
 			if(candidateForm.valid){
 			this.primary=true;
@@ -138,6 +139,21 @@ export class CandidateuserComponent implements OnInit {
 			this.first1=true;
 			this.second1=false;
 		
+		}
+
+		checked(k,j,value,length){  debugger
+			//alert(length);
+			for(var i=0; i<length; i++){
+				if(i==j){
+					//this.questionList[k].child[i].CAnswer = value;
+				} else {
+					this.questionList[k].child[i].CAnswer = '';
+				}
+				//this.questionList[k].child[j].CAnswer = value;
+			}
+			
+			console.log(this.questionList[k].child);
+			
 		}
 
 		Third(candidateForm)
