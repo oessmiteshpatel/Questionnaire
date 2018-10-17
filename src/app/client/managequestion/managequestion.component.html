@@ -7,7 +7,7 @@
 
       <div class="col-md-12 col-sm-12">
 
-					<form class="form-validate" role="form" #questionForm="ngForm" (ngSubmit)="addQuestion(questionForm)">
+	<form class="form-validate" role="form" #questionForm="ngForm" (ngSubmit)="addQuestion(questionForm)">
 		<h1 class="text-center">Add Question</h1>
 		<div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
         <div class="clearfix"></div>
@@ -16,7 +16,11 @@
 				<h3>Question :</h3>
 				<div class="form-group">
 					<label>Explain here</label>
-					<textarea name="address" class="form-control"></textarea>
+					<textarea class="form-control" #QuestionName="ngModel" [(ngModel)]="questionEntity.QuestionName" name="QuestionName"   maxlength="250"></textarea>
+					<span class="error_span" *ngIf="(QuestionName.dirty && QuestionName.invalid) || (QuestionName.pristine && submitted)"> 
+						<span *ngIf="QuestionName.errors.required || (QuestionName.pristine && submitted)">Please enter question answer</span>
+					
+					</span>
 				</div>
 			</div>
 		</div>
@@ -33,28 +37,71 @@
                                 <span *ngIf="AnswerTypeId.errors.required || (AnswerTypeId.pristine && submitted)">Please select answer type </span>
                             </span>
 				</div>
+				<div *ngIf="questionEntity.AnswerTypeId==2">
 
-				<div class="form-group">
-					<label>Label</label>
-					<input type="text" name="fname" id="fname" class="form-control" />
+						<table class="form-table" id="customFields">
+								<tr valign="top">
+									<td>
+										<!-- <input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> -->
+									
+
+										<input type="text" class="form-control" #QLabel="ngModel" [(ngModel)]="questionEntity.QLabel" class="form-control" name="QLabel" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)}" required/><a (click)="multietextadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+										<span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)"> 
+										<span *ngIf="QLabel.errors.required || (QLabel.pristine && submitted)">Please enter your name </span>
+										<span *ngIf="QLabel.errors && QLabel.errors.pattern">Please enter valid name</span>	
+										</span>
+								
+										
+										
+									</td>
+								</tr>
+							</table>
 				</div>
-				<table class="form-table" id="customFields">
-					<tr valign="top">
-						<td>
-							<input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp;
-							<input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp;
-							<a href="javascript:void(0);" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-						</td>
-					</tr>
-				</table>
+
+				<div *ngIf="questionEntity.AnswerTypeId==1 ">
+								<table class="form-table" id="customFields">
+									<tr valign="top">
+										<td>
+											<input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp;
+											<input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp;
+											<!-- <a  href="javascript:void(0);" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> -->
+											<a (click)="textadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+											
+										</td>
+									</tr>
+								</table>
+
+			</div>
+
+			<div *ngIf="questionEntity.AnswerTypeId==3 ">
+					<div class="form-group" >
+							<label>Label</label>
+							<input type="text" name="fname" id="fname" class="form-control" />
+						</div>
+</div>
+
+
 				<div class="clearfix"></div>
 			</div>
 			<div class="clearfix"></div>
 		</div>
 		<div class="clearfix"></div>
 
-		</form>
+		<div class="col-md-12">
+				<div class="form-btn">
+		
+				
+							
+								<button type="submit" class="btn sub-btn"><span>Submit</span></button>
+					
+						
+				</div>
+			
 
+		</div>
+
+		</form>
+		<div class="clearfix"></div>
 
 		</div>
 		

@@ -46,11 +46,49 @@ class Question_model extends CI_Model
 		}
 	}
 
+	
+	 function add_questions($post_question)
+	{	
+		
+		if($post_question)
+		{
+			if($post_question['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
+			 
+					$question_data=array(
+						"RoleId"=>trim($post_question['RoleId']),
+						"RoleName"=>trim($post_question['RoleName']),
+						"IsActive"=>$IsActive,
+						"CreatedBy" =>trim($post_question['CreatedBy']),
+						"CreatedOn" =>date('y-m-d H:i:s')
+					);	
+				
+				$res=$this->db->insert('tblquestion',$question_data);
+				if($res)
+				{
+					
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+		}
+		else
+		{
+				return false;
+		}
+	}
+
 
 
 	public function getlist_QuestionType()
 	{
-		$this->db->select('*');
+		$this->db->select('AnswerTypeId,AnswerName,DisplayText,IsActive');
 		
 		$this->db->where('IsActive=',1);
 		//$this->db->order_by('JobPositionName','asc');
@@ -63,6 +101,8 @@ class Question_model extends CI_Model
 		}
 		return $res;
 	}
+
+
 	
 	// public function getlist_Country() {
 	

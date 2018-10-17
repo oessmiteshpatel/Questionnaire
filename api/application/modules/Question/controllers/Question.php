@@ -1,4 +1,4 @@
-s<?php
+<?php
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -13,16 +13,7 @@ class Question extends CI_Controller {
 		
 	}
 	
-	// public function getAll() {
 		
-	// 	//$data="";
-		
-	// 	$data=$this->Question_model->getlist_Country();
-		
-	// 	echo json_encode($data);
-				
-	// }
-	
 	
 	public function add() {
 		
@@ -43,35 +34,37 @@ class Question extends CI_Controller {
 		//}
 		
 	}
-	
-	// public function getById($Country_Id = NULL) {
-		
-	// 	if (!empty($Country_Id)) {
-	// 		$data = [];		
-	// 		$data = $this->Question_model->get_Countrydata($Country_Id);
-	// 		echo json_encode($data);			
-	// 	}
-	// }	
-	
 
-		
-	// public function delete() {
-	// 	$post_Question = json_decode(trim(file_get_contents('php://input')), true);		
-
-	// 	if ($post_Question) {
-	// 		if($post_Question['id'] > 0){
-	// 			$result = $this->Question_model->delete_Country($post_Question);
-	// 			if($result) {
+	
+	public function addQuestion()
+	{  
+		$post_question = json_decode(trim(file_get_contents('php://input')), true);
+		if ($post_question) 
+			{
+				if($post_question['QuestionId']>0)
+				{
+					$result = $this->Question_model->edit_question($post_question);
+					if($result)
+					{
+						echo json_encode($post_question);	
+					}	
+				}
+				else
+				{
 					
-	// 				echo json_encode("Delete successfully");
-	// 			}
-	// 			}
-		
-			
-	// 	} 
-			
-	// }
+					$result = $this->Question_model->add_questions($post_question); 
+					if($result)
+					{
+						echo json_encode($post_question);	
+					}	
 
+				}
+			
+			}
+	}
+
+
+	
 	public function getAllDefaultData()
 	{
 		//$data="";
