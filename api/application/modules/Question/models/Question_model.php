@@ -45,6 +45,24 @@ class Question_model extends CI_Model
 			return false;
 		}
 	}
+
+
+
+	public function getlist_QuestionType()
+	{
+		$this->db->select('*');
+		
+		$this->db->where('IsActive=',1);
+		//$this->db->order_by('JobPositionName','asc');
+		$result=$this->db->get('tblmstanswertype');
+		
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
 	
 	// public function getlist_Country() {
 	

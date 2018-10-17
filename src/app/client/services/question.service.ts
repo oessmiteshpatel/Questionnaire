@@ -29,4 +29,25 @@ export class QuestionService {
     return promise;
     }
 
+         //list all users
+  getAllDefaultData(){
+	  
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Question/getAllDefaultData')
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+        //this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });		
+    return promise;
+    }
+
+
 }
