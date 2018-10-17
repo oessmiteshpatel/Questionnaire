@@ -11,7 +11,12 @@ export class FooterComponent implements OnInit {
 
   ngOnInit() {
 
-   
+    if ($("body").height() < $(window).height()) {  
+      $('footer').addClass('footer_fixed');     
+  }      
+  else{  
+      $('footer').removeClass('footer_fixed');    
+  }
       
         var scrolled = $(window).scrollTop();
         if (scrolled > 200){ $('.go_top').fadeIn('slow');}

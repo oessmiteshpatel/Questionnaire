@@ -29,9 +29,9 @@ export class CandidateuserComponent implements OnInit {
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
-    ngOnInit() {
-
-					this.first1=true;
+    ngOnInit() {		
+					
+		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};
 					this.CandidateuserService.getAllDefaultData()
@@ -43,8 +43,7 @@ export class CandidateuserComponent implements OnInit {
 					
 					},
 					(error) => {
-						//alert('error');
-						
+												
 					});
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
@@ -74,7 +73,7 @@ export class CandidateuserComponent implements OnInit {
 					this.candidateEntity.IsActive = '1';
 
 				}
-	
+				
 		}
 	
 	

@@ -10,9 +10,6 @@
         <div class="container ">
           <div class="row">
             <div class="col-md-12 col-sm-12">
-             
-                  <!-- <div class="btn-group pull-right add-right export-data" id="buttons">
-                              </div><div class="clearfix"></div> -->
               <div class="clearfix"></div>
               <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
@@ -26,10 +23,10 @@
                                     <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
                                     <div class="clearfix"></div>
                                     <div class="ans_block">  
-                                        <div class="col-md-3 col-sm-3">
-                                          <p>Candidate Name</p>
+                                        <div class="col-md-2 col-sm-2">
+                                          <label>Candidate Name</label>
                                         </div>
-                                        <div class="col-md-9 col-sm-9">
+                                        <div class="col-md-10 col-sm-10">
                                           <div class="form-group">
                                             
                                               <input type="text" class="form-control" #CandidateName="ngModel" [(ngModel)]="candidateEntity.CandidateName" class="form-control" name="CandidateName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)}" required/>
@@ -39,10 +36,10 @@
                                               </span>
                                           </div>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Candidate Email</p>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Candidate Email</label>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <input type="email" class="form-control" #CandidateEmail="ngModel" name="CandidateEmail" 
                                                 pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"	[(ngModel)]="candidateEntity.CandidateEmail" [ngClass]="{red_border: (CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)}"  required/>
@@ -54,10 +51,10 @@
                                               </span>
                                             </div>
                                           </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Phone number:</p>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Phone number</label>
                                         </div>
-                                        <div class="col-md-3 col-sm-3">
+                                        <div class="col-md-4 col-sm-4">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
                                                 [(ngModel)]="candidateEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
@@ -67,10 +64,10 @@
                                                 </span>
                                             </div>
                                           </div>
-                                        <div class="col-md-3 col-sm-3">
-                                            <p>Position Applied For:</p>
+                                        <div class="col-md-2 col-sm-2">
+                                            <label>Position Applied For</label>
                                         </div>
-                                        <div class="col-md-9 col-sm-9">
+                                        <div class="col-md-10 col-sm-10">
                                               <div class="form-group">
                                                 <!-- <label><span>*</span>Name </label> -->
                                                 <select class='select-option' required class="form-control" #JobPositionId="ngModel" [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId" [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
@@ -81,6 +78,7 @@
                                                      </span>
                                               </div>
                                         </div>
+                                        <div class="clearfix"></div>
                                     </div>                
                                 </div>      
                                       
@@ -104,20 +102,23 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
-                                                    <div class="answer_header">
-                                                        <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
-                                                        
-                                                    </div>         
-                                                    <div class="answer_block">						
-                                                      <div *ngFor="let ans of que.child; let j=index;" class="form-group">
-                                                          <label>{{ans.QLabel}} </label>
-                                                            <textarea class="form-control" #CAnswer{{k}}{{j}}="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"   maxlength="250"></textarea>
-                                                              <!-- <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
-                                                                <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter question answer</span>
-                                                              
-                                                              </span> -->
-                                                      </div>
-                                                  </div>
+                                                    <div class="col-md-1 col-sm-1 col-xs-1">
+                                                        <div class="answer_header">
+                                                            <img src="assets/images/application.png" alt="question_image" class="img-responsive" /> 
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-11 col-sm-11 col-xs-11">      
+                                                        <div class="answer_block">						
+                                                        <div *ngFor="let ans of que.child; let j=index;" class="form-group">
+                                                            <label>{{ans.QLabel}} </label>
+                                                                <textarea class="form-control" #CAnswer{{k}}{{j}}="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"   maxlength="250"></textarea>
+                                                                <!-- <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
+                                                                    <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter question answer</span>
+                                                                
+                                                                </span> -->
+                                                        </div>
+                                                        </div>
+                                                    </div>
                                                  </div>
                                                   <div class="clearfix"></div>
 
@@ -127,10 +128,13 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
+                                                        <div class="col-md-1 col-sm-1 col-xs-1">
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
-                                                      </div>  
+                                                      </div> 
+                                                        </div>
+                                                      <div class="col-md-11 col-sm-11 col-xs-11"> 
                                                           <div class="answer_block">
                                                               
                                                               <div class="form-group">
@@ -142,6 +146,7 @@
                                                                 
                                                                 </div>
                                                           </div>
+                                                        </div>
                                                      </div>
                                                      <div class="clearfix"></div>
 
@@ -152,18 +157,23 @@
                                               <div *ngIf="que.AnswerTypeId==2">
       
                                                   <div class="clearfix"></div>
-                                                  <div class="ans_block">                        
+                                                  <div class="ans_block">
+                                                        <div class="col-md-1 col-sm-1 col-xs-1">                        
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
-                                                      </div>     
+                                                      </div> 
+                                                      </div>
+                                                      <div class="col-md-11 col-sm-11 col-xs-11">    
                                                       <div class="answer_block" *ngFor="let ans of que.child; let j=index;">	             
                                                           <div class="col-md-2 col-sm-2">
-                                                            <p>{{ans.QLabel}} </p>
+                                                            <div class="form-group">
+                                                                <label>{{ans.QLabel}} </label>
+                                                            </div>
                                                           </div>
                                                           <div class="col-md-10 col-sm-10">
                                                               
-                                                              <div class="form-group"  >
+                                                            <div class="form-group"  >
                                                                 
                                                                   <input type="text" class="form-control" #CAnswer{{k}}{{j}}="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}" class="form-control" />
                                                                   <!-- <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
@@ -172,10 +182,8 @@
                                                                   </span> -->
                                                             </div>
                                                           </div>
-                                                     
-                                                 
-                                                    
-                                                   
+                                                      </div>
+                                                      <div class="clearfix"></div>
                                                       </div>
                                                   </div>
                                                   <div class="clearfix"></div>
@@ -217,12 +225,12 @@
                                     <div class="form-btn">
                                 
                                         <div  *ngIf="primary">
-                                            <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre()"><span>Previous</span></button>
+                                            <button type="button" class="lgn_btn margin_top"  (click)="pre()"><span>Previous</span></button>
                                             <!-- <button type="button" class="btn sub-btn btn-small margin_right" (click)="Third(candidateForm)"><span>Next</span></button>  -->
-                                            <button type="submit" class="btn sub-btn"><span>Submit</span></button>
+                                            <button type="submit" class="lgn_btn"><span>Submit</span></button>
                                         </div>
                                         <div  *ngIf="second1">
-                                                <button type="button" class="btn sub-btn btn-small margin_top"  (click)="pre1()"><span>Previous</span></button>
+                                                <button type="button" class="lgn_btn margin_top"  (click)="pre1()"><span>Previous</span></button>
                                         </div>
                 
                                         <div  *ngIf="first1">

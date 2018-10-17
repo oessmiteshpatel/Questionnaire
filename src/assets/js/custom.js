@@ -1,3 +1,4 @@
+
 // Scroll Header
 if (screen.width < 768) {
     var sticky = $('header');
@@ -57,3 +58,4 @@ $(".apply_online").click(function() {
    });
 });
 // Apply Online Scroll
+
