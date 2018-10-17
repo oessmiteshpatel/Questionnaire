@@ -28,6 +28,9 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { ManagequestionComponent } from './managequestion/managequestion.component';
+import { ManagequestionlistComponent } from './managequestionlist/managequestionlist.component';
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -39,8 +42,10 @@ import { FooterComponent } from './footer/footer.component';
     CandidatelistComponent,
     ThankyouComponent,
     HeaderComponent,
-    FooterComponent
-    
+    FooterComponent,
+    ManagequestionComponent,
+    ManagequestionlistComponent
+
   ],
   imports: [
     CommonModule,

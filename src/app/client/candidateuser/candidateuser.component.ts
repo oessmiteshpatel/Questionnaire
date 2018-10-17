@@ -137,7 +137,7 @@ export class CandidateuserComponent implements OnInit {
 			this.primary=false;
 			this.first1=true;
 			this.second1=false;
-			console.log(this.candidateEntity);
+		
 		}
 
 		Third(candidateForm)

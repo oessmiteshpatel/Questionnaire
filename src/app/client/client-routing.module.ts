@@ -26,6 +26,11 @@ import { ThankyouComponent } from './thankyou/thankyou.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
+import { ManagequestionComponent } from './managequestion/managequestion.component';
+import { ManagequestionlistComponent } from './managequestionlist/managequestionlist.component';
+import { ManagequestionService } from './services/managequestion.service';
+
+
 const routes: Routes = [	
 	{
 		path: '',
@@ -48,7 +53,10 @@ const routes: Routes = [
 				{ path : 'candidateuser/edit/:id', component : CandidateuserComponent  },
 				{ path : 'candidate/list', component : CandidatelistComponent  },
 
-				{ path : 'thankyou', component : ThankyouComponent  }
+				{ path : 'thankyou', component : ThankyouComponent  },
+
+				{ path : 'question/add', component : ManagequestionComponent  },
+				{ path : 'question/list', component : ManagequestionlistComponent  }
 			]
 	}
 ];
@@ -56,7 +64,7 @@ const routes: Routes = [
  @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
-	providers: [Globals,QuestionService,JobpositionService,CandidateuserService
+	providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService
 	
 	],
 

@@ -17,7 +17,6 @@ h1{font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: 
 /* ========== Do Not Touch In Css End ========== */
 
 /*--------------Header and Navigation--------------------*/
-.modal-dialog{width: 1260px;}
 /* .container{ width:100%; max-width:100%; padding:0 30px;} */
 header{ position: relative; z-index: 999; width: 100%; padding:0px 0;transition: all 0.3s ease-in 0s;}
 .social_links{display: inline-block;}
@@ -38,6 +37,49 @@ header.header_fixed .menu,header.header_fixed .top_header,header.header_fixed .h
 header.header_fixed{position: fixed; background:rgba(242,242,242,0.95); transition:all 0.3s ease-in 0s; border-bottom: 2px solid #eee;}
 form .hr_form_wrapper .back_btn{color:#fff!important; text-transform:uppercase; font-size:18px; padding:10px 20px!important;  font-weight:400; background: #0061AF; line-height: 18px;margin:32px 0px 0px 0px;}
 header.header_fixed .back_btn{margin:18px 0px;}
+header .user_dropdown{ float: right; position: relative; margin: 25px 0 0 0;}
+header .user_dropdown li{position: relative;}
+header .user_dropdown li .letters{width: 50px; height: 50px; border-radius: 100%; background: #fff; border: 1px solid #ccc; text-align: center; font-size: 20px; display: inline-block; padding: 10px 0; font-weight: bold;}
+header .user_dropdown li ul.dropdown-menu{ background:#fff; padding:0; border-radius:5px; position:absolute; left: auto;right: 0; width:300px; top: 100px!important; z-index: 999!important; margin: 0; border:0px; text-align: left; height: auto; box-shadow: 0 0 15px 1px rgba(69,65,78,.2); transition: all .5s ease-in-out; }
+header .user_dropdown li.open ul.dropdown-menu{top: 70px!important; transition: all .5s ease-in-out; }
+header .user_dropdown li ul.dropdown-menu li.img_name{position: relative; left:0; top: 0; width: 100%; height: 100%; background: url(../images/user_bg.jpg) center center no-repeat; background-size: cover; content: ''; z-index: 9; margin: 0 0 10px 0;}
+header .user_dropdown li ul.dropdown-menu li.img_name .bg_block{ position: absolute; top: 0; left: 0; height: 100%; width: 100%; background: #a6ce39; opacity: 0.8;}
+header .user_dropdown li ul.dropdown-menu li .red_bg{ position: relative; display: block; width: 100%; padding: 25px 15px;  border-radius:5px 5px 0 0; z-index: 999; }
+header .user_dropdown li ul.dropdown-menu li.img_name img{float: left; width: 65px;}
+header .user_dropdown li ul.dropdown-menu li.img_name .name_email{ float:left; color: #fff; font-size: 16px; margin-left: 15px; padding:3px 0 0 0; width: 70%;}
+header .user_dropdown li ul.dropdown-menu li.img_name .name_email a{ color: #fff; font-size: 12px; border-bottom: 1px solid transparent; padding: 0; font-weight: normal; margin: 5px 0 0 0;}
+header .user_dropdown li ul.dropdown-menu li.img_name .name_email a:hover,header .user_dropdown li ul.dropdown-menu li.img_name .name_email a:focus{border-bottom: 1px solid #ccc;}
+header .user_dropdown li ul.dropdown-menu li.img_name .name_email{ float:left; color: #fff; font-size: 16px; margin-left: 15px; padding: 3px 0 0 0; width: 70%;}
+header .user_dropdown li ul.dropdown-menu li.img_name .name_email span{ color: #fff; font-size: 12px; border-bottom: 1px solid transparent; padding: 0; font-weight: normal; margin: 5px 0 0 0;}
+header .user_dropdown li ul.dropdown-menu li.img_name .fa-sort-asc{position: absolute; font-size: 36px; right: 15px; top: -14px; color: #a6ce39;}
+header .user_dropdown li ul.dropdown-menu li {float:none; display:block; border-bottom:0px; position:relative; margin: 0 0; width: 100%; }
+header .user_dropdown li ul.dropdown-menu li a{ padding:15px; line-height: 13px; text-transform:capitalize; background:none; text-align:left; white-space: normal; color: #6f727d; font-size: 13px; font-weight: normal; height: auto; display: block; clear: both;}
+header .user_dropdown li ul.dropdown-menu li a i{font-size: 13px; margin-right: 7px;}
+header .user_dropdown li ul.dropdown-menu li:hover a{color: #a6ce39;}
+header .user_dropdown li ul.dropdown-menu li.sign_btn{padding: 15px; border-top: 1px solid #ebedf2; }
+header .user_dropdown li ul.dropdown-menu li a.next_btn{display: inline-block;font-size: 13px;padding: 10px;text-align: center;background: #a6ce39;border-radius: 4px;color: #fff;border: 0;line-height: 13px;min-width: 100px;opacity: 0.85;transition: all .3s ease-in-out;box-shadow: 0 5px 10px 2px rgba(88,103,221,.19);}
+header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;background: #a6ce39;}
+.navbar-default {background-color: transparent;border-color: transparent;margin-top: 25px;margin-bottom: 0px;}
+.navbar-default .navbar-nav>li>a{font-size:18px;text-transform:uppercase;color: #fff;background: #0061af;}
+.navbar-nav>li{margin-right:10px;}
+.navbar-default .navbar-nav>.dropdown>a .caret {border-top-color: #fff;border-bottom-color: #fff;}
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {color: #fff;background: #0061af;}
+.navbar-default .navbar-nav>.dropdown>a:hover .caret, .navbar-default .navbar-nav>.dropdown>a:focus .caret {border-top-color: #fff;border-bottom-color: #fff;}
+.dropdown-menu{min-width:100%;}
+.dropdown-menu>li>a{color: #111;font-size: 16px;text-transform: uppercase;}
+.navbar .navbar-nav {display: inline-block;float: none;}
+.navbar .navbar-collapse {text-align: center;}
+
+.all_outer_page{padding: 20px 0; height: 500px; vertical-align: middle; display: table-cell; position: relative; width: inherit;}
+.white_form_block{ margin: 20px 0 0 0; background: #f9f9f9; border-radius:10px; box-shadow:0 0 5px rgba(0,0,0,0.3); overflow:hidden;}
+.white_form_block .padding_box{padding: 20px;}
+.white_form_block .account_block{ padding:20px; margin-top: 20px; background: #0061af; border-radius:0 0 10px 10px; border-top:1px solid #666;}
+.white_form_block .account_block p{color: #fff; line-height: 30px;}
+.lgn_btn{background: #0061af; border-radius:4px; color: #fff; font-size: 13px; border: 0; padding: 10px; line-height: 13px; min-width: 100px; opacity: 0.85; transition: all .3s ease-in-out; text-align: center; display: inline-block;}
+.lgn_btn:hover,.lgn_btn:focus{opacity: 1; transition: all .3s ease-in-out; box-shadow: 0 5px 10px 2px rgba(88,103,221,.15); color: #fff;}
+.rgstr_btn{background: #fff; border-radius:4px; color: #0061af; font-size: 13px; border: 0; padding: 10px; line-height: 13px; min-width: 100px; opacity: 0.85; transition: all .3s ease-in-out; text-align: center;  display: inline-block;}
+.rgstr_btn:hover,.rgstr_btn:focus{opacity: 1; transition: all .3s ease-in-out; box-shadow: 0 5px 10px 2px rgba(88,103,221,.15); color: #0061af;}
+
 /*--------------End Header and Navigation--------------------*/
 
 /* ------- Inner Pages Contener Area Strat ------- */
@@ -79,13 +121,10 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 .inner_content .inner_block .que_block ul {margin-top: 10px;}
 .inner_content .inner_block .que_block ul li{color: #777;font-size: 16px;line-height: 24px;}
 .inner_content .inner_block .que_block h3{font-size:20px;margin: 0px 0px 0px 0px;line-height: 28px;font-family: 'Titillium Web', sans-serif;color: #111;}
-.inner_content .consent_block p{color: #111;text-align: center;font-size: 22px;margin: 0px 0px 120px 0px;line-height: 30px;}
+.inner_content .consent_block p{color: #111;text-align: center;font-size: 22px;margin: 10px 0px;line-height: 30px;}
 .inner_content .thankyou_block h3{text-shadow: 1px 3px 0px rgba(0,0,0,0.2);font-family: 'Titillium Web', sans-serif;font-size: 42px;text-transform: uppercase;text-align: center;color: #0061af;font-weight: bold;letter-spacing: 1px;}
 .inner_content .thankyou_block span{text-shadow:none;color: #a6ce39;display: block;margin-top: 10px;font-size: 24px;}
 .inner_content .thankyou_block img{margin: 0 auto;width: 160px;height: 160px;}
-.sign_date p::before{content: "";position: absolute;top: 0px;left: 15px;width: 225px;height: 1px;background: #222;}
-.inner_content .ans_block .error_span{color: red;}
-.form-btn{text-align: center;}
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Footer ------- */
@@ -106,3 +145,7 @@ footer{ background:#f2f2f2; padding:14px 0; font-size:15px; font-weight: 400; li
 /*-------------End Inner Banner----------------------*/
 
 /* ------- Pages Contener Area End ------- */
+
+/*-------- admin css ------------*/
+.inner_content .question_wrap h3, .inner_content .answer_wrap h3{color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;}
+/*----------- end admin css ------------*/
