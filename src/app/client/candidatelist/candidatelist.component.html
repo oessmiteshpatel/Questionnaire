@@ -229,141 +229,71 @@
      <!-- PDF         Div                Close -->
 
 
-    <!-- Print        Div                Start -->
+<!-- Print Div Start -->
 <div id="printSectionId" style="display:none">
-
-<!-- Inner Section -->
-  <div class="inner_banner">
-    <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
-    <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR RELATED QUESTIONNAIRES</h1>
-    
-  </div>
-  <div class="clearfix"></div>
-  <!-- End Inner Section --> 
-  <!-- Inner Section -->
-  <div class="inner_content">
-          <div class="container ">
-            <div class="row">
-              <div class="col-md-12 col-sm-12">
-                <div class="clearfix"></div>
-                <div class="row">
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-  
-                <h1 class="text-center">QUESTIONS</h1>
-                <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
-                <div class="clearfix"></div>
-            <div *ngFor="let que of questionList;">
-                                  
-                <div class="inner_block">
-                    <tbody>
-                        <tr style="border: 1px solid #cecece;padding: 25px 50px;display: block;">
-                          <td>
-                            <span style="font-family: 'Titillium Web', sans-serif;position: absolute;color: #fff;font-size: 20px;background: #0061af;border: 2px solid #a2cb3c;width: 52px;height: 52px;text-align: center;border-radius: 30px;line-height: 48px;left: 155px;">Q{{que.QuestionId}}</span>
-                
-                  <div class="col-md-12 col-sm-12 col-xs-12">
-                    <div class="que_block">
-
-                      	<h3 style="font-size: 20px;margin: 0px 0px 0px 0px;line-height: 28px;font-family: 'Titillium Web', sans-serif;color: #111;">{{que.QuestionName}}</h3>
-                     
-                      <ul>
-                       
-                      </ul>
-                      <span style="padding: 20px 0px;border-top: 1px solid #cecece;"></span>
-                      
-                    </div>
-
-                    <div *ngIf="que.AnswerTypeId==3">
-
-                        <div class="clearfix"></div>
-                        <div class="ans_block">
-                          <div class="answer_header">
-                              <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
-                              
-                          </div>         
-                          <div class="answer_block">						
-                            <div *ngFor="let ans of que.child;" class="form-group">
-                                <label>{{ans.QLabel}}</label>
-                                <label>Answer :</label> {{ans.CAnswer}}
-                            </div>
-                        </div>
-                       </div>
-                        <div class="clearfix"></div>
-
-                    </div>
-
-                    <div *ngIf="que.AnswerTypeId==1" >
-
-                        <div class="clearfix"></div>
-                        <div class="ans_block">
-                            <div class="answer_header">
-                                <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
-                                
-                            </div>  
-                                <div class="answer_block">
-                                   							
-                                    <div class="form-group">
-                                        <div class="radio_box" *ngFor="let ans of que.child;">
-                                          
-                                           {{ans.CAnswer}}
-                                          
-                                        </div>
-                                      
-                                      </div>
-                                </div>
-                           </div>
-                           <div class="clearfix"></div>
-                    </div>
-
-                    <div *ngIf="que.AnswerTypeId==2">
-                        <div class="clearfix"></div>
-                        <div class="ans_block">                        
-                            <div class="answer_header">
-                                <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
-       
-                            </div>     
-                            <div class="answer_block" *ngFor="let ans of que.child;">	             
-                                <div class="col-md-2 col-sm-2">
-                                  <p>{{ans.QLabel}}</p>
-                                </div>
-                                <div class="col-md-10 col-sm-10"> 
-                                    <div class="form-group"  >
-                                        <label>Answer :</label> {{ans.CAnswer}}
-                                  </div>
-                                </div>                                                                   
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>                                    
-                  </div>
-                </div>
-             </div>
-            <br>
-          </div>
+<!-- New Inner Section -->
+  <div class="table-responsive" style="width: 1000px;margin: 0 auto;">
+    <table class="table" style="width: 100%;">
+    <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR Related Questionnaire</h1>
+      <tbody>
+        <table  style="border: 1px solid #111111;">
+        <div *ngFor="let que of questionList;">
+        <tr style="padding: 25px 50px;display: block;">
+          <td>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{que.QuestionId}} </strong> <br> {{que.QuestionName}} </p>
+            <span style="padding: 20px 0px;border-top: 1px solid #cecece;"></span>
+            <!-- For Radio Button -->
+            <div *ngIf="que.AnswerTypeId==1">
+              <div *ngFor="let ans of que.child;">
+                  <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;"> <strong> {{ans.CAnswer}} </strong> </p>
+              </div>
+            </div>
+            <!-- For Multiple Text Box -->
+            <div *ngIf="que.AnswerTypeId==2">
+              <div *ngFor="let ans of que.child;">
+                <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;"> {{ans.QLabel}}: <strong> {{ans.CAnswer}} </strong> </p>
+              </div>
+            </div>
+            <!-- For Single Text Box -->
+            <div *ngIf="que.AnswerTypeId==3">
+              <div *ngFor="let ans of que.child;">
+                <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;"> {{ans.QLabel}} <br> <strong> {{ans.CAnswer}} </strong> </p>
+              </div>
+            </div>
+          </td>
+        </tr>
         </div>
-
-        <h1 class="text-center">Consent</h1>
-        <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
-            <div class="clearfix"></div>
-              <div class="consent_block">
-                <p>I hereby certify that the above statements are true and correct to the best of my knowledge. I understand that a false statement may disqualify me for the position at any time.</p>
-              </div>
-                <div class="clearfix"></div>
-              <div class="sign_date">
-                <div class="col-md-9">
-                  <p>Signature of the employee</p>
-                </div>
-                <div class="col-md-3">
-                    <p>Date</p>
-                </div>
-              </div>
-      </div>
-    </div>
+      </table>
+      </tbody>
+    </table>
+    <table class="table" style="width: 100%; margin:30px auto">
+      <tbody>
+        <tr>
+          <td colspan="3">
+            <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Consent</h1>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:10px 0px 70px 0px;">I hereby certify that the above statements are true and correct to the best of my knowledge. I understand that a false statement may disqualify me for the position at any time.</p>
+          </td>
+        </tr>
+        <tr>
+          <td width="33%" style="text-align:center; border-top: 1px black solid">
+            <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">Signature of the Candidate</p>
+          </td>
+          <td width="33%"></td>
+          <td width="33%" style="text-align:center; border-top: 1px black solid;">
+            <p style="display:inline-block;line-height: 15px;color: #2d5c8a;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">Date</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <div class="clearfix"></div>
+  <!-- New End Inner Section -->
 </div>
-<div class="clearfix"></div>
-</div>
-  <!-- Print           Div              End -->
+<!-- Print Div End -->
+
 
 
 
