@@ -10,6 +10,12 @@ export class ThankyouComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    if ($("body").height() < $(window).height()) {  
+      $('footer').addClass('footer_fixed');     
+  }      
+  else{  
+      $('footer').removeClass('footer_fixed');    
+  }
   }
 
 }

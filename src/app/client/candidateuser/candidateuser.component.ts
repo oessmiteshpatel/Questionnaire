@@ -31,6 +31,12 @@ export class CandidateuserComponent implements OnInit {
 
     ngOnInit() {		
 					
+		// if ($("body").height() < $(window).height()) {  
+		// 	$('footer').addClass('footer_fixed');     
+		// }      
+		// else{  
+		// 	$('footer').removeClass('footer_fixed');    
+		// }
 		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};
@@ -89,7 +95,7 @@ export class CandidateuserComponent implements OnInit {
 					.then((data) => {
 
 					
-						alert('success');
+						//alert('success');
 						this.btn_disable = false;
 						this.submitted = false;
 						this.candidateEntity = {};

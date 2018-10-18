@@ -22,6 +22,12 @@ export class QuestionComponent implements OnInit {
 		private QuestionService: QuestionService) { }
 
   ngOnInit() {
+    if ($("body").height() < $(window).height()) {  
+      $('footer').addClass('footer_fixed');     
+    }      
+    else{  
+      $('footer').removeClass('footer_fixed');    
+    }
     this.ansEntity= {};
       this.ansEntity.IsActive =1;
   }

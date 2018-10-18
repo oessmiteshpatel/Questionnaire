@@ -25,6 +25,12 @@ export class JobpositionlistComponent implements OnInit {
     
   ngOnInit()
   {
+		if ($("body").height() < $(window).height()) {  
+			$('footer').addClass('footer_fixed');     
+	}      
+	else{  
+			$('footer').removeClass('footer_fixed');    
+	}
 		// this.globals.isLoading = true;	
 		//this.globals = this.global;
 	this.JobpositionService.getAll()

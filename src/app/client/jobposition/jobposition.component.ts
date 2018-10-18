@@ -24,7 +24,12 @@ export class JobpositionComponent implements OnInit {
   ngOnInit() 
   {
 	
-	 
+	if ($("body").height() < $(window).height()) {  
+		$('footer').addClass('footer_fixed');     
+	}      
+	else{  
+		$('footer').removeClass('footer_fixed');    
+	} 
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {	
