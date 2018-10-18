@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { CandidateuserService } from '../services/candidateuser.service';
 import { debug } from 'util';
-
+declare var $,unescape	: any;
 @Component({
   selector: 'app-candidateuser',
   providers: [CandidateuserService],
@@ -31,12 +31,14 @@ export class CandidateuserComponent implements OnInit {
 
     ngOnInit() {		
 					
-		// if ($("body").height() < $(window).height()) {  
-		// 	$('footer').addClass('footer_fixed');     
-		// }      
-		// else{  
-		// 	$('footer').removeClass('footer_fixed');    
-		// }
+		setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+		}      
+		else{  
+				$('footer').removeClass('footer_fixed');    
+		}
+	  },100);
 		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};

@@ -36,12 +36,14 @@ export class CandidatelistComponent implements OnInit {
     ngOnInit()
     {
 
-      // if ($("body").height() < $(window).height()) {  
-      //   $('footer').addClass('footer_fixed');     
-      // }      
-      // else{  
-      //   $('footer').removeClass('footer_fixed');    
-      // }
+      setTimeout(function(){
+        if ($("body").height() < $(window).height()) {  
+          $('footer').addClass('footer_fixed');     
+      }      
+      else{  
+          $('footer').removeClass('footer_fixed');    
+      }
+      },100);
       this.CandidateuserService.getAllDefaultData()
       .then((data) => {
       

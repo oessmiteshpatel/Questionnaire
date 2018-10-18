@@ -4,7 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionService } from '../services/question.service';
-
+declare var $,unescape	: any;
 @Component({
   selector: 'app-question',
   providers: [QuestionService],
@@ -22,12 +22,14 @@ export class QuestionComponent implements OnInit {
 		private QuestionService: QuestionService) { }
 
   ngOnInit() {
-    if ($("body").height() < $(window).height()) {  
-      $('footer').addClass('footer_fixed');     
-    }      
-    else{  
-      $('footer').removeClass('footer_fixed');    
-    }
+    setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+		}      
+		else{  
+				$('footer').removeClass('footer_fixed');    
+		}
+	  },500);
     this.ansEntity= {};
       this.ansEntity.IsActive =1;
   }

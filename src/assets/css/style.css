@@ -84,7 +84,7 @@ header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;backgro
 /*--------------End Header and Navigation--------------------*/
 
 /* ------- Inner Pages Contener Area Strat ------- */
-.inner_content{background: #f9f9f9;padding: 30px 0px 30px 0px;overflow: hidden;width: 100%;position: relative;}
+.inner_content{background: #f9f9f9;padding: 45px 0px 45px 0px;overflow: hidden;width: 100%;position: relative;}
 select {-moz-appearance: none!important;-webkit-appearance: none!important;background:#fff url("../images/arrow-down-b.png") no-repeat scroll right top / 31px auto!important; border: 1px solid #ccc!important; color: #555!important; height: 34px!important; border-radius:4px!important; padding: 3px 35px 2px 5px!important; width: 100%!important; font-family: 'Titillium Web', sans-serif; font-size:14px!important;}
 select option{ background:#f4f4f4!important; padding:7px!important; color:#555!important; font-size:14px!important; text-transform:capitalize!important; display:block!important; width:100%!important; transition:all 0.2s linear 0s!important; border:0!important; border-bottom:1px solid #ccc!important; font-family: 'Titillium Web', sans-serif;}
 .form-group label{line-height:15px; color: #2d5c8a; font-size: 14px; font-family: 'Titillium Web', sans-serif; font-weight:normal;}
@@ -163,3 +163,21 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 .inline_delbtn {display: inline-block;}
 .inline_delbtn .btn-suucess{background: #0061af;color: #fff;}
 /*----------- end admin css ------------*/
+
+
+@media (max-width:1500px) {
+	header.header_fixed .screen_menu .address_block{font-size: 25px;}
+}
+@media (max-width:1300px){
+    header .header_address .address{ padding: 0 15px 0 0; margin: 0 15px 0 0;}
+}
+@media (max-width:991px){
+	header .header_address .address{ padding: 0 10px 0 0; margin: 0 10px 0 0;}
+    header .header_address .address span,header .header_address .address span strong{font-size: 15px;}
+}
+@media (max-width:767px){
+    header .header_address,header .social_links{display: none;}
+    header.header_fixed{position: relative; background: #fff; border: 0;}
+    footer .text-left,footer .text-right{text-align: center; line-height: 22px;}
+	footer .social_links{margin-top: 10px;}
+}

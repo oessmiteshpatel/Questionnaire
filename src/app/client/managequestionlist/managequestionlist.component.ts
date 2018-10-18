@@ -4,7 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ManagequestionService } from '../services/managequestion.service';
-
+declare var $,unescape	: any;
 
 @Component({
   selector: 'app-managequestionlist',
@@ -17,12 +17,14 @@ export class ManagequestionlistComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    if ($("body").height() < $(window).height()) {  
-      $('footer').addClass('footer_fixed');     
-  }      
-  else{  
-      $('footer').removeClass('footer_fixed');    
-  }
+    setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+		}      
+		else{  
+				$('footer').removeClass('footer_fixed');    
+		}
+	  },100);
   }
 
 }
