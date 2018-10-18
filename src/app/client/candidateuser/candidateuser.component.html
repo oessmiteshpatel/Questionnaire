@@ -71,7 +71,6 @@
                                         </div>
                                         <div class="col-md-10 col-sm-10">
                                               <div class="form-group">
-                                                <!-- <label><span>*</span>Name </label> -->
                                                 <select class='select-option' required class="form-control" #JobPositionId="ngModel" [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId" [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
                                                     <option value="">Select</option>
                                                      <option class='option' *ngFor='let jobpo of jobpositionList' [value]="jobpo.JobPositionId">{{jobpo.JobPositionName}}</option></select>
@@ -104,12 +103,12 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
-                                                    <div class="col-md-1 col-sm-1 col-xs-1">
+                                                    <div class="col-md-1 col-sm-1 col-xs-12">
                                                         <div class="answer_header">
                                                             <img src="assets/images/application.png" alt="question_image" class="img-responsive" /> 
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-11 col-sm-11 col-xs-11">      
+                                                    <div class="col-md-11 col-sm-11 col-xs-12">      
                                                         <div class="answer_block">						
                                                         <div *ngFor="let ans of que.child; let j=index;" class="form-group">
                                                             <label>{{ans.QLabel}} </label>
@@ -130,13 +129,13 @@
 
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
-                                                        <div class="col-md-1 col-sm-1 col-xs-1">
+                                                        <div class="col-md-1 col-sm-1 col-xs-12">
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
                                                       </div> 
                                                         </div>
-                                                      <div class="col-md-11 col-sm-11 col-xs-11"> 
+                                                      <div class="col-md-11 col-sm-11 col-xs-12"> 
                                                           <div class="answer_block">
                                                               
                                                               <div class="form-group">
@@ -160,13 +159,13 @@
       
                                                   <div class="clearfix"></div>
                                                   <div class="ans_block">
-                                                        <div class="col-md-1 col-sm-1 col-xs-1">                        
+                                                        <div class="col-md-1 col-sm-1 col-xs-12">                        
                                                       <div class="answer_header">
                                                           <img src="assets/images/application.png" alt="question_image" class="img-responsive" />
                                                           
                                                       </div> 
                                                       </div>
-                                                      <div class="col-md-11 col-sm-11 col-xs-11">    
+                                                      <div class="col-md-11 col-sm-11 col-xs-12">    
                                                       <div class="answer_block" *ngFor="let ans of que.child; let j=index;">	             
                                                           <div class="col-md-2 col-sm-2">
                                                             <div class="form-group">
