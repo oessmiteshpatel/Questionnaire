@@ -79,7 +79,8 @@ class Candidateuser extends CI_Controller {
 		if(!empty($Candidate_Id))
 		{
 			$data=[];
-			$data=$this->Candidateuser_model->get_userdata($Candidate_Id);
+			$data['Users']=$this->Candidateuser_model->getCandidate($Candidate_Id);
+			$data['QuestionAnswer']=$this->Candidateuser_model->get_userdata($Candidate_Id);
 			//print_r($data); die;
 			echo json_encode($data);
 		}

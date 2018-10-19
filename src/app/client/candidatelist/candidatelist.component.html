@@ -232,13 +232,40 @@
 <!-- Print Div Start -->
 <div id="printSectionId" style="display:none">
 <!-- New Inner Section -->
+<h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR Related Questionnaire</h1>
   <div class="table-responsive" style="width: 1000px;margin: 0 auto;">
-    <table class="table" style="width: 100%;">
-    <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR Related Questionnaire</h1>
+    <table class="table" style="width: 100%; margin:30px 0">
       <tbody>
-        <table  style="border: 1px solid #111111;">
+        <tr style="background-color:#111111;"><td>
+            <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #fff;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Candidate Detail</h1>
+        </td></tr>
+        <tr><td>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color:#111;"> Candidate Name: {{candidateData.CandidateName}}</p>
+        </td></tr>
+        <tr><td>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Email Address: {{candidateData.CandidateEmail}}</p>
+        </td></tr>
+        <tr><td>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Contact Number: {{candidateData.PhoneNumber}}</p>
+        </td></tr>
+        <tr><td>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Position applied for: {{candidateData.JobPositionName}}</p>
+        </td></tr>
+        <tr><td>
+          <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Date: {{candidateData.CreatedOn}}</p>
+      </td></tr>
+      </tbody>
+    </table>
+    <table class="table" style="width: 100%;">
+      <tbody>
+        <tr>
+          <td>
+            <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
+          </td>
+        </tr>
+        <!-- <table  style="border: 1px solid #111111;"> -->
         <div *ngFor="let que of questionList;">
-        <tr style="padding: 25px 50px;display: block;">
+        <tr style="padding: 10px 0px 0px 0px;display: block;">
           <td>
             <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{que.QuestionId}} </strong> <br> {{que.QuestionName}} </p>
             <span style="padding: 20px 0px;border-top: 1px solid #cecece;"></span>
@@ -263,14 +290,14 @@
           </td>
         </tr>
         </div>
-      </table>
+      <!-- </table> -->
       </tbody>
     </table>
     <table class="table" style="width: 100%; margin:30px auto">
       <tbody>
         <tr>
           <td colspan="3">
-            <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Consent</h1>
+            <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Consent</h1>
           </td>
         </tr>
         <tr>

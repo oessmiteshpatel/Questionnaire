@@ -103,7 +103,6 @@ class Candidateuser_model extends CI_Model
 	{
 	  if($Candidate_Id)
 	  {
-		  
 		$this->db->select('QuestionId,QuestionName,AnswerTypeId,IsActive');
 		
 		$this->db->where('IsActive=',1);
@@ -136,11 +135,28 @@ class Candidateuser_model extends CI_Model
 		  return false;
 	  }
 	}
-	
-
-	
-	
-	
+	public function getCandidate($Candidate_Id=Null)
+	{
+	  if($Candidate_Id)
+	  {
+		$this->db->select('c.CandidateName,c.CandidateEmail,c.PhoneNumber,c.CreatedOn,jp.JobPositionName');
+		$this->db->join('tblmstjobposition jp','jp.JobPositionId = c.JobPositionId', 'left');
+		$this->db->where('c.IsActive=',1);
+		$this->db->where('c.CandidateId=',$Candidate_Id);
+		$result0=$this->db->get('tblcandidate c');
+		foreach($result0->result() as $row)
+			{
+				$res=$row;
+			}
+		
+		return $res;
+		 
+	  }
+	  else
+	  {
+		  return false;
+	  }
+	} 
 
 	public function getlist_jobpositon()
 	{

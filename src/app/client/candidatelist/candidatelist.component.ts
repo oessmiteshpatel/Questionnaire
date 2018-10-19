@@ -26,6 +26,7 @@ export class CandidatelistComponent implements OnInit {
 	message;
   type;
   questionList;
+  candidateData;
 
   @ViewChild('content')content:ElementRef;
 
@@ -150,7 +151,8 @@ export class CandidatelistComponent implements OnInit {
     debugger
 			this.CandidateuserService.getById(CandidateId)
 				.then((data) => {
-					this.questionList = data;
+          this.candidateData = data['Users'];
+					this.questionList = data['QuestionAnswer'];
           console.log(this.questionList);
          	
       
