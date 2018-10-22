@@ -162,6 +162,7 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 #page-wrapper .pull-right .lgn_btn{margin: 20px 0px 10px 0px;}
 .inline_delbtn {display: inline-block;}
 .inline_delbtn .btn-suucess{background: #0061af;color: #fff;}
+#Delete_Modal .modal-dialog{width: 80%;}
 /*----------- end admin css ------------*/
 
 @media (min-width:2000px){	
