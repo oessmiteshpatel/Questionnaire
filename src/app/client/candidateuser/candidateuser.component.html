@@ -111,12 +111,11 @@
                                                     <div class="col-md-11 col-sm-11 col-xs-12">      
                                                         <div class="answer_block">						
                                                         <div *ngFor="let ans of que.child; let j=index;" class="form-group">
-                                                            <label>{{ans.QLabel}} </label>
-                                                                <textarea class="form-control" #CAnswer{{k}}{{j}}="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"   maxlength="250"></textarea>
-                                                                <!-- <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
-                                                                    <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter question answer</span>
-                                                                
-                                                                </span> -->
+                                                            <label>{{ans.QLabel}}  </label>
+                                                                <textarea class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"   maxlength="250" required></textarea>
+                                                                <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
+                                                                    <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter answer</span>
+                                                                </span>
                                                         </div>
                                                         </div>
                                                     </div>
@@ -139,11 +138,14 @@
                                                           <div class="answer_block">
                                                               
                                                               <div class="form-group">
-                                                                  <div class="radio_box" *ngFor="let ans of que.child; let j=index;">
-                                                                    <input type="radio" (change)="checked(k,j,ans.QValue,que.child.length)" [checked]="ans.CAnswer==ans.QValue" name="CAnswer{{k}}" id="role{{j}}" value="{{ans.QValue}}" #CAnswer{{k}}="ngModel" [(ngModel)]="ans.CAnswer"/>
+                                                                  <div class="radio_box" *ngFor="let ans of que.child; let j=index; let last=last;">
+                                                                    <input type="radio" (change)="checked(k,j,ans.QValue,que.child.length)" [checked]="ans.CAnswer==ans.QValue" name="CAnswer{{k}}" id="role{{j}}" value="{{ans.QValue}}" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" required/>
                                                                     <label for="role{{j}}" title="Role1">{{ans.QLabel}} </label>
-                                                                  </div>
-                                                                  
+                                                                    <span class="error_span" *ngIf="((CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)) && last"> 
+                                                                        <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please select answer</span>
+                                                                    </span>  
+                                                                </div>
+                                                                
                                                                 
                                                                 </div>
                                                           </div>
@@ -176,11 +178,10 @@
                                                               
                                                             <div class="form-group"  >
                                                                 
-                                                                  <input type="text" class="form-control" #CAnswer{{k}}{{j}}="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}" class="form-control" />
-                                                                  <!-- <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
+                                                                  <input type="text" class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}" class="form-control" required/>
+                                                                  <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)"> 
                                                                   <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter answer</span>
-                                                                  <span *ngIf="CAnswer.errors && CAnswer.errors.pattern">Please enter valid question answer</span>	
-                                                                  </span> -->
+                                                                  </span>
                                                             </div>
                                                           </div>
                                                       </div>

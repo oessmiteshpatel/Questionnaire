@@ -31,6 +31,11 @@ import { FooterComponent } from './footer/footer.component';
 import { ManagequestionComponent } from './managequestion/managequestion.component';
 import { ManagequestionlistComponent } from './managequestionlist/managequestionlist.component';
 
+import { PositionComponent } from './position/position.component';
+import { PositionlistComponent } from './positionlist/positionlist.component';
+import { PositionService } from './services/position.service';
+
+
 @NgModule({
   declarations: [
     ClientComponent,
@@ -44,7 +49,9 @@ import { ManagequestionlistComponent } from './managequestionlist/managequestion
     HeaderComponent,
     FooterComponent,
     ManagequestionComponent,
-    ManagequestionlistComponent
+    ManagequestionlistComponent,
+    PositionComponent,
+    PositionlistComponent
 
   ],
   imports: [

@@ -89,7 +89,7 @@ export class CandidateuserComponent implements OnInit {
 		debugger
 			
 			let id = this.route.snapshot.paramMap.get('id');
-		
+			this.submitted = true;
 			if (candidateForm.valid) {
 				
 				//this.btn_disable = true;
@@ -154,7 +154,7 @@ export class CandidateuserComponent implements OnInit {
 				if(i==j){
 					//this.questionList[k].child[i].CAnswer = value;
 				} else {
-					this.questionList[k].child[i].CAnswer = '';
+					//this.questionList[k].child[i].CAnswer = '';
 				}
 				//this.questionList[k].child[j].CAnswer = value;
 			}
