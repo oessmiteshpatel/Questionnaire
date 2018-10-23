@@ -35,33 +35,57 @@ class Question extends CI_Controller {
 		
 	}
 
-	
-	public function addQuestion()
-	{  
-		$post_question = json_decode(trim(file_get_contents('php://input')), true);
-		if ($post_question) 
-			{
-				if($post_question['QuestionId']>0)
-				{
-					$result = $this->Question_model->edit_question($post_question);
-					if($result)
-					{
-						echo json_encode($post_question);	
-					}	
-				}
-				else
-				{
-					
-					$result = $this->Question_model->add_questions($post_question); 
-					if($result)
-					{
-						echo json_encode($post_question);	
-					}	
 
-				}
-			
-			}
+	public function getAllQuestion()
+	{
+			$data=$this->Question_model->getlist_question();
+			echo json_encode($data);
 	}
+
+	
+	// public function delete() {
+	// 	$question_id = json_decode(trim(file_get_contents('php://input')), true);		
+
+	// 	if ($question_id) {
+	// 		if($question_id> 0){
+	// 			$result = $this->Question_model->delete_question($question_id);
+	// 			if($result) {
+					
+	// 				echo json_encode("Delete successfully");
+	// 				}
+	// 			}
+		
+			
+	// 	} 
+			
+	// }
+
+	public function delete($question_id = NULL) 
+	{
+
+		if(!empty($question_id)) {
+
+			$result = $this->Question_model->delete_question($question_id);			
+			if($result) {
+				echo json_encode("Delete successfully");	
+			}	
+			
+		} 
+			
+	}
+
+
+		//get userId edit
+		public function getById($question_id=null)
+		{	
+			
+			if(!empty($question_id))
+			{
+				$data=[];
+				$data=$this->Question_model->get_questiondata($question_id);
+				echo json_encode($data);
+			}
+		}
 
 
 	
@@ -69,7 +93,7 @@ class Question extends CI_Controller {
 	{
 		//$data="";
 		$data['quetypeans']=$this->Question_model->getlist_QuestionType();
-		//$data['question']=$this->Question_model->getlist_question();
+		//$data['questions']=$this->Question_model->getlist_question();
 		echo json_encode($data);
 	}
 

@@ -5,85 +5,69 @@ class Question_model extends CI_Model
 
 	public function add_Question($post_Question) {
 			
-		if($post_Question) {
+		if($post_Question) 
+		{
 			
-			if($post_Question['IsActive']==1)
-			{
-				$IsActive = true;
-			} else {
-				$IsActive = false;
-			}
-			if(isset($post_Question['Ans']))
-			{
-				$Ans = $post_Question['Ans'];
-			} else {
-				$Ans = '';
-			}
 			$Question_data = array(
 
-				'Ans' => trim($Ans),
-				"IsActive"=>$IsActive
+				'QuestionName' => trim($post_Question['QuestionName']),
+				'AnswerTypeId' => trim($post_Question['AnswerTypeId']),
+				// 'QuestionId' => trim($post_question['QuestionId']),
+				// 'QLabel' => trim($post_question['QLabel']),
+				// 'QValue' => trim($post_question['QValue']),
+				"IsActive"=>1
 			
 			);
 			
-			$res = $this->db->insert('tblquestans',$Question_data);
+			$res = $this->db->insert('tblquestion',$Question_data);
 			
-			if($res) {
-				// $log_data = array(
-				// 	'UserId' => trim($post_Question['CreatedBy']),
-				// 	'Module' => 'Country',
-				// 	'Activity' =>'Add'
-	
-				// );
-				// $log = $this->db->insert('tblactivitylog',$log_data);
-				return true;
-			} else {
-				return false;
-			}
-	
-		} else {
-			return false;
-		}
-	}
-
-	
-	 function add_questions($post_question)
-	{	
-		
-		if($post_question)
-		{
-			if($post_question['IsActive']==1)
+			if($res)
+			{
+				$questionId = $this->db->insert_id();
+					if(isset($post_Question['QValue']) && !empty($post_Question['QValue']))
 					{
-						$IsActive = true;
-					} else {
-						$IsActive = false;
+						$QValue = trim($post_Question['QValue']);
 					}
-			 
-					$question_data=array(
-						"RoleId"=>trim($post_question['RoleId']),
-						"RoleName"=>trim($post_question['RoleName']),
-						"IsActive"=>$IsActive,
-						"CreatedBy" =>trim($post_question['CreatedBy']),
-						"CreatedOn" =>date('y-m-d H:i:s')
-					);	
+					else
+					{
+						$QValue = null;
+					}
+				$Question_data2 = array(
+
+					'QuestionId' => trim($questionId),
+					'QLabel' => trim($post_Question['QLabel']),
+					'QValue' =>$QValue,
+					"IsActive"=>1
 				
-				$res=$this->db->insert('tblquestion',$question_data);
-				if($res)
+				);
+				
+				$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
+				
+				if($res2)
 				{
-					
-					return true;
+					return true;;
 				}
 				else
 				{
 					return false;
 				}
-		}
+			
+			} 
+			else
+			 {
+				return false;
+			}
+
+
+	
+		} 
 		else
 		{
-				return false;
+			return false;
 		}
 	}
 
+	
 
 
 	public function getlist_QuestionType()
@@ -91,7 +75,7 @@ class Question_model extends CI_Model
 		$this->db->select('AnswerTypeId,AnswerName,DisplayText,IsActive');
 		
 		$this->db->where('IsActive=',1);
-		//$this->db->order_by('JobPositionName','asc');
+		//$this->db->order_by('AnswerName','asc');
 		$result=$this->db->get('tblmstanswertype');
 		
 		$res=array();
@@ -103,107 +87,68 @@ class Question_model extends CI_Model
 	}
 
 
+	 public function delete_question($question_id) 
+	 {
 	
-	// public function getlist_Country() {
-	
-	// 	//$this->db->select('*');
-	// 	$this->db->select('co.CountryId,co.CountryName,co.CountryAbbreviation,co.PhonePrefix,co.IsActive,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.CountryId=co.CountryId) as isdisabled');
-	// 	$this->db->order_by('co.CountryName','asc');
-	// 	$result = $this->db->get('tblmstcountry co');
-	// 	$res = array();
-	// 	if($result->result()) {
-	// 		$res = $result->result();
-	// 	}
-	// 	return $res;
+		if($question_id) 
+		{
+			
+			$this->db->where('QuestionId',$question_id);
+			$res = $this->db->delete('tblquestion');
+			
+			if($res) {
+				return true;
+			} else {
+				return false;
+			}
+		} 
+		else 
+		{
+			return false;
+		}
 		
-	// }
-	
-	
-	// public function get_Countrydata($Country_Id = NULL)
-	// {
-		
-	// 	if($Country_Id) {
-			
-	// 		$this->db->select('CountryId,CountryName,CountryAbbreviation,PhonePrefix,IsActive');
-	// 		$this->db->where('CountryId',$Country_Id);
-	// 		$result = $this->db->get('tblmstcountry');
-			
-	// 		$Question_data = array();
-	// 		foreach($result->result() as $row) {
-	// 			$Question_data = $row;
-	// 		}
-	// 		return $Question_data;
-			
-	// 	} else {
-	// 		return false;
-	// 	}
-	// }
-	
-	
-	// public function edit_Country($post_Question) {
-	
-	// 	if($post_Question) {
-	// 		 if($post_Question['IsActive']==1)
-	// 				{
-	// 					$IsActive = true;
-	// 				} else {
-	// 					$IsActive = false;
-	// 				}
-	// 				$Question_data = array(
-	// 			'CountryName' => trim($post_Question['CountryName']),
-	// 			'CountryAbbreviation' => trim($post_Question['CountryAbbreviation']),
-	// 			'PhonePrefix' => trim($post_Question['PhonePrefix']),
-	// 			"IsActive"=>$IsActive,
-	// 			"UpdatedBy" =>  trim($post_Question['UpdatedBy']),
-	// 			'UpdatedOn' => date('y-m-d H:i:s')
-			
-	// 		);
-			
-	// 		$this->db->where('CountryId',$post_Question['CountryId']);
-	// 		$res = $this->db->update('tblmstcountry',$Question_data);
-			
-	// 		if($res) {
-	// 			$log_data = array(
-	// 				'UserId' =>  trim($post_Question['UpdatedBy']),
-	// 				'Module' => 'Country',
-	// 				'Activity' =>'Update'
-	
-	// 			);
-	// 			$log = $this->db->insert('tblactivitylog',$log_data);
-	// 			return true;
-	// 		} else {
-	// 			return false;
-	// 		}
-	// 	} else {
-	// 		return false;
-	// 	}	
-	
-	// }
-	
-	
-	// public function delete_Country($post_Question) {
-	
-	// 	if($post_Question) {
-			
-	// 		$this->db->where('CountryId',$post_Question['id']);
-	// 		$res = $this->db->delete('tblmstcountry');
-			
-	// 		if($res) {
-	// 			$log_data = array(
-	// 				'UserId' => trim($post_Question['Userid']),
-	// 				'Module' => 'Country',
-	// 				'Activity' =>'Delete'
+	}
 
-	// 			);
-	// 			$log = $this->db->insert('tblactivitylog',$log_data);
-	// 			return true;
-	// 		} else {
-	// 			return false;
-	// 		}
-	// 	} else {
-	// 		return false;
-	// 	}
+
+	public function get_questiondata($question_id=Null)
+	{
+	  if($question_id)
+	  {
+		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName');
+		 $this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
+		 $this->db->where('QuestionId',$question_id);
+		 $result=$this->db->get('tblquestion que');
+		 $question_data= array();
+		 foreach($result->result() as $row)
+		 {
+			$question_data=$row;
+			
+		 }
+		 return $question_data;
+		 
+	  }
+	  else
+	  {
+		  return false;
+	  }
+	}
+
+
+	public function getlist_question()
+	{
+		$this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,que.IsActive,qtype.AnswerName');
+		$this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
+		$result=$this->db->get('tblquestion que');
 		
-	// }
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		return $res;
+	}
+
+
+	
 	
 }

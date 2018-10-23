@@ -111,9 +111,10 @@ export class CandidatelistComponent implements OnInit {
     }, 
     (error) => 
     {
-     
-      this.router.navigate(['/admin/pagenotfound']);	});	
       this.msgflag = false;
+    
+    	});	
+     
     }
 
 

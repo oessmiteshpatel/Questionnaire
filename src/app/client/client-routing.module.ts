@@ -34,6 +34,22 @@ import { PositionComponent } from './position/position.component';
 import { PositionlistComponent } from './positionlist/positionlist.component';
 import { PositionService } from './services/position.service';
 
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './services/register.service';
+import { RegisterlistComponent } from './registerlist/registerlist.component';
+
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserrolelistComponent } from './userrolelist/userrolelist.component';
+import { UserroleService } from './services/userrole.service';
+
+import { LoginComponent } from './login/login.component';
+
+//import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service'
+
+import { ChangepassComponent } from './changepass/changepass.component';
+import { ChangepassService } from './services/changepass.service';
+
 const routes: Routes = [	
 	{
 		path: '',
@@ -59,11 +75,23 @@ const routes: Routes = [
 				{ path : 'thankyou', component : ThankyouComponent  },
 
 				{ path : 'question/add', component : ManagequestionComponent  },
+				{ path : 'question/edit/:id', component : ManagequestionComponent  },
 				{ path : 'question/list', component : ManagequestionlistComponent  },
 
 				{ path : 'position/add', component : PositionComponent  },
-				{ path : 'position/list', component : PositionlistComponent  }
+				{ path : 'position/list', component : PositionlistComponent  },
 
+				{ path : 'userrole/add', component : UserroleComponent  },	
+				{ path : 'userrole/list', component : UserrolelistComponent  },
+				{ path : 'userrole/edit/:id', component : UserroleComponent },
+
+				{ path : 'register/add', component : RegisterComponent},
+				{ path : 'register/list', component : RegisterlistComponent },
+				{ path : 'register/edit/:id', component : RegisterComponent},
+
+				{ path : 'login', component : LoginComponent},
+
+				{ path: 'changepass', component: ChangepassComponent}
 				
 			]
 	}
@@ -72,7 +100,8 @@ const routes: Routes = [
  @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
-	providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,PositionService
+	providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,PositionService,RegisterService,ChangepassService,
+		AuthService,UserroleService,AuthService,
 	
 	],
 

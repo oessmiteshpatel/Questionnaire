@@ -13,10 +13,10 @@ export class Globals {
   // //baseAPIUrl: string = 'http://localhost:4200/LMS/api/';  
   // baseUrl: string = 'http://localhost/LMSTOOL/api/';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
- // IsLoggedIn: boolean = false;
+  IsLoggedIn: boolean = false;
  
   currentLink: string = '';
-  //authData = localStorage.getItem('token') ? new JwtHelper().decodeToken(localStorage.getItem('token')):null;
+  authData = localStorage.getItem('token') ? new JwtHelper().decodeToken(localStorage.getItem('token')):null;
    msgflag = false;
    message = '';
    type = '';

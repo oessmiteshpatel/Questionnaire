@@ -20,7 +20,8 @@ export class ManagequestionComponent implements OnInit {
 	header;
 	msgflag;
 	message;
-  	type;
+    type;
+    
 
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private ManagequestionService: ManagequestionService) { }
@@ -44,44 +45,72 @@ export class ManagequestionComponent implements OnInit {
         //alert('error');
         
       });
+
+	 
+      let id = this.route.snapshot.paramMap.get('id');
+     if(id)
+     {	
+     //  this.header = 'Edit';
+      this.ManagequestionService.getById(id)
+        .then((data) => 
+        {
+          this.questionEntity=data;
+        
+          
+        }, 
+        (error) => 
+        {
+          //alert('error');
+          this.btn_disable = false;
+          this.submitted = false;
+        
+        });
+     }
+     else
+     {
+         this.questionEntity = {};
+         this.questionEntity.QuestionId = 0;
+          this.questionEntity.IsActive = '1';
+        
+     }
   
 
   }
 
 
-  // addQuestion(questionForm) {
-	// 	debugger
+  addQuestion(questionForm) {
+		debugger
 			
-	// 		let id = this.route.snapshot.paramMap.get('id');
-		
-	// 		if (questionForm.valid) {
+			let id = this.route.snapshot.paramMap.get('id');
+      this.submitted = true;
+			if (questionForm.valid) {
 				
-				
-	// 			this.ManagequestionService.add(questionEntity)
-	// 				.then((data) => {
+				this.submitted = false;
+				this.ManagequestionService.add(this.questionEntity)
+					.then((data) => {
 
 					
-	// 					alert('success');
-	// 					this.btn_disable = false;
-	// 					this.submitted = false;
-	// 					this.questionEntity = {};
-	// 					questionForm.form.markAsPristine();
-	// 					if (id) {
+						alert('success');
+						this.btn_disable = false;
+						this.submitted = false;
+						this.questionEntity = {};
+						questionForm.form.markAsPristine();
+						if (id) {
 						
-	// 					} else {
+						} else {
 						
-	// 					}						
-	// 						this.router.navigate(['/thankyou']);
-	// 				},
-	// 				(error) => {
-	// 					//alert('error');
-	// 					this.btn_disable = false;
-	// 					this.submitted = false;
+						}						
+							this.router.navigate(['/question/list']);
+					},
+					(error) => {
+						//alert('error');
+						this.btn_disable = false;
+						this.submitted = false;
 						
-	// 					//this.router.navigate(['/admin/pagenotfound']);
-	// 				});
-	// 		}
-	// 	}
+						//this.router.navigate(['/admin/pagenotfound']);
+					});
+			}
+		}
 	
 
   textadd(){

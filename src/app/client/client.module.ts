@@ -35,6 +35,22 @@ import { PositionComponent } from './position/position.component';
 import { PositionlistComponent } from './positionlist/positionlist.component';
 import { PositionService } from './services/position.service';
 
+import { UserroleComponent } from './userrole/userrole.component';
+import { UserrolelistComponent } from './userrolelist/userrolelist.component';
+import { UserroleService } from './services/userrole.service';
+
+import { LoginComponent } from './login/login.component';
+
+import { RegisterComponent } from './register/register.component';
+import { RegisterService } from './services/register.service';
+import { RegisterlistComponent } from './registerlist/registerlist.component';
+
+//import { AuthGuard } from './services/auth-guard.service';
+import { AuthService } from './services/auth.service'
+
+import { ChangepassComponent } from './changepass/changepass.component';
+import { ChangepassService } from './services/changepass.service';
+
 
 @NgModule({
   declarations: [
@@ -51,8 +67,14 @@ import { PositionService } from './services/position.service';
     ManagequestionComponent,
     ManagequestionlistComponent,
     PositionComponent,
-    PositionlistComponent
-
+    PositionlistComponent,
+    RegisterComponent,
+    RegisterlistComponent,
+    ChangepassComponent,
+    LoginComponent,
+    UserroleComponent,
+    UserrolelistComponent
+    
   ],
   imports: [
     CommonModule,
