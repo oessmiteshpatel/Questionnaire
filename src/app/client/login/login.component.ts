@@ -25,7 +25,15 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     //this.globals = this.global;
    
-      this.loginEntity={};
+    setTimeout(function(){
+      if ($("body").height() < $(window).height()) {  
+        $('footer').addClass('footer_fixed');     
+    }      
+    else{  
+        $('footer').removeClass('footer_fixed');    
+    }
+    },100);  
+    this.loginEntity={};
     
     
       

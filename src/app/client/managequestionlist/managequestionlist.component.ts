@@ -20,14 +20,14 @@ export class ManagequestionlistComponent implements OnInit {
 		private ManagequestionService: ManagequestionService) { }
 
   ngOnInit() {
-    // setTimeout(function(){
-		// 	if ($("body").height() < $(window).height()) {  
-		// 		$('footer').addClass('footer_fixed');     
-		// }      
-		// else{  
-		// 		$('footer').removeClass('footer_fixed');    
-		// }
-	  // },100);
+    setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+		}      
+		else{  
+				$('footer').removeClass('footer_fixed');    
+		}
+		},100);
   
             this.ManagequestionService.getAll()
 

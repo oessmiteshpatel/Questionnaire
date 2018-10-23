@@ -28,7 +28,15 @@ export class RegisterlistComponent implements OnInit {
   constructor( private http: Http,public globals: Globals, private router: Router, private RegisterService: RegisterService,private route:ActivatedRoute) { }
   ngOnInit()
    {
-        this.RegisterService.getAllUser()
+    setTimeout(function(){
+      if ($("body").height() < $(window).height()) {  
+        $('footer').addClass('footer_fixed');     
+    }      
+    else{  
+        $('footer').removeClass('footer_fixed');    
+    }
+    },100);    
+    this.RegisterService.getAllUser()
         //.map(res => res.json())
         .then((data) => 
         {
