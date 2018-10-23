@@ -76,8 +76,8 @@ class Question_model extends CI_Model
 			
 		if($post_Question) 
 		{
-				$questiontype=$post_Question['question'];
-				 $questionlabel=$post_Question['question1'];
+			$questiontype=$post_Question['question'];
+			$questionlabel=$post_Question['question1'];
 			$this->db->where('QuestionId',$questiontype['QuestionId']);
 			$res = $this->db->delete('tblquestion');
 			$this->db->where('QuestionId',$questiontype['QuestionId']);

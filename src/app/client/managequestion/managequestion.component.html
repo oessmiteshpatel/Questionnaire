@@ -48,7 +48,7 @@
 									<!-- loop start -->
 					 				<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 									
-										<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+										<input type="text" class="form-control" pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
 										[(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required/>  
 					   
 									   <span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
@@ -141,7 +141,7 @@
 																<!-- loop start -->
 					 				<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 									
-										<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+										<input type="text" class="form-control" pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
 										[(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required/>  
 					   
 									   <span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
