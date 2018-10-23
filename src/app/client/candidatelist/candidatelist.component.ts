@@ -222,8 +222,7 @@ doc.save('Candidate.pdf');
 //     doc.text(20, 30,element);
 //    // doc.addPage();
 //     // Save the PDF
-//     doc.save('Test.pdf');
-// }
+//  
   
  
 

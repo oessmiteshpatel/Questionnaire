@@ -141,20 +141,20 @@ class Register_model extends CI_Model
 						$IsActive = false;
 					}
 				$user_data = array(
-				"RoleId"=>trim($post_user['RoleId']),
+				// "RoleId"=>trim($post_user['RoleId']),
 				
-				"CountryId"=>trim($post_user['CountryId']),
-				"StateId"=>trim($post_user['StateId']),
+				// "CountryId"=>trim($post_user['CountryId']),
+				// "StateId"=>trim($post_user['StateId']),
 				"FirstName"=>trim($post_user['FirstName']),
 				"LastName"=>trim($post_user['LastName']),
 				
 				"EmailAddress"=>trim($post_user['EmailAddress']),
 				//"Password"=>trim($post_user['Password']),
-				"Address1"=>trim($post_user['Address1']),
+				// "Address1"=>trim($post_user['Address1']),
 				
-				"PhoneNumber"=>trim($post_user['PhoneNumber']),
+				// "PhoneNumber"=>trim($post_user['PhoneNumber']),
 				
-				"IsActive"=>$IsActive,
+				"IsActive"=>1,
 				"UpdatedBy" =>1,
 				"UpdatedOn"=> date('y-m-d H:i:s')
 			  );

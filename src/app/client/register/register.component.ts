@@ -32,6 +32,14 @@ export class RegisterComponent implements OnInit {
 
 		ngOnInit() {
 
+			setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+			}      
+			else{  
+				$('footer').removeClass('footer_fixed');    
+			}
+			},100);
 			this.RegisterService.getAllDefaultData()
 			.then((data) => {
 				this.CountryList = data['country'];
