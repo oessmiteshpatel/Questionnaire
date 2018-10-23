@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ManagequestionService } from '../services/managequestion.service';
 declare var $: any;
 declare function myInput() : any;
+declare var $,swal: any;
 
 @Component({
   selector: 'app-managequestion',
@@ -42,14 +43,12 @@ export class ManagequestionComponent implements OnInit {
   this.QuestionList = [];
   this.QuestionList.push(item);
 
-  setTimeout(function(){
-		if ($("body").height() < $(window).height()) {  
-			$('footer').addClass('footer_fixed');     
-	}      
-	else{  
-			$('footer').removeClass('footer_fixed');    
-	}
-	},100);
+    if ($("body").height() < $(window).height()) {  
+      $('footer').addClass('footer_fixed');     
+  }      
+  else{  
+      $('footer').removeClass('footer_fixed');    
+  }
   	this.questionEntity={};
     this.questionEntity.AnswerTypeId='';
       this.ManagequestionService.getAllDefaultData()
@@ -139,15 +138,27 @@ export class ManagequestionComponent implements OnInit {
 					.then((data) => {
 
 					
-						alert('success');
+						//alert('success');
 						this.btn_disable = false;
 						this.submitted = false;
 						this.questionEntity = {};
 						questionForm.form.markAsPristine();
 						if (id) {
-						
+              swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Question Updated Successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              })
 						} else {
-						
+              swal({
+                position: 'top-end',
+                type: 'success',
+                title: 'Question Added Successfully!',
+                showConfirmButton: false,
+                timer: 1500
+              })
 						}						
 							this.router.navigate(['/question/list']);
 					},
