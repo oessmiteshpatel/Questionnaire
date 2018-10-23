@@ -23,14 +23,16 @@ export class JobpositionlistComponent implements OnInit {
 
 
     
-  ngOnInit()
-  {
+	ngOnInit()
+	{
+  setTimeout(function(){
 		if ($("body").height() < $(window).height()) {  
 			$('footer').addClass('footer_fixed');     
 	}      
 	else{  
 			$('footer').removeClass('footer_fixed');    
 	}
+	},100);
 		// this.globals.isLoading = true;	
 		//this.globals = this.global;
 	this.JobpositionService.getAll()
@@ -41,9 +43,9 @@ export class JobpositionlistComponent implements OnInit {
 				setTimeout(function(){
       $('#dataTables-example').dataTable( {
         "oLanguage": {
-          "sLengthMenu": "_MENU_ Userrole per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Userrole",
-					"sInfoFiltered": "(filtered from _MAX_ total Userrole)"
+          "sLengthMenu": "_MENU_ Job Position per Page",
+					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Job Position",
+					"sInfoFiltered": "(filtered from _MAX_ total Job Position)"
         }
       });
 		},100); 
@@ -57,9 +59,9 @@ export class JobpositionlistComponent implements OnInit {
 	  this.msgflag = false;
   }
   
-  deleteUserrole(userrole)
+  deleteJobPosition(jobposition)
 	{ 
-		this.deleteEntity =  userrole;
+		this.deleteEntity =  jobposition;
 		$('#Delete_Modal').modal('show');					
 	}
   

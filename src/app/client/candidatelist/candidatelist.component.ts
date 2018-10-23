@@ -133,7 +133,8 @@ export class CandidatelistComponent implements OnInit {
     });
     this.CandidateuserService.getById(CandidateId)
     .then((data) => {
-      this.questionList = data;
+      this.candidateData = data['Users'];
+      this.questionList = data['QuestionAnswer'];
      
       $('#Delete_Modal').modal('show');
       	

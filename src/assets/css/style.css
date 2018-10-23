@@ -76,7 +76,7 @@ header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;backgro
 .white_form_block .padding_box{padding: 20px;}
 .white_form_block .account_block{ padding:20px; margin-top: 20px; background: #0061af; border-radius:0 0 10px 10px; border-top:1px solid #666;}
 .white_form_block .account_block p{color: #fff; line-height: 30px;}
-.lgn_btn{background: #0061af; border-radius:4px; color: #fff; font-size: 13px; border: 0; padding: 10px; line-height: 13px; min-width: 100px; opacity: 0.85; transition: all .3s ease-in-out; text-align: center; display: inline-block;}
+.lgn_btn{margin-top:20px;background: #0061af; border-radius:4px; color: #fff; font-size: 13px; border: 0; padding: 10px; line-height: 13px; min-width: 100px; opacity: 0.85; transition: all .3s ease-in-out; text-align: center; display: inline-block;}
 .lgn_btn:hover,.lgn_btn:focus{opacity: 1; transition: all .3s ease-in-out; box-shadow: 0 5px 10px 2px rgba(88,103,221,.15); color: #fff;}
 .rgstr_btn{background: #fff; border-radius:4px; color: #0061af; font-size: 13px; border: 0; padding: 10px; line-height: 13px; min-width: 100px; opacity: 0.85; transition: all .3s ease-in-out; text-align: center;  display: inline-block;}
 .rgstr_btn:hover,.rgstr_btn:focus{opacity: 1; transition: all .3s ease-in-out; box-shadow: 0 5px 10px 2px rgba(88,103,221,.15); color: #0061af;}
