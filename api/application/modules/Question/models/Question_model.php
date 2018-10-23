@@ -72,6 +72,64 @@ class Question_model extends CI_Model
 	}
 
 	
+	public function edit_Question($post_Question) {
+			
+		if($post_Question) 
+		{
+				$questiontype=$post_Question['question'];
+				 $questionlabel=$post_Question['question1'];
+			$this->db->where('QuestionId',$questiontype['QuestionId']);
+			$res = $this->db->delete('tblquestion');
+			$this->db->where('QuestionId',$questiontype['QuestionId']);
+			$res = $this->db->delete('tblquestionanswer');
+			if($res)
+			{
+			
+				$Question_data =array
+					(
+						'QuestionName' => trim($questiontype['QuestionName']),
+						'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
+						"IsActive"=>1
+					);
+		
+					$res1 = $this->db->insert('tblquestion',$Question_data);
+					$questionId = $this->db->insert_id();
+					foreach($questionlabel as $question)
+					{		
+						if(isset($question['QValue']) && !empty($question['QValue']))
+						{
+						$QValue = trim($question['QValue']);
+						}
+						else
+						{
+							$QValue = null;
+						}
+						$Question_data2 = array(
+
+							'QuestionId' => trim($questionId),
+							'QLabel' => trim($question['QLabel']),
+							'QValue' =>$QValue,
+							"IsActive"=>1
+						
+						);
+
+						$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
+				}
+
+			}else
+			{
+				return false;
+			}
+			
+		} 
+		else
+		{
+			return false;
+		}
+	}
+
+
+	
 
 
 	public function getlist_QuestionType()
@@ -113,14 +171,36 @@ class Question_model extends CI_Model
 		
 	}
 
+	public function get_questiondatatypeans($question_id=Null)
+	{
+		if($question_id) {
+			
+			$this->db->select('QAnswerId,QuestionId,QLabel,QValue');
+			$this->db->where('QuestionId',$question_id);
+			$result = $this->db->get('tblquestionanswer');
+			
+			$res = array();
+			if($result->result()) {
+				$res = $result->result();
+			}
+			return $res;
+			
+		}
+		 else 
+		{
+			return false;
+		}
+		
+	}
 
 	public function get_questiondata($question_id=Null)
 	{
 	  if($question_id)
 	  {
-		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName');
+		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName,qanstype.QLabel,qanstype.QValue');
 		 $this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
-		 $this->db->where('QuestionId',$question_id);
+		 $this->db->join('tblquestionanswer qanstype','qanstype.QuestionId = que.QuestionId', 'left');
+		 $this->db->where('que.QuestionId',$question_id);
 		 $result=$this->db->get('tblquestion que');
 		 $question_data= array();
 		 foreach($result->result() as $row)

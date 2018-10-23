@@ -18,20 +18,21 @@ class Question extends CI_Controller {
 	public function add() {
 		
 		$post_Question = json_decode(trim(file_get_contents('php://input')), true);		
-
+		$qa=$post_Question['question'];  
+	 
 		if ($post_Question) {
-			// if($post_Question['QuestionId'] > 0){
-			// 	$result = $this->Question_model->edit_Question($post_Question);
-			// 	if($result) {
-			// 		echo json_encode($post_Question);	
-			// 	}	
-			// } else {
+			if($qa['QuestionId'] > 0){
+				$result = $this->Question_model->edit_Question($post_Question);
+				if($result) {
+					echo json_encode($post_Question);	
+				}	
+			} else {
 				$result = $this->Question_model->add_Question($post_Question);
 				if($result) {
 					echo json_encode($post_Question);	
 				}	
 			}							
-		//}
+		}
 		
 	}
 
@@ -82,7 +83,9 @@ class Question extends CI_Controller {
 			if(!empty($question_id))
 			{
 				$data=[];
-				$data=$this->Question_model->get_questiondata($question_id);
+				//$data=$this->Question_model->get_questiondata($question_id);
+				$data['quetype']=$this->Question_model->get_questiondata($question_id);
+				$data['typeans']=$this->Question_model->get_questiondatatypeans($question_id);
 				echo json_encode($data);
 			}
 		}

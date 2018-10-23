@@ -24,6 +24,8 @@ export class ManagequestionComponent implements OnInit {
 	message;
     type;
     QuestionList;
+    QuestionType;
+    QuestionAnswer;
     
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private ManagequestionService: ManagequestionService) { }
@@ -51,7 +53,8 @@ export class ManagequestionComponent implements OnInit {
       this.ManagequestionService.getAllDefaultData()
       .then((data) => {
         this.queAnsTypeList = data['quetypeans'];
-      
+       // this.questionEntity = data['quetype'];   
+       // this.QuestionList = data['typeans'];
       },
       (error) => {
         //alert('error');
@@ -63,10 +66,14 @@ export class ManagequestionComponent implements OnInit {
      if(id)
      {	
      //  this.header = 'Edit';
+     
       this.ManagequestionService.getById(id)
         .then((data) => 
         {
+         // this.questionEntity=data;
           this.questionEntity=data;
+          this.questionEntity = data['quetype'];   
+           this.QuestionList = data['typeans'];
         
           
         }, 
@@ -110,7 +117,17 @@ export class ManagequestionComponent implements OnInit {
   addQuestion(questionForm) {
 		debugger
 			
-			let id = this.route.snapshot.paramMap.get('id');
+      let id = this.route.snapshot.paramMap.get('id');
+      if(id)
+      {
+         // this.questionEntity.CreatedBy=1;
+          this.submitted = true;
+      }
+      else{
+        this.questionEntity.QuestionId=0;
+       // this.questionEntity.CreatedBy=1;
+        this.submitted = true;
+      }
       this.submitted = true;
 			if (questionForm.valid) {
 				
@@ -143,24 +160,6 @@ export class ManagequestionComponent implements OnInit {
 		}
 	
 
-  textadd(){
-    debugger
-    $("#customFields").append('<tr valign="top"><td><input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp; <input type="text" class="code" id="customFieldValue" name="customFieldValue[]" value="" placeholder="Input Value" /> &nbsp; <a href="javascript:void(0);" class="remCF"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></td></tr>');
-   
-      $("#customFields").on('click','.remCF',function(){
-          $(this).parent().parent().remove();
-      });
 
-  }
-
-  multietextadd(){
-    debugger
-    $("#customFields").append('<tr valign="top"><td><input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> &nbsp; <a href="javascript:void(0);" class="remCF"><i class="fa fa-minus-circle" aria-hidden="true"></i></a></td></tr>');
-   
-      $("#customFields").on('click','.remCF',function(){
-          $(this).parent().parent().remove();
-      });
-
-  }
 
 }

@@ -52,10 +52,8 @@ const routes: Routes = [
 			component: ClientComponent,
 			children: [
 				
-				// { path: 'dashboard', component : DashbordComponent },
-
-				//{ path : '', component : HomeComponent  },
-				{ path : '', component : CandidateuserComponent  },
+				{ path : '', component : LoginComponent},
+				// { path : '', component : CandidateuserComponent  },
 
 				{ path : 'home', component : HomeComponent  },
 

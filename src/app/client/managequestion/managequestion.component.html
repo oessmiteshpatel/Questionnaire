@@ -107,7 +107,7 @@
 										 </span>
 									   </span>
 
-									   
+
 									   <input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QValue="ngModel"
 										[(ngModel)]="QuestionList[i].QValue" name="QValue{{i}}" required/>  
 					   
@@ -138,11 +138,29 @@
 			<div *ngIf="questionEntity.AnswerTypeId==3 ">
 					<div class="form-group" >
 							<label>Label</label>
-							<input type="text" class="form-control" #QLabel="ngModel" [(ngModel)]="questionEntity.QLabel" class="form-control" name="QLabel" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)}" required/>
-							<span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)"> 
-							<span *ngIf="QLabel.errors.required || (QLabel.pristine && submitted)">Please enter your label</span>
-							<span *ngIf="QLabel.errors && QLabel.errors.pattern">Please enter valid label</span>	
-							</span>
+																<!-- loop start -->
+					 				<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
+									
+										<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+										[(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required/>  
+					   
+									   <span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
+										 <span *ngIf="QLabel.errors && QLabel.errors.required">
+										   Please enter label name
+										 </span>
+						 
+										 <span *ngIf="QLabel.errors && QLabel.errors.pattern">
+										   Please enter valid label
+										 </span>
+									   </span>
+
+									   
+									   	
+										
+									
+								</div>	
+								<!-- loop end -->	
+
 						</div>
 </div>
 

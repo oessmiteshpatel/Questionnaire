@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
           loginForm.form.markAsPristine();
         
             }
-            this.router.navigate(['']);
+            this.router.navigate(['/home']);
            //this.router.navigate(['/userprofile/edit/{{globals.authData.UserId}}']);
         }, 
         (error) => 
