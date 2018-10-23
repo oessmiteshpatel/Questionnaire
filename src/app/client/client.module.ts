@@ -31,10 +31,6 @@ import { FooterComponent } from './footer/footer.component';
 import { ManagequestionComponent } from './managequestion/managequestion.component';
 import { ManagequestionlistComponent } from './managequestionlist/managequestionlist.component';
 
-import { PositionComponent } from './position/position.component';
-import { PositionlistComponent } from './positionlist/positionlist.component';
-import { PositionService } from './services/position.service';
-
 import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 import { UserroleService } from './services/userrole.service';
@@ -66,8 +62,6 @@ import { ChangepassService } from './services/changepass.service';
     FooterComponent,
     ManagequestionComponent,
     ManagequestionlistComponent,
-    PositionComponent,
-    PositionlistComponent,
     RegisterComponent,
     RegisterlistComponent,
     ChangepassComponent,

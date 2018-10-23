@@ -30,10 +30,6 @@ import { ManagequestionComponent } from './managequestion/managequestion.compone
 import { ManagequestionlistComponent } from './managequestionlist/managequestionlist.component';
 import { ManagequestionService } from './services/managequestion.service';
 
-import { PositionComponent } from './position/position.component';
-import { PositionlistComponent } from './positionlist/positionlist.component';
-import { PositionService } from './services/position.service';
-
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { RegisterlistComponent } from './registerlist/registerlist.component';
@@ -78,9 +74,6 @@ const routes: Routes = [
 				{ path : 'question/edit/:id', component : ManagequestionComponent  },
 				{ path : 'question/list', component : ManagequestionlistComponent  },
 
-				{ path : 'position/add', component : PositionComponent  },
-				{ path : 'position/list', component : PositionlistComponent  },
-
 				{ path : 'userrole/add', component : UserroleComponent  },	
 				{ path : 'userrole/list', component : UserrolelistComponent  },
 				{ path : 'userrole/edit/:id', component : UserroleComponent },
@@ -100,7 +93,7 @@ const routes: Routes = [
  @NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
-	providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,PositionService,RegisterService,ChangepassService,
+	providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,RegisterService,ChangepassService,
 		AuthService,UserroleService,AuthService,
 	
 	],
