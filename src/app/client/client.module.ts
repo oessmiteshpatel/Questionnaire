@@ -47,6 +47,7 @@ import { AuthService } from './services/auth.service'
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { ChangepassService } from './services/changepass.service';
     ChangepassComponent,
     LoginComponent,
     UserroleComponent,
-    UserrolelistComponent
+    UserrolelistComponent,
+    DashboardComponent
     
   ],
   imports: [

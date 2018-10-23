@@ -46,6 +46,8 @@ import { AuthService } from './services/auth.service'
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 const routes: Routes = [	
 	{
 		path: '',
@@ -82,7 +84,9 @@ const routes: Routes = [
 
 				{ path : 'login', component : LoginComponent},
 
-				{ path: 'changepass', component: ChangepassComponent}
+				{ path: 'changepass', component: ChangepassComponent},
+
+				{ path: 'dashboard', component: DashboardComponent}
 				
 			]
 	}

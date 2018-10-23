@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+import { Globals } from '../globals';
+
 declare var $: any;
 @Component({
   selector: 'app-footer',
@@ -7,7 +11,7 @@ declare var $: any;
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(  private authService: AuthService,private router: Router,public globals: Globals) { }
 
   ngOnInit() {
 
