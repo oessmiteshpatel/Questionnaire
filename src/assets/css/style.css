@@ -163,6 +163,8 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 .inline_delbtn {display: inline-block;}
 .inline_delbtn .btn-suucess{background: #0061af;color: #fff;}
 #Delete_Modal .modal-dialog{width: 80%;}
+.add_que .form-control{width: 87%!important;display: inline-block!important;}
+.lgn_btn{margin-top: 10px;}
 /*----------- end admin css ------------*/
 
 @media (min-width:2000px){	
