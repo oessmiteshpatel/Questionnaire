@@ -80,7 +80,7 @@ export class JobpositionComponent implements OnInit {
 			this.JobpositionService.add(this.positionEntity)
 			.then((data) => 
 			{
-				alert('success');
+				//alert('success');
 				//this.aa=true;
 				this.btn_disable = false;
 				this.submitted = false;

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ChangepassService } from '../services/changepass.service';
 declare var $: any;
+declare var $,swal: any;
 
 @Component({
   selector: 'app-changepass',
@@ -59,13 +60,16 @@ export class ChangepassComponent implements OnInit {
 			{
 				if(data=='Code duplicate')
 				{
-						this.globals.message = 'You entered wrong current password';
-						this.globals.type = 'danger';
-						this.globals.msgflag = true;
-					//	this.globals.isLoading = false;
+						swal({
+							position: 'top-end',
+							type: 'danger',
+							title: 'You entered wrong current password',
+							showConfirmButton: false,
+							timer: 1500
+						  })
 						this.btn_disable = false;
 						this.submitted = false;
-					this.router.navigate(['/changepass/']);
+					this.router.navigate(['/changepass']);
 				}
 				else
 					{
@@ -75,12 +79,14 @@ export class ChangepassComponent implements OnInit {
 						this.submitted = false;
 						this.newpassEntity = {};
 						newpassForm.form.markAsPristine();
-						this.globals.message = 'Your password has been changed';
-				
-						this.globals.type = 'success';
-						this.globals.msgflag = true;
-						
-						this.router.navigate(['']);
+						swal({
+							position: 'top-end',
+							type: 'success',
+							title: 'Your password has been changed',
+							showConfirmButton: false,
+							timer: 1500
+						  })
+						this.router.navigate(['/home']);
 					}
 			}, 
 			(error) => 

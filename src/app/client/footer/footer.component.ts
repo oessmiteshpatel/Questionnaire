@@ -11,7 +11,7 @@ declare var $: any;
 })
 export class FooterComponent implements OnInit {
 
-  constructor(  private authService: AuthService,private router: Router,public globals: Globals) { }
+  constructor(private authService: AuthService,private router: Router,public globals: Globals) { }
 
   ngOnInit() {
 

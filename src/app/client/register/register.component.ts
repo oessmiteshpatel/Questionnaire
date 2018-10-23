@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Globals } from '.././globals';
 import { ActivatedRoute } from '@angular/router';
 import { RegisterService } from '../services/register.service';
+declare var $,swal: any;
 
 @Component({
   selector: 'app-register',
@@ -123,13 +124,22 @@ export class RegisterComponent implements OnInit {
 						this.userEntity = {};
 						userForm.form.markAsPristine();
 						if (id) {
-							this.globals.message = 'User Updated Successfully';
-							this.globals.type = 'success';
-							this.globals.msgflag = true;
+							swal({
+								position: 'top-end',
+								type: 'success',
+								title: 'User Updated Successfully',
+								showConfirmButton: false,
+								timer: 1500
+							})
 						} else {
-							this.globals.message = 'User Added Successfully';
-							this.globals.type = 'success';
-							this.globals.msgflag = true;
+						
+							swal({
+								position: 'top-end',
+								type: 'success',
+								title: 'User Added Successfully',
+								showConfirmButton: false,
+								timer: 1500
+							})
 						}						
 							this.router.navigate(['/register/list']);
 					},
