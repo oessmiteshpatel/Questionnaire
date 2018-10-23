@@ -16,11 +16,16 @@
 				<h3>Question :</h3>
 				<div class="form-group">
 					<label>Explain here</label>
-					<textarea class="form-control" #QuestionName="ngModel" [(ngModel)]="questionEntity.QuestionName" name="QuestionName"   maxlength="250"></textarea>
-					<span class="error_span" *ngIf="(QuestionName.dirty && QuestionName.invalid) || (QuestionName.pristine && submitted)"> 
-						<span *ngIf="QuestionName.errors.required || (QuestionName.pristine && submitted)">Please enter question answer</span>
-					
-					</span>
+					<textarea class="form-control" #QuestionName="ngModel" [(ngModel)]="questionEntity.QuestionName" name="QuestionName" required   maxlength="250"></textarea>
+					<span class="error_span" *ngIf="(QuestionName.dirty && QuestionName.invalid) || (QuestionName.pristine && submitted)">
+							<span *ngIf="QuestionName.errors && QuestionName.errors.required">
+							  Please enter question
+							</span>
+			
+							<span *ngIf="QuestionName.errors && QuestionName.errors.pattern">
+							  Please enter valid question
+							</span>
+						  </span>
 				</div>
 			</div>
 		</div>
@@ -39,39 +44,94 @@
 				</div>
 
 				<div *ngIf="questionEntity.AnswerTypeId==2">
-
-						<table class="form-table" id="customFields">
-								<tr valign="top">
-									<td>
-										<!-- <input type="text" class="code" id="customFieldName" name="customFieldName[]" value="" placeholder="Input Name" /> -->
+									<label><span class="required">*</span>Input Label</label>
+									<!-- loop start -->
+					 				<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 									
-
-										<input type="text" class="form-control" #QLabel="ngModel" [(ngModel)]="questionEntity.QLabel" class="form-control" name="QLabel" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)}" required/><a (click)="multietextadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-										<span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)"> 
-										<span *ngIf="QLabel.errors.required || (QLabel.pristine && submitted)">Please enter your label </span>
-										<span *ngIf="QLabel.errors && QLabel.errors.pattern">Please enter valid label</span>	
-										</span>
+										<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+										[(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required/>  
+					   
+									   <span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
+										 <span *ngIf="QLabel.errors && QLabel.errors.required">
+										   Please enter label name
+										 </span>
+						 
+										 <span *ngIf="QLabel.errors && QLabel.errors.pattern">
+										   Please enter valid label
+										 </span>
+									   </span>
+										
+												<button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm" title="Delete">
+													<span class="fa fa-times"></span>
+												  </button>
+											  <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm" title="Add">
+												<span class="fa fa-plus"></span>
+											  </button>                    
+											
+										
+									
+								</div>	
+								<!-- loop end -->	
 								
-										
-										
-									</td>
-								</tr>
-							</table>
+					
 				</div>
-
-				<div *ngIf="questionEntity.AnswerTypeId==1 ">
-								<table class="form-table" id="customFields">
+			
+			<div *ngIf="questionEntity.AnswerTypeId==1 ">
+								<!-- <table class="form-table" id="customFields">
 									<tr valign="top">
 										<td>
 											
 											<input type="text" class="code" #QLabel="ngModel" [(ngModel)]="questionEntity.QLabel" id="customFieldName" name="QLabel"  placeholder="Input Name" /> &nbsp;
-											<input type="text" class="code" #QValue="ngModel" [(ngModel)]="questionEntity.QValue" id="customFieldValue" name="QValue" placeholder="Input Value" /> &nbsp;
+											<input type="text" class="code" #QValue="ngModel" [(ngModel)]="questionEntity.QValue" id="customFieldValue" name="QValue" placeholder="Input Value" /> &nbsp; -->
 											<!-- <a  href="javascript:void(0);" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> -->
-											<a (click)="textadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+											<!-- <a (click)="textadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
 											
 										</td>
 									</tr>
-								</table>
+								</table> -->
+
+								<label><span class="required">*</span>Input Label</label>
+									<!-- loop start -->
+					 				<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
+									
+										<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+										[(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required/>  
+					   
+									   <span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
+										 <span *ngIf="QLabel.errors && QLabel.errors.required">
+										   Please enter label name
+										 </span>
+						 
+										 <span *ngIf="QLabel.errors && QLabel.errors.pattern">
+										   Please enter valid label
+										 </span>
+									   </span>
+
+									   
+									   <input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QValue="ngModel"
+										[(ngModel)]="QuestionList[i].QValue" name="QValue{{i}}" required/>  
+					   
+									   <span class="error_span" *ngIf="(QValue.dirty && QValue.invalid) || (QValue.pristine && submitted)">
+										 <span *ngIf="QValue.errors && QValue.errors.required">
+										   Please enter value name
+										 </span>
+						 
+										 <span *ngIf="QValue.errors && QValue.errors.pattern">
+										   Please enter valid value
+										 </span>
+									   </span>
+										
+												<button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm" title="Delete">
+													<span class="fa fa-times"></span>
+												  </button>
+											  <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm" title="Add">
+												<span class="fa fa-plus"></span>
+											  </button>                    
+											
+										
+									
+								</div>	
+								<!-- loop end -->	
 
 			</div>
 
@@ -92,19 +152,14 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="clearfix"></div>
-
-		<div class="col-md-12">
-				<div class="form-btn">
 		
-				
-							
-								<button type="submit" class="btn sub-btn"><span>Submit</span></button>
-					
-						
-				</div>
-			
 
-		</div>
+		<div class="col-md-12 col-sm-12 text-center">
+				<button type="submit" class="lgn_btn"><span>Submit</span></button>
+			  </div>
+			  <div class="clearfix"></div>
+
+		
 
 		</form>
 		<div class="clearfix"></div>

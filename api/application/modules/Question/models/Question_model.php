@@ -7,11 +7,12 @@ class Question_model extends CI_Model
 			
 		if($post_Question) 
 		{
-			
+			$questiontype=$post_Question['question'];
+			$questionlabel=$post_Question['question1'];
 			$Question_data = array(
 
-				'QuestionName' => trim($post_Question['QuestionName']),
-				'AnswerTypeId' => trim($post_Question['AnswerTypeId']),
+				'QuestionName' => trim($questiontype['QuestionName']),
+				'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
 				// 'QuestionId' => trim($post_question['QuestionId']),
 				// 'QLabel' => trim($post_question['QLabel']),
 				// 'QValue' => trim($post_question['QValue']),
@@ -24,25 +25,28 @@ class Question_model extends CI_Model
 			if($res)
 			{
 				$questionId = $this->db->insert_id();
-					if(isset($post_Question['QValue']) && !empty($post_Question['QValue']))
+					
+
+				foreach($questionlabel as $question)
+				{		if(isset($question['QValue']) && !empty($question['QValue']))
 					{
-						$QValue = trim($post_Question['QValue']);
+						$QValue = trim($question['QValue']);
 					}
 					else
 					{
 						$QValue = null;
 					}
-				$Question_data2 = array(
+						$Question_data2 = array(
 
-					'QuestionId' => trim($questionId),
-					'QLabel' => trim($post_Question['QLabel']),
-					'QValue' =>$QValue,
-					"IsActive"=>1
-				
-				);
-				
-				$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
-				
+							'QuestionId' => trim($questionId),
+							'QLabel' => trim($question['QLabel']),
+							'QValue' =>$QValue,
+							"IsActive"=>1
+						
+						);
+						
+						$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
+				}
 				if($res2)
 				{
 					return true;;

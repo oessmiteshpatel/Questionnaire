@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { ManagequestionService } from '../services/managequestion.service';
 declare var $: any;
+declare function myInput() : any;
+
 @Component({
   selector: 'app-managequestion',
   providers: [ManagequestionService],
@@ -21,12 +23,22 @@ export class ManagequestionComponent implements OnInit {
 	msgflag;
 	message;
     type;
+    QuestionList;
     
-
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private ManagequestionService: ManagequestionService) { }
 
   ngOnInit() {
+    debugger
+
+    this.questionEntity = {};
+    
+    this.questionEntity.QuestionId = 0;
+    
+    var item = { 'QLabel': '','QValue': ''};
+    
+  this.QuestionList = [];
+  this.QuestionList.push(item);
 
     if ($("body").height() < $(window).height()) {  
       $('footer').addClass('footer_fixed');     
@@ -77,6 +89,23 @@ export class ManagequestionComponent implements OnInit {
 
   }
 
+  AddNewQuestion(index){ 
+    
+    var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};
+    if (this.QuestionList.length <= index + 1) {
+      this.QuestionList.splice(index + 1, 0, item);
+    }  
+    setTimeout(function(){
+      myInput();
+       },100);
+    }
+  
+    DeleteQuestion(item){
+       
+    var index = this.QuestionList.indexOf(item);	
+    this.QuestionList.splice(index, 1);		
+    }
+
 
   addQuestion(questionForm) {
 		debugger
@@ -85,8 +114,9 @@ export class ManagequestionComponent implements OnInit {
       this.submitted = true;
 			if (questionForm.valid) {
 				
-				this.submitted = false;
-				this.ManagequestionService.add(this.questionEntity)
+        this.submitted = false;
+        var addque={'question1':this.QuestionList,'question':this.questionEntity};
+				this.ManagequestionService.add(addque)
 					.then((data) => {
 
 					
