@@ -72,14 +72,12 @@ export class LoginComponent implements OnInit {
         }, 
         (error) => 
         { 
-          alert('error2');
-          // swal({
-          //   position: 'top-end',
-          //   type: 'danger',
-          //   title: 'Invalid Email Address or Password',
-          //   showConfirmButton: false,
-          //   timer: 1500
-          // })    
+          //alert('error2');
+          swal({
+            type: 'warning',
+            title: 'Oops...',
+            text: 'Either username or password is incorrect',
+          })    
           this.btn_disable = false;
               this.submitted = false;
               
