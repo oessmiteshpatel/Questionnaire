@@ -11,22 +11,22 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route,state:RouterStateSnapshot) { 
 	
-	if(state.url=='/admin/access-denied'||state.url=='/admin/pagenotfound'){
+	// if(state.url=='/admin/access-denied'||state.url=='/admin/pagenotfound'){
 		
-	} else {
+	// } else {
 		
-	}
-	if(state.url=='/admin/pagenotfound'||state.url=='/admin/access-denied'){
+	// }
+	// if(state.url=='/admin/pagenotfound'||state.url=='/admin/access-denied'){
 		
-		if(this.authService.isLoggedIn()==true){
-			this.globals.IsLoggedIn = true;
-		} else {
-			this.globals.IsLoggedIn = false;
-		}
-		return true;
-	} else {
+	// 	if(this.authService.isLoggedIn()==true){
+	// 		this.globals.IsLoggedIn = true;
+	// 	} else {
+	// 		this.globals.IsLoggedIn = false;
+	// 	}
+	// 	return true;
+	// } else {
 		
-	}
+	// }
 	  
 	  if(this.authService.isLoggedIn()==true){
 			if(state.url.split('/')[3] != undefined){
@@ -36,7 +36,7 @@ export class AuthGuard implements CanActivate {
 			}
 		  if(state.url=='/admin/login'){
 			  this.globals.IsLoggedIn = false;
-			  this.router.navigate(['/admin/dashboard']);
+			  this.router.navigate(['/admin/home']);
 			  return false;
 		  } else {
 			  this.globals.IsLoggedIn = true;

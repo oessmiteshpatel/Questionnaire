@@ -32,7 +32,7 @@
                       <th style="width:9%;">Candidate Name</th>
                       <th style="width:9%;">Candidate Email</th>
                       <th style="width:9%;">Phone Number</th>
-                      <th style="width:9%;">Job Position Id</th>
+                      <th style="width:9%;">Job Position</th>
                       <th style="width:7%;">IsActive</th>
                       <th style="width:7%;">Actions</th>
                     </tr>
@@ -62,7 +62,7 @@
                       </div>
 
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Upload File" > 
-                          <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button"  ><span class="fa fa-upload"></span></button>
+                          <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button"  (click)="deleteCompany(candidate.CandidateId)"><span class="fa fa-upload"></span></button>
                       </div>
 
                       

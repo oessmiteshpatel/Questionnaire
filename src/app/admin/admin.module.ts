@@ -7,6 +7,9 @@ import { CommonModule } from "@angular/common";
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component.module';
 
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service'
+import { AuthGuard } from './services/auth-guard.service';
 
 import { HomeComponent } from './home/home.component';
 
@@ -33,14 +36,9 @@ import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 import { UserroleService } from './services/userrole.service';
 
-import { LoginComponent } from './login/login.component';
-
 import { RegisterComponent } from './register/register.component';
 import { RegisterService } from './services/register.service';
 import { RegisterlistComponent } from './registerlist/registerlist.component';
-
-import { AuthGuard } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service'
 
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
@@ -52,6 +50,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AdminComponent,
+    LoginComponent,
     HomeComponent,
     QuestionComponent,
     JobpositionComponent,
@@ -66,7 +65,6 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegisterComponent,
     RegisterlistComponent,
     ChangepassComponent,
-    LoginComponent,
     UserroleComponent,
     UserrolelistComponent,
     DashboardComponent

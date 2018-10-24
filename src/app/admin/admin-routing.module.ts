@@ -8,6 +8,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from "@angular/common";
 import { AdminComponent  } from './admin.component.module';
 
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
+
 import { HomeComponent } from './home/home.component';
 
 import { QuestionComponent } from './question/question.component';
@@ -38,11 +42,6 @@ import { UserroleComponent } from './userrole/userrole.component';
 import { UserrolelistComponent } from './userrolelist/userrolelist.component';
 import { UserroleService } from './services/userrole.service';
 
-import { LoginComponent } from './login/login.component';
-
-import { AuthGuard } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service'
-
 import { ChangepassComponent } from './changepass/changepass.component';
 import { ChangepassService } from './services/changepass.service';
 
@@ -55,39 +54,40 @@ const routes: Routes = [
         component: AdminComponent,
         children: [
       
-          { path : '', component : LoginComponent},
+          { path : '', component : LoginComponent, canActivate : [AuthGuard] },
           // { path : '', component : CandidateuserComponent , canActivate : [AuthGuard] },
   
-          { path : 'home', component : HomeComponent  },
+          { path : 'home', component : HomeComponent, canActivate : [AuthGuard]   },
   
-          { path : 'question', component : QuestionComponent  },
+          { path : 'question', component : QuestionComponent, canActivate : [AuthGuard]   },
           
-          { path : 'position', component : JobpositionComponent  },
-          { path : 'position/list', component : JobpositionlistComponent  },
+          { path : 'position', component : JobpositionComponent , canActivate : [AuthGuard]  },
+          { path : 'position/list', component : JobpositionlistComponent, canActivate : [AuthGuard]  },
   
-          { path : 'candidateuser', component : CandidateuserComponent  },
-          { path : 'candidateuser/edit/:id', component : CandidateuserComponent  },
-          { path : 'candidate/list', component : CandidatelistComponent  },
+          { path : 'candidateuser', component : CandidateuserComponent, canActivate : [AuthGuard]   },
+          { path : 'candidate/list', component : CandidatelistComponent, canActivate : [AuthGuard]   },
+          { path : 'candidateuser/edit/:id', component : CandidateuserComponent, canActivate : [AuthGuard]   },
+          { path : 'candidateuser/edits/:id', component : CandidateuserComponent, canActivate : [AuthGuard]   },
   
-          { path : 'thankyou', component : ThankyouComponent  },
+          { path : 'thankyou', component : ThankyouComponent, canActivate : [AuthGuard]   },
   
-          { path : 'question/add', component : ManagequestionComponent  },
-          { path : 'question/edit/:id', component : ManagequestionComponent  },
-          { path : 'question/list', component : ManagequestionlistComponent  },
+          { path : 'question/add', component : ManagequestionComponent, canActivate : [AuthGuard]   },
+          { path : 'question/edit/:id', component : ManagequestionComponent, canActivate : [AuthGuard]   },
+          { path : 'question/list', component : ManagequestionlistComponent, canActivate : [AuthGuard]   },
   
-          { path : 'userrole/add', component : UserroleComponent  },	
-          { path : 'userrole/list', component : UserrolelistComponent  },
-          { path : 'userrole/edit/:id', component : UserroleComponent },
+          { path : 'userrole/add', component : UserroleComponent, canActivate : [AuthGuard]   },	
+          { path : 'userrole/list', component : UserrolelistComponent , canActivate : [AuthGuard]  },
+          { path : 'userrole/edit/:id', component : UserroleComponent, canActivate : [AuthGuard]  },
   
-          { path : 'register/add', component : RegisterComponent},
-          { path : 'register/list', component : RegisterlistComponent },
-          { path : 'register/edit/:id', component : RegisterComponent},
+          { path : 'register/add', component : RegisterComponent, canActivate : [AuthGuard] },
+          { path : 'register/list', component : RegisterlistComponent, canActivate : [AuthGuard]  },
+          { path : 'register/edit/:id', component : RegisterComponent, canActivate : [AuthGuard] },
   
-          { path : 'login', component : LoginComponent},
+          { path : 'login', component : LoginComponent, canActivate : [AuthGuard] },
   
-          { path: 'changepass', component: ChangepassComponent},
+          { path: 'changepass', component: ChangepassComponent, canActivate : [AuthGuard] },
   
-          { path: 'dashboard', component: DashboardComponent}
+          { path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard] }
           
 		
         ]
@@ -98,8 +98,8 @@ const routes: Routes = [
 imports: [RouterModule.forChild(routes)],
 exports: [RouterModule],
  
-providers: [Globals,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,RegisterService,ChangepassService,
-  AuthService,UserroleService,AuthService,
+providers: [Globals,AuthService,AuthGuard,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,RegisterService,ChangepassService,
+  UserroleService
 
 ],
   bootstrap: [AdminComponent]
