@@ -97,7 +97,7 @@ export class CandidateuserComponent implements OnInit {
 			{
 					fd.append('favicon', file2);
 					this.candidateEntity.Faviconicon = file2['name'];
-					this.candidateEntity.CourseImage = this.candidateEntity.Faviconicon;
+					this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
 			} else {
 				fd.append('favicon', null);
 				this.candidateEntity.Faviconicon = null;

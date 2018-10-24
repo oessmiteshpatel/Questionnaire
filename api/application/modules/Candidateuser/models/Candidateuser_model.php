@@ -72,7 +72,7 @@ class Candidateuser_model extends CI_Model
 						// "CandidateEmail"=>trim($post_user['CandidateEmail']),
 						// "PhoneNumber"=>trim($post_user['PhoneNumber']),
 						// "JobPositionId"=>trim($post_user['JobPositionId']),		
-						"CourseImage"=>trim($post_user['CourseImage']),
+						"CandidateHrForm"=>trim($post_user['CandidateHrForm']),
 					//	"IsActive"=>$IsActive,
 						"CreatedBy"=>1,
 						"CreatedOn"=>date('y-m-d H:i:s')
