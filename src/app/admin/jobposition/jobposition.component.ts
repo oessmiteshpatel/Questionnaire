@@ -32,6 +32,9 @@ export class JobpositionComponent implements OnInit {
 			$('footer').removeClass('footer_fixed');    
 	}
   },100);
+  const body = document.querySelector('body');
+    var count = jQuery(window).height() - 200;
+    body.style.setProperty('--screen-height', count+"px");
 	  let id = this.route.snapshot.paramMap.get('id');
 	 if(id)
 	 {	

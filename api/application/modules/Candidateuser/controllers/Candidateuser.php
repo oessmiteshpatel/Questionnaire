@@ -15,7 +15,8 @@ class Candidateuser extends CI_Controller {
 		$post_user = json_decode(trim(file_get_contents('php://input')), true);
 		if ($post_user) 
 			{
-				if($post_user['CandidateId']>0)
+				$candidatevalue=$post_user['candidatevalue'];
+				if($candidatevalue['CandidateId']>0)
 				{
 					$result = $this->Candidateuser_model->edit_user($post_user);
 					if($result)

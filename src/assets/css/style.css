@@ -60,7 +60,7 @@ header .user_dropdown li ul.dropdown-menu li a i{font-size: 13px; margin-right: 
 header .user_dropdown li ul.dropdown-menu li:hover a{color: #a6ce39;}
 header .user_dropdown li ul.dropdown-menu li.sign_btn{padding: 15px; border-top: 1px solid #ebedf2; }
 header .user_dropdown li ul.dropdown-menu li a.next_btn{display: inline-block;font-size: 13px;padding: 10px;text-align: center;background: #a6ce39;border-radius: 4px;color: #fff;border: 0;line-height: 13px;min-width: 100px;opacity: 0.85;transition: all .3s ease-in-out;box-shadow: 0 5px 10px 2px rgba(88,103,221,.19);}
-header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;background: #a6ce39;}
+header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;background: #a6ce39;cursor: pointer;}
 .navbar-default {background-color: transparent;border-color: transparent;margin-top: 25px;margin-bottom: 0px;}
 .navbar-default .navbar-nav>li>a{font-size:18px;text-transform:uppercase;color: #fff;background: #0061af;}
 .navbar-nav>li{margin-right:10px;}
@@ -71,8 +71,7 @@ header .user_dropdown li ul.dropdown-menu li a.next_btn:hover{opacity: 1;backgro
 .dropdown-menu>li>a{color: #111;font-size: 16px;text-transform: uppercase;}
 .navbar .navbar-nav {display: inline-block;float: none;}
 .navbar .navbar-collapse {text-align: center;}
-
-.all_outer_page{padding: 20px 0; height: 500px; vertical-align: middle; display: table-cell; position: relative; width: inherit;}
+.all_outer_page {padding: 20px 0;height: var(--screen-height);vertical-align: middle;display: table-cell;position: relative;width: inherit;}
 .white_form_block{ margin: 20px 0 0 0; background: #f9f9f9; border-radius:10px; box-shadow:0 0 5px rgba(0,0,0,0.3); overflow:hidden;}
 .white_form_block .padding_box{padding: 20px;}
 .white_form_block .account_block{ padding:20px; margin-top: 20px; background: #0061af; border-radius:0 0 10px 10px; border-top:1px solid #666;}
@@ -128,8 +127,9 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 .inner_content .thankyou_block span{text-shadow:none;color: #a6ce39;display: block;margin-top: 10px;font-size: 24px;}
 .inner_content .thankyou_block img{margin: 0 auto;width: 160px;height: 160px;}
 .form-btn {text-align: center;}
-.inner_content .ans_block .error_span {color: red;}
+.error_span {color: red;}
 .answer_block label{float: left;}
+.gradiant_body{margin:0px; padding: 0 0 0; background: linear-gradient(to top left, #8BC34A, #0061af); overflow-x: hidden; height:100%; min-height:100%;background-attachment: fixed; font-size: 13px; }
 /* ..... Inner Page Contener Area Strat ..... */
 
 /* ------- Footer ------- */
@@ -137,6 +137,9 @@ footer.footer_fixed{position: fixed; bottom: 0; left: 0;z-index:100;}
 footer{ background:#f2f2f2; padding:14px 0; font-size:15px; font-weight: 400; line-height: 15px; width:100%; color:#111111; border-top:10px solid #a6ce39; }
 .go_top { position:fixed; bottom: 50px; right:20px; padding:0px; display:none; cursor: pointer; z-index: 999; height: 45px; width: 45px; text-align: center; background: rgba(0,0,0,0.5); color: #fff; font-size: 25px; line-height: 45px; border-radius: 5px; transition: all .3s ease-in-out;}
 .go_top:hover{background: rgba(0,0,0,0.8); transition: all .3s ease-in-out;}
+footer.register_footer{ border:none;background:none; padding:10px; font-size:12px; font-weight: normal; line-height: 20px; color:#fff; position: relative; bottom:0; right: 0; z-index: 999; transition:all 0.4s ease 0s; width: 100%;}
+footer.register_footer a{color:#fff; }
+footer.register_footer a:hover{color:#111; }
 #colorPickerFrameCanvas{display:none!important;}
 /* ------- End Footer ------- */
 
@@ -166,6 +169,11 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 #Delete_Modal .modal-dialog{width: 80%;}
 .add_que .form-control{width: 87%!important;display: inline-block!important;}
 .lgn_btn{margin-top: 10px;}
+.height_100_box {display: block;height: 100%;min-height: 100%;}
+.content-area {display: table;max-width: 100%;padding: 0px;width: 100%;}
+#main {padding: 25px 0;height: var(--screen-height);vertical-align: middle;display: table-cell;position: relative;width: inherit;}
+.file_upload input[type="text"]{background:url(../images/upload.png) 98% center no-repeat; background-size:20px;}
+.file_upload input[type="file"]{opacity: 0; position: absolute; left: 0; top: 22px; z-index: 99; width: 100%; cursor: pointer;}
 /*----------- end admin css ------------*/
 
 @media (min-width:2000px){	

@@ -40,6 +40,10 @@ export class CandidateuserComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');    
 		}
 	  },100);
+	  $('.file_upload input[type="file"]').change(function (e) {
+		var fileName = e.target.files[0].name;
+		$('.file_upload input[type="text"]').val(fileName);
+	});
 		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};

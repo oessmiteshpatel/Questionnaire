@@ -42,6 +42,9 @@ export class ManagequestionComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');    
 		}
     },100);
+    const body = document.querySelector('body');
+    var count = jQuery(window).height() - 200;
+    body.style.setProperty('--screen-height', count+"px");
     
     this.questionEntity = {};
     

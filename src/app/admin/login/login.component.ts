@@ -25,14 +25,13 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     //this.globals = this.global;
    
-    setTimeout(function(){
-      if ($("body").height() < $(window).height()) {  
-        $('footer').addClass('footer_fixed');     
-    }      
-    else{  
-        $('footer').removeClass('footer_fixed');    
-    }
-    },100);  
+    const body = document.querySelector('body');
+    var count = jQuery(window).height();
+    body.style.setProperty('--screen-height', count+"px"); 
+
+
+
+    
     this.loginEntity={};
     
     
@@ -61,27 +60,29 @@ export class LoginComponent implements OnInit {
           }
           else
             {
-          //alert('error');
+          alert('error');
           this.btn_disable = false;
           this.submitted = false;
           this.invalid = false;
           this.loginEntity = {};
           loginForm.form.markAsPristine();
             }
-            this.router.navigate(['/admin/home']);
+          this.router.navigate(['/admin/home']);
            
         }, 
         (error) => 
         { 
-              this.btn_disable = false;
+          alert('error2');
+          // swal({
+          //   position: 'top-end',
+          //   type: 'danger',
+          //   title: 'Invalid Email Address or Password',
+          //   showConfirmButton: false,
+          //   timer: 1500
+          // })    
+          this.btn_disable = false;
               this.submitted = false;
-              swal({
-                position: 'top-end',
-                type: 'danger',
-                title: 'Invalid Email Address or Password',
-                showConfirmButton: false,
-                timer: 1500
-              })
+              
           //this.globals.isLoading = false;
           // if(error.text){
           // 	this.invalid = true;

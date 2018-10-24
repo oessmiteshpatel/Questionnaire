@@ -1,126 +1,39 @@
 <!-- Inner Section -->
-<div class="inner_banner">
-  <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
-  <div class="innerbanner_text">HR RELATED QUESTIONNAIRES</div>
-</div>
-<div class="clearfix"></div>
-<!-- End Inner Section --> 
-<!-- Inner Section -->
 <div class="inner_content">
-        <div class="container ">
-          <div class="row">
-            <div class="col-md-12 col-sm-12">
-              <div class="clearfix"></div>
-              <div class="row">
-                <div class="col-md-12 col-sm-12 col-xs-12">
-
-                        
-                    <div class="clearfix"></div>
-                        <form class="form-validate" role="form" #candidateForm="ngForm" (ngSubmit)="addUser(candidateForm)">
-    
-                                
-                                    <h1 class="text-center">Candidate Detail</h1>
-                                    <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
-                                    <div class="clearfix"></div>
-                                    <div class="ans_block">  
-                                        <!-- <div class="col-md-2 col-sm-2">
-                                          <label class="pull-right mt-5">Candidate Name</label>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                          <div class="form-group">
-                                            
-                                              <input type="text" class="form-control" #CandidateName="ngModel" [(ngModel)]="candidateEntity.CandidateName" class="form-control" name="CandidateName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100"  [ngClass]="{red_border: (CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)}" required/>
-                                              <span class="error_span" *ngIf="(CandidateName.dirty && CandidateName.invalid) || (CandidateName.pristine && submitted)"> 
-                                              <span *ngIf="CandidateName.errors.required || (CandidateName.pristine && submitted)">Please enter your name </span>
-                                              <span *ngIf="CandidateName.errors && CandidateName.errors.pattern">Please enter valid name</span>	
-                                              </span>
-                                          </div>
-                                        </div> -->
-                                        <!-- <div class="col-md-2 col-sm-2">
-                                            <label class="pull-right mt-5">Position Applied For</label>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="form-group">
-                                              <select class='select-option' required class="form-control" #JobPositionId="ngModel" [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId" [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
-                                                  <option value="">Select</option>
-                                                   <option class='option' *ngFor='let jobpo of jobpositionList' [value]="jobpo.JobPositionId">{{jobpo.JobPositionName}}</option></select>
-                                                   <span class="error_span"  *ngIf="(JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)"> 
-                                                       <span *ngIf="JobPositionId.errors.required || (JobPositionId.pristine && submitted)">Please select job position </span>
-                                                   </span>
-                                            </div>
-                                        </div> -->
-                                        <div class="clearfix"></div>
-                                        <!-- <div class="col-md-2 col-sm-2">
-                                            <label class="pull-right mt-5">Candidate Email</label>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="form-group">
-                                                <input type="email" class="form-control" #CandidateEmail="ngModel" name="CandidateEmail" 
-                                                pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"	[(ngModel)]="candidateEntity.CandidateEmail" [ngClass]="{red_border: (CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)}"  required/>
-                                                <span class="error_span"  *ngIf="(CandidateEmail.dirty && CandidateEmail.invalid) || (CandidateEmail.pristine && submitted)"> 
-                                                    <span *ngIf="CandidateEmail.errors.required || (CandidateEmail.pristine && submitted)">Please enter your email address </span>
-                                                </span>
-                                                <span class="error_span" *ngIf="CandidateEmail.errors && CandidateEmail.errors.pattern">
-                                                    Please enter valid email address
-                                              </span>
-                                            </div>
-                                          </div> -->
-                                        <!-- <div class="col-md-2 col-sm-2">
-                                            <label class="pull-right mt-5">Phone number</label>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" #PhoneNumber="ngModel" name="PhoneNumber" pattern="[0-9\-.()+\s]{3,13}" maxlength="13"
-                                                [(ngModel)]="candidateEntity.PhoneNumber" [ngClass]="{red_border: (PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)}"  required/>
-                                                <span class="error_span" *ngIf="(PhoneNumber.dirty && PhoneNumber.invalid) || (PhoneNumber.pristine && submitted)"> 
-                                                  <span *ngIf="PhoneNumber.errors.required || (PhoneNumber.pristine && submitted)">Please enter your phone number</span>
-                                                  <span *ngIf="PhoneNumber.errors && PhoneNumber.errors.pattern">Please enter valid phone number</span>
-                                                </span>
-                                            </div>
-                                          </div> -->
-
-                                          <!-- <div class="file_upload form-group" id="favicon_upload"> -->
-                                                <div class="clearfix"></div>
-                                        <div class="col-md-2 col-sm-2">
-                                            <label class="pull-right mt-5">File Upload</label>
-                                        </div>
-                                        <div class="col-md-4 col-sm-4">
-                                                <div class="form-group">
-            
-                                                <div class="clearfix margin_upload"></div>
-                                               
-                                                <div>
-                                                    <!-- <input  type="text" name="file2" class="form-control" [(ngModel)]="candidateEntity.Favicon"/> <i class="fa fa-upload"></i> -->
-                                                    <input type="file" accept=".pdf,.doc" name="Faviconicon" id="Favicon" #Faviconicon="ngModel" [(ngModel)]="candidateEntity.Faviconicon" />  
-                                                </div>
-                                                
-                                                </div>
-                                        </div>
-                                        <div class="clearfix"></div>
-                                    </div>                
-                                      
-        
-                                      <div class="clearfix"></div>
-    
-        
-        
-                                    <div class="clearfix"></div>
-        
-                                <div class="col-md-12">
-                                    <div class="form-btn">      
-                                            <button type="submit" class="lgn_btn"><span>Submit</span></button>
-                                    </div>
+    <div class="container ">
+        <div class="row">
+            <!--  page header -->
+            <div class="col-md-12">
+                <h1 class="text-center">Upload Scanned Signatured HR Form</h1>
+                <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
+                <div class="clearfix"></div>
+            </div>
+            <!-- end page header -->
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="content-area">
+                    <div id="main">
+                        <div class="form-bg">
+                            <form class="form-validate" role="form" #candidateForm="ngForm" (ngSubmit)="addUser(candidateForm)">
+                                <div class="form-group file_upload col-md-4 col-sm-4 col-md-offset-4">
+                                    <label><span>*</span>Upload Scannned PDF</label>
+                                    <input type="text" disabled class="form-control" />
+                                    <input type="file" class="form-control" accept=".pdf,.doc" name="Faviconicon" id="Favicon" #Faviconicon="ngModel"
+                                        [(ngModel)]="candidateEntity.Faviconicon" />
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="col-lg-12 text-center">
+                                        <button type="submit" class="lgn_btn"><span>Submit</span></button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
         </div>
-        <div class="clearfix"></div>
-      </div>
-      <div class="clearfix"></div>
-      <!-- End Inner Section -->  
-
-
-    
+    </div>
+    <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>
+<!-- End Inner Section -->

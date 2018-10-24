@@ -41,6 +41,9 @@ export class RegisterComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');    
 			}
 			},100);
+			const body = document.querySelector('body');
+    var count = jQuery(window).height() - 200;
+    body.style.setProperty('--screen-height', count+"px");
 			this.RegisterService.getAllDefaultData()
 			.then((data) => {
 				this.CountryList = data['country'];
@@ -127,7 +130,7 @@ export class RegisterComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'User Updated Successfully',
+								title: 'Profile Updated Successfully',
 								showConfirmButton: false,
 								timer: 1500
 							})
@@ -141,7 +144,7 @@ export class RegisterComponent implements OnInit {
 								timer: 1500
 							})
 						}						
-							this.router.navigate(['/admin/register/list']);
+							this.router.navigate(['/admin/home']);
 					},
 					(error) => {
 						//alert('error');
