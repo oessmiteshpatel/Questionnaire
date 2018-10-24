@@ -66,13 +66,13 @@ class Candidateuser_model extends CI_Model
 	 {
 		if($post_user) 
 		{
-			
+			$candidatevalue=$post_user['candidatevalue'];
 					$user_data=array(
 						// "CandidateName"=>trim($post_user['CandidateName']),
 						// "CandidateEmail"=>trim($post_user['CandidateEmail']),
 						// "PhoneNumber"=>trim($post_user['PhoneNumber']),
 						// "JobPositionId"=>trim($post_user['JobPositionId']),		
-						"CandidateHrForm"=>trim($post_user['CandidateHrForm']),
+						"CandidateHrForm"=>trim($candidatevalue['CandidateHrForm']),
 					//	"IsActive"=>$IsActive,
 						"CreatedBy"=>1,
 						"CreatedOn"=>date('y-m-d H:i:s')
@@ -80,7 +80,7 @@ class Candidateuser_model extends CI_Model
 						);	
 			
 		
-			$this->db->where('CandidateId',trim($post_user['CandidateId']));
+			$this->db->where('CandidateId',trim($candidatevalue['CandidateId']));
 			$res = $this->db->update('tblcandidate',$user_data);
 			if($res) {
 				

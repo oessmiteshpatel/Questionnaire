@@ -27,16 +27,18 @@ export class AuthGuard implements CanActivate {
 	// } else {
 		
 	// }
-	  
+	debugger
 	  if(this.authService.isLoggedIn()==true){
-		  debugger
+		  
 			if(state.url.split('/')[3] != undefined){
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2]+'/'+state.url.split('/')[3];
-			} else {
+			} else if(state.url.split('/')[2] != undefined) {
 				this.globals.currentLink = '/'+state.url.split('/')[1]+'/'+state.url.split('/')[2];
+			} else {
+				this.globals.currentLink = state.url;
 			}
-		  if(state.url=='/admin/login'){
-			  this.globals.IsLoggedIn = false;
+		  if(state.url=='/admin/login' || state.url=='/admin'){
+			  this.globals.IsLoggedIn = true;
 			  this.router.navigate(['/admin/home']);
 			  return false;
 		  } else {

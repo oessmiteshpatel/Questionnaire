@@ -51,7 +51,7 @@ export class CandidateuserComponent implements OnInit {
 					.then((data) => {
 						this.jobpositionList = data['jobpositon'];
 						this.questionList = data['question'];
-					console.log(this.questionList);
+					//console.log(this.questionList);
 
 					
 					},
@@ -111,7 +111,7 @@ export class CandidateuserComponent implements OnInit {
 				
 				//this.btn_disable = true;
 				this.candidateEntity.CandidateId=id;
-				this.CandidateuserService.add(this.candidateEntity)
+				this.CandidateuserService.add({'candidatevalue':this.candidateEntity})
 					.then((data) => {
 
 						if(file2){
