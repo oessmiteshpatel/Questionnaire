@@ -43,7 +43,7 @@ class Login_user extends CI_Controller {
 			}
 			else
 			{
-				trigger_error("Invalid username or password", E_USER_ERROR);
+			
 				return $this->output
 				->set_status_header(404)
 				->set_output(json_encode(array(
