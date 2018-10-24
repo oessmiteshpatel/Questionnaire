@@ -45,6 +45,7 @@ export class CandidatelistComponent implements OnInit {
           $('footer').removeClass('footer_fixed');    
       }
       },100);
+      
       this.CandidateuserService.getAllDefaultData()
       .then((data) => {
       
