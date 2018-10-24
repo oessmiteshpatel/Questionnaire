@@ -1,15 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
-import { Globals } from '.././globals';
-import { Router } from '@angular/router';
 declare var $,unescape	: any;
-
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  selector: 'app-thankyou',
+  templateUrl: './thankyou.component.html',
+  styleUrls: ['./thankyou.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class ThankyouComponent implements OnInit {
 
   constructor() { }
 

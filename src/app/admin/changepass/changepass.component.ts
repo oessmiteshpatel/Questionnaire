@@ -69,7 +69,7 @@ export class ChangepassComponent implements OnInit {
 						  })
 						this.btn_disable = false;
 						this.submitted = false;
-					this.router.navigate(['/changepass']);
+					this.router.navigate(['/admin/changepass']);
 				}
 				else
 					{
@@ -86,13 +86,13 @@ export class ChangepassComponent implements OnInit {
 							showConfirmButton: false,
 							timer: 1500
 						  })
-						this.router.navigate(['/home']);
+						this.router.navigate(['/admin/home']);
 					}
 			}, 
 			(error) => 
 			{
 			//	this.globals.isLoading = false;
-				this.router.navigate(['/pagenotfound']);
+				//this.router.navigate(['/pagenotfound']);
 				//alert('error');
 				this.btn_disable = false;
 				this.submitted = false;

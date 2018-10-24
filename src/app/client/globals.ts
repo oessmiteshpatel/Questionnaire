@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { JwtHelper } from 'angular2-jwt';
-import { environment } from '../../environments/environment';
+ import { JwtHelper } from 'angular2-jwt';
+ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class Globals { 
@@ -13,9 +13,9 @@ export class Globals {
   // //baseAPIUrl: string = 'http://localhost:4200/LMS/api/';  
   // baseUrl: string = 'http://localhost/LMSTOOL/api/';
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
-  IsLoggedIn: boolean = false;
+  // IsLoggedIn: boolean = false;
  
-  currentLink: string = '';
+  // currentLink: string = '';
   authData = localStorage.getItem('token') ? new JwtHelper().decodeToken(localStorage.getItem('token')):null;
    msgflag = false;
    message = '';

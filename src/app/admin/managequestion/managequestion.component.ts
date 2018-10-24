@@ -160,7 +160,7 @@ export class ManagequestionComponent implements OnInit {
                 timer: 1500
               })
 						}						
-							this.router.navigate(['/question/list']);
+							this.router.navigate(['/admin/question/list']);
 					},
 					(error) => {
 						//alert('error');

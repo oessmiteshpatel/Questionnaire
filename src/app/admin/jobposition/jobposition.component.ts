@@ -111,7 +111,7 @@ export class JobpositionComponent implements OnInit {
 				} 
 				
 				
-				this.router.navigate(['/position/list']);
+				this.router.navigate(['/admin/position/list']);
 			}, 
 			(error) => 
 			{

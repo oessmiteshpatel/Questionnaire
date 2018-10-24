@@ -58,7 +58,8 @@ export class LoginComponent implements OnInit {
 							timer: 1500
 						})
 						
-          }else
+          }
+          else
             {
           //alert('error');
           this.btn_disable = false;
@@ -66,10 +67,9 @@ export class LoginComponent implements OnInit {
           this.invalid = false;
           this.loginEntity = {};
           loginForm.form.markAsPristine();
-        
             }
-            this.router.navigate(['/home']);
-           //this.router.navigate(['/userprofile/edit/{{globals.authData.UserId}}']);
+            this.router.navigate(['/admin/home']);
+           
         }, 
         (error) => 
         { 
