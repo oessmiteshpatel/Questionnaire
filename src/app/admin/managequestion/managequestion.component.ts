@@ -34,6 +34,15 @@ export class ManagequestionComponent implements OnInit {
   ngOnInit() {
     debugger
 
+    setTimeout(function(){
+			if ($("body").height() < $(window).height()) {  
+				$('footer').addClass('footer_fixed');     
+		}      
+		else{  
+				$('footer').removeClass('footer_fixed');    
+		}
+    },100);
+    
     this.questionEntity = {};
     
     this.questionEntity.QuestionId = 0;
