@@ -49,7 +49,7 @@
 									</div>
 
 									<div *ngIf="questionEntity.AnswerTypeId==2">
-										<label><span class="required">*</span>Input Label</label>
+										<label><span class="required">*</span>Enter Label for Text Boxes</label>
 										<!-- loop start -->
 										<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 
@@ -97,26 +97,23 @@
 									</tr>
 								</table> -->
 
-										<label><span class="required">*</span>Input Label</label>
+										<label><span class="required">*</span>Enter Radio button Label and its Value</label>
 										<!-- loop start -->
 										<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 
 											<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
-											 [(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required />
+											 [(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" placeholder="Label" required />
 
 											<span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
 												<span *ngIf="QLabel.errors && QLabel.errors.required">
 													Please enter label name
 												</span>
-
 												<span *ngIf="QLabel.errors && QLabel.errors.pattern">
 													Please enter valid label
 												</span>
 											</span>
-
-
 											<input type="text" class="form-control" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" #QValue="ngModel"
-											 [(ngModel)]="QuestionList[i].QValue" name="QValue{{i}}" required />
+											 [(ngModel)]="QuestionList[i].QValue" name="QValue{{i}}" placeholder="Value" required />
 
 											<span class="error_span" *ngIf="(QValue.dirty && QValue.invalid) || (QValue.pristine && submitted)">
 												<span *ngIf="QValue.errors && QValue.errors.required">
@@ -146,7 +143,7 @@
 
 									<div *ngIf="questionEntity.AnswerTypeId==3 ">
 										<div class="form-group">
-											<label>Label</label>
+											<label>Enter Label for Text Box</label>
 											<!-- loop start -->
 											<div class="r-group add_que" *ngFor="let Question of QuestionList; let i = index; let last = last;">
 
