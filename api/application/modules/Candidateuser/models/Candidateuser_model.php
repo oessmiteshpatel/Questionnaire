@@ -62,8 +62,40 @@ class Candidateuser_model extends CI_Model
 	}
 
 
-
-
+	public function edit_user($post_user) 
+	 {
+		if($post_user) 
+		{
+			
+					$user_data=array(
+						// "CandidateName"=>trim($post_user['CandidateName']),
+						// "CandidateEmail"=>trim($post_user['CandidateEmail']),
+						// "PhoneNumber"=>trim($post_user['PhoneNumber']),
+						// "JobPositionId"=>trim($post_user['JobPositionId']),		
+						"CourseImage"=>trim($post_user['CourseImage']),
+					//	"IsActive"=>$IsActive,
+						"CreatedBy"=>1,
+						"CreatedOn"=>date('y-m-d H:i:s')
+							
+						);	
+			
+		
+			$this->db->where('CandidateId',trim($post_user['CandidateId']));
+			$res = $this->db->update('tblcandidate',$user_data);
+			if($res) {
+				
+				return true;
+			} else {
+				return false;
+			}
+		
+		}
+		else 
+		{
+			return false;
+		}	
+	
+	}
 
 	public function getlist_user()
 	{

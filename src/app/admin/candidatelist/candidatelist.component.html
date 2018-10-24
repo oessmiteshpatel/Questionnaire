@@ -62,7 +62,7 @@
                       </div>
 
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Upload File" > 
-                          <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button"  (click)="deleteCompany(candidate.CandidateId)"><span class="fa fa-upload"></span></button>
+                          <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" routerLink="/admin/candidateuser/edits/{{candidate.CandidateId}}"><span class="fa fa-upload"></span></button>
                       </div>
 
                       
@@ -81,6 +81,45 @@
     </div>
   </div>
   <!-- end page-wrapper --> 
+
+
+
+  <!-- upoad pdf file start --> 
+
+  <!-- <div class="modal fade bs-example-modal-sm"  id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+          <div class="modal-content">
+              <form #imageForm="ngForm" (ngSubmit)="addImage(imageForm)">
+                <div class="modal-body">
+                
+                        <div class="file_upload form-group" id="favicon_upload">
+                            <label>Favicon</label>
+                            <div class="clearfix margin_upload"></div>
+                            <div class="upload_image">
+                                <img src="../assets/candidate/{{candidateEntity.Favicon}}" alt="favicon" />
+                            </div>
+                            <div [ngClass]="{'pull-right':(candidateEntity.Favicon!='' && candidateEntity.Favicon!=null)}">
+                                <input readonly type="text" name="file2" class="form-control" [(ngModel)]="candidateEntity.Favicon"/> <i class="fa fa-upload"></i>
+                                <input type="file" accept="image/*" name="Faviconicon" id="Favicon" #Faviconicon="ngModel" [(ngModel)]="candidateEntity.Faviconicon" />  
+                            </div>
+                            
+                        </div>
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="submit" class="lgn_btn"><span>Submit</span></button>
+                    <button type="button" class="back_btn" data-dismiss="modal"><span>No</span></button>
+                </div>
+            </form>  
+          </div>
+      </div>
+    </div> -->
+
+  <!-- upoad pdf file end --> 
+
+
+
+
+
 
 <!-- Downloadable PDF Start -->
 <div  id="contentssss" #content style="display:none">  
@@ -189,7 +228,7 @@
             <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Position applied for:<strong> {{candidateData.JobPositionName}} </strong></p>
         </td></tr>
         <tr><td>
-          <p style="font-size: 16px;margin: 0px 0px 15px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Date:<strong> {{candidateData.CreatedOn | date: 'dd/MM/yyyy'}} </strong></p>
+          <p style="font-size: 16px;margin: 0px 0px 15px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> Date: {{candidateData.CreatedOn | date: 'dd/MM/yyyy'}}</p>
       </td></tr>
       </tbody>
     </table>

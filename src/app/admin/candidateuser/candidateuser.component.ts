@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,ElementRef} from '@angular/core';
 import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import { Router } from '@angular/router';
@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CandidateuserService } from '../services/candidateuser.service';
 import { debug } from 'util';
 declare var $,unescape	: any;
+declare var $,swal: any;
 @Component({
   selector: 'app-candidateuser',
   providers: [CandidateuserService],
@@ -26,7 +27,7 @@ export class CandidateuserComponent implements OnInit {
 	primary;
 	second1;
 	first1;
-  constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
+  constructor(private http: Http, public globals: Globals,private elem: ElementRef, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
     ngOnInit() {		
@@ -61,7 +62,7 @@ export class CandidateuserComponent implements OnInit {
 			this.CandidateuserService.getById(id)
 				.then((data) => {
 					// option 
-			//		this.candidateEntity = data;
+					this.candidateEntity = data;
 					this.questionList = data;
 				//	console.log(this.questionList);
 					
@@ -89,27 +90,94 @@ export class CandidateuserComponent implements OnInit {
 		debugger
 			
 			let id = this.route.snapshot.paramMap.get('id');
+
+			let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];	
+			var fd = new FormData();
+			if(file2)
+			{
+					fd.append('favicon', file2);
+					this.candidateEntity.Faviconicon = file2['name'];
+					this.candidateEntity.CourseImage = this.candidateEntity.Faviconicon;
+			} else {
+				fd.append('favicon', null);
+				this.candidateEntity.Faviconicon = null;
+			}
 			this.submitted = true;
 			if (candidateForm.valid) {
 				
 				//this.btn_disable = true;
-				this.CandidateuserService.add({'candidatevalue':this.candidateEntity,'questionvalue':this.questionList})
+				this.candidateEntity.CandidateId=id;
+				this.CandidateuserService.add(this.candidateEntity)
 					.then((data) => {
 
-					
-						//alert('success');
-						this.btn_disable = false;
-						this.submitted = false;
-						this.candidateEntity = {};
-						candidateForm.form.markAsPristine();
-						if (id) {
+						if(file2){
+							this.CandidateuserService.uploadFile(fd)
+							.then((data) => 
+							{	
+									this.btn_disable = false;
+									this.submitted = false;
+								//	this.CourseEntity = {};
+									candidateForm.form.markAsPristine();
+									if (id) {
+								
+									swal({
+										position: 'top-end',
+										type: 'success',
+										title: 'Candidate Details Updated Successfully!',
+										showConfirmButton: false,
+										timer: 1500
+									})
+								} else {
+								
+									swal({
+										position: 'top-end',
+										type: 'success',
+										title: 'Candidate Added Successfully!',
+										showConfirmButton: false,
+										timer: 1500
+									})
+								} 
+									this.router.navigate(['/admin/candidate/list']);
+	
+							},(error) => 
+								{ 
+									this.btn_disable = false;
+									this.submitted = false;
+								
+									this.router.navigate(['/pagenotfound']);
+								});
+						   }else
+						   {
+									this.btn_disable = false;
+									this.submitted = false;
+								//	this.CourseEntity = {};
+									candidateForm.form.markAsPristine();
+									if (id)
+									 {
+								
+											swal({
+												position: 'top-end',
+												type: 'success',
+												title: 'Course Updated Successfully!',
+												showConfirmButton: false,
+												timer: 1500
+											})
+									} else 
+									{
+								
+										swal({
+											position: 'top-end',
+											type: 'success',
+											title: 'Course Added Successfully!',
+											showConfirmButton: false,
+											timer: 1500
+										})
+									} 
+									this.router.navigate(['/admin/candidate/list']);
+						   }
+			 
 						
-						} else {
-						
-						}						
-							this.router.navigate(['/admin/thankyou']);
-					},
-					(error) => {
+					},(error) => {
 						//alert('error');
 						this.btn_disable = false;
 						this.submitted = false;

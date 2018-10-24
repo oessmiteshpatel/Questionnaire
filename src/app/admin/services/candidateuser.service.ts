@@ -30,6 +30,27 @@ export class CandidateuserService {
     }
 
 
+
+    uploadFile(file){
+      let promise = new Promise((resolve, reject) => {
+      this.http.post(this.globals.baseAPIUrl + 'Candidateuser/uploadFile', file)
+      .toPromise()
+      .then(
+      res => { // Success
+      resolve(res);
+      },
+      msg => { // Error
+      reject(msg);
+      // this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
+      }
+      );
+      });	
+      return promise;
+      }
+      
+
+
     getAll()
   {
     debugger

@@ -15,16 +15,16 @@ class Candidateuser extends CI_Controller {
 		$post_user = json_decode(trim(file_get_contents('php://input')), true);
 		if ($post_user) 
 			{
-				// if($post_user['CandidateId']>0)
-				// {
-				// 	$result = $this->Candidateuser_model->edit_user($post_user);
-				// 	if($result)
-				// 	{
-				// 		echo json_encode($post_user);	
-				// 	}	
-				// }
-				// else
-				// {
+				if($post_user['CandidateId']>0)
+				{
+					$result = $this->Candidateuser_model->edit_user($post_user);
+					if($result)
+					{
+						echo json_encode($post_user);	
+					}	
+				}
+				else
+				{
 					
 					$result = $this->Candidateuser_model->add_user($post_user); 
 			
@@ -33,9 +33,24 @@ class Candidateuser extends CI_Controller {
 						echo json_encode($post_user); 
 						
 					}	
-				// }
+				}
 					
 			}
+	}
+
+
+	
+
+	public function uploadFile()
+	{
+		if($_FILES)
+		{
+			if(isset($_FILES['favicon']) && !empty($_FILES['favicon']))
+			{
+				move_uploaded_file($_FILES["favicon"]["tmp_name"], "../src/assets/candidate/".$_FILES["favicon"]["name"]);
+			}
+				echo json_encode('success');
+		}
 	}
 
 
@@ -44,14 +59,6 @@ class Candidateuser extends CI_Controller {
 			$data=$this->Candidateuser_model->getlist_user();
 			echo json_encode($data);
 	}
-
-
-	// public function getAllQuestion()
-	// {
-	// 		$data=$this->Candidateuser_model->getlist_question();
-	// 		echo json_encode($data);
-	// }
-
 
 
 	//Delete UserList
