@@ -38,7 +38,7 @@
                   <tbody>
                   <tr *ngFor="let question of questionList; let i = index" >
                           <td>{{i+1}}</td>
-                          <td>{{question.QuestionName}}</td>
+                          <td><span [innerHTML]="question.QuestionName"></span></td>
                           <td>{{question.AnswerName}}</td>
                           <td *ngIf="question.IsActive=='1'">Yes</td>
                           <td *ngIf="question.IsActive=='0'">No</td>

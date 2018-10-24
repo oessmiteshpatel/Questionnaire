@@ -20,7 +20,7 @@ export class ManagequestionlistComponent implements OnInit {
 		private ManagequestionService: ManagequestionService) { }
 
   ngOnInit() {
-    setTimeout(function(){
+    	setTimeout(function(){
 			if ($("body").height() < $(window).height()) {  
 				$('footer').addClass('footer_fixed');     
 		}      
