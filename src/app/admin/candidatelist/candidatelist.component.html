@@ -154,10 +154,10 @@
             <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
           </td>
         </tr>
-        <div *ngFor="let que of questionList;">
+        <div *ngFor="let que of questionList; let i = index">
         <tr style="padding: 10px 0px;display: block;">
           <td>
-            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{que.QuestionId}} </strong> <br> {{que.QuestionName}}</p>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> {{que.QuestionName}}</p>
             <!-- For Radio Button -->
             <div *ngIf="que.AnswerTypeId==1">
               <div *ngFor="let ans of que.child;">
@@ -239,10 +239,10 @@
             <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
           </td>
         </tr>
-        <div *ngFor="let que of questionList;">
+        <div *ngFor="let que of questionList; let i = index">
         <tr style="padding: 10px 0px;display: block;border-bottom:1px solid #222;">
           <td>
-            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{que.QuestionId}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>
+            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>
             <!-- For Radio Button -->
             <div *ngIf="que.AnswerTypeId==1">
               <div *ngFor="let ans of que.child;">
@@ -332,10 +332,10 @@
                         <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
                       </td>
                     </tr>
-                    <div *ngFor="let que of questionList;">
+                    <div *ngFor="let que of questionList;let i = index">
                     <tr style="padding: 10px 0px;display: block;">
                       <td>
-                        <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{que.QuestionId}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>
+                        <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>
                         <!-- For Radio Button -->
                         <div *ngIf="que.AnswerTypeId==1">
                           <div *ngFor="let ans of que.child;">
