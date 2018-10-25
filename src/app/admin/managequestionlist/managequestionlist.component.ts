@@ -57,7 +57,7 @@ export class ManagequestionlistComponent implements OnInit {
 		this.deleteEntity = question;
 		swal({
 			title: 'Are you sure?',
-			text: "You want to delete this Country?",
+			text: "You want to delete this Question?",
 			type: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -76,7 +76,7 @@ export class ManagequestionlistComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'Question deleted successfully',
+								title: 'Question Deleted Successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})

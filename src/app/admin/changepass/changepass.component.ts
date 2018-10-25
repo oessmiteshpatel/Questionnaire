@@ -61,12 +61,10 @@ export class ChangepassComponent implements OnInit {
 				.then((data) => {
 					if (data == 'Code duplicate') {
 						swal({
-							position: 'top-end',
-							type: 'danger',
-							title: 'You entered wrong current password',
-							showConfirmButton: false,
-							timer: 1500
-						})
+							type: 'warning',
+							title: 'Oops...',
+							text: 'Your current password is incorrect',
+						  })
 						this.btn_disable = false;
 						this.submitted = false;
 						this.router.navigate(['/admin/changepass']);
@@ -81,7 +79,7 @@ export class ChangepassComponent implements OnInit {
 						swal({
 							position: 'top-end',
 							type: 'success',
-							title: 'Your password has been changed',
+							title: 'Your password has been changed!',
 							showConfirmButton: false,
 							timer: 1500
 						})

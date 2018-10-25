@@ -134,7 +134,7 @@ export class CandidateuserComponent implements OnInit {
 									swal({
 										position: 'top-end',
 										type: 'success',
-										title: 'Candidate Details Updated Successfully!',
+										title: 'File Uploaded Successfully!',
 										showConfirmButton: false,
 										timer: 1500
 									})
@@ -143,7 +143,7 @@ export class CandidateuserComponent implements OnInit {
 									swal({
 										position: 'top-end',
 										type: 'success',
-										title: 'Candidate Added Successfully!',
+										title: 'File Uploaded Successfully!',
 										showConfirmButton: false,
 										timer: 1500
 									})
@@ -169,7 +169,7 @@ export class CandidateuserComponent implements OnInit {
 											swal({
 												position: 'top-end',
 												type: 'success',
-												title: 'Course Updated Successfully!',
+												title: 'File Uploaded Successfully!',
 												showConfirmButton: false,
 												timer: 1500
 											})
@@ -179,7 +179,7 @@ export class CandidateuserComponent implements OnInit {
 										swal({
 											position: 'top-end',
 											type: 'success',
-											title: 'Course Added Successfully!',
+											title: 'File Uploaded Successfully!',
 											showConfirmButton: false,
 											timer: 1500
 										})

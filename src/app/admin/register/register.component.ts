@@ -130,7 +130,7 @@ export class RegisterComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'Profile Updated Successfully',
+								title: 'Profile Updated Successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})
@@ -139,7 +139,7 @@ export class RegisterComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'User Added Successfully',
+								title: 'User Added Successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})

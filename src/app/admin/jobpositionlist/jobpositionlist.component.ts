@@ -74,7 +74,7 @@ export class JobpositionlistComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'Job Position deleted successfully',
+								title: 'Job Position Deleted Successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})
