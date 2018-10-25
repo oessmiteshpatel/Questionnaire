@@ -78,22 +78,33 @@ class Question_model extends CI_Model
 		{
 			$questiontype=$post_Question['question'];
 			$questionlabel=$post_Question['question1'];
-			$this->db->where('QuestionId',$questiontype['QuestionId']);
-			$res = $this->db->delete('tblquestion');
-			$this->db->where('QuestionId',$questiontype['QuestionId']);
-			$res = $this->db->delete('tblquestionanswer');
-			if($res)
-			{
-			
-				$Question_data =array
+
+			$Question_data =array
 					(
 						'QuestionName' => trim($questiontype['QuestionName']),
 						'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
 						"IsActive"=>1
 					);
 		
-					$res1 = $this->db->insert('tblquestion',$Question_data);
-					$questionId = $this->db->insert_id();
+					$this->db->where('QuestionId',trim($questiontype['QuestionId']));
+					$res1 = $this->db->update('tblquestion',$Question_data);
+
+			// $this->db->where('QuestionId',$questiontype['QuestionId']);
+			// $res = $this->db->delete('tblquestion');
+			$this->db->where('QuestionId',$questiontype['QuestionId']);
+			$res = $this->db->delete('tblquestionanswer');
+			if($res)
+			{
+			
+				// $Question_data =array
+				// 	(
+				// 		'QuestionName' => trim($questiontype['QuestionName']),
+				// 		'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
+				// 		"IsActive"=>1
+				// 	);
+		
+				// 	$res1 = $this->db->insert('tblquestion',$Question_data);
+				// 	$questionId = $this->db->insert_id();
 					foreach($questionlabel as $question)
 					{		
 						if(isset($question['QValue']) && !empty($question['QValue']))
@@ -106,7 +117,7 @@ class Question_model extends CI_Model
 						}
 						$Question_data2 = array(
 
-							'QuestionId' => trim($questionId),
+							'QuestionId' => trim($questiontype['QuestionId']),
 							'QLabel' => trim($question['QLabel']),
 							'QValue' =>$QValue,
 							"IsActive"=>1
@@ -137,7 +148,6 @@ class Question_model extends CI_Model
 		$this->db->select('AnswerTypeId,AnswerName,DisplayText,IsActive');
 		
 		$this->db->where('IsActive=',1);
-		//$this->db->order_by('AnswerName','asc');
 		$result=$this->db->get('tblmstanswertype');
 		
 		$res=array();
