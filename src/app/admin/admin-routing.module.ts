@@ -63,6 +63,7 @@ const routes: Routes = [
           
           { path : 'position', component : JobpositionComponent , canActivate : [AuthGuard]  },
           { path : 'position/list', component : JobpositionlistComponent, canActivate : [AuthGuard]  },
+          { path : 'position/edit/:id', component : JobpositionComponent , canActivate : [AuthGuard]  },
   
           { path : 'candidateuser', component : CandidateuserComponent, canActivate : [AuthGuard]   },
           { path : 'candidate/list', component : CandidatelistComponent, canActivate : [AuthGuard]   },

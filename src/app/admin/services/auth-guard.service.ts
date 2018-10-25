@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
 	// } else {
 		
 	// }
-	debugger
+	
 	  if(this.authService.isLoggedIn()==true){
 		  
 			if(state.url.split('/')[3] != undefined){

@@ -4,110 +4,94 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { JobpositionService } from '../services/jobposition.service';
-declare var $,swal: any;
+declare var $, swal: any;
 
 @Component({
-  selector: 'app-jobpositionlist',
-  providers: [JobpositionService],
-  templateUrl: './jobpositionlist.component.html',
-  styleUrls: ['./jobpositionlist.component.css']
+	selector: 'app-jobpositionlist',
+	providers: [JobpositionService],
+	templateUrl: './jobpositionlist.component.html',
+	styleUrls: ['./jobpositionlist.component.css']
 })
 export class JobpositionlistComponent implements OnInit {
-  positionList;
-  deleteEntity;
+	positionList;
+	deleteEntity;
 	msgflag;
 	message;
-  type;
-  
-  constructor(private http: Http, private router: Router, private route: ActivatedRoute, private JobpositionService: JobpositionService, public globals: Globals) { }
+	type;
+
+	constructor(private http: Http, private router: Router, private route: ActivatedRoute, private JobpositionService: JobpositionService, public globals: Globals) { }
 
 
-    
-	ngOnInit()
-	{
-  setTimeout(function(){
-		if ($("body").height() < $(window).height()) {  
-			$('footer').addClass('footer_fixed');     
-	}      
-	else{  
-			$('footer').removeClass('footer_fixed');    
+
+	ngOnInit() {
+		setTimeout(function () {
+			if ($("body").height() < $(window).height()) {
+				$('footer').addClass('footer_fixed');
+			}
+			else {
+				$('footer').removeClass('footer_fixed');
+			}
+		}, 100);
+		this.JobpositionService.getAll()
+			.then((data) => {
+				this.positionList = data;
+				setTimeout(function () {
+					$('#dataTables-example').dataTable({
+						"oLanguage": {
+							"sLengthMenu": "_MENU_ Job Position per Page",
+							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Job Position",
+							"sInfoFiltered": "(filtered from _MAX_ total Job Position)"
+						}
+					});
+				}, 100);
+			},
+			(error) => {
+				this.router.navigate(['/admin/pagenotfound']);
+			});
+		this.msgflag = false;
 	}
-	},100);
-		// this.globals.isLoading = true;	
-		//this.globals = this.global;
-	this.JobpositionService.getAll()
-	//.map(res => res.json())
-	.then((data) => 
-	{
-		this.positionList = data;
-				setTimeout(function(){
-      $('#dataTables-example').dataTable( {
-        "oLanguage": {
-          "sLengthMenu": "_MENU_ Job Position per Page",
-					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Job Position",
-					"sInfoFiltered": "(filtered from _MAX_ total Job Position)"
-        }
-      });
-		},100); 
-	//	this.globals.isLoading = false;	
-	}, 
-	(error) => 
-	{
-		//alert('error');
-	//	this.globals.isLoading = false;
-		this.router.navigate(['/admin/pagenotfound']);	});	
-	  this.msgflag = false;
-  }
-  
-  deleteJobPosition(jobposition)
-	{ 
-		this.deleteEntity =  jobposition;
-		$('#Delete_Modal').modal('show');					
-	}
-  
-  deleteConfirm(userrole)
-	{ 
-		var del={'Userid':this.globals,'id':userrole.RoleId};
-		this.JobpositionService.delete(del)
-		.then((data) => 
-		{
-			let index = this.positionList.indexOf(userrole);
-			$('#Delete_Modal').modal('hide');
-			if (index != -1) {
-				this.positionList.splice(index, 1);
-				//this.router.navigate(['/domain/list']);
-				// setTimeout(function(){
-				// 	$('#dataTables-example').dataTable( {
-				// 		"oLanguage": {
-				// 			"sLengthMenu": "_MENU_ Domains per Page",
-				// 			"sInfo": "Showing _START_ to _END_ of _TOTAL_ Domains",
-				// 			"sInfoFiltered": "(filtered from _MAX_ total Domains)"
-				// 		}
-				// 	});
-				// },3000); 
-			}			
-			//alert(data);
-			// this.globals.message = 'Data Deleted successfully!';
-			// this.globals.type = 'success';
-			// this.globals.msgflag = true;
-			swal({
-				position: 'top-end',
-				type: 'success',
-				title: 'Data Deleted successfully!',
-				showConfirmButton: false,
-				timer: 1500
+
+	deleteJobPosition(jobposition) {
+		this.deleteEntity = jobposition;
+		swal({
+			title: 'Are you sure?',
+			text: "You want to delete this Job Position?",
+			type: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Yes, delete it!'
+		})
+			.then((result) => {
+				if (result.value) {
+					this.JobpositionService.deletePosition(jobposition.JobPositionId)
+						.then((data) => {
+							let index = this.positionList.indexOf(jobposition);
+							$('#Delete_Modal').modal('hide');
+							if (index != -1) {
+								this.positionList.splice(index, 1);
+							}
+							swal({
+								position: 'top-end',
+								type: 'success',
+								title: 'Job Position deleted successfully',
+								showConfirmButton: false,
+								timer: 1500
+							})
+						},
+						(error) => {
+							$('#Delete_Modal').modal('hide');
+							if (error.text) {
+								swal({
+									position: 'top-end',
+									type: 'success',
+									title: "You can't delete this record because of their dependency!",
+									showConfirmButton: false,
+									timer: 1500
+								})
+							}
+						});
+				}
 			})
-		}, 
-		(error) => 
-		{
-			$('#Delete_Modal').modal('hide');
-			if(error.text){
-				// this.globals.message = "You can't delete this record because of their dependency!";
-				// this.globals.type = 'danger';
-				// this.globals.msgflag = true;
-			}	
-		});	
 	}
-  
-
 }

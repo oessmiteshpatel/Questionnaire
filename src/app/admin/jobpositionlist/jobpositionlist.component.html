@@ -1,82 +1,68 @@
-  <!--  page-wrapper -->
-  <div id="page-wrapper">
-      <div class="container">
-      <div class="row"> 
-        <!--  page header -->
-        <div class="col-lg-12">
-          <h1 class="page-header pull-left">Job Position List</h1>
-          <div class="btn-group pull-right add-right">
-              <a routerLink="/admin/position" class="lgn_btn">
-                Add a Job Position
-            </a>
-          </div>
-          <div class="clearfix"></div>
+<!--  page-wrapper -->
+<div id="page-wrapper">
+  <div class="container">
+    <div class="row">
+      <!--  page header -->
+      <div class="col-lg-12">
+        <h1 class="page-header pull-left">Job Position List</h1>
+        <div class="btn-group pull-right add-right">
+          <a routerLink="/admin/position" class="lgn_btn">
+            Add a Job Position
+          </a>
         </div>
-        <!-- end  page header --> 
+        <div class="clearfix"></div>
       </div>
+      <!-- end  page header -->
+    </div>
     <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
       {{globals.message}}
-   </div>
-      <div class="row">
-        <div class="col-lg-12"> 
-          <!-- Advanced Tables -->
-          <div class="panel panel-default">
-            
-            <div class="panel-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTables-example">
-                  <thead>
-                    <tr>
-                      <th style="width:4%;">#</th>
-                      <th style="width:20%;">Job Position</th>
-                      <!--<th style="width:20%;">UpdatedOn</th>-->
-                      <th style="width:7%;">IsActive?</th>
-                      <th style="width:7%;">Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                   <tr *ngFor="let position of positionList; let i = index" >
-                          <td>{{i+1}}</td>
-                          <td>{{position.JobPositionName}}</td>
-                          <!--<td>{{userrole.CreatedOn}}</td>-->
-                          <td *ngIf="position.IsActive=='1'">Yes</td>
-                          <td *ngIf="position.IsActive=='0'">No</td>
-                      <td>
-                            <div class="inline_delbtn tooltip_inline" title="Edit" data-toggle="tooltip" data-placement="bottom"> 
-                              <button   class="btn btn-default btn-rounded btn-sm" routerLink="/position/edit/{{position.JobPositionId}}"><span class="fa fa-pencil"></span></button>
-                            </div> 
-  
-                            <!-- <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Userrole can't be deleted as it is already assigned to an active User's profile" > 
-                                <button *ngIf="userrole.isdisabled>0"  [disabled]="userrole.isdisabled>0" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"><span class="fa fa-times"></span></button>
-                              </div>  -->
-                              
-                              <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom"  title="Delete">  
-                                <button *ngIf="position.isdisabled==0" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteJobPosition(jobposition)"><span class="fa fa-times"></span></button>
-                              </div>
-                        </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <!-- Advanced Tables -->
+        <div class="panel panel-default">
+
+          <div class="panel-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTables-example">
+                <thead>
+                  <tr>
+                    <th style="width:4%;">#</th>
+                    <th style="width:20%;">Job Position</th>
+                    <th style="width:7%;">IsActive?</th>
+                    <th style="width:7%;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let position of positionList; let i = index">
+                    <td>{{i+1}}</td>
+                    <td>{{position.JobPositionName}}</td>
+                    <td *ngIf="position.IsActive=='1'">Yes</td>
+                    <td *ngIf="position.IsActive=='0'">No</td>
+                    <td>
+                      <div class="inline_delbtn tooltip_inline" title="Edit" data-toggle="tooltip" data-placement="bottom">
+                        <button class="btn btn-default btn-rounded btn-sm" routerLink="/admin/position/edit/{{position.JobPositionId}}">
+                          <span class="fa fa-pencil"></span>
+                        </button>
+                      </div>
+                      <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom" title="Delete">
+                        <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteJobPosition(position)">
+                          <span class="fa fa-times"></span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
-          <!--End Advanced Tables --> 
         </div>
-      </div>
+        <!--End Advanced Tables -->
       </div>
     </div>
-    <!-- end page-wrapper --> 
-      <!-- <div class="modal fade bs-example-modal-sm" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog modal-sm" role="document">
-        <div class="modal-content">
-            <div class="modal-body">
-                <p>Are You Sure You Want To Remove This User Role?</p>
-              </div>
-              <div class="modal-footer text-center">
-                <button type="button" class="next_btn" (click)="deleteConfirm(deleteEntity)" id="yes_btn"><span>Yes</span></button>
-                <button type="button" class="back_btn" data-dismiss="modal"><span>No</span></button>
-            </div>
-        </div>
-    </div>
-  </div> -->
+  </div>
+</div>
+<!-- end page-wrapper -->

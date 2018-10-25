@@ -62,35 +62,58 @@ class Jobposition_model extends CI_Model
 	}
 		
 	
-	//Delete UserList
-	public function delete_position($Jobpositionid_id) 
+	//Delete Position
+	public function delete_position($position_id) 
 	{
+   
+	   if($position_id) 
+	   {
+		   
+		   $this->db->where('JobpositionId',$position_id);
+		   $res = $this->db->delete('tblmstjobposition');
+		   
+		   if($res) {
+			   return true;
+		   } else {
+			   return false;
+		   }
+	   } 
+	   else 
+	   {
+		   return false;
+	   }
+	   
+   }
+
+
+	// public function delete_position($position_id) 
+	// {
 	
-		if($Jobpositionid_id) 
-		{
+	// 	if($position_id) 
+	// 	{
 			
-			$this->db->where('JobpositionId',$Jobpositionid_id['id']);
-			$res = $this->db->delete('tblmstjobposition');
+	// 		$this->db->where('JobpositionId',$position_id['id']);
+	// 		$res = $this->db->delete('tblmstjobposition');
 			
-			if($res) {
-				$log_data = array(
-					'UserId' => trim($Jobpositionid_id['Userid']),
-					'Module' => 'Userrole',
-					'Activity' =>'Delete'
+	// 		if($res) {
+	// 			$log_data = array(
+	// 				'UserId' => trim($position_id['Userid']),
+	// 				'Module' => 'Userrole',
+	// 				'Activity' =>'Delete'
 	
-				);
-				$log = $this->db->insert('tblactivitylog',$log_data);
-				return true;
-			} else {
-				return false;
-			}
-		} 
-		else 
-		{
-			return false;
-		}
+	// 			);
+	// 			$log = $this->db->insert('tblactivitylog',$log_data);
+	// 			return true;
+	// 		} else {
+	// 			return false;
+	// 		}
+	// 	} 
+	// 	else 
+	// 	{
+	// 		return false;
+	// 	}
 		
-	}
+	// }
 	
 	//Edit ProjectList
 	 public function edit_position($post_position) {
@@ -103,15 +126,15 @@ class Jobposition_model extends CI_Model
 		if($post_position) 
 		{
 				$position_data = array(
-				//"ProjectStatusId"=>$post_position['ProjectStatusId'],
-				"JobpositionId"=>$post_position['JobpositionId'],
-				"RoleName"=>$post_position['RoleName'],
+				"JobPositionName"=>$post_position['JobPositionName'],
+				//"JobpositionId"=>$post_position['JobpositionId'],
+				//"RoleName"=>$post_position['RoleName'],
 				"IsActive"=>$IsActive,
-				"UpdatedBy" =>trim($post_position['UpdatedBy']),
+				"UpdatedBy" =>1,
 				'UpdatedOn' => date('y-m-d H:i:s')
 			);
 			
-			$this->db->where('JobpositionId',trim($post_position['JobpositionId']));
+			$this->db->where('JobPositionId',trim($post_position['JobPositionId']));
 			$res = $this->db->update('tblmstjobposition',$position_data);
 			
 			if($res) 
@@ -137,12 +160,12 @@ class Jobposition_model extends CI_Model
 	}
 	
 	
-	public function get_positiondata($Jobpositionid_id=Null)
+	public function get_positiondata($position_id=Null)
 	{
-	  if($Jobpositionid_id)
+	  if($position_id)
 	  {
-		 $this->db->select('JobpositionId,RoleName,IsActive');
-		 $this->db->where('JobpositionId',$Jobpositionid_id);
+		 $this->db->select('*');
+		 $this->db->where('JobPositionId',$position_id);
 		 $result=$this->db->get('tblmstjobposition');
 		 $company_data= array();
 		 foreach($result->result() as $row)

@@ -15,7 +15,7 @@ class Jobposition extends CI_Controller
 		$post_position = json_decode(trim(file_get_contents('php://input')), true);
 		if ($post_position) 
 			{
-				if($post_position['JobpositionId']>0)
+				if($post_position['JobPositionId']>0)
 				{
 					$result = $this->Jobposition_model->edit_position($post_position);
 					if($result)
@@ -39,34 +39,46 @@ class Jobposition extends CI_Controller
 	
 	
 	//Delete UserList
+	public function delete($position_id = NULL) 
+	{
 
-	
-	public function delete() {
-		$role_id = json_decode(trim(file_get_contents('php://input')), true);		
+		if(!empty($position_id)) {
 
-		if ($role_id) {
-			if($role_id['id'] > 0){
-				$result = $this->Jobposition_model->delete_position($role_id);
-				if($result) {
-					
-					echo json_encode("Delete successfully");
-				}
-				}
-		
+			$result = $this->Jobposition_model->delete_position($position_id);			
+			if($result) {
+				echo json_encode("Delete successfully");	
+			}	
 			
 		} 
 			
 	}
 	
+	// public function delete() {
+	// 	$position_id = json_decode(trim(file_get_contents('php://input')), true);		
+
+	// 	if ($position_id) {
+	// 		if($position_id['id'] > 0){
+	// 			$result = $this->Jobposition_model->delete_position($position_id);
+	// 			if($result) {
+					
+	// 				echo json_encode("Delete successfully");
+	// 			}
+	// 			}
+		
+			
+	// 	} 
+			
+	// }
+	
 	
 	//get userId edit
-	public function getById($role_id=null)
+	public function getById($position_id=null)
 	{	
 		
-		if(!empty($role_id))
+		if(!empty($position_id))
 		{
 			$data=[];
-			$data=$this->Jobposition_model->get_positiondata($role_id);
+			$data=$this->Jobposition_model->get_positiondata($position_id);
 			echo json_encode($data);
 		}
 	}

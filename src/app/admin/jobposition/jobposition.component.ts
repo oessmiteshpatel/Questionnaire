@@ -22,6 +22,7 @@ export class JobpositionComponent implements OnInit {
 
 
 	ngOnInit() {
+		debugger
 		setTimeout(function () {
 			if ($("body").height() < $(window).height()) {
 				$('footer').addClass('footer_fixed');
@@ -30,12 +31,15 @@ export class JobpositionComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');
 			}
 		}, 100);
+		
 		const body = document.querySelector('body');
 		var count = jQuery(window).height() - 200;
 		body.style.setProperty('--screen-height', count + "px");
+
+
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
-			this.header = 'Edit';
+			//this.header = 'Edit';
 			this.JobpositionService.getById(id)
 				.then((data) => {
 					this.positionEntity = data;
@@ -52,7 +56,7 @@ export class JobpositionComponent implements OnInit {
 		}
 		else {
 			this.positionEntity = {};
-			this.positionEntity.JobpositionId = 0;
+			this.positionEntity.JobPositionId = 0;
 			this.positionEntity.IsActive = '1';
 
 		}
@@ -61,18 +65,20 @@ export class JobpositionComponent implements OnInit {
 
 
 	addPosition(positionForm) {
+		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 
 
 		if (id) {
 			this.submitted = false;
 		} else {
-			this.positionEntity.JobpositionId = 0;
+			this.positionEntity.JobPositionId = 0;
 			this.submitted = true;
 		}
 
 		if (positionForm.valid) {
 			this.btn_disable = true;
+		
 			this.JobpositionService.add(this.positionEntity)
 				.then((data) => {
 					//alert('success');
@@ -82,9 +88,7 @@ export class JobpositionComponent implements OnInit {
 					this.positionEntity = {};
 					positionForm.form.markAsPristine();
 					if (id) {
-						// this.globals.message = 'Userrole Updated Successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+					
 						swal({
 							position: 'top-end',
 							type: 'success',
@@ -93,9 +97,7 @@ export class JobpositionComponent implements OnInit {
 							timer: 1500
 						})
 					} else {
-						// this.globals.message = 'Userrole Added Successfully';
-						// this.globals.type = 'success';
-						// this.globals.msgflag = true;
+						
 						swal({
 							position: 'top-end',
 							type: 'success',

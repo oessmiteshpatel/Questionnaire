@@ -47,27 +47,46 @@ export class JobpositionService {
   }
   
   
-  delete(del){  
-	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Jobposition/delete' , del)
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-      reject(msg);
-   //   this.globals.isLoading = false;
-      this.router.navigate(['/pagenotfound']);
-        }
-      );
-	});		
-	return promise;
-  }
+  // delete(del){  
+	// let promise = new Promise((resolve, reject) => {
+  //   this.http.post(this.globals.baseAPIUrl + 'Jobposition/Jobposition' , del)
+  //     .toPromise()
+  //     .then(
+  //       res => { // Success
+  //         resolve(res);
+  //       },
+  //       msg => { // Error
+  //     reject(msg);
+  //  //   this.globals.isLoading = false;
+  //     this.router.navigate(['/pagenotfound']);
+  //       }
+  //     );
+	// });		
+	// return promise;
+  // }
   
-  getById(roleId){
+  deletePosition(position_id){  
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Jobposition/delete/' + position_id)
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+     //   this.globals.isLoading = false;
+        this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });		
+    return promise;
+    }
+
+  getById(position_id){
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Jobposition/getById/' + roleId)
+    this.http.get(this.globals.baseAPIUrl + 'Jobposition/getById/' + position_id)
       .toPromise()
       .then(
         res => { // Success
