@@ -48,8 +48,13 @@
                           <span class="fa fa-pencil"></span>
                         </button>
                       </div>
+
+                      <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Position can't be deleted as it is already assigned to an active Candidate's profile" > 
+                        <button *ngIf="position.isdisabled>0"  [disabled]="position.isdisabled>0" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"><span class="fa fa-times"></span></button>
+                      </div> 
+
                       <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom" title="Delete">
-                        <button data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteJobPosition(position)">
+                        <button data-type="Record" *ngIf="position.isdisabled==0" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button" (click)="deleteJobPosition(position)">
                           <span class="fa fa-times"></span>
                         </button>
                       </div>

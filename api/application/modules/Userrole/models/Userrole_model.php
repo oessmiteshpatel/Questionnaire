@@ -43,9 +43,9 @@ class Userrole_model extends CI_Model
 	//list project status
 	public function getlist_userrole()
 	{
-		$this->db->select('RoleId,RoleName,IsActive');
+		$this->db->select('usr.RoleId,usr.RoleName,usr.IsActive,(SELECT COUNT(u.UserId) FROM tbluser as u WHERE u.RoleId=usr.RoleId) as isdisabled');
 	//	$this->db->order_by('RoleName','asc');
-		$result=$this->db->get('tblmstuserrole');
+		$result=$this->db->get('tblmstuserrole usr');
 		
 		$res=array();
 		if($result->result())

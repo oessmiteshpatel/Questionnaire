@@ -247,7 +247,7 @@ class Question_model extends CI_Model
 
 	public function getlist_question()
 	{
-		$this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,que.IsActive,qtype.AnswerName');
+		$this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,que.IsActive,qtype.AnswerName,(SELECT COUNT(can.CAnswerId) FROM tblcandidateanswer as can WHERE can.QuestionId=que.QuestionId) as isdisabled');
 		$this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
 		$result=$this->db->get('tblquestion que');
 		

@@ -49,9 +49,9 @@ class Jobposition_model extends CI_Model
 	//list project status
 	public function getlist_position()
 	{
-		$this->db->select('*');
+		$this->db->select('tblpos.JobPositionId,tblpos.JobPositionName,tblpos.IsActive,(SELECT COUNT(can.CandidateId) FROM tblcandidate as can WHERE can.JobPositionId=tblpos.JobPositionId) as isdisabled');
 		// $this->db->order_by('RoleName','asc');
-		$result=$this->db->get('tblmstjobposition');
+		$result=$this->db->get('tblmstjobposition tblpos');
 		
 		$res=array();
 		if($result->result())
