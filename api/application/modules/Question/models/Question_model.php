@@ -7,8 +7,16 @@ class Question_model extends CI_Model
 			
 		if($post_Question) 
 		{
+			
 			$questiontype=$post_Question['question'];
 			$questionlabel=$post_Question['question1'];
+
+			if($questiontype['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 			$Question_data = array(
 
 				'QuestionName' => trim($questiontype['QuestionName']),
@@ -16,8 +24,10 @@ class Question_model extends CI_Model
 				// 'QuestionId' => trim($post_question['QuestionId']),
 				// 'QLabel' => trim($post_question['QLabel']),
 				// 'QValue' => trim($post_question['QValue']),
-				"IsActive"=>1
-			
+				"IsActive"=>$IsActive
+				// 'CreatedBy' => trim($questiontype['CreatedBy']),
+				// "CreatedOn" =>date('y-m-d H:i:s')
+				
 			);
 			
 			$res = $this->db->insert('tblquestion',$Question_data);
@@ -73,17 +83,24 @@ class Question_model extends CI_Model
 
 	
 	public function edit_Question($post_Question) {
-			
+		
 		if($post_Question) 
 		{
 			$questiontype=$post_Question['question'];
 			$questionlabel=$post_Question['question1'];
-
+			if($questiontype['IsActive']==1)
+					{
+						$IsActive = true;
+					} else {
+						$IsActive = false;
+					}
 			$Question_data =array
 					(
 						'QuestionName' => trim($questiontype['QuestionName']),
 						'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
-						"IsActive"=>1
+						'IsActive'=>$IsActive,
+						// 'CreatedBy' => trim($questiontype['CreatedBy']),
+						// 'CreatedOn' =>date('y-m-d H:i:s')
 					);
 		
 					$this->db->where('QuestionId',trim($questiontype['QuestionId']));
@@ -207,7 +224,7 @@ class Question_model extends CI_Model
 	{
 	  if($question_id)
 	  {
-		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName,qanstype.QLabel,qanstype.QValue');
+		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName,qanstype.QLabel,qanstype.QValue,que.IsActive');
 		 $this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
 		 $this->db->join('tblquestionanswer qanstype','qanstype.QuestionId = que.QuestionId', 'left');
 		 $this->db->where('que.QuestionId',$question_id);

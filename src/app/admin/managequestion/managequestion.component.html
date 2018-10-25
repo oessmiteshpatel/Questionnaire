@@ -31,6 +31,9 @@
 									</div>
 								</div>
 							</div>
+
+							
+
 							<div class="col-md-6 col-sm-6">
 								<div class="answer_wrap">
 									<h3>Answer :</h3>
@@ -84,18 +87,7 @@
 									</div>
 
 									<div *ngIf="questionEntity.AnswerTypeId==1 ">
-										<!-- <table class="form-table" id="customFields">
-									<tr valign="top">
-										<td>
-											
-											<input type="text" class="code" #QLabel="ngModel" [(ngModel)]="questionEntity.QLabel" id="customFieldName" name="QLabel"  placeholder="Input Name" /> &nbsp;
-											<input type="text" class="code" #QValue="ngModel" [(ngModel)]="questionEntity.QValue" id="customFieldValue" name="QValue" placeholder="Input Value" /> &nbsp; -->
-										<!-- <a  href="javascript:void(0);" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a> -->
-										<!-- <a (click)="textadd()" class="addCF"><i class="fa fa-plus-circle" aria-hidden="true"></i></a>
-											
-										</td>
-									</tr>
-								</table> -->
+							
 
 										<label><span class="required">*</span>Enter Radio button Label and its Value</label>
 										<!-- loop start -->
@@ -173,8 +165,29 @@
 
 
 									<div class="clearfix"></div>
+
+								
 								</div>
 								<div class="clearfix"></div>
+							</div>
+
+							<div class="form-group col-md-6 col-md-offset-3">
+								<label><span class="required">*</span>Active?</label>
+								<br>
+								<div class="radio_box">
+									<input type="radio" name="IsActive" id="role1" value="1" #IsActive="ngModel"
+										[(ngModel)]="questionEntity.IsActive" required />
+									<label for="role1">Yes</label>
+								</div>
+								<div class="radio_box">
+									<input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel"
+										[(ngModel)]="questionEntity.IsActive" required />
+									<label for="role2">No </label>
+								</div>
+								<br>
+								<span class="error_span" *ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)">
+									<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active status</span>
+								</span>
 							</div>
 							<div class="clearfix"></div>
 

@@ -17,7 +17,7 @@ class Jobposition_model extends CI_Model
 			 
 			$position_data=array(
 				//"JobpositionId"=>trim($post_position['JobpositionId']),
-				"JobpositionName"=>trim($post_position['JobpositionName']),
+				"JobPositionName"=>trim($post_position['JobPositionName']),
 				"IsActive"=>$IsActive,
 				"CreatedBy" =>1,
 				"CreatedOn" =>date('y-m-d H:i:s')
