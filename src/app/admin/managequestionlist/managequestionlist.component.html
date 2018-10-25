@@ -45,13 +45,13 @@
                           
                           
                       <td>
-                        
-                          <!-- <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Print" > 
-                            <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="viewCandidate(candidate.CandidateId)" ><i class="fa fa-print" ></i></button>
-                        </div> -->
+                     
+                        <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Question can't be edited as it is already assigned to an active Candidate's profile" > 
+                          <button *ngIf="question.isdisabled>0"  [disabled]="question.isdisabled>0" class="btn btn-default btn-rounded btn-sm"><span class="fa fa-pencil"></span></button>
+                      </div>
                               
                         <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Edit" > 
-                            <button class="btn btn-default btn-rounded btn-sm" routerLink="/admin/question/edit/{{question.QuestionId}}" ><span class="fa fa-pencil"></span></button>
+                            <button *ngIf="question.isdisabled==0" class="btn btn-default btn-rounded btn-sm" routerLink="/admin/question/edit/{{question.QuestionId}}" ><span class="fa fa-pencil"></span></button>
                         </div>
 
                         <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Question can't be deleted as it is already assigned to an active Candidate's profile" > 
