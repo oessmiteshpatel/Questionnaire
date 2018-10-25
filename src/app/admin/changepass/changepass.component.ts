@@ -83,7 +83,7 @@ export class ChangepassComponent implements OnInit {
 							showConfirmButton: false,
 							timer: 1500
 						})
-						this.router.navigate(['/admin/home']);
+						this.router.navigate(['/admin/candidate/list']);
 					}
 				},
 					(error) => {

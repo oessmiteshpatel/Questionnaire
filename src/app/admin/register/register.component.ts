@@ -144,7 +144,7 @@ export class RegisterComponent implements OnInit {
 								timer: 1500
 							})
 						}						
-							this.router.navigate(['/admin/home']);
+							this.router.navigate(['/admin/candidate/list']);
 					},
 					(error) => {
 						//alert('error');
