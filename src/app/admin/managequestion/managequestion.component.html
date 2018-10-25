@@ -150,6 +150,7 @@
 												<input type="text" class="form-control" pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
 												 [(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required />
 
+												 <div class="clearfix"></div> 
 												<span class="error_span" *ngIf="(QLabel.dirty && QLabel.invalid) || (QLabel.pristine && submitted)">
 													<span *ngIf="QLabel.errors && QLabel.errors.required">
 														Please enter label name

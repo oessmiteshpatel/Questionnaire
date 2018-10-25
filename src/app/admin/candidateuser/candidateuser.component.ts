@@ -31,7 +31,7 @@ export class CandidateuserComponent implements OnInit {
 		private CandidateuserService: CandidateuserService) { }
 
     ngOnInit() {		
-					
+		//  Use for footer bottom script start	
 		setTimeout(function(){
 			if ($("body").height() < $(window).height()) {  
 				$('footer').addClass('footer_fixed');     
@@ -40,10 +40,17 @@ export class CandidateuserComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');    
 		}
 	  },100);
+	  //  Use for footer bottom script end
+
+
+	  
+	//  Use for file upload script start
 	  $('.file_upload input[type="file"]').change(function (e) {
 		var fileName = e.target.files[0].name;
 		$('.file_upload input[type="text"]').val(fileName);
 	});
+	//  Use for file upload script end
+
 		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};
@@ -120,7 +127,7 @@ export class CandidateuserComponent implements OnInit {
 							{	
 									this.btn_disable = false;
 									this.submitted = false;
-								//	this.CourseEntity = {};
+							
 									candidateForm.form.markAsPristine();
 									if (id) {
 								

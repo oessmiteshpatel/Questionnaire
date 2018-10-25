@@ -67,7 +67,7 @@ export class LoginComponent implements OnInit {
           this.loginEntity = {};
           loginForm.form.markAsPristine();
             }
-          this.router.navigate(['/admin/home']);
+          this.router.navigate(['/admin/candidate/list']);
            
         }, 
         (error) => 
