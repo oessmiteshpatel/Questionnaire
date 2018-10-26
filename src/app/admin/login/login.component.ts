@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
             swal({
 							position: 'top-end',
 							type: 'success',
-							title: 'User Login Successfully',
+							title: 'You are logged in successfully!',
 							showConfirmButton: false,
 							timer: 1500
 						})
@@ -76,7 +76,7 @@ export class LoginComponent implements OnInit {
           swal({
             type: 'warning',
             title: 'Oops...',
-            text: 'Either username or password is incorrect',
+            text: 'Either username or password is incorrect!',
           })    
           this.btn_disable = false;
               this.submitted = false;
