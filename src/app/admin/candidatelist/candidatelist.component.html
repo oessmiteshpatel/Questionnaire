@@ -29,11 +29,12 @@
                   <thead>
                     <tr>
                       <th style="width:4%;">#</th>
-                      <th style="width:9%;">Candidate Name</th>
+                      <th style="width:8%;">Candidate Name</th>
                       <th style="width:9%;">Candidate Email</th>
-                      <th style="width:9%;">Phone Number</th>
+                      <th style="width:7%;">Phone Number</th>
                       <th style="width:9%;">Job Position</th>
-                      <th style="width:7%;">IsActive</th>
+                      <th style="width:3%;">IsActive</th>
+                      <th style="width:7%;">File Status</th>
                       <th style="width:7%;">Actions</th>
                     </tr>
                   </thead>
@@ -47,7 +48,8 @@
                         
                           <td *ngIf="candidate.IsActive=='1'">Yes</td>
                           <td *ngIf="candidate.IsActive=='0'">No</td>
-                          
+                          <td *ngIf="candidate.CandidateHrForm!=''">Uploaded</td>
+                          <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
                           
                       <td>
                         
@@ -154,7 +156,7 @@
             <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
           </td>
         </tr>
-        <div *ngFor="let que of questionList; let i = index">
+        <div *ngFor="let que of questionList;  let i = index">
         <tr style="padding: 10px 0px;display: block;">
           <td>
             <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> {{que.QuestionName}}</p>
@@ -239,7 +241,7 @@
             <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
           </td>
         </tr>
-        <div *ngFor="let que of questionList; let i = index">
+        <div *ngFor="let que of questionList;  let i = index">
         <tr style="padding: 10px 0px;display: block;border-bottom:1px solid #222;">
           <td>
             <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>
@@ -332,7 +334,7 @@
                         <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
                       </td>
                     </tr>
-                    <div *ngFor="let que of questionList;let i = index">
+                    <div *ngFor="let que of questionList;  let i = index">
                     <tr style="padding: 10px 0px;display: block;">
                       <td>
                         <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;"> <strong> Question #{{i+1}} </strong> <br> <span [innerHTML]="que.QuestionName"></span></p>

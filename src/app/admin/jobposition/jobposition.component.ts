@@ -68,13 +68,15 @@ export class JobpositionComponent implements OnInit {
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
 
-
 		if (id) {
+			this.positionEntity.UpdatedBy = this.globals.authData.UserId;
 			this.submitted = false;
-		} else {
+		  } else {
+			this.positionEntity.CreatedBy = this.globals.authData.UserId;
+			this.positionEntity.UpdatedBy = this.globals.authData.UserId;
 			this.positionEntity.JobPositionId = 0;
 			this.submitted = true;
-		}
+		  }
 
 		if (positionForm.valid) {
 			this.btn_disable = true;

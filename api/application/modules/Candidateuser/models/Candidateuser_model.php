@@ -99,7 +99,7 @@ class Candidateuser_model extends CI_Model
 
 	public function getlist_user()
 	{
-			$this->db->select('can.CandidateId,can.CandidateName,can.CandidateEmail,can.PhoneNumber,can.IsActive,job.JobPositionName');
+			$this->db->select('can.CandidateId,can.CandidateName,can.CandidateEmail,can.PhoneNumber,can.IsActive,can.CandidateHrForm,job.JobPositionName');
 			$this->db->join('tblmstjobposition job','job.JobPositionId = can.JobPositionId', 'left');
 			$this->db->order_by('CandidateName','asc');
 			//$this->db->where('Status',3);

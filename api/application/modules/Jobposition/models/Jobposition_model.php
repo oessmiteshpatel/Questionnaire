@@ -19,7 +19,7 @@ class Jobposition_model extends CI_Model
 				//"JobpositionId"=>trim($post_position['JobpositionId']),
 				"JobPositionName"=>trim($post_position['JobPositionName']),
 				"IsActive"=>$IsActive,
-				"CreatedBy" =>1,
+				"CreatedBy" => trim($post_position['CreatedBy']),
 				"CreatedOn" =>date('y-m-d H:i:s')
 			);	
 				
@@ -130,8 +130,8 @@ class Jobposition_model extends CI_Model
 				//"JobpositionId"=>$post_position['JobpositionId'],
 				//"RoleName"=>$post_position['RoleName'],
 				"IsActive"=>$IsActive,
-				"UpdatedBy" =>1,
-				'UpdatedOn' => date('y-m-d H:i:s')
+				"UpdatedBy" => trim($post_position['UpdatedBy']),
+				"UpdatedOn" =>date('y-m-d H:i:s')
 			);
 			
 			$this->db->where('JobPositionId',trim($post_position['JobPositionId']));

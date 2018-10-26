@@ -102,6 +102,7 @@ export class ManagequestionComponent implements OnInit {
      {
          this.questionEntity = {};
          this.questionEntity.QuestionId = 0;
+         this.questionEntity.AnswerTypeId ='';
           this.questionEntity.IsActive = '1';
         
      }
@@ -131,16 +132,16 @@ export class ManagequestionComponent implements OnInit {
 		debugger
 			
       let id = this.route.snapshot.paramMap.get('id');
-      if(id)
-      {
-         // this.questionEntity.CreatedBy=1;
-          this.submitted = true;
-      }
-      else{
+      if (id) {
+        this.questionEntity.UpdatedBy = this.globals.authData.UserId;
+        this.submitted = false;
+      } else {
+        this.questionEntity.CreatedBy = this.globals.authData.UserId;
+        this.questionEntity.UpdatedBy = this.globals.authData.UserId;
         this.questionEntity.QuestionId=0;
-       // this.questionEntity.CreatedBy=1;
         this.submitted = true;
       }
+     
       this.submitted = true;
 			if (questionForm.valid) {
 				

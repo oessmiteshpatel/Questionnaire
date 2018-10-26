@@ -42,11 +42,12 @@ export class CandidateuserComponent implements OnInit {
 		this.first1=true;
 					this.candidateEntity={};
 					this.cansEntity={};
+					
 					this.CandidateuserService.getAllDefaultData()
 					.then((data) => {
 						this.jobpositionList = data['jobpositon'];
 						this.questionList = data['question'];
-					console.log(this.questionList);
+					//console.log(this.questionList);
 
 					
 					},
@@ -61,7 +62,7 @@ export class CandidateuserComponent implements OnInit {
 			this.CandidateuserService.getById(id)
 				.then((data) => {
 					// option 
-			//		this.candidateEntity = data;
+					this.candidateEntity = data;
 					this.questionList = data;
 				//	console.log(this.questionList);
 					
@@ -78,6 +79,7 @@ export class CandidateuserComponent implements OnInit {
 					this.header = 'Add';
 					this.candidateEntity = {};
 					this.candidateEntity.CandidateId = 0;
+					this.candidateEntity.JobPositionId ='';
 					this.candidateEntity.IsActive = '1';
 
 				}
@@ -89,6 +91,7 @@ export class CandidateuserComponent implements OnInit {
 		debugger
 			
 			let id = this.route.snapshot.paramMap.get('id');
+			this.candidateEntity.JobPositionId=0;
 			this.submitted = true;
 			if (candidateForm.valid) {
 				

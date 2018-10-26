@@ -42,7 +42,7 @@
 										<label><span class="required">*</span>Question Answer Type</label>
 										<select class='select-option' required class="form-control" #AnswerTypeId="ngModel" [(ngModel)]="questionEntity.AnswerTypeId"
 										 name="AnswerTypeId" [ngClass]="{red_border: (AnswerTypeId.dirty && AnswerTypeId.invalid) || (AnswerTypeId.pristine && submitted)}">
-											<option value="">Select</option>
+											<option value=""  value="" ngSelected='questionEntity.AnswerTypeId==""'>Select</option>
 											<option class='option' *ngFor='let quetype of queAnsTypeList' [value]="quetype.AnswerTypeId">{{quetype.AnswerName}}</option>
 										</select>
 										<span class="error_span" *ngIf="(AnswerTypeId.dirty && AnswerTypeId.invalid) || (AnswerTypeId.pristine && submitted)">

@@ -95,6 +95,8 @@ export class CandidateuserComponent implements OnInit {
 				}
 				
 		}
+
+		
 	
 	
 		addUser(candidateForm) {

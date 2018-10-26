@@ -4,6 +4,7 @@ import { Globals } from '.././globals';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { UserroleService } from '../services/userrole.service';
+declare var $, swal: any;
 
 @Component({
   selector: 'app-userrole',
@@ -58,7 +59,16 @@ export class UserroleComponent implements OnInit {
   {		
 		let id = this.route.snapshot.paramMap.get('id');
 
-	
+		if (id) {
+			this.userroleEntity.UpdatedBy = this.globals.authData.UserId;
+			this.submitted = false;
+		  } else {
+			this.userroleEntity.CreatedBy = this.globals.authData.UserId;
+			this.userroleEntity.UpdatedBy = this.globals.authData.UserId;
+			this.userroleEntity.RoleId = 0;
+			this.submitted = true;
+		  }
+
 		if(userroleForm.valid){
 			this.btn_disable = true;
 			this.UserroleService.add(this.userroleEntity)
@@ -71,17 +81,27 @@ export class UserroleComponent implements OnInit {
 				this.userroleEntity = {};
 				userroleForm.form.markAsPristine();
 				if (id) {
-					this.globals.message = 'Userrole Updated Successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
+					
+					swal({
+						position: 'top-end',
+						type: 'success',
+						title: 'Userrole Updated Successfully!',
+						showConfirmButton: false,
+						timer: 1500
+					})
 				} else {
-					this.globals.message = 'Userrole Added Successfully';
-					this.globals.type = 'success';
-					this.globals.msgflag = true;
-				} 
+					
+					swal({
+						position: 'top-end',
+						type: 'success',
+						title: 'Userrole Added Successfully!',
+						showConfirmButton: false,
+						timer: 1500
+					})
+				}
 				
 				
-				this.router.navigate(['/userrole/list']);
+				this.router.navigate(['/admin/userrole/list']);
 			}, 
 			(error) => 
 			{

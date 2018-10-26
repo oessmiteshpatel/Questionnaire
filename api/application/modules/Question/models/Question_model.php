@@ -24,9 +24,9 @@ class Question_model extends CI_Model
 				// 'QuestionId' => trim($post_question['QuestionId']),
 				// 'QLabel' => trim($post_question['QLabel']),
 				// 'QValue' => trim($post_question['QValue']),
-				"IsActive"=>$IsActive
-				// 'CreatedBy' => trim($questiontype['CreatedBy']),
-				// "CreatedOn" =>date('y-m-d H:i:s')
+				"IsActive"=>$IsActive,
+				'CreatedBy' => trim($questiontype['CreatedBy']),
+				"CreatedOn" =>date('y-m-d H:i:s')
 				
 			);
 			
@@ -99,8 +99,8 @@ class Question_model extends CI_Model
 						'QuestionName' => trim($questiontype['QuestionName']),
 						'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
 						'IsActive'=>$IsActive,
-						// 'CreatedBy' => trim($questiontype['CreatedBy']),
-						// 'CreatedOn' =>date('y-m-d H:i:s')
+						 'UpdatedBy' => trim($questiontype['UpdatedBy']),
+						 'UpdatedOn' =>date('y-m-d H:i:s')
 					);
 		
 					$this->db->where('QuestionId',trim($questiontype['QuestionId']));

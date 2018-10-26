@@ -50,7 +50,7 @@
                                             <select class='select-option' required class="form-control" #JobPositionId="ngModel"
                                                 [(ngModel)]="candidateEntity.JobPositionId" name="JobPositionId"
                                                 [ngClass]="{red_border: (JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)}">
-                                                <option value="">Select</option>
+                                                <option value="" ngSelected='candidateEntity.JobPositionId==""'>Select</option>
                                                 <option class='option' *ngFor='let jobpo of jobpositionList' [value]="jobpo.JobPositionId">{{jobpo.JobPositionName}}</option>
                                             </select>
                                             <span class="error_span" *ngIf="(JobPositionId.dirty && JobPositionId.invalid) || (JobPositionId.pristine && submitted)">

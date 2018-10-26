@@ -19,7 +19,7 @@ class Userrole_model extends CI_Model
 				"RoleId"=>trim($post_userrole['RoleId']),
 				"RoleName"=>trim($post_userrole['RoleName']),
 				"IsActive"=>$IsActive,
-				"CreatedBy" =>1,
+				"CreatedBy" => trim($post_userrole['CreatedBy']),
 				"CreatedOn" =>date('y-m-d H:i:s')
 			);	
 				
@@ -95,8 +95,8 @@ class Userrole_model extends CI_Model
 				"RoleId"=>$post_userrole['RoleId'],
 				"RoleName"=>$post_userrole['RoleName'],
 				"IsActive"=>$IsActive,
-				"UpdatedBy" =>1,
-				'UpdatedOn' => date('y-m-d H:i:s')
+				"UpdatedBy" => trim($post_userrole['UpdatedBy']),
+				"UpdatedOn" =>date('y-m-d H:i:s')
 			);
 			
 			$this->db->where('RoleId',trim($post_userrole['RoleId']));
