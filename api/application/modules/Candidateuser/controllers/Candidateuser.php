@@ -49,6 +49,7 @@ class Candidateuser extends CI_Controller {
 			if(isset($_FILES['favicon']) && !empty($_FILES['favicon']))
 			{
 				move_uploaded_file($_FILES["favicon"]["tmp_name"], "../src/assets/candidate/".$_FILES["favicon"]["name"]);
+				
 			}
 				echo json_encode('success');
 		}

@@ -19,7 +19,8 @@
                                 <div class="form-group file_upload col-md-4 col-sm-4 col-md-offset-4">
                                     <label><span>*</span>Upload Scannned PDF</label>
                                     <input type="text" disabled class="form-control" />
-                                    <input type="file" class="form-control" ngf-accept="'.pdf'" name="Faviconicon" id="Favicon" #Faviconicon="ngModel"
+                                   <!-- use for show only pdf= accept="application/pdf" -->
+                                    <input type="file" class="form-control" accept="application/pdf" name="Faviconicon" id="Favicon" #Faviconicon="ngModel"
                                         [(ngModel)]="candidateEntity.Faviconicon"  required />
 
                                         <span class="error_span" *ngIf="(Faviconicon.dirty && Faviconicon.invalid) || (Faviconicon.pristine && submitted)">
