@@ -54,7 +54,7 @@
                             <button *ngIf="question.isdisabled==0" class="btn btn-default btn-rounded btn-sm" routerLink="/admin/question/edit/{{question.QuestionId}}" ><span class="fa fa-pencil"></span></button>
                         </div>
 
-                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Question can't be deleted as it is already assigned to an active Candidate's profile" > 
+                        <div class="inline_delbtn tooltip_inline"  data-toggle="tooltip" data-placement="bottom" title="Question can't be deleted as it is already attended by Candidate." > 
                           <button *ngIf="question.isdisabled>0"  [disabled]="question.isdisabled>0" data-type="Record" class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"><span class="fa fa-times"></span></button>
                         </div> 
 

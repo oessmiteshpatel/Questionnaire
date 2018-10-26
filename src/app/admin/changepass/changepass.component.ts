@@ -32,7 +32,7 @@ export class ChangepassComponent implements OnInit {
 			}
 		}, 1000);
 		const body = document.querySelector('body');
-		var count = jQuery(window).height() - 200;
+		var count = jQuery(window).height() - 270;
 		body.style.setProperty('--screen-height', count + "px");
 
 

@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
 			}
 			},100);
 			const body = document.querySelector('body');
-    var count = jQuery(window).height() - 200;
+    var count = jQuery(window).height() - 270;
     body.style.setProperty('--screen-height', count+"px");
 			this.RegisterService.getAllDefaultData()
 			.then((data) => {
