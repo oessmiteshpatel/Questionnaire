@@ -39,7 +39,7 @@ export class AuthGuard implements CanActivate {
 			}
 		  if(state.url=='/admin/login' || state.url=='/admin'){
 			  this.globals.IsLoggedIn = true;
-			  this.router.navigate(['/admin/home']);
+			  this.router.navigate(['/admin/candidate/list']);
 			  return false;
 		  } else {
 			  this.globals.IsLoggedIn = true;

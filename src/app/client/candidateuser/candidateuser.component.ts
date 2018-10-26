@@ -91,7 +91,7 @@ export class CandidateuserComponent implements OnInit {
 		debugger
 			
 			let id = this.route.snapshot.paramMap.get('id');
-			this.candidateEntity.JobPositionId=0;
+			//this.candidateEntity.JobPositionId=0;
 			this.submitted = true;
 			if (candidateForm.valid) {
 				

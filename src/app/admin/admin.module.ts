@@ -13,7 +13,7 @@ import { AuthGuard } from './services/auth-guard.service';
 
 import { HomeComponent } from './home/home.component';
 
-import { QuestionComponent } from './question/question.component';
+// import { QuestionComponent } from './question/question.component';
 import { QuestionService } from './services/question.service';
 
 import { JobpositionComponent } from './jobposition/jobposition.component';
@@ -52,7 +52,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     AdminComponent,
     LoginComponent,
     HomeComponent,
-    QuestionComponent,
+    // QuestionComponent,
     JobpositionComponent,
     JobpositionlistComponent,
     CandidateuserComponent,

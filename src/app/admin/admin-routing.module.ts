@@ -14,7 +14,7 @@ import { AuthGuard } from './services/auth-guard.service';
 
 import { HomeComponent } from './home/home.component';
 
-import { QuestionComponent } from './question/question.component';
+// import { QuestionComponent } from './question/question.component';
 import { QuestionService } from './services/question.service';
 
 import { JobpositionComponent } from './jobposition/jobposition.component';
@@ -59,7 +59,7 @@ const routes: Routes = [
   
           { path : 'home', component : HomeComponent, canActivate : [AuthGuard]   },
   
-          { path : 'question', component : QuestionComponent, canActivate : [AuthGuard]   },
+          // { path : 'question', component : QuestionComponent, canActivate : [AuthGuard]   },
           
           { path : 'position', component : JobpositionComponent , canActivate : [AuthGuard]  },
           { path : 'position/list', component : JobpositionlistComponent, canActivate : [AuthGuard]  },

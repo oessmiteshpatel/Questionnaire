@@ -23,10 +23,10 @@ export class ManagequestionComponent implements OnInit {
 	header;
 	msgflag;
 	message;
-    type;
-    QuestionList;
-    QuestionType;
-    QuestionAnswer;
+  type;
+  QuestionList;
+  QuestionType;
+  QuestionAnswer;
     
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private ManagequestionService: ManagequestionService) { }
