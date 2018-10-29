@@ -248,22 +248,22 @@ this.candidateEntity=[];
         .then((data) => {
           this.candidateData = data['Users'];
         
+          $('#Upload_Modal').modal('show');
         
-          $('#Delete_Modal').modal('show');
             
         },
         (error) => {
           alert('error');
             
         });
-        $('#Delete_Modal').modal('show');
+       
       }
 
       addUser(candidateForm) {
         debugger
     
         let id = this.route.snapshot.paramMap.get('CandidateId');
-    //console.log(this.candidateEntity.CandidateId);
+       //console.log(this.candidateEntity.CandidateId);
         let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
         var fd = new FormData();
         if (file2) {
@@ -280,7 +280,7 @@ this.candidateEntity=[];
         this.submitted = true;
         if (candidateForm.valid && fileExtension == 'pdf') {
     
-          //this.btn_disable = true;
+         // this.btn_disable = true;
           //this.candidateEntity.CandidateId = id;
           this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
             .then((data) => {
@@ -348,11 +348,11 @@ this.candidateEntity=[];
     
     
             }, (error) => {
-              //alert('error');
+             
               this.btn_disable = false;
               this.submitted = false;
     
-              //this.router.navigate(['/admin/pagenotfound']);
+              
             });
         }
         else {
@@ -360,7 +360,7 @@ this.candidateEntity=[];
           swal({
             position: 'top-end',
             type: 'danger',
-            title: 'You Choosed file is wrong!',
+            title: 'Please Input Pdf File!',
             showConfirmButton: false,
             timer: 1500
           })

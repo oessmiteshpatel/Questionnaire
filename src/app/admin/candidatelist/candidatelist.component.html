@@ -90,7 +90,7 @@
 
   <!-- upoad pdf file start --> 
 
-  <div class="modal fade bs-example-modal-sm"  id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal fade bs-example-modal-sm"  id="Upload_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog modal-sm" role="document">
           <div class="modal-content">
             
@@ -101,8 +101,7 @@
                         <label><span>*</span>Upload Scannned PDF</label>
                         <input type="text" disabled class="form-control" />
                        <!-- use for show only pdf= accept="application/pdf" -->
-                        <input type="file" class="form-control" accept="application/pdf" name="Faviconicon" id="Favicon" #Faviconicon="ngModel"
-                            [(ngModel)]="candidateEntity.Faviconicon"  required />
+                        <input type="file" class="form-control" accept="application/pdf" name="Faviconicon" id="Favicon" #Faviconicon="ngModel" [(ngModel)]="candidateEntity.Faviconicon"  required />
 
                             <span class="error_span" *ngIf="(Faviconicon.dirty && Faviconicon.invalid) || (Faviconicon.pristine && submitted)">
                             <span *ngIf="Faviconicon.errors && Faviconicon.errors.required">
