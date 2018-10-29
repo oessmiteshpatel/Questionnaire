@@ -11,6 +11,7 @@ export class Globals {
   baseUrl: string = environment.baseUrl;
   headerpath: string = "{'Content-Type': 'application/json','Accept': 'application/json'}";
   IsLoggedIn: boolean = false;
+  isLoading: boolean = false;
   currentLink: string = '';
   authData = localStorage.getItem('token') ? new JwtHelper().decodeToken(localStorage.getItem('token')):null;
    msgflag = false;
@@ -18,7 +19,8 @@ export class Globals {
    type = '';
    check_login = false;
  // IsAdmin = false;
-  
+
+
  
 
 

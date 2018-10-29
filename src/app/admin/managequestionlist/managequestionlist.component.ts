@@ -36,7 +36,7 @@ export class ManagequestionlistComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');
 			}
 		}, 100);
-
+		this.globals.isLoading = true;
 		this.ManagequestionService.getAll()
 
 			.then((data) => {
@@ -52,9 +52,10 @@ export class ManagequestionlistComponent implements OnInit {
 					});
 
 				}, 500);
-
+				this.globals.isLoading = false;
 			},
 				(error) => {
+					this.globals.isLoading = false;
 					// this.msgflag = false;
 				});
 
