@@ -27,6 +27,7 @@ export class CandidateuserComponent implements OnInit {
 	primary;
 	second1;
 	first1;
+	fileExtension;
 	constructor(private http: Http, public globals: Globals, private elem: ElementRef, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
@@ -50,7 +51,25 @@ export class CandidateuserComponent implements OnInit {
 		//  Use for file upload script start
 		$('.file_upload input[type="file"]').change(function (e) {
 			var fileName = e.target.files[0].name;
-			$('.file_upload input[type="text"]').val(fileName);
+			var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+			if(fileExtension=='pdf')
+			{
+				$('.file_upload input[type="text"]').val(fileName);
+			}
+			else
+			{
+				swal({
+					position: 'top-end',
+					type: 'danger',
+					title: 'You Choosed file is wrong!',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			}
+			
+			
+
+			//console.log (fileExtension);
 		});
 		//  Use for file upload script end
 
@@ -112,13 +131,16 @@ export class CandidateuserComponent implements OnInit {
 		if (file2) {
 			fd.append('favicon', file2);
 			this.candidateEntity.Faviconicon = file2['name'];
+			//console.log(this.candidateEntity.Faviconicon);
+			var fileName = file2['name'];
+			var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
 			this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
 		} else {
 			fd.append('favicon', null);
 			this.candidateEntity.Faviconicon = null;
 		}
 		this.submitted = true;
-		if (candidateForm.valid) {
+		if (candidateForm.valid && fileExtension == 'pdf') {
 
 			//this.btn_disable = true;
 			this.candidateEntity.CandidateId = id;
@@ -195,6 +217,17 @@ export class CandidateuserComponent implements OnInit {
 					//this.router.navigate(['/admin/pagenotfound']);
 				});
 		}
+		else {
+
+			swal({
+				position: 'top-end',
+				type: 'danger',
+				title: 'You Choosed file is wrong!',
+				showConfirmButton: false,
+				timer: 1500
+			})
+		}
+		this.router.navigate(['/admin/candidate/list']);
 	}
 
 	clearForm(candidateForm) {

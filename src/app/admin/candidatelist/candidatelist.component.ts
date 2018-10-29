@@ -29,16 +29,18 @@ export class CandidatelistComponent implements OnInit {
   questionList;
   candidateData;
 	submitted;
-	btn_disable;
+  btn_disable;
+  fileExtension;
+  
   @ViewChild('content')content:ElementRef;
 
-  constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
+  constructor(private http: Http, public globals: Globals,private elem: ElementRef, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
  
     ngOnInit()
     {
-
+this.candidateEntity=[];
       setTimeout(function(){
         if ($("body").height() < $(window).height()) {  
           $('footer').addClass('footer_fixed');     
@@ -116,6 +118,8 @@ export class CandidatelistComponent implements OnInit {
 
         deleteCompany(CandidateId)
       { 
+        
+
         this.CandidateuserService.getAllDefaultData()
         .then((data) => {
         
@@ -207,8 +211,162 @@ export class CandidatelistComponent implements OnInit {
       }
   
 
+      uploadFile(CandidateId)
+      {debugger
 
-      
+          //  Use for file upload script start
+          const body = document.querySelector('body');
+          var count = jQuery(window).height() - 270;
+          body.style.setProperty('--screen-height', count + "px");
+       
+		$('.file_upload input[type="file"]').change(function (e) {
+			var fileName = e.target.files[0].name;
+			var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+			if(fileExtension=='pdf')
+			{
+				$('.file_upload input[type="text"]').val(fileName);
+			}
+			else
+			{
+				swal({
+					position: 'top-end',
+					type: 'danger',
+					title: 'Please Input PDF File',
+					showConfirmButton: false,
+					timer: 1500
+				})
+			}
+			
+			
+
+			//console.log (fileExtension);
+		});
+    //  Use for file upload script end
+    this.candidateEntity = {};
+   this.candidateEntity.CandidateId=CandidateId;
+        this.CandidateuserService.getById(CandidateId)
+        .then((data) => {
+          this.candidateData = data['Users'];
+        
+        
+          $('#Delete_Modal').modal('show');
+            
+        },
+        (error) => {
+          alert('error');
+            
+        });
+        $('#Delete_Modal').modal('show');
+      }
+
+      addUser(candidateForm) {
+        debugger
+    
+        let id = this.route.snapshot.paramMap.get('CandidateId');
+    //console.log(this.candidateEntity.CandidateId);
+        let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
+        var fd = new FormData();
+        if (file2) {
+          fd.append('favicon', file2);
+          this.candidateEntity.Faviconicon = file2['name'];
+          //console.log(this.candidateEntity.Faviconicon);
+          var fileName = file2['name'];
+          var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+          this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
+        } else {
+          fd.append('favicon', null);
+          this.candidateEntity.Faviconicon = null;
+        }
+        this.submitted = true;
+        if (candidateForm.valid && fileExtension == 'pdf') {
+    
+          //this.btn_disable = true;
+          //this.candidateEntity.CandidateId = id;
+          this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
+            .then((data) => {
+    
+              if (file2) {
+                this.CandidateuserService.uploadFile(fd)
+                  .then((data) => {
+                    this.btn_disable = false;
+                    this.submitted = false;
+    
+                    candidateForm.form.markAsPristine();
+                    if (id) {
+    
+                      swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'File Uploaded Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                    } else {
+    
+                      swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'File Uploaded Successfully!',
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
+                    }
+                    this.router.navigate(['/admin/candidate/list']);
+    
+                  }, (error) => {
+                      this.btn_disable = false;
+                      this.submitted = false;
+    
+                      this.router.navigate(['/pagenotfound']);
+                    });
+              } else {
+                this.btn_disable = false;
+                this.submitted = false;
+                //	this.CourseEntity = {};
+                candidateForm.form.markAsPristine();
+                if (id) {
+    
+                  swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'File Uploaded Successfully!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                } else {
+    
+                  swal({
+                    position: 'top-end',
+                    type: 'success',
+                    title: 'File Uploaded Successfully!',
+                    showConfirmButton: false,
+                    timer: 1500
+                  })
+                }
+                this.router.navigate(['/admin/candidate/list']);
+              }
+    
+    
+            }, (error) => {
+              //alert('error');
+              this.btn_disable = false;
+              this.submitted = false;
+    
+              //this.router.navigate(['/admin/pagenotfound']);
+            });
+        }
+        else {
+    
+          swal({
+            position: 'top-end',
+            type: 'danger',
+            title: 'You Choosed file is wrong!',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        }
+        this.router.navigate(['/admin/candidate/list']);
+      }
 
  
 
