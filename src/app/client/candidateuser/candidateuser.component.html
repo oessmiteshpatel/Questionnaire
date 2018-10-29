@@ -167,6 +167,7 @@
                                                                         required />
                                                                     <label for="role{{k}}{{j}}" title="{{ans.QLabel}}">{{ans.QLabel}}
                                                                     </label>
+                                                                    <div class="clearfix"></div>
                                                                     <span class="error_span" *ngIf="((CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)) && last">
                                                                         <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
                                                                             select answer</span>

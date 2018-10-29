@@ -106,7 +106,7 @@ export class RegisterComponent implements OnInit {
 			
 			if (userForm.valid) {
 				
-				//this.btn_disable = true;
+				this.btn_disable = true;
 				this.RegisterService.add(this.userEntity)
 					.then((data) => {
 
@@ -125,6 +125,7 @@ export class RegisterComponent implements OnInit {
 						this.btn_disable = false;
 						this.submitted = false;
 						this.userEntity = {};
+					//	localStorage.removeItem('token');
 						userForm.form.markAsPristine();
 						if (id) {
 							swal({

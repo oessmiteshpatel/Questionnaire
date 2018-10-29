@@ -19,6 +19,7 @@ export class ChangepassComponent implements OnInit {
 	btn_disable;
 	header;
 	same;
+	oldnewsame;
 	//globals;
 
 	constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute, private ChangepassService: ChangepassService) { }
@@ -52,10 +53,11 @@ export class ChangepassComponent implements OnInit {
 			this.newpassEntity.UserId = 0;
 			this.submitted = true;
 		}
-		if (newpassForm.valid && !this.same) {
+		if (newpassForm.valid && !this.same && !this.oldnewsame) {
 
 			this.newpassEntity.UserId = this.globals.authData.UserId;
 			this.btn_disable = true;
+			
 			//this.globals.isLoading = true;
 			this.ChangepassService.add(this.newpassEntity)
 				.then((data) => {
@@ -97,11 +99,22 @@ export class ChangepassComponent implements OnInit {
 		}
 	}
 
-	checkpassword() {
+	checkpassword() { debugger
 		if (this.newpassEntity.cPassword != this.newpassEntity.nPassword) {
 			this.same = true;
+			this.oldnewsame = false;
 		} else {
 			this.same = false;
+			if(this.newpassEntity.Password == this.newpassEntity.nPassword)
+			{
+				this.oldnewsame = true;
+			}
+			else
+			{
+				
+				this.oldnewsame = false;
+			}
+			
 		}
 
 	}

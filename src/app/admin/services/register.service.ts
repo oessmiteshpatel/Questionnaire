@@ -3,12 +3,14 @@ import { Http } from '@angular/http';
 import { Globals } from '.././globals';
 import {HttpClient} from "@angular/common/http";
 import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
+
 
 
 @Injectable()
 export class RegisterService {
 
-  constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
+  constructor(private http:Http, private HttpClient: HttpClient, private globals: Globals, private router: Router) { }
 
  //add users
   add(userEntity){ 
@@ -17,14 +19,29 @@ export class RegisterService {
       this.http.post(this.globals.baseAPIUrl + 'Register/addUser', userEntity)
       
         .toPromise()
-        .then(
-          res => { // Success
-            resolve(res); 
-          },
-          msg => { // Error
-        reject(msg);
-          }
-        );
+        .then( 
+        res => { // Success 
+			let result = res.json();
+			if(result && result.token){
+				localStorage.setItem('token',result.token);				
+				this.globals.authData = new JwtHelper().decodeToken(result.token);
+			}
+		  resolve(res.json());
+        },
+        msg => { // Error
+      reject(msg.json());
+      //this.globals.isLoading = false;
+      this.router.navigate(['/pagenotfound']);
+        }
+      );
+        // .then(
+        //   res => { // Success
+        //     resolve(res); 
+        //   },
+        //   msg => { // Error
+        // reject(msg);
+        //   }
+        // );
     });		
     return promise;
     }
@@ -77,7 +94,7 @@ export class RegisterService {
           .toPromise()
           .then(
             res => { // Success
-              resolve(res);
+              resolve(res.json());
             },
             msg => { // Error
           reject(msg);

@@ -168,7 +168,7 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 .inline_delbtn {display: inline-block;}
 .inline_delbtn .btn-suucess{background: #0061af;color: #fff;}
 #Delete_Modal .modal-dialog{width: 80%;}
-.add_que .form-control{width: 87%!important;display: inline-block!important;}
+.add_que .form-control{width:43%!important;display: inline-block!important;}
 .lgn_btn{margin-top: 10px;}
 .height_100_box {display: block;height: 100%;min-height: 100%;}
 .content-area {display: table;max-width: 100%;padding: 0px;width: 100%;}

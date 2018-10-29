@@ -24,6 +24,14 @@ export class JobpositionlistComponent implements OnInit {
 
 
 	ngOnInit() {
+		$('body').tooltip({
+			selector: '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])',
+			trigger: 'hover',
+			container: 'body'
+			}).on('click mousedown mouseup', '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])', function () {
+			$('[data-toggle="tooltip"], [title]:not([data-toggle="popover"])').tooltip('destroy');
+			});
+		
 		setTimeout(function () {
 			if ($("body").height() < $(window).height()) {
 				$('footer').addClass('footer_fixed');

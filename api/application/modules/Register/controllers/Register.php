@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+use \Firebase\JWT\JWT;
 
 class Register extends CI_Controller {
 
@@ -8,6 +8,7 @@ class Register extends CI_Controller {
 	{ 
 		parent::__construct();
 		$this->load->model('Register_model');
+		include APPPATH . 'vendor/firebase/php-jwt/src/JWT.php';
 	}
 	
 	public function addUser()
@@ -20,7 +21,18 @@ class Register extends CI_Controller {
 					$result = $this->Register_model->edit_user($post_user);
 					if($result)
 					{
-						echo json_encode($post_user);	
+						$token = array(
+							"UserId" => $post_user['UserId'],
+							
+							"EmailAddress" => $post_user['EmailAddress'],
+							"FirstName" => $post_user['FirstName'],
+							"LastName" => $post_user['LastName']
+							);
+
+							$jwt = JWT::encode($token, "MyGeneratedKey","HS256");
+							$output['token'] = $jwt;
+						echo json_encode($output);	
+						
 					}	
 				}
 				else

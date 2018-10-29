@@ -26,9 +26,9 @@
                                         class="form-control" name="JobPositionName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" required>
                                     <span class="error_span" *ngIf="(JobPositionName.dirty && JobPositionName.invalid) || (JobPositionName.pristine && submitted)">
                                         <span *ngIf="JobPositionName.errors.required || (JobPositionName.pristine && submitted)">Please
-                                            enter Job Position Name</span>
+                                            enter job position name</span>
                                         <span class="error_span" *ngIf="JobPositionName.errors && JobPositionName.errors.pattern">
-                                            Please enter a valid Job Position Name.
+                                            Please enter a valid job position name.
                                         </span>
                                     </span>
                                 </div>
