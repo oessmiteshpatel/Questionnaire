@@ -41,6 +41,8 @@ export class CandidatelistComponent implements OnInit {
     ngOnInit()
     {
 this.candidateEntity=[];
+this.candidateList = [];
+this.candidateData = {};
       setTimeout(function(){
         if ($("body").height() < $(window).height()) {  
           $('footer').addClass('footer_fixed');     
