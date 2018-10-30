@@ -129,6 +129,17 @@
                                                         <div class="answer_block">
                                                             <div *ngFor="let ans of que.child; let j=index;" class="form-group">
                                                                 <label>{{ans.QLabel}} </label>
+                                                                
+                                                                <br>
+                                                                    <div class="radio_box">
+                                                                        <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
+                                                                            [(ngModel)]="ans.CAnswer" required />
+                                                                        <label for="role{{k}}{{j}}">No </label>
+                                                                    </div>
+                                                                    <br>
+                                                                   
+                                                                   
+
                                                                 <textarea class="form-control" #CAnswer="ngModel"
                                                                     [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
                                                                     maxlength="500" required></textarea>
@@ -160,6 +171,15 @@
 
                                                             <div class="form-group">
                                                                 <div class="radio_box" *ngFor="let ans of que.child; let j=index; let last=last;">
+                                                                    
+                                                                        <br>
+                                                                        <div class="radio_box">
+                                                                            <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
+                                                                                [(ngModel)]="ans.CAnswer" required />
+                                                                            <label for="role{{k}}{{j}}">No </label>
+                                                                        </div>
+                                                                        <br>
+
                                                                     <input type="radio" (change)="checked(k,j,ans.QValue,que.child.length)"
                                                                         [checked]="ans.CAnswer==ans.QValue" name="CAnswer{{k}}"
                                                                         id="role{{k}}{{j}}" value="{{ans.QValue}}"
@@ -204,6 +224,14 @@
                                                             <div class="col-md-10 col-sm-10">
 
                                                                 <div class="form-group">
+
+                                                                        <br>
+                                                                        <div class="radio_box">
+                                                                            <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
+                                                                                [(ngModel)]="ans.CAnswer" required />
+                                                                            <label for="role{{k}}{{j}}">No </label>
+                                                                        </div>
+                                                                        <br>
 
                                                                     <input type="text" class="form-control" #CAnswer="ngModel"
                                                                         [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
