@@ -192,6 +192,16 @@
                                                                         <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
                                                                             select answer</span>
                                                                     </span>
+
+                                                                    <button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
+                                                                    title="Delete">
+                                                                       <span class="fa fa-times"></span>
+                                                                   </button>
+                                                                   <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
+                                                                    title="Add">
+                                                                       <span class="fa fa-plus"></span>
+                                                                   </button>
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -215,7 +225,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-11 col-sm-11 col-xs-12">
-                                                        <div class="answer_block" *ngFor="let ans of que.child; let j=index;">
+                                                        <div class="answer_block" *ngFor="let ans of que.child; let j=index; let last = last;">
                                                             <div class="col-md-2 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label>{{ans.QLabel}} </label>
@@ -233,6 +243,9 @@
                                                                         </div>
                                                                         <br>
 
+                                                                        <!-- <input type="text" [disabled]="questionEntity.QuestionId>0" class="form-control" pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
+                                                                        [(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required /> -->
+
                                                                     <input type="text" class="form-control" #CAnswer="ngModel"
                                                                         [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
                                                                         class="form-control" required />
@@ -240,6 +253,16 @@
                                                                         <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
                                                                             enter answer</span>
                                                                     </span>
+
+                                                                    <!-- <button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
+                                                                    title="Delete">
+                                                                        <span class="fa fa-times"></span>
+                                                                    </button>
+                                                                    <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
+                                                                    title="Add">
+                                                                        <span class="fa fa-plus"></span>
+                                                                    </button> -->
+
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -276,8 +299,8 @@
                                             <div class="clearfix"></div>
                                      
                                               
-                                </div>   -->
-
+                                </div>  
+ -->
 
                             <div class="clearfix"></div>
 
@@ -286,8 +309,8 @@
 
                                     <div *ngIf="primary">
                                         <button type="button" class="lgn_btn margin_top" (click)="pre()"><span>Previous</span></button>
-                                        <!-- <button type="button" class="btn sub-btn btn-small margin_right" (click)="Third(candidateForm)"><span>Next</span></button>  -->
-                                        <button type="submit" class="lgn_btn"><span>Submit</span></button>
+                                        <!-- <button type="button" class="lgn_btn margin_top" (click)="Third(candidateForm)"><span>Next</span></button>  -->
+                                        <button type="submit" class="lgn_btn margin_top"><span>Submit</span></button>
                                     </div>
                                     <div *ngIf="second1">
                                         <button type="button" class="lgn_btn margin_top" (click)="pre1()"><span>Previous</span></button>
@@ -299,8 +322,8 @@
 
                                 </div>
                                 <br>
-                                <!-- <div class="form-btn" *ngIf="second1">
-                                      <button type="submit" class="btn sub-btn"><span>Submit</span></button>
+                                    <!-- <div class="form-btn" *ngIf="second1">
+                                      <button type="submit" class="lgn_btn margin_top"><span>Submit</span></button>
                                     
                                     </div> -->
 

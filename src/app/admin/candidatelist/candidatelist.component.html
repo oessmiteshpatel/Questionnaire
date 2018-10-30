@@ -29,10 +29,11 @@
                   <thead>
                     <tr>
                       <th style="width:4%;">#</th>
-                      <th style="width:8%;">Candidate Name</th>
-                      <th style="width:9%;">Candidate Email</th>
+                      <th style="width:6%;">Candidate Name</th>
+                      <th style="width:5%;">Candidate Email</th>
                       <th style="width:7%;">Phone Number</th>
                       <th style="width:9%;">Job Position</th>
+                      <th style="width:9%;">File Name</th>
                       <th style="width:3%;">IsActive</th>
                       <th style="width:7%;">File Status</th>
                       <th style="width:7%;">Actions</th>
@@ -45,7 +46,8 @@
                           <td>{{candidate.CandidateEmail}}</td>
                           <td>{{candidate.PhoneNumber}}</td>
                           <td>{{candidate.JobPositionName}}</td>
-                        
+                          <td *ngIf="candidate.CandidateHrForm!=''"><a href="assets/candidate/{{candidate.CandidateHrForm}}" Download>Download File</a></td>
+                          <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
                           <td *ngIf="candidate.IsActive=='1'">Yes</td>
                           <td *ngIf="candidate.IsActive=='0'">No</td>
                           <td *ngIf="candidate.CandidateHrForm!=''">Uploaded</td>
@@ -69,7 +71,11 @@
 
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Upload File" > 
                         <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="uploadFile(candidate.CandidateId)"><span class="fa fa-upload"></span></button>
-                    </div>
+                     </div>
+
+                     <!-- <div class="inline_delbtn tooltip_inline" data-placement="bottom"  title="Download File" > 
+                        <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button"> <a href="assets/candidate/{{candidate.CandidateHrForm}}"><span class="fa fa-download"></span></a></button>
+                     </div> -->
                         
                       </td> 
                     </tr>

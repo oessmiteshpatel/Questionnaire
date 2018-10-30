@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CandidateuserService } from '../services/candidateuser.service';
 import { debug } from 'util';
 declare var $,unescape	: any;
+declare function myInput() : any;
 @Component({
   selector: 'app-candidateuser',
   providers: [CandidateuserService],
@@ -26,10 +27,16 @@ export class CandidateuserComponent implements OnInit {
 	primary;
 	second1;
 	first1;
+	ans;
   constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute,
 		private CandidateuserService: CandidateuserService) { }
 
-    ngOnInit() {		
+    ngOnInit() {	
+		
+		var item = { 'QLabel': '','QValue': ''};
+    
+		this.ans = [];
+		this.ans.push(item);
 					
 		setTimeout(function(){
 			if ($("body").height() < $(window).height()) {  
@@ -85,6 +92,23 @@ export class CandidateuserComponent implements OnInit {
 				}
 				
 		}
+
+		AddNewQuestion(index){ 
+    
+			var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};
+			if (this.ans.length <= index + 1) {
+			  this.ans.splice(index + 1, 0, item);
+			}  
+			setTimeout(function(){
+			  myInput();
+			   },100);
+			}
+		  
+			DeleteQuestion(item){
+			   
+			var index = this.ans.indexOf(item);	
+			this.ans.splice(index, 1);		
+			}
 	
 	
 		addUser(candidateForm) {

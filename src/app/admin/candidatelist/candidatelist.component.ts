@@ -40,9 +40,19 @@ export class CandidatelistComponent implements OnInit {
  
     ngOnInit()
     {
-this.candidateEntity=[];
-this.candidateList = [];
-this.candidateData = {};
+      
+      this.candidateEntity=[];
+      this.candidateList = [];
+      this.candidateData = {};
+
+    $('body').tooltip({
+      selector: '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])',
+      trigger: 'hover',
+      container: 'body'
+      }).on('click mousedown mouseup', '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])', function () {
+      $('[data-toggle="tooltip"], [title]:not([data-toggle="popover"])').tooltip('destroy');
+      });
+
       setTimeout(function(){
         if ($("body").height() < $(window).height()) {  
           $('footer').addClass('footer_fixed');     
@@ -52,6 +62,7 @@ this.candidateData = {};
       }
       },100);
 
+      this.globals.isLoading = true;
       this.CandidateuserService.getAllDefaultData()
       .then((data) => {
         this.questionList = data['question'];
@@ -107,12 +118,12 @@ this.candidateData = {};
         
         $(".user").addClass("selected");
     },500); 
-
+      this.globals.isLoading = false;
     }, 
     (error) => 
     {
       this.msgflag = false;
-    
+      this.globals.isLoading = false;
     	});	
      
     }
@@ -211,11 +222,10 @@ this.candidateData = {};
       doc.save('Candidate.pdf');  
 
       }
-  
 
       uploadFile(CandidateId)
       {debugger
-
+        this.globals.isLoading = true;
           //  Use for file upload script start
           const body = document.querySelector('body');
           var count = jQuery(window).height() - 270;
@@ -236,7 +246,8 @@ this.candidateData = {};
 					title: 'Please Input PDF File',
 					showConfirmButton: false,
 					timer: 1500
-				})
+        })
+        
 			}
 			
 			
@@ -252,26 +263,24 @@ this.candidateData = {};
         
           $('#Upload_Modal').modal('show');
         
-            
+            this.globals.isLoading = false;
         },
         (error) => {
           alert('error');
-            
+          this.globals.isLoading = false;
         });
        
       }
 
       addUser(candidateForm) {
         debugger
-    
         let id = this.route.snapshot.paramMap.get('CandidateId');
-       //console.log(this.candidateEntity.CandidateId);
+
         let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
         var fd = new FormData();
         if (file2) {
           fd.append('favicon', file2);
           this.candidateEntity.Faviconicon = file2['name'];
-          //console.log(this.candidateEntity.Faviconicon);
           var fileName = file2['name'];
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
@@ -281,9 +290,6 @@ this.candidateData = {};
         }
         this.submitted = true;
         if (candidateForm.valid && fileExtension == 'pdf') {
-    
-         // this.btn_disable = true;
-          //this.candidateEntity.CandidateId = id;
           this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
             .then((data) => {
     

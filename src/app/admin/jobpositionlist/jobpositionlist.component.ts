@@ -40,6 +40,7 @@ export class JobpositionlistComponent implements OnInit {
 				$('footer').removeClass('footer_fixed');
 			}
 		}, 100);
+		this.globals.isLoading = true;
 		this.JobpositionService.getAll()
 			.then((data) => {
 				this.positionList = data;
@@ -52,9 +53,10 @@ export class JobpositionlistComponent implements OnInit {
 						}
 					});
 				}, 100);
+				this.globals.isLoading = false;
 			},
 			(error) => {
-				this.router.navigate(['/admin/pagenotfound']);
+				this.globals.isLoading = false;
 			});
 		this.msgflag = false;
 	}
