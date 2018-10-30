@@ -57,7 +57,7 @@ const routes: Routes = [
           { path : '', component : LoginComponent, canActivate : [AuthGuard] },
           // { path : '', component : CandidateuserComponent , canActivate : [AuthGuard] },
   
-          { path : 'home', component : HomeComponent, canActivate : [AuthGuard]   },
+          // { path : 'home', component : HomeComponent, canActivate : [AuthGuard]   },
   
           // { path : 'question', component : QuestionComponent, canActivate : [AuthGuard]   },
           
@@ -70,7 +70,7 @@ const routes: Routes = [
           { path : 'candidateuser/edit/:id', component : CandidateuserComponent, canActivate : [AuthGuard]   },
           { path : 'candidateuser/edits/:id', component : CandidateuserComponent, canActivate : [AuthGuard]   },
   
-          { path : 'thankyou', component : ThankyouComponent, canActivate : [AuthGuard]   },
+          // { path : 'thankyou', component : ThankyouComponent, canActivate : [AuthGuard]   },
   
           { path : 'question/add', component : ManagequestionComponent, canActivate : [AuthGuard]   },
           { path : 'question/edit/:id', component : ManagequestionComponent, canActivate : [AuthGuard]   },
@@ -88,7 +88,7 @@ const routes: Routes = [
   
           { path: 'changepass', component: ChangepassComponent, canActivate : [AuthGuard] },
   
-          { path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard] }
+          // { path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard] }
           
 		
         ]

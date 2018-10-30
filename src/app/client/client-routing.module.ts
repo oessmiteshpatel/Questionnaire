@@ -39,7 +39,7 @@ const routes: Routes = [
 			
 				{ path : '', component : CandidateuserComponent  },
 
-				{ path : 'home', component : HomeComponent  },
+				// { path : 'home', component : HomeComponent  },
 
 			
 				
@@ -52,7 +52,7 @@ const routes: Routes = [
 
 			
 	
-				{ path: 'dashboard', component: DashboardComponent}
+				// { path: 'dashboard', component: DashboardComponent}
 				
 			]
 	}
