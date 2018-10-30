@@ -110,6 +110,17 @@ export class ManagequestionComponent implements OnInit {
 
   }
 
+  Reset()
+  {
+    debugger
+    this.QuestionList = [];
+    var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};
+    this.QuestionList.push(item);
+    setTimeout(function(){
+      myInput();
+       },100);
+  }
+
   AddNewQuestion(index){ 
     
     var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};

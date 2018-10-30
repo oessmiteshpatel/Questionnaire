@@ -53,7 +53,8 @@
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" class="lgn_btn"><span>Submit</span></button>
+                                    <button type="submit"  *ngIf="positionEntity.JobPositionId==0" class="lgn_btn"><span>Submit</span></button>
+                                    <button type="submit"  *ngIf="positionEntity.JobPositionId!=0" class="lgn_btn"><span>Update</span></button>
                                 </div>
                             </form>
                         </div>
