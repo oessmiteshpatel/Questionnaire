@@ -42,13 +42,30 @@ class Candidateuser extends CI_Controller {
 
 	
 
-	public function uploadFile()
+	public function uploadFile($CandidateId)
 	{
+				
 		if($_FILES)
 		{
+			$this->db->select('can.CandidateId,job.JobPositionName');
+			$this->db->join('tblmstjobposition job','job.JobPositionId = can.JobPositionId', 'left');
+			$this->db->where('can.CandidateId',$CandidateId);
+			$result = $this->db->get('tblcandidate can');	
+			$positionName = $result->result()[0]->JobPositionName;
+
 			if(isset($_FILES['favicon']) && !empty($_FILES['favicon']))
-			{
-				move_uploaded_file($_FILES["favicon"]["tmp_name"], "../src/assets/candidate/".$_FILES["favicon"]["name"]);
+			{	
+				$dirname=str_replace(' ','_',$positionName);
+				$directoryname="../src/assets/candidate/".$dirname."/";
+
+				if(!is_dir($directoryname)){
+					mkdir($directoryname, 0755, true);
+					}
+
+				$target_dir=$directoryname;
+				$newfilename= round(microtime(true)) ."_". str_replace(" ", "_", basename($_FILES["favicon"]["name"]));
+				$target_file = $target_dir . $newfilename;
+				move_uploaded_file($_FILES["favicon"]["tmp_name"], $target_file);
 				
 			}
 				echo json_encode('success');

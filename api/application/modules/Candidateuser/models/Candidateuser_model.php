@@ -72,7 +72,8 @@ class Candidateuser_model extends CI_Model
 						// "CandidateEmail"=>trim($post_user['CandidateEmail']),
 						// "PhoneNumber"=>trim($post_user['PhoneNumber']),
 						// "JobPositionId"=>trim($post_user['JobPositionId']),		
-						"CandidateHrForm"=>trim($candidatevalue['CandidateHrForm']),
+						//"CandidateHrForm"=>trim($candidatevalue['CandidateHrForm']),
+						"CandidateHrForm"=>round(microtime(true)) ."_". str_replace(" ", "_", trim($candidatevalue['CandidateHrForm'])),
 					//	"IsActive"=>$IsActive,
 						"CreatedBy"=>1,
 						"CreatedOn"=>date('y-m-d H:i:s')
@@ -81,6 +82,7 @@ class Candidateuser_model extends CI_Model
 			
 		
 			$this->db->where('CandidateId',trim($candidatevalue['CandidateId']));
+
 			$res = $this->db->update('tblcandidate',$user_data);
 			if($res) {
 				

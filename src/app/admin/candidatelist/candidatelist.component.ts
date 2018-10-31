@@ -275,7 +275,7 @@ export class CandidatelistComponent implements OnInit {
       addUser(candidateForm) {
         debugger
         let id = this.route.snapshot.paramMap.get('CandidateId');
-
+    
         let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
         var fd = new FormData();
         if (file2) {
@@ -289,12 +289,13 @@ export class CandidatelistComponent implements OnInit {
           this.candidateEntity.Faviconicon = null;
         }
         this.submitted = true;
-        if (candidateForm.valid && fileExtension == 'pdf') {
+        if (candidateForm.valid && fileExtension == 'pdf') { debugger
           this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
             .then((data) => {
     
               if (file2) {
-                this.CandidateuserService.uploadFile(fd)
+                this.CandidateuserService.uploadFile(fd,this.candidateEntity.CandidateId)
+              //  this.CandidateuserService.uploadFile(fd)
                   .then((data) => {
                     this.btn_disable = false;
                     this.submitted = false;
@@ -319,6 +320,9 @@ export class CandidatelistComponent implements OnInit {
                         timer: 1500
                       })
                     }
+                  
+                      
+
                     this.router.navigate(['/admin/candidate/list']);
     
                   }, (error) => {

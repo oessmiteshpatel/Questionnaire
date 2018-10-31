@@ -46,7 +46,9 @@
                           <td>{{candidate.CandidateEmail}}</td>
                           <td>{{candidate.PhoneNumber}}</td>
                           <td>{{candidate.JobPositionName}}</td>
-                          <td *ngIf="candidate.CandidateHrForm!=''"><a href="assets/candidate/{{candidate.CandidateHrForm}}" Download>Download File</a></td>
+                          <!-- <td>{{candidate.JobPositionName.replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_')}}</td> -->
+                          <!-- <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td> -->
+                          <td *ngIf="candidate.CandidateHrForm!=''"><a href="assets/candidate/{{candidate.JobPositionName.replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_')}}/{{candidate.CandidateHrForm}}" Download>Download File</a></td>
                           <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
                           <td *ngIf="candidate.IsActive=='1'">Yes</td>
                           <td *ngIf="candidate.IsActive=='0'">No</td>

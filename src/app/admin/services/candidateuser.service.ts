@@ -31,9 +31,9 @@ export class CandidateuserService {
 
 
 
-    uploadFile(file){
+    uploadFile(file,CandidateId){
       let promise = new Promise((resolve, reject) => {
-      this.http.post(this.globals.baseAPIUrl + 'Candidateuser/uploadFile', file)
+      this.http.post(this.globals.baseAPIUrl + 'Candidateuser/uploadFile/'+CandidateId, file )
       .toPromise()
       .then(
       res => { // Success

@@ -126,62 +126,16 @@ export class CandidateuserComponent implements OnInit {
 
 		let id = this.route.snapshot.paramMap.get('id');
 
-		let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
-		var fd = new FormData();
-		if (file2) {
-			fd.append('favicon', file2);
-			this.candidateEntity.Faviconicon = file2['name'];
-			//console.log(this.candidateEntity.Faviconicon);
-			var fileName = file2['name'];
-			var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
-			this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
-		} else {
-			fd.append('favicon', null);
-			this.candidateEntity.Faviconicon = null;
-		}
+		
 		this.submitted = true;
-		if (candidateForm.valid && fileExtension == 'pdf') {
+		if (candidateForm.valid) {
 
 			//this.btn_disable = true;
 			this.candidateEntity.CandidateId = id;
 			this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
 				.then((data) => {
 
-					if (file2) {
-						this.CandidateuserService.uploadFile(fd)
-							.then((data) => {
-								this.btn_disable = false;
-								this.submitted = false;
-
-								candidateForm.form.markAsPristine();
-								if (id) {
-
-									swal({
-										position: 'top-end',
-										type: 'success',
-										title: 'File Uploaded Successfully!',
-										showConfirmButton: false,
-										timer: 1500
-									})
-								} else {
-
-									swal({
-										position: 'top-end',
-										type: 'success',
-										title: 'File Uploaded Successfully!',
-										showConfirmButton: false,
-										timer: 1500
-									})
-								}
-								this.router.navigate(['/admin/candidate/list']);
-
-							}, (error) => {
-									this.btn_disable = false;
-									this.submitted = false;
-
-									this.router.navigate(['/pagenotfound']);
-								});
-					} else {
+					
 						this.btn_disable = false;
 						this.submitted = false;
 						//	this.CourseEntity = {};
@@ -206,7 +160,7 @@ export class CandidateuserComponent implements OnInit {
 							})
 						}
 						this.router.navigate(['/admin/candidate/list']);
-					}
+				
 
 
 				}, (error) => {

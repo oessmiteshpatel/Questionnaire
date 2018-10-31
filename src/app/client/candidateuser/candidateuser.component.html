@@ -170,21 +170,22 @@
                                                         <div class="answer_block">
 
                                                             <div class="form-group">
-                                                                <div class="radio_box" *ngFor="let ans of que.child; let j=index; let last=last;">
+                                                                <div class="radio_box" *ngFor="let ans of que.child; let last=last;">
                                                                     
-                                                                        <br>
+                                                                        <!-- <br>
                                                                         <div class="radio_box">
                                                                             <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
                                                                                 [(ngModel)]="ans.CAnswer" required />
                                                                             <label for="role{{k}}{{j}}">No </label>
                                                                         </div>
-                                                                        <br>
+                                                                        <br> -->
 
                                                                     <input type="radio" (change)="checked(k,j,ans.QValue,que.child.length)"
                                                                         [checked]="ans.CAnswer==ans.QValue" name="CAnswer{{k}}"
                                                                         id="role{{k}}{{j}}" value="{{ans.QValue}}"
                                                                         #CAnswer="ngModel" [(ngModel)]="ans.CAnswer"
                                                                         required />
+                                                                       
                                                                     <label for="role{{k}}{{j}}" title="{{ans.QLabel}}">{{ans.QLabel}}
                                                                     </label>
                                                                     <div class="clearfix"></div>
@@ -192,16 +193,7 @@
                                                                         <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
                                                                             select answer</span>
                                                                     </span>
-
-                                                                    <button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
-                                                                    title="Delete">
-                                                                       <span class="fa fa-times"></span>
-                                                                   </button>
-                                                                   <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
-                                                                    title="Add">
-                                                                       <span class="fa fa-plus"></span>
-                                                                   </button>
-
+                                                                  
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -225,7 +217,9 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-11 col-sm-11 col-xs-12">
-                                                        <div class="answer_block" *ngFor="let ans of que.child; let j=index; let last = last;">
+                                                       
+                                                        <div class="answer_block" *ngFor="let ans of que.child; let j=index;let i=index; let firstAns=first; let last = last;">
+                                                            
                                                             <div class="col-md-2 col-sm-2">
                                                                 <div class="form-group">
                                                                     <label>{{ans.QLabel}} </label>
@@ -236,15 +230,14 @@
                                                                 <div class="form-group">
 
                                                                         <br>
-                                                                        <div class="radio_box">
+                                                                        <div class="radio_box" [hidden]="firstAns">
                                                                             <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
                                                                                 [(ngModel)]="ans.CAnswer" required />
                                                                             <label for="role{{k}}{{j}}">No </label>
                                                                         </div>
                                                                         <br>
 
-                                                                        <!-- <input type="text" [disabled]="questionEntity.QuestionId>0" class="form-control" pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #QLabel="ngModel"
-                                                                        [(ngModel)]="QuestionList[i].QLabel" name="QLabel{{i}}" required /> -->
+                                                                
 
                                                                     <input type="text" class="form-control" #CAnswer="ngModel"
                                                                         [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
@@ -254,14 +247,7 @@
                                                                             enter answer</span>
                                                                     </span>
 
-                                                                    <!-- <button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
-                                                                    title="Delete">
-                                                                        <span class="fa fa-times"></span>
-                                                                    </button>
-                                                                    <button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
-                                                                    title="Add">
-                                                                        <span class="fa fa-plus"></span>
-                                                                    </button> -->
+                                                                 
 
                                                                 </div>
                                                             </div>

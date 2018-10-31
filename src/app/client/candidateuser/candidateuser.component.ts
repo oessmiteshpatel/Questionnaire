@@ -32,7 +32,7 @@ export class CandidateuserComponent implements OnInit {
 		private CandidateuserService: CandidateuserService) { }
 
     ngOnInit() {	
-		
+		debugger
 		var item = { 'QLabel': '','QValue': ''};
     
 		this.ans = [];
@@ -93,8 +93,9 @@ export class CandidateuserComponent implements OnInit {
 				
 		}
 
+		
 		AddNewQuestion(index){ 
-    
+    debugger
 			var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};
 			if (this.ans.length <= index + 1) {
 			  this.ans.splice(index + 1, 0, item);
@@ -105,7 +106,7 @@ export class CandidateuserComponent implements OnInit {
 			}
 		  
 			DeleteQuestion(item){
-			   
+			   debugger
 			var index = this.ans.indexOf(item);	
 			this.ans.splice(index, 1);		
 			}
@@ -113,9 +114,7 @@ export class CandidateuserComponent implements OnInit {
 	
 		addUser(candidateForm) {
 		debugger
-			
 			let id = this.route.snapshot.paramMap.get('id');
-			//this.candidateEntity.JobPositionId=0;
 			this.submitted = true;
 			if (candidateForm.valid) {
 				
@@ -152,10 +151,8 @@ export class CandidateuserComponent implements OnInit {
 			this.candidateEntity.IsActive = '1';
 			this.submitted = false;
 			candidateForm.form.markAsPristine();
-    }
-
-  
-
+	}
+	
     first(candidateForm)
 		{ console.log(this.questionList);
 			this.submitted = true;
