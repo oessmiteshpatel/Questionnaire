@@ -5,11 +5,11 @@
             <div class="col-lg-12">
                 <h1 class="text-center">Edit Profile</h1>
                 <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
-                <div class="btn-group pull-right add-right addpage_backbtn">
+                <!-- <div class="btn-group pull-right add-right addpage_backbtn">
                     <a routerLink="/admin/candidate/list" class="lgn_btn">
                         Back
                     </a>
-                </div>
+                </div> -->
                 <div class="clearfix"></div>
             </div>
             <!-- end  page header -->
@@ -29,7 +29,7 @@
                                         required />
                                     <span class="error_span" *ngIf="(FirstName.dirty && FirstName.invalid) || (FirstName.pristine && submitted)">
                                         <span *ngIf="FirstName.errors.required || (FirstName.pristine && submitted)">Please
-                                            enter first name </span>
+                                            enter your First Name </span>
                                         <span *ngIf="FirstName.errors && FirstName.errors.pattern">Please enter valid
                                             First Name</span>
                                     </span>
@@ -41,8 +41,9 @@
                                         pattern="[a-zA-Z',&.$\ ]{2,100}" required />
                                     <span class="error_span" *ngIf="(LastName.dirty && LastName.invalid) || (LastName.pristine && submitted)">
                                         <span *ngIf="LastName.errors.required || (LastName.pristine && submitted)">Please
-                                            enter last name </span>
-                                        <span *ngIf="LastName.errors && LastName.errors.pattern">Please enter LastName</span>
+                                            enter your Last Name </span>
+                                        <span *ngIf="LastName.errors && LastName.errors.pattern">Please
+                                                enter valid Last Name</span>
                                     </span>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -53,10 +54,10 @@
                                         required />
                                     <span class="error_span" *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
                                         <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please
-                                            enter email address </span>
+                                            enter your Email Address </span>
                                     </span>
                                     <span class="error_span" *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
-                                        Please enter valid email address
+                                        Please enter valid Email Address
                                     </span>
                                 </div>
                                 <div class="clearfix"></div>
@@ -106,8 +107,7 @@
                         </div> -->
                                 <div class="clearfix"></div>
                                 <div class="col-lg-12 text-center">
-                                    <button type="submit" *ngIf="userEntity.UserId==0" class="lgn_btn"><span>Submit</span></button>
-                                    <button type="submit" *ngIf="userEntity.UserId!=0" class="lgn_btn"><span>Update</span></button>
+                                    <button type="submit" class="lgn_btn"><span>Update</span></button>
                                 </div>
                             </form>
                         </div>
