@@ -323,7 +323,8 @@ export class CandidatelistComponent implements OnInit {
                   
                       
 
-                    this.router.navigate(['/admin/candidate/list']);
+                    window.location.reload();
+                    //this.router.navigate(['/admin/candidate/list']);
     
                   }, (error) => {
                       this.btn_disable = false;
@@ -355,7 +356,8 @@ export class CandidatelistComponent implements OnInit {
                     timer: 1500
                   })
                 }
-                this.router.navigate(['/admin/candidate/list']);
+                window.location.reload();
+                //this.router.navigate(['/admin/candidate/list']);
               }
     
     
@@ -377,7 +379,8 @@ export class CandidatelistComponent implements OnInit {
             timer: 1500
           })
         }
-        this.router.navigate(['/admin/candidate/list']);
+       // window.location.reload();
+                //this.router.navigate(['/admin/candidate/list']);
       }
 
  

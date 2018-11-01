@@ -7,6 +7,7 @@ import { CandidateuserService } from '../services/candidateuser.service';
 import { debug } from 'util';
 declare var $,unescape	: any;
 declare function myInput() : any;
+declare var $, swal: any;
 @Component({
   selector: 'app-candidateuser',
   providers: [CandidateuserService],
@@ -135,9 +136,21 @@ export class CandidateuserComponent implements OnInit {
 						this.candidateEntity = {};
 						candidateForm.form.markAsPristine();
 						if (id) {
-						
+							swal({
+								position: 'top-end',
+								type: 'success',
+								title: 'Your Form Submitted Successfully!',
+								showConfirmButton: false,
+								timer: 1500
+							})
 						} else {
-						
+							swal({
+								position: 'top-end',
+								type: 'success',
+								title: 'Your Form Submitted Successfully!',
+								showConfirmButton: false,
+								timer: 1500
+							})
 						}						
 							this.router.navigate(['/thankyou']);
 					},
