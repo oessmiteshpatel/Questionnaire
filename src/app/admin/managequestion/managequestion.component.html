@@ -77,11 +77,11 @@
 													</span>
 												</span>
 
-												<button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
+												<button type="button" [disabled]="questionEntity.QuestionId>0" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
 												 title="Delete">
 													<span class="fa fa-times"></span>
 												</button>
-												<button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
+												<button type="button" [disabled]="questionEntity.QuestionId>0" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
 												 title="Add">
 													<span class="fa fa-plus"></span>
 												</button>
@@ -125,11 +125,11 @@
 													</span>
 												</span>
 
-												<button type="button" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
+												<button type="button" [disabled]="questionEntity.QuestionId>0" (click)="DeleteQuestion(Question)" *ngIf="i!=0" class="r-btnRemove btn btn-danger btn-rounded btn-sm"
 												 title="Delete">
 													<span class="fa fa-times"></span>
 												</button>
-												<button type="button" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
+												<button type="button" [disabled]="questionEntity.QuestionId>0" (click)="AddNewQuestion(i)" *ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm"
 												 title="Add">
 													<span class="fa fa-plus"></span>
 												</button>
