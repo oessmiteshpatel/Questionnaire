@@ -171,7 +171,7 @@ export class ManagequestionComponent implements OnInit {
               swal({
                 position: 'top-end',
                 type: 'success',
-                title: 'Question Updated Successfully!',
+                title: 'Question updated successfully!',
                 showConfirmButton: false,
                 timer: 1500
               })
@@ -179,7 +179,7 @@ export class ManagequestionComponent implements OnInit {
               swal({
                 position: 'top-end',
                 type: 'success',
-                title: 'Question Added Successfully!',
+                title: 'Question added successfully!',
                 showConfirmButton: false,
                 timer: 1500
               })

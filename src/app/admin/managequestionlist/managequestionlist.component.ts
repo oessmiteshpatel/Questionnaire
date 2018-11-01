@@ -45,9 +45,9 @@ export class ManagequestionlistComponent implements OnInit {
 				setTimeout(function () {
 					var table = $('#dataTables-example').DataTable({
 						"oLanguage": {
-							"sLengthMenu": "_MENU_ Question per Page",
-							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Question",
-							"sInfoFiltered": "(filtered from _MAX_ total Question)"
+							"sLengthMenu": "_MENU_ Questions per Page",
+							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Questions",
+							"sInfoFiltered": "(filtered from _MAX_ total Questions)"
 						},
 					});
 
@@ -85,7 +85,7 @@ export class ManagequestionlistComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'Question Deleted Successfully!',
+								title: 'Question deleted successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})

@@ -123,7 +123,7 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 .inner_content .inner_block .que_block ul li{color: #777;font-size: 16px;line-height: 24px;}
 .inner_content .inner_block .que_block h3{font-size:20px;margin: 0px 0px 0px 0px;line-height: 28px;font-family: 'Titillium Web', sans-serif;color: #111;}
 .inner_content .consent_block p{color: #111;text-align: center;font-size: 22px;margin: 10px 0px;line-height: 30px;}
-.inner_content .thankyou_block h3{text-shadow: 1px 3px 0px rgba(0,0,0,0.2);font-family: 'Titillium Web', sans-serif;font-size: 42px;text-transform: uppercase;text-align: center;color: #0061af;font-weight: bold;letter-spacing: 1px;}
+.inner_content .thankyou_block h3{font-family: 'Titillium Web', sans-serif;font-size: 42px;text-align: center;color: #0061af;font-weight: bold;letter-spacing: 1px;}
 .inner_content .thankyou_block span{text-shadow:none;color: #a6ce39;display: block;margin-top: 10px;font-size: 24px;}
 .inner_content .thankyou_block img{margin: 0 auto;width: 160px;height: 160px;}
 .form-btn {text-align: center;}

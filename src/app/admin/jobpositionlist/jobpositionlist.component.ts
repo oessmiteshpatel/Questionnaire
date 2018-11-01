@@ -47,9 +47,9 @@ export class JobpositionlistComponent implements OnInit {
 				setTimeout(function () {
 					$('#dataTables-example').dataTable({
 						"oLanguage": {
-							"sLengthMenu": "_MENU_ Job Position per Page",
-							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Job Position",
-							"sInfoFiltered": "(filtered from _MAX_ total Job Position)"
+							"sLengthMenu": "_MENU_ Positions per Page",
+							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Positions",
+							"sInfoFiltered": "(filtered from _MAX_ total Positions)"
 						}
 					});
 				}, 100);
@@ -65,7 +65,7 @@ export class JobpositionlistComponent implements OnInit {
 		this.deleteEntity = jobposition;
 		swal({
 			title: 'Are you sure?',
-			text: "You want to delete this Job Position?",
+			text: "You want to delete this Position?",
 			type: 'warning',
 			showCancelButton: true,
 			confirmButtonColor: '#3085d6',
@@ -84,7 +84,7 @@ export class JobpositionlistComponent implements OnInit {
 							swal({
 								position: 'top-end',
 								type: 'success',
-								title: 'Job Position Deleted Successfully!',
+								title: 'Position deleted successfully!',
 								showConfirmButton: false,
 								timer: 1500
 							})

@@ -94,7 +94,7 @@ export class JobpositionComponent implements OnInit {
 						swal({
 							position: 'top-end',
 							type: 'success',
-							title: 'Job Position Updated Successfully!',
+							title: 'Position updated successfully!',
 							showConfirmButton: false,
 							timer: 1500
 						})
@@ -103,7 +103,7 @@ export class JobpositionComponent implements OnInit {
 						swal({
 							position: 'top-end',
 							type: 'success',
-							title: 'Job Position Added Successfully!',
+							title: 'Position added successfully!',
 							showConfirmButton: false,
 							timer: 1500
 						})

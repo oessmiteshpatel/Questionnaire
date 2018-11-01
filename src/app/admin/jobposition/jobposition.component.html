@@ -7,7 +7,7 @@
                 <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div>
                 <div class="btn-group pull-right add-right addpage_backbtn">
                         <a routerLink="/admin/position/list" class="lgn_btn">
-                            Back
+                            Back to list
                         </a>
                     </div>
                 <div class="clearfix"></div>
@@ -21,14 +21,14 @@
                         <div class="form-bg">
                             <form class="form-validate" role="form" #positionForm="ngForm" (ngSubmit)="addPosition(positionForm)">
                                 <div class="form-group col-md-6 col-md-offset-3">
-                                    <label><span class="required">*</span>Job Position Name</label>
+                                    <label><span class="required">*</span>Job Position</label>
                                     <input type="text" class="form-control" #JobPositionName="ngModel" [(ngModel)]="positionEntity.JobPositionName"
                                         class="form-control" name="JobPositionName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" required>
                                     <span class="error_span" *ngIf="(JobPositionName.dirty && JobPositionName.invalid) || (JobPositionName.pristine && submitted)">
                                         <span *ngIf="JobPositionName.errors.required || (JobPositionName.pristine && submitted)">Please
-                                            enter job position name</span>
+                                            enter job position</span>
                                         <span class="error_span" *ngIf="JobPositionName.errors && JobPositionName.errors.pattern">
-                                            Please enter a valid job position name.
+                                            Please enter a valid job position
                                         </span>
                                     </span>
                                 </div>

@@ -81,9 +81,9 @@ export class CandidatelistComponent implements OnInit {
       setTimeout(function(){
       var table = $('#dataTables-example').DataTable( {
           "oLanguage": {
-            "sLengthMenu": "_MENU_ Candidate per Page",
-            "sInfo": "Showing _START_ to _END_ of _TOTAL_ Candidate",
-            "sInfoFiltered": "(filtered from _MAX_ total Candidate)"
+            "sLengthMenu": "_MENU_ Candidates per Page",
+            "sInfo": "Showing _START_ to _END_ of _TOTAL_ Candidates",
+            "sInfoFiltered": "(filtered from _MAX_ total Candidates)"
           },
       dom: 'lBfrtip',
           buttons: [
@@ -306,7 +306,7 @@ export class CandidatelistComponent implements OnInit {
                       swal({
                         position: 'top-end',
                         type: 'success',
-                        title: 'File Uploaded Successfully!',
+                        title: 'File uploaded successfully!',
                         showConfirmButton: false,
                         timer: 1500
                       })
@@ -315,7 +315,7 @@ export class CandidatelistComponent implements OnInit {
                       swal({
                         position: 'top-end',
                         type: 'success',
-                        title: 'File Uploaded Successfully!',
+                        title: 'File uploaded successfully!',
                         showConfirmButton: false,
                         timer: 1500
                       })
@@ -341,7 +341,7 @@ export class CandidatelistComponent implements OnInit {
                   swal({
                     position: 'top-end',
                     type: 'success',
-                    title: 'File Uploaded Successfully!',
+                    title: 'File uploaded successfully!',
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -350,7 +350,7 @@ export class CandidatelistComponent implements OnInit {
                   swal({
                     position: 'top-end',
                     type: 'success',
-                    title: 'File Uploaded Successfully!',
+                    title: 'File uploaded successfully!',
                     showConfirmButton: false,
                     timer: 1500
                   })
@@ -372,7 +372,7 @@ export class CandidatelistComponent implements OnInit {
           swal({
             position: 'top-end',
             type: 'danger',
-            title: 'Please Input Pdf File!',
+            title: 'Please select PDF file!',
             showConfirmButton: false,
             timer: 1500
           })

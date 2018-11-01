@@ -65,7 +65,7 @@ export class ChangepassComponent implements OnInit {
 						swal({
 							type: 'warning',
 							title: 'Oops...',
-							text: 'Your current password is incorrect',
+							text: 'Your current password is incorrect!',
 						  })
 						this.btn_disable = false;
 						this.submitted = false;
