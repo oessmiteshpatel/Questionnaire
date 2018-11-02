@@ -23,7 +23,7 @@
                                 <div class="form-group col-md-6 col-md-offset-3">
                                     <label><span class="required">*</span>Job Position</label>
                                     <input type="text" class="form-control" #JobPositionName="ngModel" [(ngModel)]="positionEntity.JobPositionName"
-                                        class="form-control" name="JobPositionName" pattern="[a-zA-Z',&.$\ ]{2,100}" maxlength="100" required>
+                                        class="form-control" name="JobPositionName" maxlength="100" required>
                                     <span class="error_span" *ngIf="(JobPositionName.dirty && JobPositionName.invalid) || (JobPositionName.pristine && submitted)">
                                         <span *ngIf="JobPositionName.errors.required || (JobPositionName.pristine && submitted)">Please
                                             enter job position</span>

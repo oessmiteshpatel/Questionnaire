@@ -60,11 +60,11 @@
 			<!-- Profile -->
 			<div class="col-md-2 col-sm-2">
 				<ul class="user_dropdown">
-                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="letters">{{globals.authData.FirstName}}</span></a>
+                <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><span class="letters">{{firstNameChar | uppercase}}{{lastNameChar | uppercase}}</span></a>
                   <ul class="dropdown-menu">
                     <li class="img_name">
 						<div class="bg_block"></div>
-                      <div class="red_bg"><i class="fa fa-sort-asc"></i><span class="letters pull-left">{{globals.authData.FirstName}}</span>
+                      <div class="red_bg"><i class="fa fa-sort-asc"></i><span class="letters pull-left">{{firstNameChar | uppercase}}{{lastNameChar | uppercase}}</span>
                         <div class="name_email">{{globals.authData.FirstName}} {{globals.authData.LastName}}<br>
                           <span>{{globals.authData.EmailAddress}}</span></div>
                         <div class="clearfix"></div>

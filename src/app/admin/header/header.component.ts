@@ -13,8 +13,11 @@ export class HeaderComponent implements OnInit
   //globals;
   db_mode;
   constructor(  private authService: AuthService,private router: Router,public globals: Globals) { }
-
+  firstNameChar;
+  lastNameChar;
   ngOnInit() {
+    this.firstNameChar = this.globals.authData.FirstName.slice(0,1);
+    this.lastNameChar = this.globals.authData.LastName.slice(0,1);
        }
 
    

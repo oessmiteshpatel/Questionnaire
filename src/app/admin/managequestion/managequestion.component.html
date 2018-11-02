@@ -25,7 +25,7 @@
 										<div class="form-group">
 											<!-- <label>Write your question below</label> -->
 											<textarea class="form-control" #QuestionName="ngModel" [(ngModel)]="questionEntity.QuestionName" name="QuestionName"
-											 required maxlength="500"></textarea>
+											 required maxlength="1000"></textarea>
 											<span class="error_span" *ngIf="(QuestionName.dirty && QuestionName.invalid) || (QuestionName.pristine && submitted)">
 												<span *ngIf="QuestionName.errors && QuestionName.errors.required">
 													Please enter question

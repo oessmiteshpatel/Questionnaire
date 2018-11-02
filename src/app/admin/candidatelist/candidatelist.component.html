@@ -33,8 +33,7 @@
                     <th style="width:9%;">Candidate Email</th>
                     <th style="width:7%;">Contact Number</th>
                     <th style="width:9%;">Applied for</th>
-                    <th style="width:9%;">File Name</th>
-                    <th style="width:7%;">File Status</th>
+                    <th style="width:7%;">Signatured HR Questionnaire Form Status</th>
                     <th style="width:9%;">Actions</th>
                   </tr>
                 </thead>
@@ -45,9 +44,7 @@
                     <td>{{candidate.CandidateEmail}}</td>
                     <td>{{candidate.PhoneNumber}}</td>
                     <td>{{candidate.JobPositionName}}</td>
-                    <td *ngIf="candidate.CandidateHrForm!=''"><a href="assets/candidate/{{candidate.JobPositionName.replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_')}}/{{candidate.CandidateHrForm}}" Download>Download File</a></td>
-                    <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
-                    <td *ngIf="candidate.CandidateHrForm!=''">Uploaded</td>
+                    <td *ngIf="candidate.CandidateHrForm!=''">Uploaded <a href="assets/candidate/{{candidate.JobPositionName.replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_').replace(' ','_')}}/{{candidate.CandidateHrForm}}" Download><span class="fa fa-download tooltip_inline" data-placement="bottom" title="Download uploaded Scannned PDF of HR Questionnaire Form"></span></a></td>
                     <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
                     <td>
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom" title="Print HR Questionnaire Form">
@@ -348,7 +345,7 @@
       <div class="modal-body">
         <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR
           Questionnaire</h1>
-        <div class="table-responsive" style="margin: 0 auto;">
+        <div  style="margin: 0 auto;">
           <table class="table" style="width: 100%; margin:30px 0 0 0">
             <tbody>
               <tr>
