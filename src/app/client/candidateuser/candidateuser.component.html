@@ -99,6 +99,7 @@
                                 </div>
                             </div>
                             <div *ngIf="primary">
+
                                 <h1 class="text-center">Answer each questions with your best knowledge</h1>
                                 <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span
                                         class="dott"></span></div>
@@ -112,7 +113,7 @@
                                                 <span>
                                                     <span [innerHTML]="que.QuestionName"></span>
                                                 </span>
-                                                <!-- <h3>{{que.QuestionName}}</h3> -->
+                                               
                                             </div>
 
                                             <div *ngIf="que.AnswerTypeId==3">
@@ -139,13 +140,11 @@
                                                                     <br>
                                                                    
                                                                    
-
                                                                 <textarea class="form-control" #CAnswer="ngModel"
                                                                     [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
-                                                                    maxlength="500" required></textarea>
+                                                                    maxlength="500"  required></textarea>
                                                                 <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)">
-                                                                    <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
-                                                                        enter answer</span>
+                                                                    <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter answer</span> 
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -170,15 +169,7 @@
                                                         <div class="answer_block">
 
                                                             <div class="form-group">
-                                                                <div class="radio_box" *ngFor="let ans of que.child; let j=index; let last=last;">
-                                                                    
-                                                                        <!-- <br>
-                                                                        <div class="radio_box">
-                                                                            <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA" #CAnswer="ngModel"
-                                                                                [(ngModel)]="ans.CAnswer" required />
-                                                                            <label for="role{{k}}{{j}}">No </label>
-                                                                        </div>
-                                                                        <br> -->
+                                                                <div class="radio_box" *ngFor="let ans of que.child; let j=index; let last=last;">        
 
                                                                     <input type="radio" (change)="checked(k,j,ans.QValue,que.child.length)"
                                                                         [checked]="ans.CAnswer==ans.QValue" name="CAnswer{{k}}"
@@ -190,8 +181,7 @@
                                                                     </label>
                                                                     <div class="clearfix"></div>
                                                                     <span class="error_span" *ngIf="((CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)) && last">
-                                                                        <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
-                                                                            select answer</span>
+                                                                        <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please select answer</span>
                                                                     </span>
                                                                   
                                                                 </div>
@@ -243,8 +233,7 @@
                                                                         [(ngModel)]="ans.CAnswer" name="CAnswer{{k}}{{j}}"
                                                                         class="form-control" required />
                                                                     <span class="error_span" *ngIf="(CAnswer.dirty && CAnswer.invalid) || (CAnswer.pristine && submitted)">
-                                                                        <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please
-                                                                            enter answer</span>
+                                                                        <span *ngIf="CAnswer.errors.required || (CAnswer.pristine && submitted)">Please enter answer</span>
                                                                     </span>
 
                                                                  
@@ -296,7 +285,7 @@
                                     <div *ngIf="primary">
                                         <button type="button" class="lgn_btn margin_top" (click)="pre()"><span>Previous</span></button>
                                         <!-- <button type="button" class="lgn_btn margin_top" (click)="Third(candidateForm)"><span>Next</span></button>  -->
-                                        <button type="submit" class="lgn_btn margin_top"><span>Submit</span></button>
+                                        <button type="submit"  class="lgn_btn margin_top"><span>Submit</span></button>
                                     </div>
                                     <div *ngIf="second1">
                                         <button type="button" class="lgn_btn margin_top" (click)="pre1()"><span>Previous</span></button>

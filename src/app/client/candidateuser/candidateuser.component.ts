@@ -8,6 +8,7 @@ import { debug } from 'util';
 declare var $,unescape	: any;
 declare function myInput() : any;
 declare var $, swal: any;
+declare var $,PerfectScrollbar: any;
 @Component({
   selector: 'app-candidateuser',
   providers: [CandidateuserService],
@@ -33,60 +34,52 @@ export class CandidateuserComponent implements OnInit {
 		private CandidateuserService: CandidateuserService) { }
 
     ngOnInit() {	
-		debugger
-		var item = { 'QLabel': '','QValue': ''};
-    
-		this.ans = [];
-		this.ans.push(item);
-		$('body').tooltip({
+			debugger
+			var item = { 'QLabel': '','QValue': ''};
+			this.ans = [];
+			this.ans.push(item);
+
+			$('body').tooltip({
 			selector: '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])',
 			trigger: 'hover',
 			container: 'body'
 			}).on('click mousedown mouseup', '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])', function () {
 			$('[data-toggle="tooltip"], [title]:not([data-toggle="popover"])').tooltip('destroy');
-			});			
-		setTimeout(function(){
-			if ($("body").height() < $(window).height()) {  
-				$('footer').addClass('footer_fixed');     
-		}      
-		else{  
-				$('footer').removeClass('footer_fixed');    
-		}
-	  },100);
-		this.first1=true;
-					this.candidateEntity={};
-					this.cansEntity={};
-					
-					this.CandidateuserService.getAllDefaultData()
-					.then((data) => {
-						this.jobpositionList = data['jobpositon'];
-						this.questionList = data['question'];
-					//console.log(this.questionList);
+			});	
 
-					
-					},
-					(error) => {
-												
-					});
-		let id = this.route.snapshot.paramMap.get('id');
-		if (id) {
-	
-	
-			 this.header = 'Edit';
-			this.CandidateuserService.getById(id)
+			setTimeout(function(){
+				if ($("body").height() < $(window).height()) {  
+					$('footer').addClass('footer_fixed');     
+			}      
+			else{  
+					$('footer').removeClass('footer_fixed');    
+			}
+			},100);
+
+				this.first1=true;
+				this.candidateEntity={};
+				this.cansEntity={};
+				
+				this.CandidateuserService.getAllDefaultData()
 				.then((data) => {
-					// option 
-					this.candidateEntity = data;
-					this.questionList = data;
-				//	console.log(this.questionList);
-					
+					this.jobpositionList = data['jobpositon'];
+					this.questionList = data['question'];	
 				},
 				(error) => {
-					alert('error');
-				
-				//	this.router.navigate(['/admin/pagenotfound']);
 					this.btn_disable = false;
-					this.submitted = false;
+					this.submitted = false;					
+				});
+				let id = this.route.snapshot.paramMap.get('id');
+				if (id) {
+				this.header = 'Edit';
+				this.CandidateuserService.getById(id)
+				.then((data) => {
+					this.candidateEntity = data;
+					this.questionList = data;
+				},
+				(error) => {
+					this.btn_disable = false;
+					this.submitted = false;		
 				});
 				}
 				else {
@@ -102,7 +95,7 @@ export class CandidateuserComponent implements OnInit {
 
 		
 		AddNewQuestion(index){ 
-    debugger
+    		debugger
 			var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy':1};
 			if (this.ans.length <= index + 1) {
 			  this.ans.splice(index + 1, 0, item);
@@ -128,9 +121,6 @@ export class CandidateuserComponent implements OnInit {
 				//this.btn_disable = true;
 				this.CandidateuserService.add({'candidatevalue':this.candidateEntity,'questionvalue':this.questionList})
 					.then((data) => {
-
-					
-						//alert('success');
 						this.btn_disable = false;
 						this.submitted = false;
 						this.candidateEntity = {};
@@ -155,11 +145,8 @@ export class CandidateuserComponent implements OnInit {
 							this.router.navigate(['/thankyou']);
 					},
 					(error) => {
-						//alert('error');
 						this.btn_disable = false;
-						this.submitted = false;
-						
-						//this.router.navigate(['/admin/pagenotfound']);
+						this.submitted = false;	
 					});
 			}
 		}
@@ -195,10 +182,13 @@ export class CandidateuserComponent implements OnInit {
 			//alert(length);
 			for(var i=0; i<length; i++){
 				if(i==j){
+					this.questionList[k].child[i].CAnswer1 = value;
 					//this.questionList[k].child[i].CAnswer = value;
 				} else {
+					this.questionList[k].child[i].CAnswer1 = '';
 					//this.questionList[k].child[i].CAnswer = '';
 				}
+				this.questionList[k].child[i].CAnswer = '';
 				//this.questionList[k].child[j].CAnswer = value;
 			}
 			

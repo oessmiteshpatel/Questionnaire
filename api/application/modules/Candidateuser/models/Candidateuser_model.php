@@ -31,21 +31,40 @@ class Candidateuser_model extends CI_Model
 				if($res)
 				{
 					$candidateId = $this->db->insert_id();
+			
 					foreach($questionvalue as $que){
 						$child = $que['child'];
-						foreach($child as $ans){
-						$cans_data1=array(
-							"CandidateId"=>$candidateId,
-							"QuestionId"=>trim($ans['QuestionId']),
-							"QAnswerId"=>trim($ans['QAnswerId']),
-							"CAnswer"=>trim($ans['CAnswer']),
-							"IsActive"=>1,
-							"CreatedBy"=>1,
-							"CreatedOn"=>date('y-m-d H:i:s')
+						
+						if($que['AnswerTypeId']==1){
+							foreach($child as $ans){
 								
-							);	
+							$cans_data1=array(
+								"CandidateId"=>$candidateId,
+								"QuestionId"=>trim($ans['QuestionId']),
+								"QAnswerId"=>trim($ans['QAnswerId']),
+								"CAnswer"=>trim($ans['CAnswer1']),
+								"IsActive"=>1,
+								"CreatedBy"=>1,
+								"CreatedOn"=>date('y-m-d H:i:s')
+								);	
+									
+								$res1=$this->db->insert('tblcandidateanswer',$cans_data1);
+							}
+						} else {
+							foreach($child as $ans){
 								
-							$res1=$this->db->insert('tblcandidateanswer',$cans_data1);
+								$cans_data1=array(
+									"CandidateId"=>$candidateId,
+									"QuestionId"=>trim($ans['QuestionId']),
+									"QAnswerId"=>trim($ans['QAnswerId']),
+									"CAnswer"=>trim($ans['CAnswer']),
+									"IsActive"=>1,
+									"CreatedBy"=>1,
+									"CreatedOn"=>date('y-m-d H:i:s')
+									);	
+										
+									$res1=$this->db->insert('tblcandidateanswer',$cans_data1);
+								}
 						}
 					}
 					
@@ -220,7 +239,7 @@ public function getlist_question()
 		$res=array();
 		foreach($result->result() as $row)
 		{
-			$this->db->select('QuestionId,QAnswerId,QLabel,QValue,"" as CAnswer');
+			$this->db->select('QuestionId,QAnswerId,QLabel,QValue,"" as CAnswer,"" as CAnswer1');
 			$this->db->where('QuestionId',$row->QuestionId);
 			$result1=$this->db->get('tblquestionanswer');
 			//$res=$row;
