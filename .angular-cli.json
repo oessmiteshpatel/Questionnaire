@@ -26,6 +26,8 @@
 
         "assets/js/jquery-1.11.3.min.js",
         "assets/js/bootstrap.min.js",
+        "assets/js/jquery.bxslider.js",
+        "assets/js/jquery.flexslider.js", 
         "assets/js/perfect-scrollbar.js",
         "assets/js/bootstrap-datetimepicker.js",
         "assets/js/jquery.dataTables.min.js",

@@ -149,6 +149,15 @@ export class CandidateuserComponent implements OnInit {
 						this.submitted = false;	
 					});
 			}
+			else
+			{
+				swal({
+					type: 'warning',
+					title: 'Oops...',
+					text: 'Please fill all the data!',
+					})
+			}
+			
 		}
 	
 		clearForm(candidateForm) {
