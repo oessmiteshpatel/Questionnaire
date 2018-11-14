@@ -63,7 +63,7 @@ class Candidateuser extends CI_Controller {
 					}
 
 				$target_dir=$directoryname;
-				$newfilename= round(microtime(true)) ."_". str_replace(" ", "_", basename($_FILES["favicon"]["name"]));
+				$newfilename= str_replace(" ", "_", basename($_FILES["favicon"]["name"]));
 				$target_file = $target_dir . $newfilename;
 				move_uploaded_file($_FILES["favicon"]["tmp_name"], $target_file);
 				

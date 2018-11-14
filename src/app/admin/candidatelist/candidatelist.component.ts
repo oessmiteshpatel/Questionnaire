@@ -279,8 +279,9 @@ export class CandidatelistComponent implements OnInit {
         let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
         var fd = new FormData();
         if (file2) {
-          fd.append('favicon', file2);
-          this.candidateEntity.Faviconicon = file2['name'];
+          var favicon = Date.now()+'_'+file2['name'];
+          fd.append('favicon', file2,favicon);
+          this.candidateEntity.Faviconicon = Date.now()+'_'+file2['name'];
           var fileName = file2['name'];
           var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
           this.candidateEntity.CandidateHrForm = this.candidateEntity.Faviconicon;
