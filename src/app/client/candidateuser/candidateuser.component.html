@@ -1,3 +1,12 @@
+		<!-- Inner Section -->
+<div *ngIf="first1" class="inner_banner">
+    <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
+    <div class="innerbanner_text">HR QUESTIONNAIRE<span><a routerLink="/admin/candidate/list">Home</a> / <a routerLink="/admin/question/list">Questions</a> / <i>Add Question</i></span></div>
+</div>
+<div class="clearfix"></div>
+<!-- End Inner Section -->
+
+
 <!-- Inner Section -->
 <!--     <div class="inner_content">
 <div class="container ">
@@ -5,13 +14,15 @@
             <div class="col-md-12 col-sm-12"> -->
 <div class="que_form">
     <form class="form-validate" role="form" #candidateForm="ngForm" (ngSubmit)="addUser(candidateForm)">
-        <div class="inner_content">
+    
+
             <div class="container ">
                 <div class="row">
                     <div class="col-md-12 col-sm-12">
-						<!-- <div class="content-area">
-							<div id="main"> -->
+						
 								<div *ngIf="first1">
+								<div class="content-area">
+							<div id="main">
 									<h1 class="text-center">Your Information</h1>
 									<div class="separator text-center">
 										<span class="dott"></span>
@@ -83,13 +94,13 @@
 										</div>
 										<div class="clearfix"></div>
 									</div>
+									</div>
+						</div>
 								</div>
-							<!-- </div>
-						</div> -->
+							
                     </div>
                 </div>
             </div>
-        </div>
         <div *ngIf="primary">
             <div id="main1" role="main">
                 <section class="slider">
