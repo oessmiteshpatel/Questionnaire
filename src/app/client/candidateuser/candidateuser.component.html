@@ -1,13 +1,10 @@
 <!-- Inner Section -->
 <div *ngIf="first1" class="inner_banner">
     <img src="assets/images/inner_banner.jpg" alt="" class="img-responsive" />
-    <div class="innerbanner_text">HR QUESTIONNAIRE<span><a routerLink="/admin/candidate/list">Home</a> / <a routerLink="/admin/question/list">Questions</a>
-            / <i>Add Question</i></span></div>
+    <div class="innerbanner_text">HR QUESTIONNAIRE</div>
 </div>
 <div class="clearfix"></div>
 <!-- End Inner Section -->
-
-
 <!-- Inner Section -->
 <!--     <div class="inner_content">
 <div class="container ">
@@ -22,8 +19,6 @@
                 <div class="col-md-12 col-sm-12">
 
                     <div *ngIf="first1">
-                        <div class="content-area">
-                            <div id="main">
                                 <h1 class="text-center">Your Information</h1>
                                 <div class="separator text-center">
                                     <span class="dott"></span>
@@ -105,8 +100,7 @@
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
-                            </div>
-                        </div>
+                           
                     </div>
 
                 </div>
@@ -139,14 +133,17 @@
                                 <div *ngIf="que.AnswerTypeId==2">
                                     <div class="ans_section">
                                         <div *ngFor="let ans of que.child; let j=index;let i=index; let firstAns=first; let last = last;">
-                                            <label class="ans_name">{{ans.QLabel}}</label>
-                                            <input type="text" class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer"
-                                                name="CAnswer{{k}}{{j}}" class="form-control" required />
-                                            <div class="radio_box" [hidden]="firstAns">
-                                                <input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA"
-                                                    #CAnswer="ngModel" [(ngModel)]="ans.CAnswer" required />
-                                                <label for="role{{k}}{{j}}">No </label>
-                                            </div>
+                                            
+											<div class="col-md-4 col-sm-4">
+												<label class="ans_name">{{ans.QLabel}}</label>
+												<input type="text" class="form-control" #CAnswer="ngModel" [(ngModel)]="ans.CAnswer"
+													name="CAnswer{{k}}{{j}}" class="form-control" required />
+												<div class="radio_box" [hidden]="firstAns">
+													<input type="radio" name="CAnswer{{k}}{{j}}" id="role{{k}}{{j}}" value="NA"
+														#CAnswer="ngModel" [(ngModel)]="ans.CAnswer" required />
+													<label for="role{{k}}{{j}}">No </label>
+												</div>
+											</div>
                                         </div>
                                     </div>
                                 </div>

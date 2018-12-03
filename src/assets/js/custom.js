@@ -1,5 +1,5 @@
 const body = document.querySelector('body');
-var count = jQuery(window).height() - 407;
+var count = jQuery(window).height() - 157;
 body.style.setProperty('--screen-height', count+"px");
 
 // Scroll Header

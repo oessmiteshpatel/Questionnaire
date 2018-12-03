@@ -46,6 +46,9 @@ import { ChangepassService } from './services/changepass.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
+import { SidebarComponent } from './sidebar/sidebar.component';
+
+
 
 @NgModule({
   declarations: [
@@ -67,7 +70,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     ChangepassComponent,
     UserroleComponent,
     UserrolelistComponent,
-    DashboardComponent
+    DashboardComponent,
+    SidebarComponent
     
   ],
   imports: [

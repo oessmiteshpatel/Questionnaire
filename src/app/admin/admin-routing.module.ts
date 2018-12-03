@@ -48,6 +48,9 @@ import { ChangepassService } from './services/changepass.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
+import { SidebarComponent } from './sidebar/sidebar.component';
+
+
 const routes: Routes = [	
   {
     path: '',
@@ -87,6 +90,9 @@ const routes: Routes = [
           { path : 'login', component : LoginComponent, canActivate : [AuthGuard] },
   
           { path: 'changepass', component: ChangepassComponent, canActivate : [AuthGuard] },
+		  
+		  
+		  { path: 'sidebar', component: SidebarComponent, canActivate : [AuthGuard] },
   
           // { path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard] }
           
