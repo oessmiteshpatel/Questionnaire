@@ -34,11 +34,10 @@
         "assets/js/sweetalert2.min.js",
         "assets/js/custom.js",
         "assets/js/angular.js",
-		    "assets/js/dataTables.buttons.min.js",
-		    "assets/js/buttons.print.min.js",
-		    "assets/js/jszip.min.js" ,
+		"assets/js/dataTables.buttons.min.js",
+		"assets/js/buttons.print.min.js",
+		"assets/js/jszip.min.js" ,
         "assets/js/buttons.html5.min.js" ,
-      
         "assets/js/jspdf.min.js",
         "assets/js/html2canvas.min.js"
   
