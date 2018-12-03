@@ -86,7 +86,7 @@ $db['default'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
-	'database' => 'hrinquiry',
+	'database' => 'questionnaire',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
@@ -123,7 +123,7 @@ $db['Development'] = array(
 	'failover' => array(),
 	'save_queries' => TRUE
 );
-$db['production'] = array(
+$db['Production'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'uatbyo5_ProdAFPTool',

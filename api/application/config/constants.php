@@ -86,8 +86,8 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 //   Local
 
-define('ACTIVE_GROUP', 'default'); // database mode
-define('BASE_URL', 'http://localhost:4200'); // local Base URL
+// define('ACTIVE_GROUP', 'default'); // database mode
+// define('BASE_URL', 'http://localhost:4200'); // local Base URL
 // define('PROTOCOL', 'smtp'); // smtp details
 // define('SMTP_HOST', 'ssl://smtp.googlemail.com'); 
 // define('SMTP_PORT', '465'); 
@@ -95,8 +95,8 @@ define('BASE_URL', 'http://localhost:4200'); // local Base URL
 
 //   Development
 
-// define('ACTIVE_GROUP', 'Development'); // database mode
-// define('BASE_URL', 'http://questionnaire.devbyopeneyes.com'); // Development Base URL
+ define('ACTIVE_GROUP', 'Development'); // database mode
+ define('BASE_URL', 'http://questionnaire.devbyopeneyes.com'); // Development Base URL
 // define('PROTOCOL', 'mail'); // smtp details
 // define('SMTP_HOST', 'vps40446.inmotionhosting.com'); 
 //define('SMTP_PORT', '587'); 
