@@ -41,6 +41,16 @@ export class UserrolelistComponent implements OnInit {
 		this.userroleList = data;
 				setTimeout(function(){
       $('#dataTables-example').dataTable( {
+		  
+		   responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                type: ''
+            }
+        },
+		  scrollCollapse: true,
+		  
+		  
         "oLanguage": {
           "sLengthMenu": "_MENU_ Userrole per Page",
 					"sInfo": "Showing _START_ to _END_ of _TOTAL_ Userrole",

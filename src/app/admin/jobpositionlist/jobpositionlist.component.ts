@@ -46,6 +46,15 @@ export class JobpositionlistComponent implements OnInit {
 				this.positionList = data;
 				setTimeout(function () {
 					$('#dataTables-example').dataTable({
+						
+						 responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                type: ''
+            }
+        },
+		  scrollCollapse: true,
+		  
 						"oLanguage": {
 							"sLengthMenu": "_MENU_ Positions per Page",
 							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Positions",

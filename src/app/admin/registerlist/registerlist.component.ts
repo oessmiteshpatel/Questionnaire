@@ -44,6 +44,16 @@ export class RegisterlistComponent implements OnInit {
           this.userList = data;
           setTimeout(function(){
           var table = $('#dataTables-example').DataTable( {
+			  
+			   responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                type: ''
+            }
+        },
+		  scrollCollapse: true,
+			  
+			  
               "oLanguage": {
                 "sLengthMenu": "_MENU_ Users per Page",
                 "sInfo": "Showing _START_ to _END_ of _TOTAL_ Users",

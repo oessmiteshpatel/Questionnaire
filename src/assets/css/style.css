@@ -334,7 +334,6 @@ footer.footer_sidebaractive {width: 93.7% !important;}
     footer .text-left,footer .text-right{text-align: center; line-height: 22px;}
 	footer .social_links{margin-top: 10px;}
 	#page-wrapper .panel-default label{float:none;}
-footer.footer_sidebaractive{bottom:60px!important;}
 	label.pull-right{text-align:left!important;float:left!important;}
 	footer .footer_top {padding: 15px 0px 1px 0px;text-align: center;}
 	footer .footer_top .header_address {display: block;border-bottom: 1px solid #ddd;}
@@ -355,7 +354,13 @@ header .header_address{text-align:left;}
 	.sidebar_wrap {padding: 0 5px 0 10px;}
 	header .toggle{display: none;}
 .right_content_block footer{width:100%;}
-footer.footer_sidebaractive{width: 100%!important;}
+footer{bottom: 10px;padding: 15px 0px 15px 0;}
+footer.footer_fixed{line-height: 20px;text-align: center;position: relative!important;width: 100% !important;}
+footer.footer_fixed .text-left{text-align: center;}
+footer.footer_fixed .text-right{text-align: center;}
+footer{width: 100%!important;position: relative!important;}
+footer .text-left,footer .text-right{text-align: center;padding: 5px;}
+    footer.footer_sidebaractive{width: 100%!important;}
 	.inner_content .inner_block .que_block,.inner_content .inner_block .ans_block{padding: 10px 20px;}
 }
 @media (max-width:740px){
@@ -364,6 +369,7 @@ footer.footer_sidebaractive{width: 100%!important;}
   @media (max-width: 667px) {
   .all_outer_page{display: inline;}
   .sidebar_wrap.small_menu{width: 52px;}
+  footer{width: 100%;position: relative;}
   .sidebar_wrap{padding:0px 5px;}
   .right_content_block .bg_white_block .title_heading .breadcrumb_block .next_btn.pull-right{float: left!important;margin-top: 10px;}
 }

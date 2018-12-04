@@ -44,6 +44,15 @@ export class ManagequestionlistComponent implements OnInit {
 				this.questionList = data;
 				setTimeout(function () {
 					var table = $('#dataTables-example').DataTable({
+						
+						 responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.childRowImmediate,
+                type: ''
+            }
+        },
+		  scrollCollapse: true,
+						
 						"oLanguage": {
 							"sLengthMenu": "_MENU_ Questions per Page",
 							"sInfo": "Showing _START_ to _END_ of _TOTAL_ Questions",

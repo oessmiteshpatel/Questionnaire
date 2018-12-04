@@ -12,35 +12,21 @@ table.dataTable tr td:last-child, table.dataTable tr th:last-child{border-right:
 	--theme-color: #B01116;
   }
 
+  
 .dataTables_wrapper .dataTables_paginate {padding-top: 15px;}
 
-.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {cursor: not-allowed; color: #333 !important; background-color: #fff; border-color: #ddd !important; outline: 0;}
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {cursor: not-allowed; color: #666 !important; background-color: #fff; border-color: #ddd !important; outline: 0;}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {background-color: var(--theme-color); border: 1px solid #ddd; background: var(--theme-color);}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button.current, .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {color: #fff !important;}
 
-.dataTables_wrapper .dataTables_paginate .paginate_button {margin-left: -1px; border: 1px solid #ddd;}
+.dataTables_wrapper .dataTables_paginate .paginate_button {margin-left: -1px; border: 1px solid #ddd; padding:5px 10px; font-size:12px;}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:active {box-shadow: none; background: #eee;}
 
 .dataTables_wrapper .dataTables_paginate .paginate_button:hover {background: #eee; color: #000 !important; border: 1px solid #ddd;}
 
-button.dt-button, div.dt-button, a.dt-button{
-	background: #1A1A1A!important;
-    transition: all .8s ease!important;
-    border-color: transparent!important;
-    display: inline-block!important;
-    padding: 6px 12px!important;
-    margin-bottom: 0!important;
-    font-size: 14px!important;
-    font-weight: 400!important;
-    line-height: 1.42857143!important;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    margin: -5px 0 0 5px!important;
-}
 .buttons-excel:before {
     content: "\f019"; font-family:FontAwesome; color:#fff;
 }
