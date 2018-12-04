@@ -176,9 +176,9 @@ export class CandidateuserComponent implements OnInit {
 			this.submitted = false;
 			this.btn_disable = false;
 			this.second1 = false;
-			this.first1 = false;			
-			
-			
+			this.first1 = false;
+
+
 			//slider
 			setTimeout(function () {
 				$('#carousel').flexslider({
@@ -204,18 +204,30 @@ export class CandidateuserComponent implements OnInit {
 
 			}, 100);
 			//slider
-			
-			
-			
+
+
+
 
 		}
 
 	}
+	checkTextbox(queId, totalAns, que) {
+		var count = 0;
+		for (var i = 0; i < totalAns; i++) {
+			if (que.child[i].CAnswer != '')
+				count++;
+		}
+		if (count == totalAns)
+			que.child.checkActive = true;
+		else
+			que.child.checkActive = false;
+	}
+
 	pre() {
 		this.primary = false;
 		this.first1 = true;
 		this.second1 = false;
-
+		console.log(this.questionList);
 	}
 	checked(k, j, value, length) {
 		debugger
