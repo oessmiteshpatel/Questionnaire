@@ -186,8 +186,9 @@ input[type="checkbox"] { visibility:hidden; position:absolute;}
 .right_content_block .bg_white_block .title_heading .breadcrumb_block .breadcrumb a{color: #9EA7B3;}
 header .toggle{top:30px;background: rgba(0, 0, 0, 0.3);border-radius: 3px;color:#fff;cursor: pointer;display: block;height: 30px;line-height: 30px;text-align: center;width: 30px; border: 0; position: relative; right: -20px;}
 .breadcrumb_block .breadcrumb{padding:0px;}
-.breadcrumb_block{padding:15px 0px;}
+.breadcrumb_block{padding:15px 0px 0px 0px;}
 #page-wrapper .container{padding:0px 10px;}
+.breadcrumb_block h1{margin-bottom:0px;}
 /* ------- Sidebar Area End ------- */
 
 /*--------------Loader--------------------*/
@@ -235,11 +236,11 @@ table.dataTable.no-footer {border-bottom: 0px!important;}
 #page-wrapper .panel-default{border: none;}
 #page-wrapper .page-header {text-transform: capitalize;font-size: 24px;padding-bottom: 0px;margin: 0px 0 0px;border-bottom: 0px;}
 #page-wrapper .pull-right .lgn_btn{margin: 20px 0px 10px 0px;}
-.inline_delbtn {display: inline-block;}
+.inline_delbtn {display: inline-block;margin-bottom: 3px;}
 .inline_delbtn .btn-suucess{background: #0061af;color: #fff;}
 #Delete_Modal .modal-dialog{width: 80%;}
 .add_que .form-control{width:43%!important;display: inline-block!important;}
-.lgn_btn{margin-top: 10px;}
+.lgn_btn{margin-top: 10px;margin-bottom:10px;}
 .height_100_box {display: block;height: 100%;min-height: 100%;}
 .content-area {display: table;max-width: 100%;padding: 0px;width: 100%;}
 #main {padding: 5px 0;height: var(--screen-height);vertical-align: middle;display: table-cell;position: relative;width: inherit;}
@@ -261,6 +262,7 @@ footer .footer_top .header_address {display: none;}
 form {background: #fff;}
 form .form-control, form select.form-control {margin-bottom: 5px;transition: all 0.2s linear 0s;border: 1px solid #000000!important;border-radius: 0px!important;box-shadow: none!important;}
 form .form-control:hover, form .form-control:focus {border: 2px solid #0954a4!important;border-left: 4px solid #2678ba!important;}
+.dataTables_wrapper{padding-bottom:15px;}
 /*----------- end admin css ------------*/
 
 @media (min-width:2000px){	
@@ -320,6 +322,7 @@ footer.footer_sidebaractive {width: 93.7% !important;}
 }
 @media (min-width:768px) and (max-width:1024px){
 	.inner_banner .innerbanner_text{padding:8% 0 0 0;}	
+	.right_content_block footer{width:93%!important;}
     .sidebar_wrap{padding: 0 8px 0 5px!important;width: 20%!important;}
 	.sidebar_wrap.small_menu .sidebar_box li a {padding: 10px 10px 10px 0px;}
 	.right_content_block .bg_white_block .title_heading .alert{padding: 15px 0px 15px 10px;}
@@ -353,8 +356,7 @@ header .header_address{text-align:left;}
 	.sidebar_wrap {padding: 0 5px 0 10px !important;}
 	.sidebar_wrap {padding: 0 5px 0 10px;}
 	header .toggle{display: none;}
-.right_content_block footer{width:100%;}
-footer{bottom: 10px;padding: 15px 0px 15px 0;}
+.right_content_block footer{width:93%!important;}
 footer.footer_fixed{line-height: 20px;text-align: center;position: relative!important;width: 100% !important;}
 footer.footer_fixed .text-left{text-align: center;}
 footer.footer_fixed .text-right{text-align: center;}
