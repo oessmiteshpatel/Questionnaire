@@ -146,10 +146,10 @@ $db['Production'] = array(
 );
 $db['QA'] = array(
 	'dsn'	=> '',
-	'hostname' => 'QAAFPTool.db.11797364.688.hostedresource.net',
-	'username' => 'QAAFPTool',
-	'password' => 'AFPTool@2018',
-	'database' => 'QAAFPTool',
+	'hostname' => 'localhost',
+	'username' => 'uatbyo5_Questionnaire',
+	'password' => 'o1ifA^*-I8fh',
+	'database' => 'uatbyo5_Questionnaire',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

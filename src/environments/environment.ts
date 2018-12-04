@@ -6,7 +6,8 @@
 export const environment = {
   production: false,
   baseUrl: 'http://questionnaire.devbyopeneyes.com',
-//  baseU:'http://lms-test.devbyopeneyes.com',
-// baseU:'http://localhost:4200', 
+  // baseUrl: 'http://questionnaire.uatbyopeneyes.com',
+  // baseU:'http://lms-test.devbyopeneyes.com',
+  // baseU:'http://localhost:4200', 
   env: 'dev' 
 };
