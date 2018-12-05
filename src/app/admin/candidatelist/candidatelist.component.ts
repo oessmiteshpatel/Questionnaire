@@ -52,7 +52,9 @@ export class CandidatelistComponent implements OnInit {
       }).on('click mousedown mouseup', '[data-toggle="tooltip"], [title]:not([data-toggle="popover"])', function () {
       $('[data-toggle="tooltip"], [title]:not([data-toggle="popover"])').tooltip('destroy');
       });
-
+	   $('.modal').on('hidden.bs.modal', function () {
+			$('.right_content_block').removeClass('style_position');
+	  });
       setTimeout(function(){
         if ($("body").height() < $(window).height()) {  
           $('footer').addClass('footer_fixed');     
@@ -157,6 +159,7 @@ export class CandidatelistComponent implements OnInit {
           this.questionList = data['QuestionAnswer'];
         
           $('#Delete_Modal').modal('show');
+		  $('.right_content_block').addClass('style_position');
             
         },
         (error) => {
@@ -269,6 +272,7 @@ export class CandidatelistComponent implements OnInit {
           this.candidateData = data['Users'];
         
           $('#Upload_Modal').modal('show');
+		  $('.right_content_block').addClass('style_position');
         
             this.globals.isLoading = false;
         },
