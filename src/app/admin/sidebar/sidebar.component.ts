@@ -12,6 +12,7 @@ export class SidebarComponent implements OnInit {
   constructor(private globals: Globals) { }
 
   ngOnInit() {
+	  setTimeout(function(){	  
     $('.left_menu_toggle').click(function () {
       $('.left_menu_toggle i').toggleClass("fa-indent");
       $('.sidebar_wrap').toggleClass("small_menu");
@@ -26,7 +27,7 @@ export class SidebarComponent implements OnInit {
       $('footer').addClass("footer_sidebaractive");
     }
     new PerfectScrollbar('.sidebar_wrap');
-
+},100);
   }
   closecollapse() {
     $(".dropdown_menu").addClass("collapsed");
