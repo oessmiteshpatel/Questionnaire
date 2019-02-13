@@ -30,7 +30,7 @@ export class CandidateuserService {
     }
 
 
-    getAll()
+  getAll()
   {
     debugger
 	let promise = new Promise((resolve, reject) => {
@@ -85,8 +85,6 @@ export class CandidateuserService {
               },
               msg => { // Error
             reject(msg);
-            //this.globals.isLoading = false;
-           // this.router.navigate(['/pagenotfound']);
               }
             );
         });		

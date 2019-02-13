@@ -3,11 +3,11 @@
 class Question_model extends CI_Model
  {
 
-	public function add_Question($post_Question) {
+	/*############# ADD QUESTION ################ */
+	public function addQuestion($post_Question) {
 			
 		if($post_Question) 
 		{
-			
 			$questiontype=$post_Question['question'];
 			$questionlabel=$post_Question['question1'];
 
@@ -71,17 +71,16 @@ class Question_model extends CI_Model
 			 {
 				return false;
 			}
-
-
-	
 		} 
 		else
 		{
 			return false;
 		}
 	}
-
+	/*############# ADD QUESTION  END ################ */
 	
+
+	/*############# EDIT QUESTION  START ################ */
 	public function edit_Question($post_Question) {
 		
 		if($post_Question) 
@@ -112,16 +111,6 @@ class Question_model extends CI_Model
 			$res = $this->db->delete('tblquestionanswer');
 			if($res)
 			{
-			
-				// $Question_data =array
-				// 	(
-				// 		'QuestionName' => trim($questiontype['QuestionName']),
-				// 		'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
-				// 		"IsActive"=>1
-				// 	);
-		
-				// 	$res1 = $this->db->insert('tblquestion',$Question_data);
-				// 	$questionId = $this->db->insert_id();
 					foreach($questionlabel as $question)
 					{		
 						if(isset($question['QValue']) && !empty($question['QValue']))
@@ -155,11 +144,12 @@ class Question_model extends CI_Model
 			return false;
 		}
 	}
+	/*############# EDIT QUESTION  END ################ */
 
 
 	
 
-
+	/*############# GET QUESTION TYPE ################ */
 	public function getlist_QuestionType()
 	{
 		$this->db->select('AnswerTypeId,AnswerName,DisplayText,IsActive');
@@ -174,8 +164,10 @@ class Question_model extends CI_Model
 		}
 		return $res;
 	}
+	/*############# GET QUESTION TYPE END ################ */
 
 
+	/*############# DELETE QUESTION START ################ */
 	 public function delete_question($question_id) 
 	 {
 	
@@ -197,6 +189,7 @@ class Question_model extends CI_Model
 		}
 		
 	}
+	/*############# DELETE QUESTION END ################ */
 
 	public function get_questiondatatypeans($question_id=Null)
 	{

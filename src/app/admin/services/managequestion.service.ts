@@ -10,11 +10,11 @@ export class ManagequestionService {
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
 
-   //add user request
-   add(questionEntity){ 
+   /*############# form submit ################ */
+   addQuestion(questionEntity){ 
     debugger
     let promise = new Promise((resolve, reject) => { 
-      this.http.post(this.globals.baseAPIUrl + 'Question/add', questionEntity)
+      this.http.post(this.globals.baseAPIUrl + 'Question/addQuestion', questionEntity)
       
         .toPromise()
         .then(

@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-lg-12">
+
+    <div class="breadcrumb_block">
+      <div class="col-md-6 col-sm-6 col-xs-12">
+        <div class="page_heading">
+          <h1>Invite Candidate</h1>
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a routerLink="/dashboard"><i class="fa fa-home"></i></a></li>
+          <li class="breadcrumb-item"><a routerLink="/inviteCandidate">Invite Candidate</a></li>
+
+        </ol>
+        <div class="clearfix"></div>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="btn-group pull-right add-right addpage_backbtn">
+      <a routerLink="/evaluation-type/list" class="back_btn">
+        Back to list
+      </a>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-lg-12">
+    <div class="form-bg">
+      <form class="form-validate" role="form" #inviteCandidateForm="ngForm"
+        (ngSubmit)="inviteCandidate(inviteCandidateForm)">
+        <div class="form-group col-md-6">
+          <label><span class="required">*</span>Candidate Email Address</label>
+          <input type="email" class="form-control" #candidateEmail="ngModel" [(ngModel)]="inviteEntity.candidateEmail"
+            name="candidateEmail" maxlength="100" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+             required>
+          <span class="error_span"
+            *ngIf="(candidateEmail.dirty && candidateEmail.invalid) || (candidateEmail.pristine && submitted)">
+            <span *ngIf="candidateEmail.errors.required || (candidateEmail.pristine && submitted)">Please
+              enter email address</span>
+            <span class="error_span" *ngIf="candidateEmail.errors && candidateEmail.errors.pattern">
+              Please enter a valid Email
+            </span>
+          </span>
+        </div>
+        
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 text-center">
+          <button type="submit" class="btn btn-primary"><span>Submit</span></button>
+
+        </div>
+        <div class="clearfix"></div>
+      </form>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+<!-- End Inner Section -->

@@ -34,6 +34,7 @@ export class CandidateuserComponent implements OnInit {
 		private CandidateuserService: CandidateuserService) { }
 
 	ngOnInit() {
+	
 		debugger
 		var item = { 'QLabel': '', 'QValue': '' };
 		this.ans = [];
@@ -59,28 +60,34 @@ export class CandidateuserComponent implements OnInit {
 		this.first1 = true;
 		this.candidateEntity = {};
 		this.cansEntity = {};
-
+		
+		/* ########## GET DEFAULT DATA ############## */
 		this.CandidateuserService.getAllDefaultData()
-			.then((data) => {
-				this.jobpositionList = data['jobpositon'];
-				this.questionList = data['question'];
-			},
-				(error) => {
-					this.btn_disable = false;
-					this.submitted = false;
-				});
+		.then((data) => {
+			this.jobpositionList = data['jobpositon'];
+			this.questionList = data['question'];
+			console.log(this.questionList);
+		},
+		(error) => {
+			this.btn_disable = false;
+			this.submitted = false;
+		});
+		/* ########## GET DEFAULT DATA  END ############## */
+
+
 		let id = this.route.snapshot.paramMap.get('id');
 		if (id) {
 			this.header = 'Edit';
+			/* ########## GET BY ID ############## */
 			this.CandidateuserService.getById(id)
 				.then((data) => {
 					this.candidateEntity = data;
 					this.questionList = data;
 				},
-					(error) => {
-						this.btn_disable = false;
-						this.submitted = false;
-					});
+				(error) => {
+					this.btn_disable = false;
+					this.submitted = false;
+				});
 		}
 		else {
 			this.header = 'Add';
@@ -90,11 +97,9 @@ export class CandidateuserComponent implements OnInit {
 			this.candidateEntity.IsActive = '1';
 
 		}
-
+		/* ########## GET BY ID END ############## */
 
 	}
-
-
 	AddNewQuestion(index) {
 		debugger
 		var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy': 1 };
@@ -112,7 +117,7 @@ export class CandidateuserComponent implements OnInit {
 		this.ans.splice(index, 1);
 	}
 
-
+	/* ########## FORM SUBMIT START ############## */
 	addUser(candidateForm) {
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
@@ -159,6 +164,8 @@ export class CandidateuserComponent implements OnInit {
 		}
 
 	}
+	/* ########## FORM SUBMIT END ############## */
+
 
 	clearForm(candidateForm) {
 		this.candidateEntity = {};
@@ -204,10 +211,6 @@ export class CandidateuserComponent implements OnInit {
 
 			}, 100);
 			//slider
-
-
-
-
 		}
 
 	}

@@ -19,8 +19,7 @@ export class JobpositionComponent implements OnInit {
 	header;
 
 	constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute, private JobpositionService: JobpositionService) { }
-
-
+	
 	ngOnInit() {
 		debugger
 		setTimeout(function () {
@@ -46,23 +45,20 @@ export class JobpositionComponent implements OnInit {
 
 
 				},
-					(error) => {
-						//alert('error');
-						this.btn_disable = false;
-						this.submitted = false;
+				(error) => {
+					//alert('error');
+					this.btn_disable = false;
+					this.submitted = false;
 
-						//	this.router.navigate(['/admin/pagenotfound']);
-					});
+					//	this.router.navigate(['/admin/pagenotfound']);
+				});
 		}
 		else {
 			this.positionEntity = {};
 			this.positionEntity.JobPositionId = 0;
 			this.positionEntity.IsActive = '1';
-
 		}
 	}
-
-
 
 	addPosition(positionForm) {
 		debugger
@@ -81,7 +77,7 @@ export class JobpositionComponent implements OnInit {
 		if (positionForm.valid) {
 			this.btn_disable = true;
 		
-			this.JobpositionService.add(this.positionEntity)
+			this.JobpositionService.addJobPosition(this.positionEntity)
 				.then((data) => {
 					//alert('success');
 					//this.aa=true;
@@ -90,7 +86,6 @@ export class JobpositionComponent implements OnInit {
 					this.positionEntity = {};
 					positionForm.form.markAsPristine();
 					if (id) {
-					
 						swal({
 							position: 'top-end',
 							type: 'success',
@@ -108,8 +103,6 @@ export class JobpositionComponent implements OnInit {
 							timer: 1500
 						})
 					}
-
-
 					this.router.navigate(['/admin/position/list']);
 				},
 					(error) => {
@@ -119,8 +112,7 @@ export class JobpositionComponent implements OnInit {
 
 						//	this.router.navigate(['/admin/pagenotfound']);
 					});
-
-		}
+			}
 	}
 
 	clearForm(positionForm) {

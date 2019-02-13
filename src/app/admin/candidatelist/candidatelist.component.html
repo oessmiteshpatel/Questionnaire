@@ -73,11 +73,11 @@
                     <td *ngIf="candidate.CandidateHrForm==''">Not Uploaded</td>
                     <td>
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom" title="Print HR Questionnaire Form">
-                        <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="viewCandidate(candidate.CandidateId)"><i
+                        <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="printForm(candidate.CandidateId)"><i
                             class="fa fa-print"></i></button>
                       </div>
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom" title="View HR Questionnaire Form">
-                        <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="deleteCompany(candidate.CandidateId)"><span
+                        <button class="btn btn-suucess btn-rounded btn-sm edit-user-row-with-ajax-button" (click)="previewForm(candidate.CandidateId)"><span
                             class="fa fa-eye"></span></button>
                       </div>
                       <div class="inline_delbtn tooltip_inline" data-placement="bottom" title="Upload Scannned PDF of HR Questionnaire Form">
@@ -98,8 +98,6 @@
 
 </div>
 <!-- end page-wrapper -->
-
-
 
 <!-- upoad pdf file start -->
 
@@ -136,99 +134,7 @@
 
 <!-- upoad pdf file end -->
 
-
-
-
-
-
-<!-- Downloadable PDF Start -->
-<div id="contentssss" #content style="display:none">
-  <h1 class="text-center" style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">HR
-    Questionnaire</h1>
-  <div class="table-responsive print_table" style="margin: 0 auto;">
-    <table class="table" style="width: 100%; margin:30px 0 0 0">
-      <tbody>
-        <tr>
-          <td style="border: 1px solid #222;">
-            <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Candidate
-              Detail</h1>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p style="font-size: 16px;margin: 15px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color:#111;">
-              Candidate Name:<strong> {{candidateData.CandidateName}} </strong></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
-              Email Address:<strong> {{candidateData.CandidateEmail}} </strong></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
-              Contact Number:<strong> {{candidateData.PhoneNumber}} </strong></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
-              Position applied for:<strong> {{candidateData.JobPositionName}} </strong></p>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <p style="font-size: 16px;margin: 0px 0px 15px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
-              Submitted Date: {{candidateData.CreatedOn | date: 'MM/dd/yyyy'}}</p>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="table" style="width: 100%;">
-      <tbody>
-        <tr>
-          <td style="border: 1px solid #222;">
-            <h1 class="text-center" style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">Questions</h1>
-          </td>
-        </tr>
-        <div *ngFor="let que of questionList;  let i = index">
-          <tr style="padding: 10px 0px;display: block;">
-            <td>
-              <p style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
-                <strong> Question #{{i+1}} </strong> <br> {{que.QuestionName}}</p>
-              <!-- For Radio Button -->
-              <div *ngIf="que.AnswerTypeId==1">
-                <div *ngFor="let ans of que.child;">
-                  <p style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:5px;">
-                    <strong> {{ans.CAnswer}} </strong> </p>
-                </div>
-              </div>
-              <!-- For Multiple Text Box -->
-              <div *ngIf="que.AnswerTypeId==2">
-                <div *ngFor="let ans of que.child;">
-                  <p style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">
-                    {{ans.QLabel}}: <strong> {{ans.CAnswer}} </strong> </p>
-                </div>
-              </div>
-              <!-- For Single Text Box -->
-              <div *ngIf="que.AnswerTypeId==3">
-                <div *ngFor="let ans of que.child;">
-                  <p style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">
-                    {{ans.QLabel}} <br> <strong> {{ans.CAnswer}} </strong> </p>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </div>
-      </tbody>
-    </table>
-  </div>
-</div>
-<!-- Downloadable PDF Close -->
-
-<!-- Print Div Start -->
+  <!-- Print Form Start -->
 <div id="printSectionId" style="display:none">
   <!-- New Inner Section -->
 
@@ -362,9 +268,9 @@
   </div>
   <!-- New End Inner Section -->
 </div>
-<!-- Print Div End -->
+<!-- Print Fprm End -->
 
-<!-- View Start -->
+<!-- View preview Start -->
 <div class="modal fade bs-example-modal-md" id="Delete_Modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog modal-sm" role="document">
     <div class="modal-content">
@@ -465,4 +371,4 @@
     </div>
   </div>
 </div>
-<!-- View Close -->
+<!-- View preview end -->

@@ -49,6 +49,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 
 
+import { InviteCandidateComponent } from './invite-candidate/invite-candidate.component';
+
+import { ActivityLogComponent } from './activity-log/activity-log.component';
+
 
 @NgModule({
   declarations: [
@@ -71,7 +75,9 @@ import { SidebarComponent } from './sidebar/sidebar.component';
     UserroleComponent,
     UserrolelistComponent,
     DashboardComponent,
-    SidebarComponent
+    SidebarComponent,
+    InviteCandidateComponent,
+    ActivityLogComponent
     
   ],
   imports: [

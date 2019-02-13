@@ -63,49 +63,40 @@ export class ManagequestionComponent implements OnInit {
     }
     this.questionEntity = {};
     this.questionEntity.AnswerTypeId = '';
+
+    /*############ QUESTION TYPE FILLED ############*/
     this.ManagequestionService.getAllDefaultData()
       .then((data) => {
         this.queAnsTypeList = data['quetypeans'];
-        // this.questionEntity = data['quetype'];   
-        // this.QuestionList = data['typeans'];
       },
         (error) => {
-          //alert('error');
+      });
 
-        });
-
+    /*############ END #################*/
 
     let id = this.route.snapshot.paramMap.get('id');
     if (id) {
       //  this.header = 'Edit';
 
-      this.ManagequestionService.getById(id)
+    /*############ GET BY ID #################*/
+     this.ManagequestionService.getById(id)
         .then((data) => {
-          // this.questionEntity=data;
           this.questionEntity = data;
           this.questionEntity = data['quetype'];
           this.QuestionList = data['typeans'];
-
-
         },
           (error) => {
-            //alert('error');
             this.btn_disable = false;
             this.submitted = false;
-
-          });
+        });
     }
     else {
       this.questionEntity = {};
       this.questionEntity.QuestionId = 0;
       this.questionEntity.AnswerTypeId = '';
       this.questionEntity.IsActive = '1';
-
     }
-
-
-  }
-
+ }
   Reset() {
     debugger
     this.QuestionList = [];
@@ -115,7 +106,7 @@ export class ManagequestionComponent implements OnInit {
       myInput();
     }, 100);
   }
-
+ /*############# ADD QUESTION ################ */
   AddNewQuestion(index) {
 
     var item = { 'QLabel': '', 'QValue': '', 'CreatedBy': 1, 'UpdatedBy': 1 };
@@ -127,13 +118,15 @@ export class ManagequestionComponent implements OnInit {
     }, 100);
   }
 
+
+ /*############# DELETE QUESTION ################ */
   DeleteQuestion(item) {
 
     var index = this.QuestionList.indexOf(item);
     this.QuestionList.splice(index, 1);
   }
 
-
+ /*############# FORM SUBMIT START ################ */
   addQuestion(questionForm) {
     debugger
 
@@ -153,11 +146,8 @@ export class ManagequestionComponent implements OnInit {
 
       this.submitted = false;
       var addque = { 'question1': this.QuestionList, 'question': this.questionEntity };
-      this.ManagequestionService.add(addque)
+      this.ManagequestionService.addQuestion(addque)
         .then((data) => {
-
-
-          //alert('success');
           this.btn_disable = false;
           this.submitted = false;
           this.questionEntity = {};
@@ -190,7 +180,7 @@ export class ManagequestionComponent implements OnInit {
           });
     }
   }
-
+/*############# FORM SUBMIT END ################ */
 
 
 

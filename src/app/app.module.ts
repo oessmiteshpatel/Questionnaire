@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
+
+
 //import { HomeComponent } from './home/home.component';
 //import { DashboardComponent } from './dashboard/dashboard.component';
 
@@ -16,7 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
   declarations: [
     AppComponent,
    
-  ],
+   ],
   imports: [
     BrowserModule,
 	HttpModule,

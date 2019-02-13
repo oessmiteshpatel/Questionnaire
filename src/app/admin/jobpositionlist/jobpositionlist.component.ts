@@ -41,7 +41,8 @@ export class JobpositionlistComponent implements OnInit {
 			}
 		}, 100);
 		this.globals.isLoading = true;
-		this.JobpositionService.getAll()
+
+		this.JobpositionService.getAllJobPosition()
 			.then((data) => {
 				this.positionList = data;
 				setTimeout(function () {
@@ -83,7 +84,7 @@ export class JobpositionlistComponent implements OnInit {
 		})
 			.then((result) => {
 				if (result.value) {
-					this.JobpositionService.deletePosition(jobposition.JobPositionId)
+					this.JobpositionService.deleteJobPosition(jobposition.JobPositionId)
 						.then((data) => {
 							let index = this.positionList.indexOf(jobposition);
 							$('#Delete_Modal').modal('hide');

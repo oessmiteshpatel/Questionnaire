@@ -104,3 +104,12 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 // define('SMTP_HOST', 'vps40446.inmotionhosting.com'); 
 //define('SMTP_PORT', '587'); 
 
+
+define('SMTP_EMAIL', 'myopeneyes3937@gmail.com');
+define('SMTP_PASSWORD', 'W3lc0m3@2019');
+define('SMTP_HOST', 'ssl://smtp.googlemail.com');
+define('SMTP_PORT', '465');
+define('SMTP_PROTOCOL', 'smtp');
+define('FROM_EMAIL', 'no-reply@theopeneyes.com');
+define('FROM_USER', 'OpenEyes Software Solutions Pvt. Ltd');
+

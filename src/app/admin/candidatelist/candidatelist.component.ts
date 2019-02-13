@@ -54,7 +54,8 @@ export class CandidatelistComponent implements OnInit {
       });
 	   $('.modal').on('hidden.bs.modal', function () {
 			$('.right_content_block').removeClass('style_position');
-	  });
+    });
+    
       setTimeout(function(){
         if ($("body").height() < $(window).height()) {  
           $('footer').addClass('footer_fixed');     
@@ -65,6 +66,8 @@ export class CandidatelistComponent implements OnInit {
       },100);
 
       this.globals.isLoading = true;
+
+      /* ######### GET DEFAULT DATA ########## */
       this.CandidateuserService.getAllDefaultData()
       .then((data) => {
         this.questionList = data['question'];
@@ -72,13 +75,13 @@ export class CandidatelistComponent implements OnInit {
       (error) => {
         //alert('error');   
       });
-
+      /* ######### GET DEFAULT DATA END ########## */
      
-    this.CandidateuserService.getAll()
 
+    /* ######### GET ALL CANDIDATE START ########## */
+    this.CandidateuserService.getAllCandidate()
     .then((data) => 
     {
-      
       this.candidateList = data;
       setTimeout(function(){
       var table = $('#dataTables-example').DataTable( {
@@ -136,18 +139,14 @@ export class CandidatelistComponent implements OnInit {
     	});	
      
     }
+    /* ######### GET ALL CANDIDATE END ########## */
 
-
-        deleteCompany(CandidateId)
+     /* ######### PREVIEW FORM START ########## */
+      previewForm(CandidateId)
       { 
-        
-
-        this.CandidateuserService.getAllDefaultData()
+         this.CandidateuserService.getAllDefaultData()
         .then((data) => {
-        
-          this.questionList = data['question'];
-        
-        
+        this.questionList = data['question'];
         },
         (error) => {
           //alert('error');
@@ -166,12 +165,13 @@ export class CandidatelistComponent implements OnInit {
           alert('error');
             
         });
-      
-
-                
+                  
       } 
+     /* ######### PREVIEW FORM END ########## */
 
-      viewCandidate(CandidateId)
+
+      /* ######### PRINT FORM START ########## */
+      printForm(CandidateId)
       { 
         debugger
           this.CandidateuserService.getById(CandidateId)
@@ -197,82 +197,47 @@ export class CandidatelistComponent implements OnInit {
             });
           
       }
-  
-      download(){
-        let doc = new jsPDF();
-        let specialElementHandlers ={
-            '#editor':function(element,renderer){
-              return true;
-            }
-        };
-        let content=this.content.nativeElement;
-      
-        doc.fromHTML(content.innerHTML,15,15,{
-          'width':190,
-          'elementHandlers':specialElementHandlers
-        });
-        doc.save('Candidate.pdf');   
-      }
-            
-      public downloadPDF(CandidateId) 
-        {
-      debugger
-      let doc = new jsPDF();
-      let specialElementHandlers ={
-          '#editor':function(element,renderer){
-            return true;
-          }
-      };
-      let content=this.content.nativeElement;
+     /* ######### PREVIEW FORM END ########## */  
 
-      doc.fromHTML(content.innerHTML,15,15,{
-        'width':190,
-        'elementHandlers':specialElementHandlers
-      });
-      doc.save('Candidate.pdf');  
 
-      }
-
-      uploadFile(CandidateId)
-      {debugger
+     /* ######### UPLOAD FILE START ########## */
+     uploadFile(CandidateId)
+      {
+        debugger
         this.globals.isLoading = true;
-          //  Use for file upload script start
+       
           const body = document.querySelector('body');
           var count = jQuery(window).height() - 270;
           body.style.setProperty('--screen-height', count + "px");
-       
-		$('.file_upload input[type="file"]').change(function (e) {
-			var fileName = e.target.files[0].name;
-			var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
-			if(fileExtension=='pdf')
-			{
-				$('.file_upload input[type="text"]').val(fileName);
-			}
-			else
-			{
-				swal({
-					position: 'top-end',
-					type: 'danger',
-					title: 'Please Input PDF File',
-					showConfirmButton: false,
-					timer: 1500
-        })
-        
-			}
-			
-			
-
-			//console.log (fileExtension);
+            
+          $('.file_upload input[type="file"]').change(function (e) {
+            var fileName = e.target.files[0].name;
+            var fileExtension = fileName.substr((fileName.lastIndexOf('.') + 1));
+            if(fileExtension=='pdf')
+            {
+              $('.file_upload input[type="text"]').val(fileName);
+            }
+            else
+            {
+              swal({
+                position: 'top-end',
+                type: 'danger',
+                title: 'Please Input PDF File',
+                showConfirmButton: false,
+                timer: 1500
+              })
+              
+            }
 		});
-    //  Use for file upload script end
-    this.candidateEntity = {};
-   this.candidateEntity.CandidateId=CandidateId;
+    /* ######### UPLOAD FILE END ########## */
+        this.candidateEntity = {};
+        this.candidateEntity.CandidateId=CandidateId;
         this.CandidateuserService.getById(CandidateId)
         .then((data) => {
           this.candidateData = data['Users'];
         
           $('#Upload_Modal').modal('show');
-		  $('.right_content_block').addClass('style_position');
+		      $('.right_content_block').addClass('style_position');
         
             this.globals.isLoading = false;
         },
@@ -282,13 +247,14 @@ export class CandidatelistComponent implements OnInit {
         });
        
       }
-
+      /* ######### FORM SUBMIT START ########## */
       addUser(candidateForm) {
         debugger
         let id = this.route.snapshot.paramMap.get('CandidateId');
     
         let file2 = this.elem.nativeElement.querySelector('#Favicon').files[0];
         var fd = new FormData();
+
         if (file2) {
           var favicon = Date.now()+'_'+file2['name'];
           fd.append('favicon', file2,favicon);
@@ -300,14 +266,16 @@ export class CandidatelistComponent implements OnInit {
           fd.append('favicon', null);
           this.candidateEntity.Faviconicon = null;
         }
+
         this.submitted = true;
+        
         if (candidateForm.valid && fileExtension == 'pdf') { debugger
           this.CandidateuserService.add({ 'candidatevalue': this.candidateEntity })
             .then((data) => {
     
               if (file2) {
                 this.CandidateuserService.uploadFile(fd,this.candidateEntity.CandidateId)
-              //  this.CandidateuserService.uploadFile(fd)
+              
                   .then((data) => {
                     this.btn_disable = false;
                     this.submitted = false;
@@ -332,11 +300,7 @@ export class CandidatelistComponent implements OnInit {
                         timer: 1500
                       })
                     }
-                  
-                      
-
-                    window.location.reload();
-                    //this.router.navigate(['/admin/candidate/list']);
+                  window.location.reload(); 
     
                   }, (error) => {
                       this.btn_disable = false;
@@ -372,13 +336,10 @@ export class CandidatelistComponent implements OnInit {
                 //this.router.navigate(['/admin/candidate/list']);
               }
     
-    
             }, (error) => {
              
               this.btn_disable = false;
               this.submitted = false;
-    
-              
             });
         }
         else {
@@ -391,10 +352,8 @@ export class CandidatelistComponent implements OnInit {
             timer: 1500
           })
         }
-       // window.location.reload();
-                //this.router.navigate(['/admin/candidate/list']);
       }
-
+     /* ######### FORM SUBMIT END ########## */
  
 
 }

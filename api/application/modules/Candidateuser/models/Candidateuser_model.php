@@ -3,6 +3,7 @@
 class Candidateuser_model extends CI_Model
 {
 	
+	
 	public function add_user($post_user)
 	{	
 		$candidatevalue=$post_user['candidatevalue'];
@@ -96,10 +97,7 @@ class Candidateuser_model extends CI_Model
 					//	"IsActive"=>$IsActive,
 						"CreatedBy"=>1,
 						"CreatedOn"=>date('y-m-d H:i:s')
-							
-						);	
-			
-		
+							);	
 			$this->db->where('CandidateId',trim($candidatevalue['CandidateId']));
 
 			$res = $this->db->update('tblcandidate',$user_data);
@@ -211,7 +209,7 @@ class Candidateuser_model extends CI_Model
 	  }
 	} 
 
-	public function getlist_jobpositon()
+	public function getJobPositionList()
 	{
 		$this->db->select('*');
 		
@@ -228,7 +226,7 @@ class Candidateuser_model extends CI_Model
 	}
 
 	
-public function getlist_question()
+public function getQuestionList()
 	{
 		$this->db->select('QuestionId,QuestionName,AnswerTypeId,IsActive');
 		
@@ -249,6 +247,34 @@ public function getlist_question()
 		return $res;
 	}
 
+	public function inviteCandidate($data)
+	{
+		$user_data=array(
+			"EmailAddress"=>trim($data['candidateEmail']),
+			"AccessCode"=>trim($data['AccessCode'])
+		);
+
+		$res=$this->db->insert('tblcandidate',$user_data);
+		$id = $this->db->insert_id();
+		if($res) { 
+			/* ACTIVITY LOG */
+			  $activity_log = array(
+				'UserId' => $data['UserId'],
+				'Module' =>'Invite User',
+				'Activity'=>'Invitation sent to - '.$data['candidateEmail']
+			  );
+
+			  $log = $this->db->insert('tblactivitylog',$activity_log);
+			  /* END */
+			return $id;
+		  } 
+		  else
+		  {
+			return false;
+		  }
+	
+		
+	}
 	
 	
 	

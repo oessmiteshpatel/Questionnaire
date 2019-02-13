@@ -50,6 +50,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { SidebarComponent } from './sidebar/sidebar.component';
 
+import { InviteCandidateComponent } from './invite-candidate/invite-candidate.component';
+import { InvitecandidateService} from './services/invitecandidate.service';
+
+import { ActivityLogComponent } from './activity-log/activity-log.component';
+import { AuditLogService } from './services/audit-log.service';
 
 const routes: Routes = [	
   {
@@ -92,8 +97,12 @@ const routes: Routes = [
           { path: 'changepass', component: ChangepassComponent, canActivate : [AuthGuard] },
 		  
 		  
-		  { path: 'sidebar', component: SidebarComponent, canActivate : [AuthGuard] },
+          { path: 'sidebar', component: SidebarComponent, canActivate : [AuthGuard] },
+      
+          { path: 'inviteCandidate', component: InviteCandidateComponent, canActivate : [AuthGuard] },
   
+          { path: 'activity-log', component: ActivityLogComponent, canActivate : [AuthGuard] },
+
           // { path: 'dashboard', component: DashboardComponent, canActivate : [AuthGuard] }
           
 		
@@ -106,8 +115,7 @@ imports: [RouterModule.forChild(routes)],
 exports: [RouterModule],
  
 providers: [Globals,AuthService,AuthGuard,QuestionService,JobpositionService,CandidateuserService,ManagequestionService,RegisterService,ChangepassService,
-  UserroleService
-
+  UserroleService,InvitecandidateService,AuditLogService
 ],
   bootstrap: [AdminComponent]
 })

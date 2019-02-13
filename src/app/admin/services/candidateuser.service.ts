@@ -10,7 +10,7 @@ export class CandidateuserService {
 
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
 
-  //add user
+  /* ######### FORM SUBMIT START ########## */
   add(candidateEntity){ 
     debugger
     let promise = new Promise((resolve, reject) => { 
@@ -28,9 +28,9 @@ export class CandidateuserService {
     });		
     return promise;
     }
+   /* ######### FORM SUBMIT END ########## */
 
-
-
+    /* ######### UPLOAD FILE START ########## */
     uploadFile(file,CandidateId){
       let promise = new Promise((resolve, reject) => {
       this.http.post(this.globals.baseAPIUrl + 'Candidateuser/uploadFile/'+CandidateId, file )
@@ -41,37 +41,37 @@ export class CandidateuserService {
       },
       msg => { // Error
       reject(msg);
-      // this.globals.isLoading = false;
+      
       this.router.navigate(['/pagenotfound']);
       }
       );
       });	
       return promise;
       }
+      /* ######### UPLOAD FILE END ########## */
       
+     /* ######### GET ALL CANDIDATE START ########## */
+    getAllCandidate()
+    {
+      debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Candidateuser/getAllCandidate')
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+        this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });		
+    return promise;
+    }
+  /* ######### GET ALL CANDIDATE END ########## */
 
-
-    getAll()
-  {
-    debugger
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Candidateuser/getAllCandidate')
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-      reject(msg);
-      //this.globals.isLoading = false;
-      this.router.navigate(['/pagenotfound']);
-        }
-      );
-	});		
-	return promise;
-  }
-
-
+  
     getById(CandidateId){
       debugger
     
@@ -91,10 +91,6 @@ export class CandidateuserService {
       });		
       return promise;
       }  
-
-
-
-
       getAllDefaultData(){
         debugger
         let promise = new Promise((resolve, reject) => {
@@ -114,7 +110,7 @@ export class CandidateuserService {
         return promise;
         }
 
-
+        /* ######### DELETE START ########## */
         delete(del){  
           let promise = new Promise((resolve, reject) => {
             this.http.post(this.globals.baseAPIUrl + 'Candidateuser/delete' , del)
@@ -125,12 +121,12 @@ export class CandidateuserService {
                 },
                 msg => { // Error
               reject(msg);
-           //   this.globals.isLoading = false;
               this.router.navigate(['/pagenotfound']);
                 }
               );
           });		
           return promise;
           }
+        /* ######### DELETE END ########## */
 
 }

@@ -25,8 +25,7 @@ export class ChangepassComponent implements OnInit {
 	constructor(private http: Http, public globals: Globals, private router: Router, private route: ActivatedRoute, private ChangepassService: ChangepassService) { }
 
 	ngOnInit() {
-		//this.globals = this.global;
-		//this.globals.isLoading = false;
+
 		setTimeout(function () {
 			if ($("body").height() < $(window).height()) {
 				$('footer').addClass('footer_fixed');
@@ -36,11 +35,11 @@ export class ChangepassComponent implements OnInit {
 		var count = jQuery(window).height() - 270;
 		body.style.setProperty('--screen-height', count + "px");
 
-
 		this.newpassEntity = {};
 		this.globals.msgflag = false;
 	}
 
+	/* ############## CHANGE PASSWORD ############ */
 	addNewPassword(newpassForm) {
 		debugger
 		let id = this.route.snapshot.paramMap.get('id');
@@ -71,9 +70,7 @@ export class ChangepassComponent implements OnInit {
 						this.submitted = false;
 						this.router.navigate(['/admin/changepass']);
 					}
-					else {
-						//alert('success');
-						//this.aa=true;
+					else{
 						this.btn_disable = false;
 						this.submitted = false;
 						this.newpassEntity = {};
@@ -88,22 +85,21 @@ export class ChangepassComponent implements OnInit {
 						this.router.navigate(['/admin/candidate/list']);
 					}
 				},
-					(error) => {
-						//	this.globals.isLoading = false;
-						//this.router.navigate(['/pagenotfound']);
-						//alert('error');
-						this.btn_disable = false;
-						this.submitted = false;
-					});
-
-		}
+				(error) => {
+					this.btn_disable = false;
+					this.submitted = false;
+				});
+			}
 	}
-
-	checkpassword() { debugger
+	checkpassword()
+	{ 
+		debugger
 		if (this.newpassEntity.cPassword != this.newpassEntity.nPassword) {
 			this.same = true;
 			this.oldnewsame = false;
-		} else {
+		} 
+		else
+		{
 			this.same = false;
 			if(this.newpassEntity.Password == this.newpassEntity.nPassword)
 			{
@@ -111,7 +107,6 @@ export class ChangepassComponent implements OnInit {
 			}
 			else
 			{
-				
 				this.oldnewsame = false;
 			}
 			

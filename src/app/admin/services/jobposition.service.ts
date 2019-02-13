@@ -9,10 +9,10 @@ export class JobpositionService {
 
   constructor(private http: HttpClient, private globals: Globals, private router: Router) {  }
 
-  add(positionEntity){ 
+  addJobPosition(positionEntity){ 
     debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.post(this.globals.baseAPIUrl + 'Jobposition/addPosition', positionEntity)
+    this.http.post(this.globals.baseAPIUrl + 'Jobposition/addJobPosition', positionEntity)
       .toPromise()
       .then(
         res => { // Success
@@ -20,17 +20,16 @@ export class JobpositionService {
         },
         msg => { // Error
       reject(msg);
-      //this.globals.isLoading = false;
-     // this.router.navigate(['/pagenotfound']);
         }
       );
 	});		
 	return promise;
   }
   
-  getAll(){ 
+  getAllJobPosition(){ 
+    debugger
 	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Jobposition/getAll')
+    this.http.get(this.globals.baseAPIUrl + 'Jobposition/getAllJobPosition')
       .toPromise()
       .then(
         res => { // Success
@@ -46,29 +45,10 @@ export class JobpositionService {
 	return promise;
   }
   
-  
-  // delete(del){  
-	// let promise = new Promise((resolve, reject) => {
-  //   this.http.post(this.globals.baseAPIUrl + 'Jobposition/Jobposition' , del)
-  //     .toPromise()
-  //     .then(
-  //       res => { // Success
-  //         resolve(res);
-  //       },
-  //       msg => { // Error
-  //     reject(msg);
-  //  //   this.globals.isLoading = false;
-  //     this.router.navigate(['/pagenotfound']);
-  //       }
-  //     );
-	// });		
-	// return promise;
-  // }
-  
-  deletePosition(position_id){  
+  deleteJobPosition(position_id){  
     debugger
     let promise = new Promise((resolve, reject) => {
-      this.http.get(this.globals.baseAPIUrl + 'Jobposition/delete/' + position_id)
+      this.http.get(this.globals.baseAPIUrl + 'Jobposition/deleteJobPosition/' + position_id)
         .toPromise()
         .then(
           res => { // Success
@@ -85,21 +65,21 @@ export class JobpositionService {
     }
 
   getById(position_id){
-	let promise = new Promise((resolve, reject) => {
-    this.http.get(this.globals.baseAPIUrl + 'Jobposition/getById/' + position_id)
-      .toPromise()
-      .then(
-        res => { // Success
-          resolve(res);
-        },
-        msg => { // Error
-      reject(msg);
-     // this.globals.isLoading = false;
-      this.router.navigate(['/pagenotfound']);
-        }
-      );
-	});		
-	return promise;
+      let promise = new Promise((resolve, reject) => {
+        this.http.get(this.globals.baseAPIUrl + 'Jobposition/getById/' + position_id)
+          .toPromise()
+          .then(
+            res => { // Success
+              resolve(res);
+            },
+            msg => { // Error
+          reject(msg);
+        // this.globals.isLoading = false;
+          this.router.navigate(['/pagenotfound']);
+            }
+          );
+      });		
+      return promise;
   }  
 
 }
