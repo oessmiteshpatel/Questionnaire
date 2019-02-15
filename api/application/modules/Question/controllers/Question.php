@@ -10,17 +10,15 @@ class Question extends CI_Controller {
 			$this->load->model('Question_model');
 		}
 
-		/*############# ADD QUESTION ################ */
-		public function addQuestion() {
-		
+		// ###################################### SET QUESTION ######################################
+		public function setQuestion() {		
 			$post_Question = json_decode(trim(file_get_contents('php://input')), true);		
-			$qa=$post_Question['question'];  
-		
+			$Question=$post_Question['Question']; 		
 			if ($post_Question) {
-				if($qa['QuestionId'] > 0){
-					$result = $this->Question_model->edit_Question($post_Question);
+				if($Question['QuestionId'] > 0){
+					$result = $this->Question_model->updateQuestion($post_Question);
 					if($result) {
-						echo json_encode($post_Question);	
+						echo json_encode($result);	
 					}	
 				} else {
 					$result = $this->Question_model->addQuestion($post_Question);
@@ -28,54 +26,51 @@ class Question extends CI_Controller {
 						echo json_encode($post_Question);	
 					}	
 				}							
-			}
-			
+			}			
 		}
+		// ###################################### END - SET QUESTION ######################################
 
-		/*############# GET QUESTION  LIST ################ */
+		// ###################################### GET ALL QUESTIONS #######################################
 		public function getAllQuestion()
 		{
-				$data=$this->Question_model->getlist_question();
-				echo json_encode($data);
+				$question_data=$this->Question_model->getAllQuestion();
+				echo json_encode($question_data);
 		}
-		public function delete($question_id = NULL) 
-		{
-				if(!empty($question_id)) {
+		// ###################################### END - GET ALL QUESTIONS #######################################
 
-				$result = $this->Question_model->delete_question($question_id);			
+		// ###################################### DELETE QUESTION #######################################
+		public function deleteQuestion($QuestionId = NULL) {
+			if(!empty($QuestionId)) {
+				$result = $this->Question_model->deleteQuestion($QuestionId);			
 				if($result) {
 					echo json_encode("Delete successfully");	
 				}	
 			} 
 		}
+		// ###################################### END - DELETE QUESTION #######################################
 
-		/*############# EDIT FROM USER ID  ################ */
-		public function getById($question_id=null)
-		{	
-			if(!empty($question_id))
-			{
-				$data=[];
-				$data['questionType']=$this->Question_model->get_questiondata($question_id);
-				$data['answerType']=$this->Question_model->get_questiondatatypeans($question_id);
+		// ###################################### FETCH ANSWER TYPE FOR DROPDOWN #######################################
+		public function getAnswerTypeList() {
+			$data=$this->Question_model->getAnswerTypeList();
+			if($data) {
 				echo json_encode($data);
-			}
-		}
-
-
-		/*############# GET QUESTION TYPE  ################ */
-		public function getAllDefaultData()
-		{
-			$data['quetypeans']=$this->Question_model->getlist_QuestionType();
-			if($data['quetypeans'])
-			{
-				echo json_encode($data);
-			}
-			else
-			{
+			} else {
 				return false;
 			}
 		}
-		/*############# GET QUESTION TYPE  END ################ */
+		// ###################################### END - FETCH ANSWER TYPE FOR DROPDOWN #######################################
+
+		// ###################################### GET QUESTION BY ID ######################################
+		public function getQuestionById($QuestionId=null) {	
+			if(!empty($QuestionId)) {
+				$data=[];
+				$data['Question']=$this->Question_model->getQuestionById($QuestionId);
+				$data['Placeholder']=$this->Question_model->getPlaceholderById($QuestionId);
+				echo json_encode($data);
+			}
+		}
+		// ###################################### END - GET QUESTION BY ID ######################################
+
 
 
 	

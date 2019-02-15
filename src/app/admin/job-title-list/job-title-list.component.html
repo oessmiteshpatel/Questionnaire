@@ -1,0 +1,83 @@
+<div id="page-wrapper">
+  <div class="row">
+    <!--  page header -->
+    <div class="col-lg-12">
+      <div class="breadcrumb_block">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="page_heading">
+            <h1>List of Titles</h1>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/admin/candidate/list">Home</a></li>
+            <li class="breadcrumb-item active">Job Titles</li>
+          </ol>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <div class="btn-group pull-right add-right">
+        <a routerLink="/admin/title" class="lgn_btn">
+          Add a new Title
+        </a>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <!-- end  page header -->
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Advanced Tables -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTables-JobTitle">
+              <thead>
+                <tr>
+                  <th style="width:1%;">#</th>
+                  <th style="width:20%;">Title</th>
+                  <th style="width:1%;">Is Active?</th>
+                  <th style="width:1%;">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let JobTitle of JobTitleEntity; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{JobTitle.JobTitle}}</td>
+                  <td *ngIf="JobTitle.IsActive=='1'">Yes</td>
+                  <td *ngIf="JobTitle.IsActive=='0'">No</td>
+                  <td>
+                    <div class="inline_delbtn tooltip_inline" title="Edit" data-toggle="tooltip"
+                      data-placement="bottom">
+                      <button class="btn btn-default btn-rounded btn-sm"
+                        routerLink="/admin/title/edit/{{JobTitle.JobTitleId}}">
+                        <span class="fa fa-pencil"></span>
+                      </button>
+                    </div>
+                    <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom"
+                      title="Position can't be deleted as it is already used by Candidate(s).">
+                      <button *ngIf="JobTitle.isdisabled>0" [disabled]="JobTitle.isdisabled>0" data-type="Record"
+                        class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"><span
+                          class="fa fa-times"></span></button>
+                    </div>
+                    <div class="inline_delbtn tooltip_inline" data-toggle="tooltip" data-placement="bottom"
+                      title="Delete">
+                      <button data-type="Record" *ngIf="JobTitle.isdisabled==0"
+                        class="btn btn-danger btn-rounded btn-sm delete-user-row-with-ajax-button"
+                        (click)="deleteJobTitle(JobTitle)">
+                        <span class="fa fa-times"></span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--End Advanced Tables -->
+    </div>
+  </div>
+</div>
+<!-- end page-wrapper -->

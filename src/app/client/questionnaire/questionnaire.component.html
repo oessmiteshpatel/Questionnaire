@@ -1,0 +1,147 @@
+<form class="form-validate" role="form" #questionnaireForm="ngForm" (ngSubmit)="setQuestionnaire(questionnaireForm)">
+  <section class="slider">
+    <div id="slider" class="flexslider">
+      <ul class="slides">
+        <li *ngFor="let question of questionEntity; let k=index; let i = index; let last = last">
+          <div class="que_section">
+            <h1 class="que_title">Question {{i+1}}</h1>
+            <p class="que_name"><span [innerHTML]="question.QuestionText"></span></p>
+          </div>
+          <div *ngIf="question.AnswerTypeId==3">
+            <div class="ans_section">
+              <div *ngFor="let ans of question.child; let j=index;">
+                <textarea (change)="setAnswer(i,question.child.length,question)" class="form-control"
+                  #AnswerText="ngModel" [(ngModel)]="ans.AnswerText" name="AnswerText{{k}}{{j}}" maxlength="500"
+                  required placeholder="{{ans.PlaceholderText}}"></textarea>
+                <!-- <div class="radio_box">
+                  <input (change)="setAnswer(i,question.child.length,question)" type="radio" name="AnswerText{{k}}{{j}}"
+                    id="role{{k}}{{j}}" value="No" #AnswerText="ngModel" [(ngModel)]="ans.AnswerText" required />
+                  <label for="role{{k}}{{j}}">No </label>
+                </div> -->
+              </div>
+            </div>
+          </div>
+          <div *ngIf="question.AnswerTypeId==2">
+            <div class="ans_section">
+              <div *ngFor="let ans of question.child; let j=index; let firstAns=first; let last = last;">
+                <div class="col-md-4 col-sm-4">
+                  <input (change)="setAnswer(i,question.child.length,question)" type="text" class="form-control"
+                    #AnswerText="ngModel" [(ngModel)]="ans.AnswerText" name="AnswerText{{k}}{{j}}" class="form-control"
+                    required placeholder="{{ans.PlaceholderText}}" />
+                  <!-- <div class="radio_box" [hidden]="firstAns">
+                    <input (change)="setAnswer(i,question.child.length,question)" type="radio"
+                      name="AnswerText{{k}}{{j}}" id="role{{k}}{{j}}" value="No" #AnswerText="ngModel"
+                      [(ngModel)]="ans.AnswerText" required />
+                    <label for="role{{k}}{{j}}">No </label>
+                  </div> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="question.AnswerTypeId==1">
+            <div class="ans_section">
+              <div class="radio_box" *ngFor="let ans of question.child; let j=index;">
+                <input type="radio" (change)="setAnswer(i,question.child.length,question,ans.OptionValue)"
+                  name="AnswerText{{k}}" id="role{{k}}{{j}}" value="{{ans.OptionValue}}" #AnswerText="ngModel"
+                  [(ngModel)]="ans.AnswerText" required />
+                <label for="role{{k}}{{j}}" title="{{ans.OptionValue}}">{{ans.OptionValue}}</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-btn" *ngIf="last">
+            <button type="submit" class="lgn_btn margin_top">
+              <span>Submit</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div id="carousel" class="flexslider">
+      <ul class="slides">
+        <li [ngClass]="{'active':question.IsSubmitted}"
+          *ngFor="let question of questionEntity; let k=index; let i = index">
+          <span>Q{{i+1}}</span>
+          <p>
+            <i class="fa fa-quote-left" aria-hidden="true"></i>
+            {{question.QuestionText | slice:3:25}}...
+            <i class="fa fa-quote-right" aria-hidden="true"></i>
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+</form>
+
+<!-- ################ Preview Model ################# -->
+
+<div class="modal fade bs-example-modal-lg" id="QuestionnairePreview_Modal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h1 class="text-center"
+          style="text-align: center;font-size: 35px;line-height: 35px;font-weight: 300;margin: 0 0 15px 0;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">
+          Please check your answers</h1>
+        <div style="margin: 0 auto;">
+          <table class="table" style="width: 100%;">
+            <tbody>
+              <tr>
+                <td style="border: 1px solid #222;">
+                  <h1 class="text-center"
+                    style="text-align: center;font-size: 25px;line-height: 35px;font-weight: 300;margin: 5px 0 ;color: #222;font-family: 'Titillium Web', sans-serif;text-transform: uppercase;">
+                    Questions</h1>
+                </td>
+              </tr>
+              <div *ngFor="let que of questionEntity;  let i = index; let last = last;">
+                <tr style="padding: 10px 0px;display: block;">
+                  <td style="border:0px;">
+                    <p
+                      style="font-size: 16px;margin: 0px 0px 0px 0px;line-height: 25px;font-family: 'Titillium Web', sans-serif;color: #111;">
+                      <strong> Question #{{i+1}} </strong> <br> <span [innerHTML]="que.QuestionText"></span></p>
+                    <!-- For Radio Button -->
+                    <div *ngIf="que.AnswerTypeId==1">
+                      <!-- <div *ngFor="let ans of que.child; let last = last;"> -->
+                      <p
+                        style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:5px;">
+                        Answer :<strong> {{que.objAnswer}} </strong> </p>
+                      <!-- </div> -->
+                    </div>
+                    <!-- For Multiple Text Box -->
+                    <div *ngIf="que.AnswerTypeId==2">
+                      <div *ngFor="let ans of que.child;">
+                        <p
+                          style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">
+                          {{ans.PlaceholderText}}: <strong> {{ans.AnswerText}} </strong> </p>
+                      </div>
+                    </div>
+                    <!-- For Single Text Box -->
+                    <div *ngIf="que.AnswerTypeId==3">
+                      <div *ngFor="let ans of que.child;">
+                        <p
+                          style="display:inline-block;line-height: 20px;color: #111;font-size: 14px;font-family: 'Titillium Web', sans-serif;font-weight: normal; margin:0px;margin-top:10px;">
+                          Answer : <strong> {{ans.AnswerText}} </strong> </p>
+                      </div>
+                    </div>
+                  </td>
+                  <hr *ngIf="!last">
+                </tr>
+              </div>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer text-center">
+        <div class="inline_delbtn tooltip_inline" data-placement="bottom" title="Submit">
+          <button class="btn btn-primary btn-rounded btn-sm edit-user-row-with-ajax-button"
+            (click)="questionnaireSubmit()">Submit</button>
+        </div>
+        <div class="inline_delbtn">
+          <button type="button" class="btn btn-rounded btn-danger btn-sm" data-dismiss="modal"><i class="fa fa-times"
+              style="font-size:20px"></i></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ################ End - Preview Model ################# -->

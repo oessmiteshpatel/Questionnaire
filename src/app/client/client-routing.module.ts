@@ -1,69 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { Globals } from './globals';
-import { Component,NgModule } from '@angular/core';
-import { Routes,RouterModule } from '@angular/router';
+import { Component, NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { CommonModule } from "@angular/common";
-import { ClientComponent  } from './client.component.module';
-
-import { HomeComponent } from './home/home.component';
+import { Globals } from './globals';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from "@angular/common";
+import { ClientComponent } from './client.component.module';
 
+import { LoginComponent } from './login/login.component';
+import { AuthService } from './services/auth.service';
+import { AuthGuard } from './services/auth-guard.service';
 
+import { CandidateComponent } from './candidate/candidate.component';
+import { CandidateService } from './services/candidate.service';
 
-import { CandidateuserComponent } from './candidateuser/candidateuser.component';
+import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
+import { QuestionnaireService } from './services/questionnaire.service';
 
-import { CandidateuserService } from './services/candidateuser.service';
-
-import { ThankyouComponent } from './thankyou/thankyou.component';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 
-import { ManagequestionService } from './services/managequestion.service';
 
-
-//import { AuthGuard } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service'
-
-
-import { DashboardComponent } from './dashboard/dashboard.component';
-
-const routes: Routes = [	
+const routes: Routes = [
 	{
 		path: '',
-			component: ClientComponent,
-			children: [
-				
-			
-				{ path : '', component : CandidateuserComponent  },
-
-				// { path : 'home', component : HomeComponent  },
-
-			
-				
-			
-				{ path : 'candidateuser', component : CandidateuserComponent  },
-			
-			
-
-				{ path : 'thankyou', component : ThankyouComponent  },
-
-			
-	
-				// { path: 'dashboard', component: DashboardComponent}
-				
-			]
+		component: ClientComponent,
+		children: [
+			{ path: '', component: LoginComponent },
+			{ path: 'login', component: LoginComponent, canActivate : [AuthGuard] },
+			{ path: 'candidate', component: CandidateComponent, canActivate : [AuthGuard] },
+			{ path: 'questionnaire', component: QuestionnaireComponent, canActivate : [AuthGuard] },
+			{ path: 'thank-you', component: ThankYouComponent, canActivate : [AuthGuard] },
+		]
 	}
 ];
-  
- @NgModule({
+
+@NgModule({
 	imports: [RouterModule.forChild(routes)],
 	exports: [RouterModule],
-	providers: [Globals,CandidateuserService,ManagequestionService,
-		AuthService,AuthService,
-	
+	providers: [Globals, AuthService, AuthGuard, CandidateService, QuestionnaireService
 	],
 
 	bootstrap: [ClientComponent]

@@ -1,0 +1,62 @@
+<body class="gradiant_body">
+  <div class="height_100_box">
+    <div class="col-md-4 col-sm-4 col-md-offset-4 col-sm-offset-3">
+      <div class="all_outer_page">
+        <header class="register_header">
+          <div class="logo text-center">
+            <a class="logo_text" href="http://theopeneyes.com/" target="_blank"><img alt="OpenEyes Software Solutions"
+                title="OpenEyes Software Solutions" class="img-responsive" src="assets/images/OSSlogo.png"></a>
+          </div>
+        </header>
+        <div class="white_form_block">
+          <div class="padding_box">
+            <div class="row no_margin">
+              <h1 class="pull-left">Login</h1>
+              <h1 class="pull-right">HR Questionnaire</h1>
+            </div>
+            <p class="padding_15">Enter your Email Address & Access Code to access HR Questionnaire</p>
+            <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+              <div class="form-group">
+                <label><span>*</span>Email Address </label>
+                <input type="email" class="form-control" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z.-]{2,}[.]{1}[a-zA-Z]{2,}"
+                  #EmailAddress="ngModel" [(ngModel)]="loginEntity.EmailAddress" name="EmailAddress"
+                  [ngClass]="{red_border: (EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)}"
+                  required />
+                <span class="error_span"
+                  *ngIf="(EmailAddress.dirty && EmailAddress.invalid) || (EmailAddress.pristine && submitted)">
+                  <span *ngIf="EmailAddress.errors.required || (EmailAddress.pristine && submitted)">Please enter your
+                    email</span>
+                  <span *ngIf="EmailAddress.errors && EmailAddress.errors.pattern">
+                    Please enter valid email
+                  </span>
+                </span>
+              </div>
+              <div class="clearfix"></div>
+              <div class="form-group">
+                <label><span>*</span>Access Code</label>
+                <input type="password" class="form-control" #AccessCode="ngModel" [(ngModel)]="loginEntity.AccessCode"
+                  name="AccessCode"
+                  [ngClass]="{red_border: (AccessCode.dirty && AccessCode.invalid) || (AccessCode.pristine && submitted)}"
+                  required maxlength="6"/>
+                <span class="error_span"
+                  *ngIf="(AccessCode.dirty && AccessCode.invalid) || (AccessCode.pristine && submitted)">
+                  <span *ngIf="AccessCode.errors.required || (AccessCode.pristine && submitted)">Please enter your
+                    Access Code</span>
+                </span>
+              </div>
+              <button class="lgn_btn pull-right" type="submit"><span>Login</span></button>
+            </form>
+          </div>
+          <div class="clearfix"></div>
+          <div class="account_block">
+            <p class="text-center">Copyrights &copy; 2019 <a href="http://www.theopeneyes.com/" target="_blank"
+                title="">OpenEyes Software Solutions</a></p>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</body>

@@ -3,254 +3,182 @@
 class Question_model extends CI_Model
  {
 
-	/*############# ADD QUESTION ################ */
-	public function addQuestion($post_Question) {
-			
-		if($post_Question) 
-		{
-			$questiontype=$post_Question['question'];
-			$questionlabel=$post_Question['question1'];
+	// ###################################### ADD QUESTION ######################################
+	public function addQuestion($post_Question) {			
+		if($post_Question) {
+			$Question=$post_Question['Question'];
+			$Placeholder=$post_Question['Placeholder'];
+			$AnswerTypeId = trim($Question['AnswerTypeId']);
+			if($Question['IsActive']==1) {
+				$IsActive = true;
+			} else {
+				$IsActive = false;
+			}
 
-			if($questiontype['IsActive']==1)
-					{
-						$IsActive = true;
-					} else {
-						$IsActive = false;
-					}
+			//Add Question
 			$Question_data = array(
-
-				'QuestionName' => trim($questiontype['QuestionName']),
-				'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
-				// 'QuestionId' => trim($post_question['QuestionId']),
-				// 'QLabel' => trim($post_question['QLabel']),
-				// 'QValue' => trim($post_question['QValue']),
-				"IsActive"=>$IsActive,
-				'CreatedBy' => trim($questiontype['CreatedBy']),
-				"CreatedOn" =>date('y-m-d H:i:s')
-				
-			);
+				'QuestionText' => trim($Question['QuestionText']),
+				'AnswerTypeId' => $AnswerTypeId,
+				"IsActive"=>$IsActive				
+			);			
+			$question_add = $this->db->insert('tblquestion',$Question_data);
 			
-			$res = $this->db->insert('tblquestion',$Question_data);
-			
-			if($res)
-			{
-				$questionId = $this->db->insert_id();
-					
+			if($question_add) {
+				$QuestionId = $this->db->insert_id();					
 
-				foreach($questionlabel as $question)
-				{		if(isset($question['QValue']) && !empty($question['QValue']))
-					{
-						$QValue = trim($question['QValue']);
-					}
-					else
-					{
-						$QValue = null;
-					}
-						$Question_data2 = array(
-
-							'QuestionId' => trim($questionId),
-							'QLabel' => trim($question['QLabel']),
-							'QValue' =>$QValue,
-							"IsActive"=>1
-						
-						);
-						
-						$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
+				foreach($Placeholder as $placeholder){						
+					if($AnswerTypeId == 1){
+						//Add Options
+						$Options_data = array(
+							'QuestionId' => trim($QuestionId),
+							'OptionValue' => trim($placeholder['Placeholder']),
+							"IsActive"=>1					
+						);					
+						$res = $this->db->insert('tblquestionoptions',$Options_data);
+					} else if ($AnswerTypeId == 2 OR $AnswerTypeId == 3 ){
+						//Add Placeholders
+						$Placeholder_data = array(
+							'QuestionId' => trim($QuestionId),
+							'PlaceholderText' => trim($placeholder['Placeholder']),
+							"IsActive"=>1					
+						);					
+						$res = $this->db->insert('tblmstplaceholder',$Placeholder_data);
+					}					
 				}
-				if($res2)
-				{
-					return true;;
-				}
-				else
-				{
-					return false;
-				}
-			
-			} 
-			else
-			 {
+				return true;			
+			} else {
 				return false;
 			}
-		} 
-		else
-		{
+		} else {
 			return false;
 		}
 	}
-	/*############# ADD QUESTION  END ################ */
-	
+	// ###################################### END - ADD QUESTION ######################################	
 
-	/*############# EDIT QUESTION  START ################ */
-	public function edit_Question($post_Question) {
-		
-		if($post_Question) 
-		{
-			$questiontype=$post_Question['question'];
-			$questionlabel=$post_Question['question1'];
-			if($questiontype['IsActive']==1)
-					{
-						$IsActive = true;
-					} else {
-						$IsActive = false;
-					}
-			$Question_data =array
-					(
-						'QuestionName' => trim($questiontype['QuestionName']),
-						'AnswerTypeId' => trim($questiontype['AnswerTypeId']),
-						'IsActive'=>$IsActive,
-						 'UpdatedBy' => trim($questiontype['UpdatedBy']),
-						 'UpdatedOn' =>date('y-m-d H:i:s')
-					);
-		
-					$this->db->where('QuestionId',trim($questiontype['QuestionId']));
-					$res1 = $this->db->update('tblquestion',$Question_data);
-
-			// $this->db->where('QuestionId',$questiontype['QuestionId']);
-			// $res = $this->db->delete('tblquestion');
-			$this->db->where('QuestionId',$questiontype['QuestionId']);
-			$res = $this->db->delete('tblquestionanswer');
-			if($res)
-			{
-					foreach($questionlabel as $question)
-					{		
-						if(isset($question['QValue']) && !empty($question['QValue']))
-						{
-						$QValue = trim($question['QValue']);
-						}
-						else
-						{
-							$QValue = null;
-						}
-						$Question_data2 = array(
-
-							'QuestionId' => trim($questiontype['QuestionId']),
-							'QLabel' => trim($question['QLabel']),
-							'QValue' =>$QValue,
-							"IsActive"=>1
-						
-						);
-
-						$res2 = $this->db->insert('tblquestionanswer',$Question_data2);
-				}
-
-			}else
-			{
+	// ###################################### UPDATE QUESTION ######################################
+	public function updateQuestion($post_Question) {		
+		if($post_Question) {
+			$Question=$post_Question['Question'];
+			if($Question['IsActive']==1) {
+				$IsActive = true;
+			} else {
+				$IsActive = false;
+			}
+			//Update Question
+			$Question_data = array(
+				'QuestionText' => trim($Question['QuestionText']),
+				'AnswerTypeId' => trim($Question['AnswerTypeId']),
+				"IsActive"=>$IsActive				
+			);	
+			$this->db->where('QuestionId',trim($Question['QuestionId']));		
+			$question_update = $this->db->update('tblquestion',$Question_data);
+			if($question_update){
+				return true;
+			} else {
 				return false;
 			}
-			
-		} 
-		else
-		{
+		} else {
 			return false;
 		}
 	}
-	/*############# EDIT QUESTION  END ################ */
+	// ###################################### UPDATE QUESTION ######################################	
 
-
-	
-
-	/*############# GET QUESTION TYPE ################ */
-	public function getlist_QuestionType()
-	{
-		$this->db->select('AnswerTypeId,AnswerName,DisplayText,IsActive');
-		
-		$this->db->where('IsActive=',1);
-		$result=$this->db->get('tblmstanswertype');
-		
+	//###################################### GET ANSWER TYPE FOR DROPDOWN #######################################
+	public function getAnswerTypeList() {
+		$this->db->select('tmc.Value as AnswerTypeId,tmc.DisplayText as AnswerType');		
+		$this->db->where('IsActive',1);
+		$this->db->where('Key','AnswerType');
+		$result=$this->db->get('tblmstconfiguration tmc');		
 		$res=array();
-		if($result->result())
-		{
+		if($result->result()) {
 			$res=$result->result();
 		}
 		return $res;
 	}
-	/*############# GET QUESTION TYPE END ################ */
+	//###################################### END - GET ANSWER TYPE FOR DROPDOWN #######################################
 
-
-	/*############# DELETE QUESTION START ################ */
-	 public function delete_question($question_id) 
-	 {
-	
-		if($question_id) 
-		{
-			
-			$this->db->where('QuestionId',$question_id);
+	//###################################### DELETE QUESTION #######################################
+	public function deleteQuestion($QuestionId) {	
+		if($QuestionId) {			
+			$this->db->where('QuestionId',$QuestionId);
 			$res = $this->db->delete('tblquestion');
-			
 			if($res) {
 				return true;
 			} else {
 				return false;
 			}
-		} 
-		else 
-		{
+		} else {
 			return false;
-		}
-		
+		}		
 	}
-	/*############# DELETE QUESTION END ################ */
+	//###################################### END - DELETE QUESTION #######################################
 
-	public function get_questiondatatypeans($question_id=Null)
-	{
-		if($question_id) {
-			
-			$this->db->select('QAnswerId,QuestionId,QLabel,QValue');
-			$this->db->where('QuestionId',$question_id);
-			$result = $this->db->get('tblquestionanswer');
-			
-			$res = array();
-			if($result->result()) {
-				$res = $result->result();
-			}
-			return $res;
-			
-		}
-		 else 
-		{
-			return false;
-		}
-		
-	}
-
-	public function get_questiondata($question_id=Null)
-	{
-	  if($question_id)
-	  {
-		 $this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,qtype.AnswerName,qanstype.QLabel,qanstype.QValue,que.IsActive');
-		 $this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
-		 $this->db->join('tblquestionanswer qanstype','qanstype.QuestionId = que.QuestionId', 'left');
-		 $this->db->where('que.QuestionId',$question_id);
-		 $result=$this->db->get('tblquestion que');
+	//###################################### GET QUESTION BY ID #######################################
+	public function getQuestionById($QuestionId=Null) {
+	  if($QuestionId) {
+		 $this->db->select('tq.QuestionId, tq.QuestionText, tq.AnswerTypeId, tq.IsActive');
+		 $this->db->where('tq.QuestionId',$QuestionId);
+		 $result=$this->db->get('tblquestion tq');
 		 $question_data= array();
-		 foreach($result->result() as $row)
-		 {
-			$question_data=$row;
-			
+		 foreach($result->result() as $row) {
+			$question_data=$row;			
 		 }
-		 return $question_data;
-		 
-	  }
-	  else
-	  {
+		 return $question_data;		 
+	  } else {
 		  return false;
 	  }
 	}
+	//###################################### END - GET QUESTION BY ID #######################################
 
+	//###################################### GET PLACEHOLDER BY ID #######################################
+	public function getPlaceholderById($QuestionId=Null) {
+		if($QuestionId) {
 
-	public function getlist_question()
-	{
-		$this->db->select('que.QuestionId,que.QuestionName,que.AnswerTypeId,que.IsActive,qtype.AnswerName,(SELECT COUNT(can.CAnswerId) FROM tblcandidateanswer as can WHERE can.QuestionId=que.QuestionId) as isdisabled');
-		$this->db->join('tblmstanswertype qtype','qtype.AnswerTypeId = que.AnswerTypeId', 'left');
-		$result=$this->db->get('tblquestion que');
-		
-		$res=array();
-		if($result->result())
-		{
-			$res=$result->result();
+			//Get Answer Type Id
+			$this->db->select('tq.AnswerTypeId');
+			$this->db->where('tq.QuestionId',$QuestionId);
+			$AnswerType = $this->db->get('tblquestion tq');
+			$AnswerTypeId=$AnswerType->result()[0]->AnswerTypeId;
+
+			if($AnswerTypeId == 1) {
+				//Get Options
+				$this->db->select('tqo.OptionValue as Placeholder');
+				$this->db->where('tqo.QuestionId',$QuestionId);
+				$Placeholder_row = $this->db->get('tblquestionoptions tqo');
+				$Placeholder_data = array();
+				foreach($Placeholder_row->result() as $row) {
+					array_push($Placeholder_data,$row);			
+				}
+			} else if ($AnswerTypeId == 2 OR $AnswerTypeId == 3) {
+				//Get Placeholders
+				$this->db->select('tmp.PlaceholderText as Placeholder');
+				$this->db->where('tmp.QuestionId',$QuestionId);
+				$Placeholder_row = $this->db->get('tblmstplaceholder tmp');
+				$Placeholder_data = array();
+				foreach($Placeholder_row->result() as $row) {	
+					array_push($Placeholder_data,$row);	
+				}				
+			}	
+			return $Placeholder_data;				 
+		} else {
+			return false;
 		}
-		return $res;
+	  }
+	//###################################### END - GET PLACEHOLDER BY ID #######################################
+
+	//###################################### GET ALL QUESTIONS #######################################
+	public function getAllQuestion() {
+		$this->db->select('tq.QuestionId,tq.QuestionText,tq.AnswerTypeId,tmc.DisplayText as AnswerType,tq.IsActive,(SELECT COUNT(tqa.QuestionnaireAnswerId) FROM tblquestionnaireanswer as tqa WHERE tqa.QuestionId=tq.QuestionId) as isdisabled');
+		$this->db->join('tblmstconfiguration tmc','tmc.Value = tq.AnswerTypeId', 'left');
+		$this->db->where('tmc.Key','AnswerType');
+		$result=$this->db->get('tblquestion tq');		
+		$question_data=array();
+		if($result->result()) {
+			$question_data=$result->result();
+		}
+		return $question_data;
 	}
+	//###################################### END - GET ALL QUESTIONS #######################################
 
 
 	

@@ -1,0 +1,212 @@
+<div class="row">
+	<div class="col-lg-12">
+		<div class="breadcrumb_block">
+			<div class="col-md-6 col-sm-6 col-xs-12">
+				<div class="page_heading">
+					<h1>{{header}} Question</h1>
+				</div>
+			</div>
+			<div class="col-md-6 col-sm-6 col-xs-12 text-right">
+				<ol class="breadcrumb">
+					<li class="breadcrumb-item"><a routerLink="/admin/candidate/list">Home</a></li>
+					<li class="breadcrumb-item"><a routerLink="/admin/question/list">Questions</a></li>
+					<li class="breadcrumb-item active">{{header}}</li>
+				</ol>
+				<div class="clearfix"></div>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		<div class="btn-group pull-right add-right addpage_backbtn">
+			<a routerLink="/admin/question/list" class="lgn_btn">
+				Back to list
+			</a>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-bg">
+			<form class="form-validate" role="form" #QuestionForm="ngForm" (ngSubmit)="setQuestion(QuestionForm)">
+				<div class="col-md-6 col-sm-6">
+					<div class="question_wrap">
+						<h3>Question :</h3>
+						<div class="form-group">
+							<!-- <label>Write your question below</label> -->
+							<textarea class="form-control" #QuestionText="ngModel"
+								[(ngModel)]="QuestionEntity.QuestionText" name="QuestionText" required
+								maxlength="1000"></textarea>
+							<span class="error_span"
+								*ngIf="(QuestionText.dirty && QuestionText.invalid) || (QuestionText.pristine && submitted)">
+								<span *ngIf="QuestionText.errors && QuestionText.errors.required">
+									Please enter question
+								</span>
+								<span *ngIf="QuestionText.errors && QuestionText.errors.pattern">
+									Please enter valid question
+								</span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div>
+					<div class="col-md-6 col-sm-6">
+						<div class="answer_wrap">
+							<h3>Question type :</h3>
+							<div class="form-group">
+								<select class='select-option' [disabled]="QuestionEntity.QuestionId!=0"
+									(ngModelChange)="Reset()" required class="form-control" #AnswerTypeId="ngModel"
+									[(ngModel)]="QuestionEntity.AnswerTypeId" name="AnswerTypeId"
+									[ngClass]="{red_border: (AnswerTypeId.dirty && AnswerTypeId.invalid) || (AnswerTypeId.pristine && submitted)}">
+									<option value="" value="" ngSelected='QuestionEntity.AnswerTypeId==""'>Select
+									</option>
+									<option class='option' *ngFor='let AnswerType of AnswerTypeList'
+										[value]="AnswerType.AnswerTypeId">{{AnswerType.AnswerType}}</option>
+								</select>
+								<span class="error_span"
+									*ngIf="(AnswerTypeId.dirty && AnswerTypeId.invalid) || (AnswerTypeId.pristine && submitted)">
+									<span
+										*ngIf="AnswerTypeId.errors.required || (AnswerTypeId.pristine && submitted)">Please
+										select answer
+										type
+									</span>
+								</span>
+							</div>
+
+
+							<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				<div class="clearfix"></div>
+				<div class="form-group col-md-6">
+					<label><span class="required">*</span>Active?</label>
+					<br>
+					<div class="radio_box">
+						<input type="radio" name="IsActive" id="role1" value="1" #IsActive="ngModel"
+							[(ngModel)]="QuestionEntity.IsActive" required />
+						<label for="role1">Yes</label>
+					</div>
+					<div class="radio_box">
+						<input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel"
+							[(ngModel)]="QuestionEntity.IsActive" required />
+						<label for="role2">No </label>
+					</div>
+					<br>
+					<span class="error_span"
+						*ngIf="(IsActive.dirty && IsActive.invalid) || (IsActive.pristine && submitted)">
+						<span *ngIf="IsActive.errors.required || (IsActive.pristine && submitted)">Please select active
+							status</span>
+					</span>
+				</div>
+				<div class="form-group col-md-6">
+					<!-- FOR ANSWER TYPE - MULTI TEXTBOX -->
+					<div *ngIf="QuestionEntity.AnswerTypeId==2">
+						<label><span class="required">*</span>Enter Placeholder for Text Boxes</label>
+						<div class="r-group add_que"
+							*ngFor="let Placeholder of PlaceholderEntity; let i = index; let last = last;">
+							<input type="text" [disabled]="QuestionEntity.QuestionId!=0" class="form-control"
+								pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #Placeholder="ngModel"
+								[(ngModel)]="PlaceholderEntity[i].Placeholder" name="Placeholder{{i}}"
+								placeholder="Placeholder {{i+1}}" required />
+
+							<button type="button" [disabled]="QuestionEntity.QuestionId!=0"
+								(click)="RemovePlaceholder(Placeholder)"
+								*ngIf="(i!=0 && last) || (i!=0 && !last) || (i==0 && !last)"
+								class="r-btnRemove btn btn-danger btn-rounded btn-sm" title="Delete">
+								<span class="fa fa-times"></span>
+							</button>
+							<button type="button" [disabled]="QuestionEntity.QuestionId!=0" (click)="AddPlaceholder(i)"
+								*ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm" title="Add">
+								<span class="fa fa-plus"></span>
+							</button>
+							<div class="clearfix"></div>
+							<span class="error_span"
+								*ngIf="(Placeholder.dirty && Placeholder.invalid) || (Placeholder.pristine && submitted)">
+								<span *ngIf="Placeholder.errors && Placeholder.errors.required">
+									Please enter Placeholder {{i+1}}
+								</span>
+								<span *ngIf="Placeholder.errors && Placeholder.errors.pattern">
+									Please enter valid Placeholder {{i+1}}
+								</span>
+							</span>
+						</div>
+					</div>
+					<!-- END - FOR ANSWER TYPE - MULTI TEXTBOX -->
+
+					<!-- FOR ANSWER TYPE - MCQ -->
+					<div *ngIf="QuestionEntity.AnswerTypeId==1">
+						<label><span class="required">*</span>Enter MCQ Options</label>
+						<div class="r-group add_que"
+							*ngFor="let Placeholder of PlaceholderEntity; let i = index; let last = last;">
+							<input type="text" [disabled]="QuestionEntity.QuestionId!=0" class="form-control"
+								pattern="[a-zA-Z',&.$\ ]{1,100}" maxlength="100" #Placeholder="ngModel"
+								[(ngModel)]="PlaceholderEntity[i].Placeholder" name="Placeholder{{i}}"
+								placeholder="Option {{i+1}}" required />
+
+							<button type="button" [disabled]="QuestionEntity.QuestionId!=0"
+								(click)="RemovePlaceholder(Placeholder)"
+								*ngIf="(i!=0 && last) || (i!=0 && !last) || (i==0 && !last)"
+								class="r-btnRemove btn btn-danger btn-rounded btn-sm" title="Delete">
+								<span class="fa fa-times"></span>
+							</button>
+							<button type="button" [disabled]="QuestionEntity.QuestionId!=0" (click)="AddPlaceholder(i)"
+								*ngIf="last" class="r-btnAdd btn btn-default btn-rounded btn-sm" title="Add">
+								<span class="fa fa-plus"></span>
+							</button>
+							<div class="clearfix"></div>
+							<span class="error_span"
+								*ngIf="(Placeholder.dirty && Placeholder.invalid) || (Placeholder.pristine && submitted)">
+								<span *ngIf="Placeholder.errors && Placeholder.errors.required">
+									Please enter Option {{i+1}}
+								</span>
+								<span *ngIf="Placeholder.errors && Placeholder.errors.pattern">
+									Please enter valid Option {{i+1}}
+								</span>
+							</span>
+						</div>
+					</div>
+					<!-- END - FOR ANSWER TYPE - MCQ -->
+
+					<!-- FOR ANSWER TYPE - SINGLE TEXT BOX -->
+					<div *ngIf="QuestionEntity.AnswerTypeId==3 ">
+						<label><span class="required">*</span>Enter Placeholder for Text Box</label>
+						<div class="form-group">
+
+							<div class="r-group add_que"
+								*ngFor="let Placeholder of PlaceholderEntity; let i = index; let last = last;">
+								<input type="text" [disabled]="QuestionEntity.QuestionId!=0" class="form-control"
+									pattern="[a-zA-Z0-9',&.$\ ]{2,100}" maxlength="100" #Placeholder="ngModel"
+									[(ngModel)]="PlaceholderEntity[i].Placeholder" name="Placeholder{{i}}"
+									placeholder="Placeholder" required />
+								<div class="clearfix"></div>
+								<span class="error_span"
+									*ngIf="(Placeholder.dirty && Placeholder.invalid) || (Placeholder.pristine && submitted)">
+									<span *ngIf="Placeholder.errors && Placeholder.errors.required">
+										Please enter Placeholder
+									</span>
+									<span *ngIf="Placeholder.errors && Placeholder.errors.pattern">
+										Please enter valid Placeholder
+									</span>
+								</span>
+							</div>
+						</div>
+					</div>
+					<!-- END - FOR ANSWER TYPE - SINGLE TEXT BOX -->
+				</div>
+				<div class="clearfix"></div>
+				<div class="col-md-12 col-sm-12 text-center">
+					<button type="submit" *ngIf="QuestionEntity.QuestionId==0"
+						class="lgn_btn"><span>Submit</span></button>
+					<button type="submit" *ngIf="QuestionEntity.QuestionId!=0"
+						class="lgn_btn"><span>Update</span></button>
+				</div>
+				<div class="clearfix"></div>
+			</form>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+<!-- </div> -->
+<div class="clearfix"></div>
+<!-- End Inner Section -->

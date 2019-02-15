@@ -1,0 +1,74 @@
+<div class="row">
+    <!--  page header -->
+    <div class="col-lg-12">
+        <!-- <h1 class="text-center">Job Position</h1>
+                <div class="separator text-center"><span class="dott"></span><span class="dott"></span><span class="dott"></span></div> -->
+        <div class="breadcrumb_block">
+            <div class="col-md-6 col-sm-6 col-xs-12">
+                <div class="page_heading">
+                    <h1>{{header}} Job Title</h1>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a routerLink="/admin/candidate/list">Home</a></li>
+                    <li class="breadcrumb-item"><a routerLink="/admin/title/list">Job Title</a></li>
+                    <li class="breadcrumb-item active">{{header}}</li>
+                </ol>
+                <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="btn-group pull-right add-right addpage_backbtn">
+            <a routerLink="/admin/title/list" class="lgn_btn">
+                Back to list
+            </a>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <!-- end  page header -->
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="form-bg">
+            <form class="form-validate" role="form" #titleForm="ngForm" (ngSubmit)="addTitle(titleForm)">
+                <div class="form-group col-md-6">
+                    <label><span class="required">*</span>Job Title</label>
+                    <input type="text" class="form-control" #JobTitle="ngModel" [(ngModel)]="JobTitleEntity.JobTitle"
+                        class="form-control" name="JobTitle" maxlength="100" required>
+                    <span class="error_span"
+                        *ngIf="(JobTitle.dirty && JobTitle.invalid) || (JobTitle.pristine && submitted)">
+                        <span *ngIf="JobTitle.errors.required || (JobTitle.pristine && submitted)">Please
+                            enter job title</span>
+                        <span class="error_span" *ngIf="JobTitle.errors && JobTitle.errors.pattern">
+                            Please enter a valid job title
+                        </span>
+                    </span>
+                </div>
+                <div class="form-group col-md-6">
+                    <label><span class="required">*</span>Active?</label>
+                    <br>
+                    <div class="radio_box">
+                        <input type="radio" name="IsActive" id="role1" value="1" #IsActive="ngModel"
+                            [(ngModel)]="JobTitleEntity.IsActive" required />
+                        <label for="role1">Yes</label>
+                    </div>
+                    <div class="radio_box">
+                        <input type="radio" name="IsActive" id="role2" value="0" #IsActive="ngModel"
+                            [(ngModel)]="JobTitleEntity.IsActive" required />
+                        <label for="role2">No</label>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-lg-12 text-center">
+                    <button type="submit" *ngIf="JobTitleEntity.JobTitleId==0" class="lgn_btn"><span>Submit</span></button>
+                    <button type="submit" *ngIf="JobTitleEntity.JobTitleId!=0" class="lgn_btn"><span>Update</span></button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<!-- </div> -->
+<div class="clearfix"></div>

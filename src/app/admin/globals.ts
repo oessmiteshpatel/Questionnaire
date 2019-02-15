@@ -18,10 +18,4 @@ export class Globals {
    message = '';
    type = '';
    check_login = false;
- // IsAdmin = false;
-
-
- 
-
-
 }
