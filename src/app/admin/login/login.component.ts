@@ -38,11 +38,13 @@ export class LoginComponent implements OnInit {
       
     }
      login(loginForm)
-    {		debugger
+    {		
+      debugger
       this.submitted = true;
       if(loginForm.valid){
         this.btn_disable = true;
-       
+
+     
         this.AuthService.login(this.loginEntity)
         .then((data) => 
         {

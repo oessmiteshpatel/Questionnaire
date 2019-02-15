@@ -10,7 +10,7 @@ export class AuditLogService {
   constructor(private http: HttpClient, private globals: Globals, private router: Router) { }
  
  
-  /* ######### GET ALL CANDIDATE START ########## */
+  /* ######### GET  ACTIVITY LOG DATA ########## */
   getActivitylog(){
   debugger
   let promise = new Promise((resolve, reject) => {
@@ -28,6 +28,44 @@ export class AuditLogService {
   });		
   return promise;
   }
-  /* ######### GET ALL CANDIDATE END ########## */
+
+   /* ######### GET EMAIL LOG DATA ########## */
+   getEmailLog(){
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Auditlog/getEmailLog')
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+        this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });		
+    return promise;
+    }
+
+  /* ######### GET LOGIN LOG DATA ########## */
+  getLoginLog(){
+    debugger
+    let promise = new Promise((resolve, reject) => {
+      this.http.get(this.globals.baseAPIUrl + 'Auditlog/getLoginLog')
+        .toPromise()
+        .then(
+          res => { // Success
+            resolve(res);
+          },
+          msg => { // Error
+        reject(msg);
+        this.router.navigate(['/pagenotfound']);
+          }
+        );
+    });		
+    return promise;
+    }
+  
 
 }

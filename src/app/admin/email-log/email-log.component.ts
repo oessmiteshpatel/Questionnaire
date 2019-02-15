@@ -5,25 +5,24 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuditLogService } from '../services/audit-log.service';
 
-
 declare var $,swal: any;
 
 @Component({
-  selector: 'app-activity-log',
-  templateUrl: './activity-log.component.html',
-  styleUrls: ['./activity-log.component.css']
+  selector: 'app-email-log',
+  templateUrl: './email-log.component.html',
+  styleUrls: ['./email-log.component.css']
 })
-export class ActivityLogComponent implements OnInit {
+export class EmailLogComponent implements OnInit {
 
-  activityLogData;
+  emailLogData;
 
   constructor(private http: Http, public globals: Globals,private elem: ElementRef, private router: Router, private route: ActivatedRoute,
 		private AuditLogService: AuditLogService) { }
 
   ngOnInit() {
-   
-    this.activityLogData = [];
 
+    this.emailLogData = [];
+    
     setTimeout(function(){
       if ($("body").height() < $(window).height()) {  
         $('footer').addClass('footer_fixed');     
@@ -35,12 +34,11 @@ export class ActivityLogComponent implements OnInit {
 
     this.globals.isLoading = true;
 
-
-    /* ######### GET ACTIVITY LOG DATA START ########## */
-    this.AuditLogService.getActivitylog()
+    /* #########  EMAIL LOG DATA START ########## */
+    this.AuditLogService.getEmailLog()
     .then((data) => 
     {
-      this.activityLogData = data;
+      this.emailLogData = data;
       setTimeout(function(){
       var table = $('#dataTables-example').DataTable( {
 		  responsive: {
@@ -51,7 +49,7 @@ export class ActivityLogComponent implements OnInit {
         },
 		  scrollCollapse: true,
           "oLanguage": {
-            "sLengthMenu": "_MENU_ Activity Log",
+            "sLengthMenu": "_MENU_ Email Log",
             "sInfo": "Showing _START_ to _END_ of _TOTAL_ Candidates",
             "sInfoFiltered": "(filtered from _MAX_ total Candidates)"
           },
@@ -97,9 +95,7 @@ export class ActivityLogComponent implements OnInit {
     	});	
      
     }
-    /* ######### GET ACTIVITY LOG DATA END ########## */
-
+    /* ######### EMAIL LOG DATA END ########## */
   }
-
 
 

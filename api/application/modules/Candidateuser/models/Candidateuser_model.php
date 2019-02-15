@@ -257,7 +257,9 @@ public function getQuestionList()
 		$res=$this->db->insert('tblcandidate',$user_data);
 		$id = $this->db->insert_id();
 		if($res) { 
-			/* ACTIVITY LOG */
+
+
+			/*########## ACTIVITY LOG  ##################*/
 			  $activity_log = array(
 				'UserId' => $data['UserId'],
 				'Module' =>'Invite User',
@@ -265,7 +267,7 @@ public function getQuestionList()
 			  );
 
 			  $log = $this->db->insert('tblactivitylog',$activity_log);
-			  /* END */
+			 	/*########## ACTIVITY LOG END ##################*/
 			return $id;
 		  } 
 		  else
@@ -276,9 +278,103 @@ public function getQuestionList()
 		
 	}
 	
-	
-	
+	/*##########  INVITED CANDIDATE LIST ##################*/
+	public function invitedCandidateList()
+	{
+		$this->db->select('ta.FirstName,ta.LastName,ta.EmailAddress,ta.PhoneNumber,ta.GenderId,ta.AccessCode,ta.UploadedQuestionnaireForm,ta.StatusId,ta.IsActive');
+		$result=$this->db->get('tblcandidate ta');
+		$res=array();
+		if($result->result())
+		{
+			$res=$result->result();
+		}
+		if($res)
+		{
+			return $res;
+		}
+		else
+		{
+			return false;
+		}
+		
+	}
 
+	/*##########  REVOKE CANDIDATE ##################*/
+	public function revokeCandidate($postdata)
+	{
+	  try{
+		if($postdata) {
+		  $UserId = $postdata['UserId'];
+		  $email = $postdata['Email'];
+		  $revokedata = array( 
+			'StatusId'	=>  3
+		  );
+		  $this->db->where('EmailAddress', $email);
+		  $res = $this->db->update('tblcandidate',$revokedata);
+		  if($res){
+
+			/* ACTIVITY LOG */
+			$activity_log = array(
+				'UserId'=>$UserId,
+			  'Module' =>'Revoke User',
+			  'Activity'=>'Revoke Invitation of - '.$email
+			);
+
+			$log = $this->db->insert('tblactivitylog',$activity_log);
+
+			/* END */
+			return true;
+		  }else{
+			return false;
+		  }
+		}else{
+		  return false;
+		}
+	  }catch(Exception $e){
+		  trigger_error($e->getMessage(), E_USER_ERROR);
+		  return false;
+	  }
+	}
+	/*##########  REVOKE CANDIDATE  END ##################*/
+
+	/*##########  REINVITE CANDIDATE  START ##################*/
+	public function reInviteCandidate($postdata)
+	{
+	  try{
+		if($postdata) {
+		  $UserId = $postdata['UserId'];
+		  $email = $postdata['Email'];
+		  $reinvitedata = array( 
+			'StatusId'	=>  0
+		  );
+		  $this->db->where('EmailAddress', $email);
+		  $res = $this->db->update('tblcandidate',$reinvitedata);
+		  if($res){
+
+			/* ACTIVITY LOG */
+			$activity_log = array(
+				'UserId'=>$UserId,
+			  'Module' =>'Revoke User',
+			  'Activity'=>'Revoke Invitation of - '.$email
+			);
+
+			$log = $this->db->insert('tblactivitylog',$activity_log);
+
+			/* END */
+			return true;
+		  }else{
+			return false;
+		  }
+		}else{
+		  return false;
+		}
+	  }catch(Exception $e){
+		  trigger_error($e->getMessage(), E_USER_ERROR);
+		  return false;
+	  }
+	}
+	/*##########  REINVITE CANDIDATE  END ##################*/
+	
 	
 	
 }

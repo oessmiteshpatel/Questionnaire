@@ -1,0 +1,72 @@
+<div id="page-wrapper">
+  <div class="row">
+    <!--  page header -->
+    <div class="col-lg-12">
+      <div class="breadcrumb_block">
+        <div class="col-md-6 col-sm-6 col-xs-12">
+          <div class="page_heading">
+            <h1>Login Logs</h1>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12 text-right">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/ach-list"><i class="fa fa-home"></i></a></li>
+            <li class="breadcrumb-item active">Login Logs</li>
+          </ol>
+          <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
+      <!-- <div class="btn-group pull-right add-right">
+        <a routerLink="/ach-invitation" class="next_btn">
+          Invite User for ACH
+        </a>
+      </div> -->
+      <div class="clearfix"></div>
+    </div>
+    <!-- end  page header -->
+  </div>
+  <div class="alert alert-{{globals.type}}" role="alert" *ngIf="globals.msgflag">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    {{globals.message}}
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <!-- Advanced Tables -->
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTables-loginlog">
+              <thead>
+                <tr>
+                  <th class="sr_width text-center">#</th>
+                  <th class="">Email Address</th>
+                  <th class="text-center">LoginType</th>
+                  <th class="text-center">Date/Time</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let login of loginLogData; let i = index">
+                  <td class="text-center">{{i+1}}</td>
+                  <td>{{login.EmailAddress}}</td>
+                  <td class="text-center">
+                    <div *ngIf="login.LoginType=='1'">Login</div>
+                    <div *ngIf="login.LoginType=='0'">Logout</div>
+                  </td>
+                  <td class="text-center">{{login.CreatedOn | date : 'MM/dd/yyyy, h:mm a'}}</td>
+                </tr>
+                <tr class="text-center" *ngIf="loginLogData.length == 0">
+                  <td colspan="4">There is no record found.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <!--End Advanced Tables -->
+    </div>
+  </div>
+</div>
+<!-- end page-wrapper -->

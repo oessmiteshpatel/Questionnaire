@@ -50,8 +50,15 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 
 
 import { InviteCandidateComponent } from './invite-candidate/invite-candidate.component';
+import { InvitedCandidateListComponent } from './invited-candidate-list/invited-candidate-list.component';
 
 import { ActivityLogComponent } from './activity-log/activity-log.component';
+
+import { EmailLogComponent } from './email-log/email-log.component';
+
+import { LoginLogComponent } from './login-log/login-log.component';
+
+
 
 
 @NgModule({
@@ -77,7 +84,10 @@ import { ActivityLogComponent } from './activity-log/activity-log.component';
     DashboardComponent,
     SidebarComponent,
     InviteCandidateComponent,
-    ActivityLogComponent
+    ActivityLogComponent,
+    EmailLogComponent,
+    LoginLogComponent,
+    InvitedCandidateListComponent,
     
   ],
   imports: [

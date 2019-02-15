@@ -37,8 +37,9 @@ inviteCandidate(inviteCandidateForm) {
   if (inviteCandidateForm.valid) {
    
    //let uid = this.globals.authData.UserId;
-    
-   this.InvitecandidateService.inviteCandidate(this.inviteEntity)
+    this.inviteEntity.UserId = this.globals.authData.UserId;
+
+    this.InvitecandidateService.inviteCandidate(this.inviteEntity)
    .then((data) => {
     this.btn_disable = false;
     this.submitted = false;

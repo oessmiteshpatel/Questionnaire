@@ -250,5 +250,62 @@ class Candidateuser extends CI_Controller {
 	/* ######### INVITE CANDIDATE END ########## */
 
 
+	/* ######### INVITED  CANDIDATE LIST ########## */
+	public function invitedCandidateList()
+	{
+			$data=$this->Candidateuser_model->invitedCandidateList();
+			if($data)
+			{
+				echo json_encode($data);
+			}
+			else
+			{
+				return false;
+			}
+	}
+
+	/* ######### REVOKE  CANDIDATE ########## */
+	public function revokeCandidate()
+	{
+		$postdata = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if($postdata)
+		{
+			$data=$this->Candidateuser_model->revokeCandidate($postdata);
+			if($data)
+			{
+				echo json_encode($data);
+			}
+			else
+			{
+				return false;
+			}
+		}
+			
+	}
+	/* ######### REVOKE  CANDIDATE  END ########## */
+
+
+	/* ######### REINVITE  CANDIDATE START ########## */
+	public function reInviteCandidate()
+	{
+		$postdata = json_decode(trim(file_get_contents('php://input')), true);		
+
+		if($postdata)
+		{
+			$data=$this->Candidateuser_model->reInviteCandidate($postdata);
+			if($data)
+			{
+				echo json_encode($data);
+			}
+			else
+			{
+				return false;
+			}
+		}
+			
+	}
+	/* ######### REINVITE  CANDIDATE  END ########## */
+
 	
 }
