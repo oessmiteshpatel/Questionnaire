@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-lg-12">
+
+  
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTables-example">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Email</th>
+                <th>Status</th>
+                <th>Action</th>
+           
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let list of invitedCandidateList; let i = index">
+                  <td>{{i+1}}</td>
+                  <td>{{list.EmailAddress}}</td>
+                 <td>
+                    <div class="text-primary" *ngIf="list.StatusId=='0'">Pending</div>
+                    <div  class="text-danger"  *ngIf="list.StatusId=='1'">Submitted</div>
+                    <div  class="text-success" *ngIf="list.StatusId=='2'">In Progress</div>
+                    <div  class="text-success" *ngIf="list.StatusId=='3'">Revoked</div>
+                  </td>
+                  
+                  <td class="text-center">
+                
+                    <div *ngIf="list.StatusId=='1' || list.StatusId=='2'" class="inline_delbtn">
+                      <button [disabled]="list.StatusId=='1' || list.StatusId=='2'" class="btn btn-success btn-rounded btn-sm" >
+                        Revoke
+                      </button>
+                    </div>
+
+                    <div *ngIf="list.StatusId=='0'" class="inline_delbtn">
+                      <button  (click)="revokeCandidate(list.EmailAddress)" class="btn btn-success btn-rounded btn-sm" >
+                        Revoke
+                      </button>
+                    </div>
+            
+                    <div *ngIf="list.StatusId=='3'" class="inline_delbtn">
+                      <button (click)="reInviteCandidate(list.EmailAddress)"  class="btn btn-success btn-rounded btn-sm" >
+                          Re-invite
+                      </button>
+                    </div>
+
+                  </td>
+               
+
+              </tr>
+              <tr class="text-center" *ngIf="invitedCandidateList.length == 0">
+                <td colspan="4">There is no record found.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    
+  </div>
+</div>

@@ -53,13 +53,16 @@ import { ChangepassService } from './services/changepass.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 
-
-
 import { InviteCandidateComponent } from './invite-candidate/invite-candidate.component';
 import { InvitecandidateService } from './services/invitecandidate.service';
 
 import { ActivityLogComponent } from './activity-log/activity-log.component';
 import { AuditLogService } from './services/audit-log.service';
+import { EmailLogComponent } from './email-log/email-log.component';
+
+import { LoginLogComponent } from './login-log/login-log.component';
+
+import { InvitedCandidateListComponent } from './invited-candidate-list/invited-candidate-list.component';
 
 const routes: Routes = [
   {
@@ -101,12 +104,21 @@ const routes: Routes = [
 
       { path: 'inviteCandidate', component: InviteCandidateComponent, canActivate: [AuthGuard] },
 
-      { path: 'activity-log', component: ActivityLogComponent, canActivate: [AuthGuard] }
+      { path: 'activity-log', component: ActivityLogComponent, canActivate: [AuthGuard] },
 
+      { path: 'email-log', component: EmailLogComponent, canActivate: [AuthGuard] },
+
+      { path: 'login-log', component: LoginLogComponent, canActivate: [AuthGuard] },
+
+      { path: 'invited-candidate-list', component: InvitedCandidateListComponent, canActivate: [AuthGuard] },
 
     ]
-  }
-];
+  }];
+
+
+
+
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -5,25 +5,23 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { AuditLogService } from '../services/audit-log.service';
 
-
 declare var $,swal: any;
 
 @Component({
-  selector: 'app-activity-log',
-  templateUrl: './activity-log.component.html',
-  styleUrls: ['./activity-log.component.css']
+  selector: 'app-login-log',
+  templateUrl: './login-log.component.html',
+  styleUrls: ['./login-log.component.css']
 })
-export class ActivityLogComponent implements OnInit {
+export class LoginLogComponent implements OnInit {
 
-  activityLogData;
+  loginLogData;
 
   constructor(private http: Http, public globals: Globals,private elem: ElementRef, private router: Router, private route: ActivatedRoute,
 		private AuditLogService: AuditLogService) { }
 
   ngOnInit() {
-   
-    this.activityLogData = [];
-
+    
+    this.loginLogData = [];
     setTimeout(function(){
       if ($("body").height() < $(window).height()) {  
         $('footer').addClass('footer_fixed');     
@@ -35,14 +33,13 @@ export class ActivityLogComponent implements OnInit {
 
     this.globals.isLoading = true;
 
-
-    /* ######### GET ACTIVITY LOG DATA START ########## */
-    this.AuditLogService.getActivitylog()
+    /* #########  LOGIN LOG DATA START ########## */
+    this.AuditLogService.getLoginLog()
     .then((data) => 
     {
-      this.activityLogData = data;
+      this.loginLogData = data;
       setTimeout(function(){
-      var table = $('#dataTables-example').DataTable( {
+      var table = $('#dataTables-loginlog').DataTable( {
 		  responsive: {
             details: {
                 display: $.fn.dataTable.Responsive.display.childRowImmediate,
@@ -51,7 +48,7 @@ export class ActivityLogComponent implements OnInit {
         },
 		  scrollCollapse: true,
           "oLanguage": {
-            "sLengthMenu": "_MENU_ Activity Log",
+            "sLengthMenu": "_MENU_ Login Log",
             "sInfo": "Showing _START_ to _END_ of _TOTAL_ Candidates",
             "sInfoFiltered": "(filtered from _MAX_ total Candidates)"
           },
@@ -97,9 +94,9 @@ export class ActivityLogComponent implements OnInit {
     	});	
      
     }
-    /* ######### GET ACTIVITY LOG DATA END ########## */
+    /* ######### EMAIL LOG DATA END ########## */
+
 
   }
-
 
 
